@@ -1,0 +1,12 @@
+$prim-blue: #42c0c4;
+$prim-yellow: #f3c37b;
+
+// components
+@import "components/_chip.scss";
+
+
+// custom styling
+@import "styling/nav.scss";
+@import "styling/font.scss";
+@import "styling/color.scss";
+@import "styling/scaling.scss";

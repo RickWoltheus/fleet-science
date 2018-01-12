@@ -1,0 +1,31 @@
+body{
+width: 100%;
+}
+
+.checkBox1{
+width: 100%;
+margin-left: 80%;
+}
+.containerForm{
+  width: 80%;
+  margin: 0 auto;
+}
+.form1{
+margin: 250px 50px 200px 250px;;
+width: 30%;
+display: inline-block;
+}
+
+.form2{
+/* margin: 200px;; */
+width: 30%;
+display: inline-block;
+
+}
+.buttonsSign{
+  position: absolute;
+  left: 42%;
+  top: 80%;
+
+  display: inline-block;
+}

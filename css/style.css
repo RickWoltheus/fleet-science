@@ -1,0 +1,35 @@
+.notification-chip {
+  display: inline-block;
+  background-color: white;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #42c0c4;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  margin-right: 10px;
+  text-align: center; }
+
+.no-bullets {
+  list-style-type: none; }
+
+.yellow {
+  background-color: #f3c37b; }
+
+.blue {
+  background-color: #42c0c4 !important; }
+
+.light-grey {
+  background-color: #ededed !important; }
+
+.white-text *, .white-text {
+  color: white !important; }
+
+.medium {
+  height: 200px !important; }
+
+.border-radius {
+  border-radius: 40px; }
+
+/*# sourceMappingURL=style.css.map */
