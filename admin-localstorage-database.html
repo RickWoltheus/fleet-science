@@ -216,8 +216,8 @@ function MaAdd(key, info,baseModifier)
         text += "    <div class='ma-tableCell "+sectionClass+"' id='cell-"+sectionRow+"-"+field+"' contenteditable='true' onkeypress='preventEnter(event)'>"+info[field]+"</div>";
     }
 
-    text += "    <div class='ma-tableCell'><a href='javascript:"+baseModifier+"change(\""+key+"\","+sectionRow+")'>Update</a></div>";
-    text += "    <div class='ma-tableCell'><a href='javascript:"+baseModifier+"delete(\""+key+"\")' onclick='confirm(\"Are you sure you want to remove user "+key+"?\")'>Remove</a></div>";
+    text += "    <div class='ma-tableCell "+sectionClass+"'><a href='javascript:"+baseModifier+"change(\""+key+"\","+sectionRow+")'>Update</a></div>";
+    text += "    <div class='ma-tableCell "+sectionClass+"'><a href='javascript:"+baseModifier+"delete(\""+key+"\")' onclick='confirm(\"Are you sure you want to remove user "+key+"?\")'>Remove</a></div>";
     text += "  </div>";
     return text;
 }
