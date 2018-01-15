@@ -42,6 +42,82 @@ function loggedInBoatName() {
 }
 
 
+function loggedInInstitute() {
+    if (loggedIn()) {
+        return someLocalStorage["users"][loggedInUsername]["institute"];
+    }
+    return "(Not logged in!)";
+}
+
+
+function signupSailor(firstname, lastname, username, boatname, email) {
+    if (firstname.length == 0) {
+        alert("Please enter first name");
+        return false;
+    }
+    if (lastname.length == 0) {
+        alert("Please enter last name");
+        return false;
+    }
+    if (username.length == 0) {
+        alert("Please enter username");
+        return false;
+    }
+    if (boatname.length == 0) {
+        alert("Please enter boat name");
+        return false;
+    }
+
+    if (email.length == 0) {
+        alert("Please enter email");
+        return false;
+    }
+    addUser(username, {
+        "firstname":firstname, 
+        "lastname":lastname, 
+	"institute":"", 
+	"boatname":boatname, 
+	"email":email
+    });
+    setCookie("username",username);
+    return true;
+}
+
+
+function signupScientist(firstname, lastname, username, institute, email) {
+    if (firstname.length == 0) {
+        alert("Please enter first name");
+        return false;
+    }
+    if (lastname.length == 0) {
+        alert("Please enter last name");
+        return false;
+    }
+    if (username.length == 0) {
+        alert("Please enter username");
+        return false;
+    }
+    if (institute.length == 0) {
+        alert("Please enter institute");
+        return false;
+    }
+
+    if (email.length == 0) {
+        alert("Please enter email");
+        return false;
+    }
+    addUser(username, {
+        "firstname":firstname, 
+        "lastname":lastname, 
+	"institute":institute, 
+	"boatname":"", 
+	"email":email
+    });
+    setCookie("username",username);
+    return true;
+}
+
+
 /****************************************************
  *
  * End of driver

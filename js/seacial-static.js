@@ -28,6 +28,17 @@ function loggedInBoatName() {
     return "Given Time";
 }
 
+function loggedInInstitute() {
+    return "";
+}
+
+function signupSailor(firstname, lastname, username, boatname, email) {
+    return true;
+}
+
+function signupScientist(firstname, lastname, username, institute, email) {
+    return true;
+}
 
 
 /****************************************************
