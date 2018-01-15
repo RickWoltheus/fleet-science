@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Title</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <script src="js/seacial-localstorage.js"></script>
+
+        <style>
+
+.ma-table
+{ 
+  display: table;
+}
+
+.ma-tableRow
+{
+  display: table-row; 
+}
+
+.ma-tableBody
+{
+  display: table-row-group;
+}
+
+.ma-tableFoot
+{
+  display: table-footer-group;
+}
+
+.ma-tableCell, .ma-tableHead
+{
+  display: table-cell; 
+}
+
+.ma-table 
+{
+  display: table;
+  width: 100%;
+}
+.ma-tableRow
+{
+  display: table-row;
+}
+.ma-tableHead
+{
+  background-color: #ddd;
+}
+
+.ma-tableCell, .ma-tableHead 
+{
+  display: table-cell;
+  padding: 3px 10px;
+  border: 1px solid #999999;
+}
+
+.ma-tableHead
+{
+//  display: table-header-group;
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+.ma-tableFoot 
+{
+  display: table-footer-group;
+  font-weight: bold;
+  background-color: #ddd;
+}
+.ma-tableBody 
+{
+  display: table-row-group;
+}
+
+
+        </style>
+
+
+
+
+<script>
+var prev_onload_admin = window.onload;
+window.onload = onload_admin;
+function onload_admin()
+{
+    if (prev_onload_admin) {
+	prev_onload_admin();
+    }
+
+    var users = getStorageObject()["users"];
+
+    var userElement = document.getElementById("list-users");
+    if (userElement) {
+        var text = "";
+
+        text += MaTableBegin("Database");
+        text += MaSectionBegin("USERS", "section-users");
+
+	for (var user in users) {
+	    // skip loop if the property is from prototype
+	    if(!users.hasOwnProperty(user)) {
+        	continue;
+	    }
+            text += MaAdd(user);
+	}
+
+        text += MaSectionEnd();
+        text += MaTableEnd();
+
+
+	userElement.innerHTML = text; 
+    }
+}
+
+
+
+
+
+
+
+
+
+
+function toggleVisibility(section) {
+    if (sectionVisibility[section] == "table-cell") {
+	sectionVisibility[section] = "none";
+    }
+    else {
+	sectionVisibility[section] = "table-cell";
+    }
+
+    var elements = document.getElementsByClassName(section)
+    for (var i = 0; i < elements.length; i++) {
+	elements[i].style.display = sectionVisibility[section];
+    }
+}
+
+var sectionVisibility = {};
+
+function MaTableBegin(title) {
+    var text="";
+
+    sectionClass = "";
+    text += "<h1>"+title+"</h1>";
+    text += "<div class='ma-table'>";
+
+    return text;
+}
+
+function MaTableEnd() {
+    var text="";
+
+    text += "</div>";
+
+    return text;
+}
+
+function MaSectionBegin(sectionTitle, section) {
+    var text="";
+
+    sectionClass = section;
+    sectionVisibility[sectionClass] = "table-cell";
+    text += "  <div class='ma-tableRow'>";
+    text += "    <div class='ma-tableHead'><a href='javascript:toggleVisibility(\""+sectionClass+"\")'>"+sectionTitle+"</a></div>";
+    text += "  </div>";
+
+    return text;
+}
+
+function MaAdd(key)
+{
+    var text="";
+
+    text += "  <div class='ma-tableRow'>";
+    text += "    <div class='ma-tableCell "+sectionClass+"' contenteditable='true'>"+key+"</div>";
+    text += "  </div>";
+
+    return text;
+}
+
+function MaSectionEnd()
+{
+    var text="";
+
+    text += "  <div class='ma-tableRow'>";
+    text += "    <div class='ma-tableHead'><strong>END</strong></div>";
+    text += "  </div>";
+
+    return text;
+}
+
+</script>
+
+    </head>
+    <body>
+
+<a href='javascript:resetDatabase()' onclick='return confirm("Are you sure you want to reste the database?")'>Reset database</a>
+
+<p>
+<h1>Accounts</h1>
+<p>
+<div id='list-users'></div>
+
+
+    </body>
+</html>
