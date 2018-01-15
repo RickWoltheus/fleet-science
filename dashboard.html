@@ -9,6 +9,39 @@
         <script src="js/uikit.min.js"></script>
         <script src="js/uikit-icons.min.js"></script>
         <script src="js/seacial.js"></script>
+
+        <script>
+
+
+function setText(elementId,text) {
+    var element = document.getElementById(elementId);
+    if (element) {
+	element.innerHTML = text;
+    }
+}
+
+var prev_onload_dashboard = window.onload;
+window.onload = onload_dashboard;
+function onload_dashboard()
+{
+    if (prev_onload_dashboard) {
+	prev_onload_dashboard();
+    }
+    if (loggedIn()) {
+        var set_fullname = loggedInFullName();
+        var set_email    = loggedInEmail();
+        var set_boatname = loggedInBoatName();
+        setText('loggedin-username-hello', set_fullname);
+        setText('loggedin-username-profile', set_fullname);
+
+        setText('loggedin-email-profile', set_email);
+        setText('loggedin-boatname-profile', set_boatname);
+    }
+}
+
+	</script>
+
+
     </head>
     <body>
         <!-- Menu -->
@@ -30,7 +63,7 @@
         </div>
         <!-- dashboard -->
         
-        <h1 class="uk-text-center special-font">Hello sailor Conor</h1>
+        <h1 class="uk-text-center special-font">Hello sailor <span id='loggedin-username-hello'></span></h1>
         <br>
         <div class="uk-container">
         <div class="uk-child-width-expand@s" uk-grid>
@@ -74,9 +107,9 @@
                 <div class="uk-card uk-card-default uk-card-body light-grey medium">
                         <h3 class="uk-card-title uk-text-center">My profile</h3>
                         <ul class="uk-list">
-                            <li><b>Name:</b> Conor la Grue</li>
-                            <li><b>Email:</b> conorlagrue@gmail.com</li>
-                            <li><b>Name of boat:</b> Given Time</li>
+                            <li><b>Name: </b><span id='loggedin-username-profile'></span></li>
+                            <li><b>Email: </b><span id='loggedin-email-profile'></li>
+                            <li><b>Name of boat: </b><span id='loggedin-boatname-profile'></li>
                         </ul>
                 </div>
             </div>
