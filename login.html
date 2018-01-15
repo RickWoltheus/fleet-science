@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/style.css" />
         <script src="js/uikit.min.js"></script>
         <script src="js/uikit-icons.min.js"></script>
+        <script src="js/seacial.js"></script>
     </head>
     <body>
             <div class="uk-navbar-container blue" uk-navbar>
@@ -28,7 +29,7 @@
                 </div>
             <h1 class="uk-text-center">Login</h1>
             <br>
-            <form name="login" class="" action="dashboard.html" onsubmit="return validateForm()">
+            <form name="login" class="" action="dashboard.html" onsubmit="return validateLogin(document.forms.login.uname.value)">
                 <div class="uk-margin">
                         <input class="uk-input uk-form-width-medium uk-align-center" type="text" name="uname" placeholder="username">
                     </div>
@@ -41,15 +42,5 @@
             <br>
             <p class="uk-align-center uk-text-center">Or <a class="uk-button yellow border border-radius white-text" href="dashboard.html">Sign up</a> if you do not have an account</p>
         </div>
-        <script>
-                function validateForm() {
-                    var x = document.forms["login"]["uname"].value;
-                    if (x != "conor") {
-                        alert("User does not exist");
-                        return false;
-                    }
-                } 
-        </script>
-
     </body>
 </html>

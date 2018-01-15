@@ -12,8 +12,8 @@
  *
  */
 
-  load("js/seacial-static.js");
-//  load("js/seacial-localstorage.js");
+//  load("js/seacial-static.js");
+  load("js/seacial-localstorage.js");
 
 
 })();
