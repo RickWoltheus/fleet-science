@@ -14,6 +14,41 @@ function validateLogin(username) {
     return true;
 } 
 
+function loggedIn() {
+    return (loggedInUsername.length > 0);
+}
+
+function loggedInFullName() {
+    if (loggedIn()) {
+        return someLocalStorage["users"][loggedInUsername]["firstname"] + " "+ 
+               someLocalStorage["users"][loggedInUsername]["lastname"];
+    }
+    return "(Not logged in!)";
+}
+
+
+function loggedInEmail() {
+    if (loggedIn()) {
+        return someLocalStorage["users"][loggedInUsername]["email"];
+    }
+    return "(Not logged in!)";
+}
+
+function loggedInBoatName() {
+    if (loggedIn()) {
+        return someLocalStorage["users"][loggedInUsername]["boatname"];
+    }
+    return "(Not logged in!)";
+}
+
+
+/****************************************************
+ *
+ * End of driver
+ *
+ ****************************************************/
+
+
 
 /*
  * If corruption ever occurred, this function should reset the database.
@@ -63,11 +98,11 @@ function createNewDatabase()
     // Populate with some default data
     // For compatibility with the static version
     addUser("conor", {
-        "firstname":"FirstName", 
-        "lastname":"Conor", 
-	"institute":"The Top University", 
-	"boatname":"The Lady's Name", 
-	"email":"contact@seacial.com"
+        "firstname":"Conor", 
+        "lastname":"la Grue", 
+	"institute":"", 
+	"boatname":"Given Time", 
+	"email":"conorlagrue@gmail.com"
     });
     
     // Put in storage
@@ -170,7 +205,7 @@ function onload_localstorage()
     }
     
     loggedInUsername = getCookie("username");
-alert("loggedInUsername = "+loggedInUsername);
+//alert("loggedInUsername = "+loggedInUsername);
 
     getStorage();
 }

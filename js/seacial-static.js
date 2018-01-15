@@ -11,7 +11,30 @@ function validateLogin(username) {
     return true;
 } 
 
+function loggedIn() {
+    return true;
+}
 
+function loggedInFullName() {
+    return "Conor la Grue";
+}
+
+
+function loggedInEmail() {
+    return "conorlagrue@gmail.com";
+}
+
+function loggedInBoatName() {
+    return "Given Time";
+}
+
+
+
+/****************************************************
+ *
+ * End of driver
+ *
+ ****************************************************/
 
 
 
