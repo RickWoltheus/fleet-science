@@ -30,7 +30,13 @@ function onload_dashboard()
     if (loggedIn()) {
         var set_fullname = loggedInFullName();
         var set_email    = loggedInEmail();
+        var set_institute = loggedInInstitute();
         var set_boatname = loggedInBoatName();
+	
+        if (set_institute.length > 0 && set_boatname.length == 0) {
+	    location.replace('dashboard-scientist.html');
+	}
+	
         setText('loggedin-username-hello', set_fullname);
         setText('loggedin-username-profile', set_fullname);
 
@@ -57,7 +63,7 @@ function onload_dashboard()
             <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav">
                     <li><a href="login.html">Login</a></li>
-                    <li><a href="sign-up.html">Sign Up</a></li>
+                    <li><a href="sign-up-scientist.html">Sign Up</a></li>
                 </ul>
             </div>
         </div>
@@ -105,12 +111,12 @@ function onload_dashboard()
 
                 <!-- public request -->
                 <div class="uk-card uk-card-default uk-card-body light-grey medium">
-                    <h3 class="uk-card-title uk-text-center">My profile</h3>
-                    <ul class="uk-list">
-                        <li><b>Name:</b> Conor la Grue</li>
-                        <li><b>Email:</b> conorlagrue@gmail.com</li>
-                        <li><b>Name of boat:</b> Given Time</li>
-                    </ul>
+                        <h3 class="uk-card-title uk-text-center">My profile</h3>
+                        <ul class="uk-list">
+                            <li><b>Name: </b><span id='loggedin-username-profile'></span></li>
+                            <li><b>Email: </b><span id='loggedin-email-profile'></li>
+                            <li><b>Name of boat: </b><span id='loggedin-boatname-profile'></li>
+                        </ul>
                 </div>
             </div>
         </div>
