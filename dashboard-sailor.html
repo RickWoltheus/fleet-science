@@ -30,7 +30,13 @@ function onload_dashboard()
     if (loggedIn()) {
         var set_fullname = loggedInFullName();
         var set_email    = loggedInEmail();
+        var set_institute = loggedInInstitute();
         var set_boatname = loggedInBoatName();
+	
+        if (set_institute.length > 0 && set_boatname.length == 0) {
+	    location.replace('dashboard-scientist.html');
+	}
+	
         setText('loggedin-username-hello', set_fullname);
         setText('loggedin-username-profile', set_fullname);
 
@@ -57,7 +63,7 @@ function onload_dashboard()
             <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav">
                     <li><a href="login.html">Login</a></li>
-                    <li><a href="sign-up.html">Sign Up</a></li>
+                    <li><a href="sign-up-scientist.html">Sign Up</a></li>
                 </ul>
             </div>
         </div>

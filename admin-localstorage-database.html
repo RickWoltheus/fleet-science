@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Seacial Media - Admin Page</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/uikit.min.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <script src="js/uikit.min.js"></script>
+        <script src="js/uikit-icons.min.js"></script>
+        <script src="js/seacial-localstorage.js"></script>
+
+        <style>
+
+.ma-table
+{ 
+  display: table;
+}
+
+.ma-tableRow
+{
+  display: table-row; 
+}
+
+.ma-tableBody
+{
+  display: table-row-group;
+}
+
+.ma-tableFoot
+{
+  display: table-footer-group;
+}
+
+.ma-tableCell, .ma-tableHead
+{
+  display: table-cell; 
+}
+
+.ma-table 
+{
+  display: table;
+  width: 100%;
+}
+.ma-tableRow
+{
+  display: table-row;
+}
+.ma-tableHead
+{
+  background-color: #ddd;
+}
+
+.ma-tableCell, .ma-tableHead 
+{
+  display: table-cell;
+  padding: 3px 10px;
+  border: 1px solid #999999;
+}
+
+.ma-tableHead
+{
+//  display: table-header-group;
+  background-color: #ddd;
+  font-weight: bold;
+}
+
+.ma-tableFoot 
+{
+  display: table-footer-group;
+  font-weight: bold;
+  background-color: #ddd;
+}
+.ma-tableBody 
+{
+  display: table-row-group;
+}
+
+
+        </style>
+
+
+
+
+<script>
+var prev_onload_admin = window.onload;
+window.onload = onload_admin;
+function onload_admin()
+{
+    if (prev_onload_admin) {
+	prev_onload_admin();
+    }
+    repopulateUsers();
+}
+
+
+function repopulateUsers() {
+
+    var users = getStorageObject()["users"];
+
+    var userElement = document.getElementById("list-users");
+    if (userElement) {
+        var text = "";
+
+        text += MaTableBegin("Accounts");
+        text += MaSectionBegin("USERS", "section-users", userinfoFields);
+
+	for (var user in users) {
+	    // skip loop if the property is from prototype
+	    if(!users.hasOwnProperty(user)) {
+        	continue;
+	    }
+            text += MaAdd(user, users[user], "userOperation_");
+	}
+
+        text += MaSectionEnd();
+        text += MaTableEnd();
+
+
+	userElement.innerHTML = text; 
+    }
+}
+
+
+
+
+function userOperation_change(key, row) {
+    var newUserInfo = {};
+    for (var i=0;i<userinfoFields.length;i++) {
+        var element = document.getElementById("cell-"+row+"-"+userinfoFields[i]);
+	if (element) {
+	    newUserInfo[userinfoFields[i]] = element.innerHTML;
+	    //alert("Value for "+userinfoFields[i]+" = "+element.innerHTML);
+	}
+    }
+    updateUser(key,newUserInfo);
+    repopulateUsers();
+}
+
+function userOperation_delete(key) {
+    removeUser(key);
+    repopulateUsers();
+}
+
+
+function toggleVisibility(section) {
+    if (sectionVisibility[section] == "table-cell") {
+	sectionVisibility[section] = "none";
+    }
+    else {
+	sectionVisibility[section] = "table-cell";
+    }
+
+    var elements = document.getElementsByClassName(section)
+    for (var i = 0; i < elements.length; i++) {
+	elements[i].style.display = sectionVisibility[section];
+    }
+}
+
+var sectionVisibility = {};
+
+function MaTableBegin(title) {
+    var text="";
+
+    sectionClass = "";
+    text += "<h1>"+title+"</h1>";
+    text += "<div class='ma-table'>";
+
+    return text;
+}
+
+function MaTableEnd() {
+    var text="";
+
+    text += "</div>";
+
+    return text;
+}
+
+var sectionRow=0;
+
+function MaSectionBegin(sectionTitle, section, infoFields) {
+    sectionRow=0;
+
+    var text="";
+
+    sectionClass = section;
+    sectionVisibility[sectionClass] = "table-cell";
+    text += "  <div class='ma-tableRow'>";
+    text += "    <div class='ma-tableHead'><a href='javascript:toggleVisibility(\""+sectionClass+"\")'>"+sectionTitle+"</a></div>";
+
+    for (var i=0;i<infoFields.length;i++) {
+	text += "    <div class='ma-tableHead'>"+infoFields[i]+"</div>";
+    }
+    text += "    <div class='ma-tableHead'>EDIT</div>";
+    text += "    <div class='ma-tableHead'>DELETE</div>";
+    text += "  </div>";
+
+    return text;
+}
+
+function MaAdd(key, info,baseModifier)
+{
+    sectionRow ++;
+
+    var text="";
+
+    text += "  <div class='ma-tableRow'>";
+    text += "    <div class='ma-tableCell "+sectionClass+"'>"+key+"</div>";
+
+    for (var field in info) {
+	// skip loop if the property is from prototype
+	if(!info.hasOwnProperty(field)) {
+            continue;
+	}
+        text += "    <div class='ma-tableCell "+sectionClass+"' id='cell-"+sectionRow+"-"+field+"' contenteditable='true' onkeypress='preventEnter(event)'>"+info[field]+"</div>";
+    }
+
+    text += "    <div class='ma-tableCell "+sectionClass+"'><a href='javascript:"+baseModifier+"change(\""+key+"\","+sectionRow+")'>Update</a></div>";
+    text += "    <div class='ma-tableCell "+sectionClass+"'><a href='javascript:"+baseModifier+"delete(\""+key+"\")' onclick='confirm(\"Are you sure you want to remove user "+key+"?\")'>Remove</a></div>";
+    text += "  </div>";
+    return text;
+}
+
+function MaSectionEnd()
+{
+    var text="";
+    return text;
+}
+
+
+
+function preventEnter(e) {
+    if (e.keyCode === 10 || e.keyCode === 13) {
+        e.preventDefault();
+    }
+}
+
+
+var newNames = 
+[
+  "conor",
+  "smith",
+  "jones",
+  "williams",
+  "powell",
+  "brown",  
+  "wilson",
+  "taylor",
+  "nguyen",
+  "johnson",
+  "martin",
+  "white",
+  "anderson",
+  "walker",
+  "thompson",
+  "thomas",
+  "lee", 
+  "harris",
+  "ryan",
+  "robinson",
+  "kelly",
+  "king"
+];
+
+function addNewUser() {
+    var username = null;
+    for (var i=0;i<newNames.length;i++) {
+	if (!userExists(newNames[i])) {
+		username = newNames[i];
+		break;
+        }
+    }
+    if (!username) {
+	var count = 0;
+	username = "user-"+count;
+	while (userExists(username)) {
+            count ++;
+	    username = "user-"+count;
+	}
+    }
+    
+    addUser(username, {
+        "firstname":"FirstName", 
+        "lastname":username, 
+	"institute":"The Top University", 
+	"boatname":"The Lady's Name", 
+	"email":"contact@seacial.com"
+    });
+    repopulateUsers();
+}
+
+
+function doResetDatabase() {
+    resetDatabase();
+    repopulateUsers();
+}
+
+</script>
+
+    </head>
+    <body>
+
+<a href='javascript:doResetDatabase()' onclick='return confirm("Are you sure you want to reste the database?")'>Reset database</a>
+
+<p>
+<h1>Database</h1>
+<p>
+<div id='list-users'></div>
+<a href='javascript:addNewUser()'>Add record</a>
+
+<p>
+
+    </body>
+</html>
