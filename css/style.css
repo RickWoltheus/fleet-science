@@ -10,6 +10,8 @@
   font-size: 20px;
   margin-right: 10px;
   text-align: center; }
+.notification-chip p {
+  color: blue; }
 
 .no-bullets {
   list-style-type: none; }
