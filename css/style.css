@@ -52,6 +52,10 @@
 .title-holder * {
   line-height: 70px; }
 
+.h-chatbox {
+  background-color: black;
+  color: red; }
+
 .no-bullets {
   list-style-type: none; }
 
