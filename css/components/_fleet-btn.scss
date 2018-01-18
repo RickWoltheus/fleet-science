@@ -1,0 +1,23 @@
+.fleet-btn, .fleet-btn a{
+    display: inline-block;
+    color: white;
+    line-height: 35px;
+    border-radius: 100px;;
+    background-color: $prim-yellow;
+    border: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center
+}
+.fleet-btn-full-width{
+    display: inline-block;
+    color: white;
+    line-height: 35px;
+    border-radius: 100px;;
+    background-color: $prim-yellow;
+    border: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+    width: 100%
+}

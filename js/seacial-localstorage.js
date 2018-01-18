@@ -3,6 +3,7 @@
  */
 
 function validateLogin(username) {
+    alert('hi');
     if (!userExists(username)) {
         alert("User " + username + " does not exist. Please sign up first.");
         return false;

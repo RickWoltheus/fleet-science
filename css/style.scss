@@ -3,7 +3,8 @@ $prim-yellow: #f3c37b;
 
 // components
 @import "components/_chip.scss";
-
+@import "components/_fleet-btn.scss";
+@import "components/_forms.scss";
 
 // custom styling
 @import "styling/nav.scss";

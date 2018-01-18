@@ -8,4 +8,8 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
+function view(file) {
+        document.getElementById("content").innerHTML = "<div data-include='components/" + file + "'></div>";
+
+}
 

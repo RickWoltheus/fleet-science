@@ -4,12 +4,14 @@
  * In this "static" version, only "conor" can log in.
  */
 function validateLogin(username) {
+    alert('hi')
     if (username != "conor") {
         alert("User "+username+" does not exist. In this version, you can only log in as user 'conor'");
         return false;
     }
+    
     return true;
-} 
+}
 
 function loggedIn() {
     return true;
