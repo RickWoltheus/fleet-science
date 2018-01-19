@@ -9,7 +9,7 @@ function getParameterByName(name, url) {
 }
 
 function view(file) {
-        document.getElementById("content").innerHTML = "<div data-include='components/" + file + "'></div>";
+        document.getElementById("content").innerHTML = "<div data-include='views/" + file + "'></div>";
 
 }
 

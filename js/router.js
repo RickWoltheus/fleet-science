@@ -17,9 +17,14 @@ switch (action) {
     case "sign-up":
         view("static-pages/_login.html");
         break;
+
     case "dashboard-sailor":
         view("dashboard/_dashboard-sailor.html");
         break;
+    case "about":
+        view("static-pages/_about.html");
+        break;
+
     default:
         view("error/_home.html");
         break;
