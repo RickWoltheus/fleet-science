@@ -3,11 +3,12 @@
  */
 
 function validateLogin(username) {
-    alert('hi');
+    alert("hi")
     if (!userExists(username)) {
         alert("User " + username + " does not exist. Please sign up first.");
         return false;
     }
+    alert(username);
     setCookie("username", username);
     return true;
 }
@@ -183,6 +184,7 @@ function createNewDatabase() {
 
 
 function userExists(username) {
+    alert('user exist func')
     return (someLocalStorage["users"][username] != null);
 }
 

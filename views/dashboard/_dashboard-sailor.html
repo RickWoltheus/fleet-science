@@ -12,13 +12,6 @@
     <script src="js/seacial.js"></script>
 
     <script>
-        function setText(elementId, text) {
-            var element = document.getElementById(elementId);
-            if (element) {
-                element.innerHTML = text;
-            }
-        }
-
         var prev_onload_dashboard = window.onload;
         window.onload = onload_dashboard;
 
@@ -43,6 +36,35 @@
                 setText('loggedin-boatname-profile', set_boatname);
             }
         }
+               <script>
+
+
+
+
+var prev_onload_dashboard = window.onload;
+window.onload = onload_dashboard;
+function onload_dashboard()
+{
+    if (prev_onload_dashboard) {
+	prev_onload_dashboard();
+    }
+    if (loggedIn()) {
+        var set_fullname = loggedInFullName();
+        var set_email    = loggedInEmail();
+        var set_institute = loggedInInstitute();
+        var set_boatname = loggedInBoatName();
+	
+        if (set_institute.length > 0 && set_boatname.length == 0) {
+	    location.replace('dashboard-scientist.html');
+	}
+	
+        setText('loggedin-username-hello', set_fullname);
+        setText('loggedin-username-profile', set_fullname);
+
+        setText('loggedin-email-profile', set_email);
+        setText('loggedin-boatname-profile', set_boatname);
+    }
+}
     </script>
 
 

@@ -13,3 +13,11 @@ function view(file) {
 
 }
 
+//sets text of element with id
+function setText(elementId,text) {
+    var element = document.getElementById(elementId);
+    if (element) {
+	element.innerHTML = text;
+    }
+}
+

@@ -3,13 +3,14 @@
     <div class="col-3">
         <h1 class="grey-text">Login</h1>
         <br>
-        <form class=" text-center" name="login" action="index.html?/=dashboard&" onsubmit="return validateLogin(document.forms.login.uname.value)">
+        <form class=" text-center" method"POST" name="login" action="" onsubmit="return validateLogin(document.forms.login.uname.value)">
             <div class="form-group">
                 <input class="fleet-input" type="text" name="uname" placeholder="username">
             </div>
             <div class="form-group">
-                <input class="fleet-input" type="password" placeholder="password">
+                <input class="fleet-input" type="password" name="pass" placeholder="password">
             </div>
+            <input class="fleet-input" type="hidden" name='page' value="dashboard-sailor">
             <br>
             <button class="fleet-btn-full-width" type="submit">Submit</button>
         </form>
@@ -19,7 +20,7 @@
             <br>
             <br>
             <p>Or
-                <a class="fleet-btn" href="sign-up-scientist.html">Sign up</a> if you do not have an account</p>
+                <a class="fleet-btn" href="?/=sign-up">Sign up</a> if you do not have an account</p>
         </div>
 
     </div>

@@ -5,8 +5,12 @@ var action = getParameterByName('/')
 
 
 if(action == null){
-    action = "home";
-    console.log(action);
+    if(getParameterByName('page')){
+        action = getParameterByName('page');
+    }else{
+        action = "home";
+    }
+
 }
 
 document.title = "Fleet science | " + action;
@@ -22,7 +26,7 @@ switch (action) {
         break;
 
     case "sign-up":
-        view("static-pages/_login.html");
+        view("forms/_sign-up.html");
         break;
 
     case "dashboard-sailor":
