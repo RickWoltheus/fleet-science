@@ -2,6 +2,13 @@
 var action = getParameterByName('/')
 
 //sets title to page + site name
+
+
+if(action == null){
+    action = "home";
+    console.log(action);
+}
+
 document.title = "Fleet science | " + action;
 
 // the ghetto way of mvc

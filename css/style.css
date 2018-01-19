@@ -52,15 +52,14 @@
 .title-holder * {
   line-height: 70px; }
 
-.nav-item a:hover {
-  background-color: white;
-  color: #a8a8a8;
-  height: 100px; }
+.nav-item:hover {
+  background-color: white; }
+.nav-item:hover a {
+  color: #a8a8a8; }
 
 .nav-item {
   text-align: center;
-  width: 150px;
-  color: #a8a8a8; }
+  width: 150px; }
 
 .no-bullets {
   list-style-type: none; }
