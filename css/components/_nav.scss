@@ -1,13 +1,14 @@
 .nav-item:hover{
     background-color: white;
+    height: 100%
     a{
-        color: $prim-grey;
+        color: $prim-grey !important;
     }
 }
 
 .nav-item{
     text-align: center;
-    width: 150px;
+    width: 200px;
     
 
 }

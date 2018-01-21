@@ -2,3 +2,16 @@
     list-style-type: none;
 }
 
+@font-face {
+    font-family: 'stefan';
+    src: url('../fonts/stefan.ttf') format('truetype');
+}
+
+h1{
+    font-family: stefan ;
+}
+
+.special-font *, .special-font{
+    font-size: 20px;
+    font-family: stefan ;
+}

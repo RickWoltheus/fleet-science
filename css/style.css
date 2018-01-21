@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'stefan';
+  src: url("../fonts/stefan.ttf") format("truetype"); }
+h1 {
+  font-family: stefan; }
+
 .notification-chip {
   display: inline-block;
   background-color: white;
@@ -53,13 +59,13 @@
   line-height: 70px; }
 
 .nav-item:hover {
-  background-color: white; }
-.nav-item:hover a {
-  color: #a8a8a8; }
+  background-color: white;
+  height: 100% a;
+  height-color: #a8a8a8 !important; }
 
 .nav-item {
   text-align: center;
-  width: 150px; }
+  width: 200px; }
 
 /* chatbox */
 .wrapper-chatbox {
@@ -151,6 +157,16 @@
 
 .no-bullets {
   list-style-type: none; }
+
+@font-face {
+  font-family: 'stefan';
+  src: url("../fonts/stefan.ttf") format("truetype"); }
+h1 {
+  font-family: stefan; }
+
+.special-font *, .special-font {
+  font-size: 20px;
+  font-family: stefan; }
 
 .yellow {
   background-color: #f3c37b; }
