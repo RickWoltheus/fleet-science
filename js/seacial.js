@@ -14,6 +14,9 @@
 
 //  load("js/seacial-static.js");
   load("js/seacial-localstorage.js");
+  load("js/component-viewer.js");
+  load("js/libs/include.min.js");
 
 
 })();
+
