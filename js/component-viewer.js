@@ -8,8 +8,25 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-function view(file) {
-        document.getElementById("content").innerHTML = "<div data-include='components/" + file + "'></div>";
+function view(include) {
 
+        $("#content").append( "<div  data-include='views/"+ include +"'></div>" );
+        $(function(){
+            var includes = $('[data-include]');
+            jQuery.each(includes, function(){
+                var file = $(this).data('include');
+                $(this).load(file);
+    
+            });
+        });
 }
+
+//sets text of element with id
+function setText(elementId, text) {
+    var element = document.getElementById(elementId);
+    console.log(document.getElementById(elementId));
+    if (element) {
+        element.innerHTML = text;
+    }
+};
 

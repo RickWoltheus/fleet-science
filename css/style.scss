@@ -1,14 +1,15 @@
 $prim-blue: #42c0c4;
 $prim-yellow: #f3c37b;
+$prim-grey: #a8a8a8;
 
 // components
 @import "components/_chip.scss";
 @import "components/_fleet-btn.scss";
 @import "components/_forms.scss";
-@import "components/_search-bar.scss";
+@import "components/_nav.scss";
+@import "components/_chatbox.scss";
 
 // custom styling
-@import "styling/nav.scss";
 @import "styling/font.scss";
 @import "styling/color.scss";
 @import "styling/scaling.scss";

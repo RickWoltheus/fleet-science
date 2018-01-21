@@ -9,6 +9,7 @@ function validateLogin(username) {
         alert("User "+username+" does not exist. In this version, you can only log in as user 'conor'");
         return false;
     }
+    alert(username);
     
     return true;
 }
