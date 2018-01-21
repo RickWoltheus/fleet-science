@@ -1,6 +1,14 @@
 $prim-blue: #42c0c4;
 $prim-yellow: #f3c37b;
 $prim-grey: #a8a8a8;
+@font-face {
+    font-family: 'stefan';
+    src: url('../fonts/stefan.ttf') format('truetype');
+}
+
+h1{
+    font-family: stefan ;
+}
 
 // components
 @import "components/_chip.scss";
