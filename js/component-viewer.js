@@ -24,7 +24,7 @@ function view(include) {
 //sets text of element with id
 function setText(elementId, text) {
     var element = document.getElementById(elementId);
-    console.log(document.getElementById(elementId));
+
     if (element) {
         element.innerHTML = text;
     }

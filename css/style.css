@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'stefan';
-  src: url("../fonts/stefan.ttf") format("truetype"); }
+  src: url("../fonts/ArchitectsDaughter.ttf") format("truetype"); }
 h1 {
   font-family: stefan; }
 
@@ -91,12 +91,15 @@ h1 {
 
 .nav-item:hover {
   background-color: white;
-  height: 100% a;
-  height-color: #a8a8a8 !important; }
+  height: 100%; }
+.nav-item:hover a {
+  color: #a8a8a8 !important; }
 
 .nav-item {
   text-align: center;
   width: 200px; }
+.nav-item a {
+  font-size: 15px; }
 
 .menu-wrapper {
   width: 100%; }
