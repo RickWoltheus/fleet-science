@@ -46,6 +46,11 @@ switch (action) {
         view("functional-pages/_chatbox.html");
         break;
 
+    case "all-requests-sailor":
+        view("menu/_menu-logged-in.html");
+        view("functional-pages/_all-requests-sailor.html");
+        break;
+
     default:
         view("error/_home.html");
         break;

@@ -1,6 +1,8 @@
 $prim-blue: #42c0c4;
 $prim-yellow: #f3c37b;
 $prim-grey: #a8a8a8;
+$prim-background-btn: linear-gradient(to right, #FE947D, #FFBDAD);
+
 @font-face {
     font-family: 'stefan';
     src: url('../fonts/stefan.ttf') format('truetype');
@@ -16,6 +18,7 @@ h1{
 @import "components/_forms.scss";
 @import "components/_nav.scss";
 @import "components/_chatbox.scss";
+@import "components/_requests.scss";
 
 // custom styling
 @import "styling/font.scss";
