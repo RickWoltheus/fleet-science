@@ -4,12 +4,12 @@
         <div class="col-5">
             <h1 class="uk-text-center">Sign-up</h1>
             <br/>
-            <form name="signup" class="" action="?/=dashboard-sailor" onsubmit="return signupSailor(document.forms.signup.uname.value, document.forms.signup.lastname.value, document.forms.signup.username.value, 'boatname', document.forms.signup.email.value)">
+            <form name="signup" class="" action="?/=dashboard-sailor" onsubmit="return signup(document.forms.signup.role.value, document.forms.signup.uname.value, document.forms.signup.lastname.value, document.forms.signup.username.value, 'boatname', document.forms.signup.email.value)">
                 <div class="form-group uk-grid-small uk-child-width-auto uk-grid checkBox1 ">
                     <label>
-                        <input class="" type="radio" name="role"/> Academic</label>
+                        <input class="" type="radio" name="role" value="academic" /> Academic</label>
                     <label>
-                        <input class="" type="radio" name="role"/> Sailor</label>
+                        <input class="" type="radio" name="role" value="sailor" /> Sailor</label>
                     <br />
                     <br />
                 </div>
@@ -51,11 +51,13 @@
 
                 <div class="form-group">
                     Repeat Password
-                    <input class="fleet-input" type="text" placeholder="Repeat Password"/>
-                    <br /><br />
+                    <input class="fleet-input" type="text" placeholder="Repeat Password" />
+                </div>
+                <div class="form-group">
                     <a class="fleet-btn" href="#">Cancel</a>
                     <input type="submit" class="fleet-btn" value="sign-up"></input>
                 </div>
+
             </form>
             
 

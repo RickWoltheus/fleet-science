@@ -58,6 +58,11 @@ switch (action) {
         view("menu/_footer.html");
         break;
 
+        case "accepted-requests-sailor":
+        view("menu/_menu-logged-in.html");
+        view("functional-pages/_all-requests-sailor.html");
+        break;
+
     case "profile":
         view("menu/_menu-logged-in.html");
         view("static-pages/_profile.html");
