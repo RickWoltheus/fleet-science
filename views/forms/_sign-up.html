@@ -4,8 +4,7 @@
         <div class="col-5">
             <h1 class="uk-text-center">Sign-up</h1>
             <br>
-            <form name="sign-up" class="" action="dashboard-scientist.html" onsubmit="return validateLogin(document.forms.login.uname.value)">
-
+            <form name="signup" class="" action="?/=dashboard-sailor" onsubmit="return signupSailor(document.forms.signup.uname.value, document.forms.signup.lastname.value, document.forms.signup.username.value, 'boatname', document.forms.signup.email.value)">
                 <div class="form-group uk-grid-small uk-child-width-auto uk-grid checkBox1 ">
                     <label>
                         <input class="" type="radio" name="role"> Academic</label>
@@ -17,32 +16,32 @@
 
                 <div class="form-group">
                     Name
-                    <input class="fleet-input" type="text" placeholder="Name*">
+                    <input class="fleet-input" name="uname" type="text" placeholder="Name*" />
                 </div>
 
                 <div class="form-group">
                     Last Name
-                    <input class="fleet-input" type="text" placeholder="Last Name*">
+                    <input class="fleet-input" type="text" name="lastname" placeholder="Last Name*" />
                 </div>
 
                 <div class="form-group">
                     Username
-                    <input class="fleet-input" type="text" placeholder="Username*">
+                    <input class="fleet-input" type="text" name="username" placeholder="Username*" />
                 </div>
 
                 <div class="form-group">
                     Institute
-                    <input class="fleet-input" type="text" placeholder="Institute">
+                    <input class="fleet-input" type="text" name="institute" placeholder="Institute" />
                 </div>
 
                 <div class="form-group">
                     Email
-                    <input class="fleet-input" type="text" placeholder="Email*">
+                    <input class="fleet-input" type="text" name="email" placeholder="Email*" />
                 </div>
 
                 <div class="form-group">
                     Repeat Email
-                    <input class="fleet-input" type="text" placeholder="Repeat Email">
+                    <input class="fleet-input" type="text" placeholder="Repeat Email" />
                 </div>
 
                 <div class="form-group">
