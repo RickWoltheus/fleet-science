@@ -155,6 +155,149 @@ h1 {
 .wrapper-chatbox .glyphicon-search {
   color: white; }
 
+/* Requests */
+.wrapper-requests {
+  padding: 20px 50px; }
+
+.wrapper-info-requests {
+  padding: 20px 30px;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  margin-top: -8px;
+  margin-bottom: -8px; }
+
+.p_requests {
+  margin-bottom: 0px;
+  font-size: 20px; }
+
+.p_requests-accept {
+  text-align: center;
+  font-size: 20px; }
+
+.p_requests-warning {
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold; }
+
+/* Submit data */
+.p_requests-submit {
+  float: left;
+  font-size: 20px; }
+
+.p_requests-coordinates {
+  float: left;
+  font-size: 15px; }
+
+.coordinates-margin {
+  margin-top: 10px; }
+
+.coordinates-padding {
+  width: 14% !important; }
+
+.description-box-requests {
+  height: 135px;
+  width: 100%;
+  border: 1px solid #ccc;
+  overflow: auto;
+  padding: 5px 10px; }
+
+.form-submit-left {
+  text-align: left !important; }
+
+.label-submit {
+  margin-top: 8px;
+  font-weight: normal; }
+
+.label-submit-coordinator {
+  margin-top: 1px;
+  margin-left: -10px !important; }
+
+.margin-coordinator {
+  margin-left: 10px;
+  margin-right: 10px; }
+
+/* Table requests */
+.table-requests {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #F4F4F4;
+  border: 1px solid black; }
+
+.table-requests td, #table-requests th {
+  padding: 8px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; }
+
+.table-requests tr:nth-child(even) {
+  background-color: white;
+  border: 1px solid black;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; }
+
+.table-requests th {
+  padding-top: 12px;
+  padding-left: 8px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #AFA7A3;
+  color: white;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; }
+
+.filter-requests {
+  background-color: #AFA7A3;
+  border: 1px solid white;
+  color: white; }
+
+.chevron-img {
+  width: 20px; }
+
+.chevron-down {
+  background: url(../images/chevron-down.png); }
+
+.chevron-up {
+  background: url(../images/chevron-up.png); }
+
+/* Buttons */
+.button-accept-requests {
+  background: linear-gradient(to right, #FE947D, #FFBDAD) !important;
+  border-radius: 50px !important;
+  width: 100%;
+  border: none !important;
+  margin-top: 10px;
+  color: white !important;
+  cursor: pointer; }
+
+.button-reject-requests {
+  background-color: #AFA7A3 !important;
+  border-radius: 50px !important;
+  width: 100%;
+  border: none !important;
+  margin-top: 10px;
+  color: white !important;
+  cursor: pointer; }
+
+/* Search bar */
+.input-group .form-control {
+  border-radius: 20px;
+  border: 1px solid #AFA7A3;
+  height: 40px; }
+
+.input-group-btn > .btn, .input-group-btn > .btn:active, .input-group-btn > .btn:focus {
+  border-radius: 0px 20px 20px 0px;
+  background: linear-gradient(to right, #FE947D, #FFBDAD);
+  border-left: none;
+  border: 1px solid #F4C477;
+  height: 40px;
+  width: 75px; }
+
+.input-group-btn > .btn:hover {
+  background-color: #E6B360;
+  border: 1px solid #F4C477;
+  cursor: pointer; }
+
 .no-bullets {
   list-style-type: none; }
 
