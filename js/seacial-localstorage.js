@@ -184,8 +184,13 @@ function createNewDatabase() {
 
 
 function userExists(username) {
-    console.log(someLocalStorage);
-    alert(someLocalStorage);
+// RICK: JSON.stringify maakt van een object een human-readable string
+// RICK: Ik heb de alerts maar even uitgezet.
+// Ayal
+//    console.log(JSON.stringify(someLocalStorage));
+//    alert(JSON.stringify(someLocalStorage));
+
+
     return (someLocalStorage["users"][username] != null);
 }
 
