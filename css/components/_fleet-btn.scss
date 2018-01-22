@@ -3,7 +3,7 @@
     color: white;
     line-height: 35px;
     border-radius: 100px;;
-    background-color: $prim-yellow;
+    background: $prim-background-btn;
     border: 0;
     padding-left: 10px;
     padding-right: 10px;
@@ -14,10 +14,32 @@
     color: white;
     line-height: 35px;
     border-radius: 100px;;
-    background-color: $prim-yellow;
+    background: $prim-background-btn;
     border: 0;
     padding-left: 5px;
     padding-right: 5px;
     text-align: center;
     width: 100%
 }
+
+/* Buttons */
+
+.button-accept-requests {
+    background: linear-gradient(to right, #FE947D, #FFBDAD)!important;
+    border-radius: 50px !important;
+    width: 100%;
+    border: none!important;
+    margin-top: 10px;
+    color: white!important;
+    cursor: pointer;
+  }
+  
+  .button-reject-requests {
+    background-color: #AFA7A3 !important;
+    border-radius: 50px !important;
+    width: 100%;
+    border: none!important;
+    margin-top: 10px;
+    color: white!important;
+    cursor: pointer;
+  }

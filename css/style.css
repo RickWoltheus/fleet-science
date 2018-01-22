@@ -25,7 +25,7 @@ h1 {
   color: white;
   line-height: 35px;
   border-radius: 100px;
-  background-color: #f3c37b;
+  background: linear-gradient(to right, #FE947D, #FFBDAD);
   border: 0;
   padding-left: 10px;
   padding-right: 10px;
@@ -36,12 +36,31 @@ h1 {
   color: white;
   line-height: 35px;
   border-radius: 100px;
-  background-color: #f3c37b;
+  background: linear-gradient(to right, #FE947D, #FFBDAD);
   border: 0;
   padding-left: 5px;
   padding-right: 5px;
   text-align: center;
   width: 100%; }
+
+/* Buttons */
+.button-accept-requests {
+  background: linear-gradient(to right, #FE947D, #FFBDAD) !important;
+  border-radius: 50px !important;
+  width: 100%;
+  border: none !important;
+  margin-top: 10px;
+  color: white !important;
+  cursor: pointer; }
+
+.button-reject-requests {
+  background-color: #AFA7A3 !important;
+  border-radius: 50px !important;
+  width: 100%;
+  border: none !important;
+  margin-top: 10px;
+  color: white !important;
+  cursor: pointer; }
 
 .fleet-input {
   width: 100%;
@@ -69,30 +88,35 @@ h1 {
 
 /* chatbox */
 .wrapper-chatbox {
-  padding: 20px 50px;
-  /* notification amount circle */
-  /* Table chatbox */
-  /* Search bar */ }
-.wrapper-chatbox .wrapper-chatbox-right {
+  padding: 20px 50px; }
+
+.wrapper-chatbox-right {
   background-color: none;
   margin-top: 20px; }
-.wrapper-chatbox .wrapper-chatbox-left {
+
+.wrapper-chatbox-left {
   background-color: none;
   margin-top: 20px; }
-.wrapper-chatbox .wrapper-chatbox-profile {
+
+.wrapper-chatbox-profile {
   border: 1px solid black;
   background-color: white;
   padding: 30px; }
-.wrapper-chatbox .h-chatbox {
+
+.h-chatbox {
   margin-bottom: 22px; }
-.wrapper-chatbox .p-bold-chatbox {
+
+.p-bold-chatbox {
   font-weight: bolder;
   margin-right: 5px; }
-.wrapper-chatbox .profile-picture-chatbox {
+
+.profile-picture-chatbox {
   width: 100%;
   text-align: center;
   margin: 20px 0px; }
-.wrapper-chatbox .amount-circle {
+
+/* notification amount circle */
+.amount-circle {
   border-radius: 50px;
   border: 2px solid #42CDC4;
   color: #42CDC4;
@@ -103,10 +127,13 @@ h1 {
   align-items: center;
   float: left;
   margin-right: 10px; }
-.wrapper-chatbox .p-circle {
+
+.p-circle {
   padding-top: 1px;
   font-size: 18px; }
-.wrapper-chatbox .header-table-chatbox {
+
+/* Table chatbox */
+.header-table-chatbox {
   border: 1px solid black;
   background-color: white;
   color: #AFA7A3;
@@ -115,45 +142,55 @@ h1 {
   margin: 0;
   margin-top: 20px;
   border-bottom: none; }
-.wrapper-chatbox #table-chatbox {
+
+.table-chatbox {
   border-collapse: collapse;
   width: 100%;
   background-color: #F4F4F4; }
-.wrapper-chatbox #table-chatbox td, .wrapper-chatbox #table-chatbox th {
+
+.table-chatbox td, .table-chatbox th {
   border: 1px solid black;
   padding: 8px; }
-.wrapper-chatbox #table-chatbox tr:nth-child(even) {
+
+.table-chatbox tr:nth-child(even) {
   background-color: #F4F4F4; }
-.wrapper-chatbox #table-chatbox tr:hover {
+
+.table-chatbox tr:hover {
   background-color: #ddd; }
-.wrapper-chatbox #table-chatbox th {
+
+.table-chatbox th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: left;
   background-color: #AFA7A3;
   color: white;
   border: 1px solid black; }
-.wrapper-chatbox .symbol-in-table {
+
+.symbol-in-table {
   width: 20px;
   float: right; }
-.wrapper-chatbox .new-message-tr {
+
+.new-message-tr {
   background-color: #F4C477 !important; }
-.wrapper-chatbox .input-group .form-control {
+
+/* Search bar */
+.input-group .form-control {
   border-radius: 20px;
   border: 1px solid #AFA7A3;
   height: 40px; }
-.wrapper-chatbox .input-group-btn > .btn, .wrapper-chatbox .input-group-btn > .btn:active, .wrapper-chatbox .input-group-btn > .btn:focus {
+
+.input-group-btn > .btn, .input-group-btn > .btn:active, .input-group-btn > .btn:focus {
   border-radius: 0px 20px 20px 0px;
-  background-color: #F4C477;
+  background: linear-gradient(to right, #FE947D, #FFBDAD);
   border-left: none;
   border: 1px solid #F4C477;
   height: 40px;
   width: 75px; }
-.wrapper-chatbox .input-group-btn > .btn:hover {
+
+.input-group-btn > .btn:hover {
   background-color: #E6B360;
-  border: 1px solid #F4C477; }
-.wrapper-chatbox .glyphicon-search {
-  color: white; }
+  border: 1px solid #F4C477;
+  cursor: pointer; }
 
 .no-bullets {
   list-style-type: none; }
