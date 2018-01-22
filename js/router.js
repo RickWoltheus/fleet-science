@@ -56,6 +56,13 @@ switch (action) {
         view("static-pages/_profile.html");
         break;
 
+        // academic
+
+        case "dashboard-academic":
+            view("menu/_menu-logged-in.html");
+            view("dashboard/_dashboard-academic.html");
+            break;
+
     default:
         view("error/_home.html");
         break;
