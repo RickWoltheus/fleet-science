@@ -1,6 +1,7 @@
 /* chatbox */
 
 .wrapper-chatbox {
+<<<<<<< HEAD
     padding: 20px 50px;
     .wrapper-chatbox-right {
         background-color: none;
@@ -128,3 +129,131 @@
         color: white;
       }
   }
+=======
+  padding: 20px 50px;
+}
+
+.wrapper-chatbox-right {
+  background-color: none;
+  margin-top: 20px;
+}
+
+.wrapper-chatbox-left {
+  background-color: none;
+  margin-top: 20px;
+}
+
+.wrapper-chatbox-profile {
+  border: 1px solid black;
+  background-color: white;
+  padding: 30px;
+}
+
+.h-chatbox {
+  margin-bottom: 22px;
+}
+
+.p-bold-chatbox {
+  font-weight: bolder;
+  margin-right: 5px;
+}
+
+.profile-picture-chatbox {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0px;
+}
+
+/* notification amount circle */
+
+.amount-circle {
+  border-radius: 50px;
+  border: 2px solid #42CDC4;
+  color: #42CDC4;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  float: left;
+  margin-right: 10px;
+}
+
+.p-circle {
+  padding-top: 1px;
+  font-size: 18px;
+}
+
+/* Table chatbox */
+
+.header-table-chatbox {
+  border: 1px solid black;
+  background-color: white;
+  color: #AFA7A3;
+  font-size: 25px;
+  padding: 10px;
+  margin: 0;
+  margin-top: 20px;
+  border-bottom: none;
+}
+
+.table-chatbox {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #F4F4F4;
+}
+
+.table-chatbox td, .table-chatbox th {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+.table-chatbox tr:nth-child(even){
+  background-color: #F4F4F4;
+}
+
+.table-chatbox tr:hover {
+  background-color: #ddd;
+}
+
+.table-chatbox th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #AFA7A3;
+  color: white;
+  border: 1px solid black;
+}
+
+.symbol-in-table {
+  width: 20px;
+  float: right;
+}
+
+.new-message-tr {
+  background-color: #F4C477!important;
+}
+
+/* Search bar */
+
+.input-group .form-control {
+  border-radius: 20px;
+  border: 1px solid #AFA7A3;
+  height: 40px;
+}
+
+.input-group-btn>.btn, .input-group-btn>.btn:active, .input-group-btn>.btn:focus {
+  border-radius: 0px 20px 20px 0px;
+  background: linear-gradient(to right, #FE947D, #FFBDAD);
+  border-left: none;
+  border: 1px solid #F4C477;
+  height: 40px;
+  width: 75px;
+}
+
+.input-group-btn>.btn:hover  {
+  background-color: #E6B360;
+  border: 1px solid #F4C477;
+  cursor: pointer;
+}
+>>>>>>> 76a79fc5233b2a2d6395a5a1b64f5a40aaed608d
