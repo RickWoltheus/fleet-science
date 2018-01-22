@@ -51,6 +51,11 @@ switch (action) {
         view("functional-pages/_all-requests-sailor.html");
         break;
 
+    case "profile":
+        view("menu/_menu-logged-in.html");
+        view("static-pages/_profile.html");
+        break;
+
     default:
         view("error/_home.html");
         break;

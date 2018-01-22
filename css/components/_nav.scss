@@ -9,6 +9,27 @@
 .nav-item{
     text-align: center;
     width: 200px;
-    
+}
+.menu-wrapper{
+    width: 100%;
 
+}
+.menu-profile{
+    z-index: 100;
+    position: absolute;
+    height: 100px;
+    display: block;
+    right: 2%;
+    width: 20%;
+    color: white;
+    background-color: darken($color: $prim-blue , $amount: 5);
+    img{
+        height: 100%;
+        padding: 15px;
+    }
+    .logout{
+        text-align: center;
+        height: 25px;
+        background-color: darken($color: $prim-blue , $amount: 0);
+    }
 }

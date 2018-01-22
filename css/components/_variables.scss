@@ -1,0 +1,105 @@
+
+.container-variables {
+    margin-top: 25px;
+}
+
+.columns-all {
+    background-color: #F4F4F4;
+    padding: 25px;
+}
+
+.column-checkbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.div-variable {
+    margin-top: 10px;
+}
+
+.button-save-variables {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.button-save-variables:hover {
+    text-decoration: none;
+    color: white;
+}
+
+/* -------------- Input checkbox -------------- */
+
+/* Main Classes */
+
+.myinput {
+    position: relative;
+    top: 1.4px;
+}
+
+.myinput[type="checkbox"]:before{
+    position: relative;
+    display: block;
+    width: 11px;
+    height: 11px;
+    border: 1px solid #808080;
+    content: "";
+    background: white;
+    opacity: 0;
+}
+
+.myinput[type="checkbox"]:after{
+    position: relative;
+    display: block;
+    left: 2px;
+    top: -12px;
+    width: 7px;
+    height: 7px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #AFA7A3;
+    content: "";
+    background: white;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.myinput[type="checkbox"]:checked:after {
+    background: #AFA7A3;
+}
+
+.myinput[type="checkbox"]:disabled:after {
+    -webkit-filter: opacity(0.4);
+}
+
+.myinput[type="checkbox"]:not(:disabled):checked:hover:after {
+    background: #AFA7A3;
+}
+
+.myinput[type="checkbox"]:not(:disabled):hover:after {
+    background: white;
+    border-color: #AFA7A3;
+}
+
+.myinput[type="checkbox"]:not(:disabled):hover:before {
+    border-color: grey;
+}
+
+/* Large checkboxes */
+.myinput.large {
+    height:22px;
+    width: 22px;
+    cursor: pointer;
+}
+
+.myinput.large[type="checkbox"]:before {
+    width: 20.5px;
+    height: 24px;
+}
+
+.myinput.large[type="checkbox"]:after {
+    top: -20px;
+    width: 17px;
+    height: 17px;
+}

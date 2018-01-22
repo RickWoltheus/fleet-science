@@ -43,6 +43,18 @@ h1 {
   text-align: center;
   width: 100%; }
 
+.fleet-btn-round {
+  display: inline-block;
+  color: white;
+  line-height: 45px;
+  font-size: 30px;
+  border-radius: 100px;
+  background: linear-gradient(to right, #FE947D, #FFBDAD);
+  border: 0;
+  width: 50px;
+  height: 50px;
+  text-align: center; }
+
 /* Buttons */
 .button-accept-requests {
   background: linear-gradient(to right, #FE947D, #FFBDAD) !important;
@@ -85,6 +97,26 @@ h1 {
 .nav-item {
   text-align: center;
   width: 200px; }
+
+.menu-wrapper {
+  width: 100%; }
+
+.menu-profile {
+  z-index: 100;
+  position: absolute;
+  height: 100px;
+  display: block;
+  right: 2%;
+  width: 20%;
+  color: white;
+  background-color: #38b0b4; }
+.menu-profile img {
+  height: 100%;
+  padding: 15px; }
+.menu-profile .logout {
+  text-align: center;
+  height: 25px;
+  background-color: #42c0c4; }
 
 /* chatbox */
 .wrapper-chatbox {
@@ -334,6 +366,150 @@ h1 {
   background-color: #E6B360;
   border: 1px solid #F4C477;
   cursor: pointer; }
+
+/* -------------- Column profile -------------- */
+.column-profile {
+  border: 1px solid #AFA7A3;
+  padding: 35px 45px 35px 45px;
+  height: 100%; }
+
+.img-profile {
+  width: 100%; }
+
+/* --- Modal --- */
+.close {
+  color: white !important; }
+
+.close:focus {
+  outline: none; }
+
+.close:hover {
+  color: white; }
+
+.modal-footer {
+  border: none; }
+
+.button-grey, .button-upload-modal {
+  margin-top: -13px !important; }
+
+.button-grey {
+  background: #A9ABAC !important; }
+
+/* --- End modal --- */
+.p-profile {
+  margin-top: 20px; }
+
+/* -------------- Columns information -------------- */
+.column-personal-information, .column-vessel-information, .column-location-information {
+  background-color: #F4F4F4;
+  margin-bottom: 30px; }
+
+.table-profile {
+  width: 100%; }
+
+.table-profile tr td {
+  padding: 10px 15px 10px 15px; }
+
+.table-profile tr {
+  transition: .1s; }
+
+.table-profile tr:hover {
+  background-color: #E2E2E2; }
+
+.td-name {
+  font-weight: 600; }
+
+.td-edit {
+  text-align: right; }
+
+.td-edit a {
+  color: #767676 !important; }
+
+.container-variables {
+  margin-top: 25px; }
+
+.columns-all {
+  background-color: #F4F4F4;
+  padding: 25px; }
+
+.column-checkbox {
+  display: flex;
+  flex-direction: column; }
+
+.div-variable {
+  margin-top: 10px; }
+
+.button-save-variables {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px; }
+
+.button-save-variables:hover {
+  text-decoration: none;
+  color: white; }
+
+/* -------------- Input checkbox -------------- */
+/* Main Classes */
+.myinput {
+  position: relative;
+  top: 1.4px; }
+
+.myinput[type="checkbox"]:before {
+  position: relative;
+  display: block;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #808080;
+  content: "";
+  background: white;
+  opacity: 0; }
+
+.myinput[type="checkbox"]:after {
+  position: relative;
+  display: block;
+  left: 2px;
+  top: -12px;
+  width: 7px;
+  height: 7px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #AFA7A3;
+  content: "";
+  background: white;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.myinput[type="checkbox"]:checked:after {
+  background: #AFA7A3; }
+
+.myinput[type="checkbox"]:disabled:after {
+  -webkit-filter: opacity(0.4); }
+
+.myinput[type="checkbox"]:not(:disabled):checked:hover:after {
+  background: #AFA7A3; }
+
+.myinput[type="checkbox"]:not(:disabled):hover:after {
+  background: white;
+  border-color: #AFA7A3; }
+
+.myinput[type="checkbox"]:not(:disabled):hover:before {
+  border-color: grey; }
+
+/* Large checkboxes */
+.myinput.large {
+  height: 22px;
+  width: 22px;
+  cursor: pointer; }
+
+.myinput.large[type="checkbox"]:before {
+  width: 20.5px;
+  height: 24px; }
+
+.myinput.large[type="checkbox"]:after {
+  top: -20px;
+  width: 17px;
+  height: 17px; }
 
 .no-bullets {
   list-style-type: none; }
