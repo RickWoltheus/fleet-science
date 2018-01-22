@@ -26,7 +26,7 @@ switch (action) {
     case "login":
         view("menu/_menu.html");
         view("forms/_login.html");
-        view("menu/_footer.html");
+        //view("menu/_footer.html");
         break;
 
     case "sign-up":
@@ -38,7 +38,7 @@ switch (action) {
     case "dashboard-sailor":
         view("menu/_menu-logged-in.html");
         view("dashboard/_dashboard-sailor.html");
-        view("menu/_footer.html");
+        //view("menu/_footer.html");
         break;
     case "about":
         view("menu/_menu.html");
@@ -55,27 +55,28 @@ switch (action) {
     case "all-requests-sailor":
         view("menu/_menu-logged-in.html");
         view("functional-pages/_all-requests-sailor.html");
-        view("menu/_footer.html");
+        //view("menu/_footer.html");
         break;
 
-        case "accepted-requests-sailor":
+    case "accepted-requests-sailor":
         view("menu/_menu-logged-in.html");
         view("functional-pages/_all-requests-sailor.html");
+        //view("menu/_footer.html");
         break;
 
     case "profile":
         view("menu/_menu-logged-in.html");
         view("static-pages/_profile.html");
-        view("menu/_footer.html");
+        //view("menu/_footer.html");
         break;
 
         // academic
 
-        case "dashboard-academic":
-            view("menu/_menu-logged-in.html");
-            view("dashboard/_dashboard-academic.html");
-            view("menu/_footer.html");
-            break;
+    case "dashboard-academic":
+        view("menu/_menu-logged-in.html");
+        view("dashboard/_dashboard-academic.html");
+        //view("menu/_footer.html");
+        break;
 
     default:
         view("error/_home.html");
