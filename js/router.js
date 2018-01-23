@@ -40,7 +40,6 @@ switch (action) {
     case "chatbox":
         view("menu/_menu-sailor.html");
         view("functional-pages/_chatbox.html");
-        view("menu/_footer.html");
         break;
 
     case "my-request-academic":
@@ -59,7 +58,6 @@ switch (action) {
     case "profile":
         view("menu/_menu-sailor.html");
         view("static-pages/_profile.html");
-        //view("menu/_footer.html");
         break;
 
     case "home":
@@ -71,19 +69,21 @@ switch (action) {
     case "login":
         view("menu/_menu.html");
         view("forms/_login.html");
-        //view("menu/_footer.html");
         break;
 
     case "sign-up":
         view("menu/_menu.html");
         view("forms/_sign-up.html");
-        view("menu/_footer.html");
         break;
 
     case "about":
         view("menu/_menu.html");
         view("static-pages/_about.html");
         view("menu/_footer.html");
+        break;
+    case "database":
+        view("menu/_menu.html");
+        view("static-pages/_database.html");
         break;
     default:
         view("error/_home.html");
