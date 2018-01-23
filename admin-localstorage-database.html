@@ -91,6 +91,7 @@ function onload_admin()
     }
     repopulateUsers();
     repopulateMessages();
+    repopulateRequests();
 }
 
 
@@ -104,6 +105,11 @@ function repopulateUsers() {
 function repopulateMessages() {
     repopulate("messages","list-messages", "MESSAGES", messageinfoFields);
 }
+
+function repopulateRequests() {
+    repopulate("requests","list-requests", "REQUESTS", requestinfoFields);
+}
+
 
 function repopulate(tableid, elementid, section, infofields) {
     var table = getStorageObject()[tableid];
@@ -170,6 +176,39 @@ function messages_Operation_change(key, row) {
     updateMessage(key,newMessageInfo);
     repopulateMessages();
 }
+
+
+
+
+
+
+
+
+function requests_Operation_delete(key) {
+    removeRequest(key);
+    repopulateRequests();
+}
+
+
+function requests_Operation_change(key, row) {
+    var newRequestInfo = {};
+    for (var i=0;i<requestinfoFields.length;i++) {
+        var element = document.getElementById("cell-"+row+"-"+requestinfoFields[i]);
+	if (element) {
+	    newRequestInfo[requestinfoFields[i]] = element.innerHTML;
+	    //alert("Value for "+userinfoFields[i]+" = "+element.innerHTML);
+	}
+    }
+    updateRequest(key,newRequestInfo);
+    repopulateRequests();
+}
+
+
+
+
+
+
+
 
 
 
@@ -390,10 +429,46 @@ function addNewMessage() {
 }
 
 
+
+var sampleStatuses = 
+[
+  "New",
+  "Accepted",
+  "Rejected"
+];
+
+var sampleRequestTypes = 
+[
+  "pH of the ocean water",
+  "Salinity of the ocean water",
+  "3 in the air"
+];
+
+var sampleAreas = 
+[
+  "North Pacific",
+  "Indian",
+  "Atlantic"
+];
+
+function addNewRequest() {
+    var type = (Math.random()>0.5) ? "personal" : "administrator"; 
+    addRequest(getNewUniqueId("request"), {
+        "username":getRandomUser(), 
+	"area":selectAdRandomFrom(sampleAreas),
+	"reqtype":selectAdRandomFrom(sampleRequestTypes),  
+	"status":selectAdRandomFrom(sampleStatuses)
+    });
+    repopulateRequests();
+}
+
+
+
 function doResetDatabase() {
     resetDatabase();
     repopulateUsers();
     repopulateMessages();
+    repopulateRequests();
 }
 
 </script>
@@ -414,6 +489,13 @@ function doResetDatabase() {
 <a href='javascript:addNewMessage()'>Add new message</a><br>
 <div id='list-messages'></div>
 <p>
+
+
+<h1>Requests</h1>
+<a href='javascript:addNewRequest()'>Add new request</a><br>
+<div id='list-requests'></div>
+<p>
+
 
 
     </body>

@@ -130,9 +130,9 @@ function resetDatabase() {
 
 var dataversion = "data001";
 var someLocalStorage = {};
-var userinfoFields = ["role", "firstname", "lastname", "institute", "boatname", "email"];
-
-var messageinfoFields = ["type", "from", "to", "description", "date", "previous"];
+var userinfoFields =    ["role", "firstname", "lastname", "institute",   "boatname", "email"];
+var messageinfoFields = ["type", "from",      "to",       "description", "date",     "previous"];
+var requestinfoFields = ["username", "area",  "reqtype",  "status"];
 
 
 function getTodayDateString() {
@@ -200,11 +200,25 @@ function addUser(username, userinfo) {
     return true;
 }
 
+function removeUser(username) {
+    delete someLocalStorage["users"][username];
+    putStorage();
+}
+
+function updateUser(username, newUserInfo) {
+    if (!userExists(username)) {
+        alert("User " + username + " does not exist");
+        return false;
+    }
+    someLocalStorage["users"][username] = newUserInfo;
+    putStorage();
+}
+
+
 
 function messageExists(messageid) {
     return (someLocalStorage["messages"][messageid] != null);
 }
-
 
 function addMessage(messageid, messageinfo) {
     if (messageExists(messageid)) {
@@ -218,8 +232,6 @@ function addMessage(messageid, messageinfo) {
     putStorage();
     return true;
 }
-
-
 
 function removeMessage(messageid) {
     delete someLocalStorage["messages"][messageid];
@@ -236,19 +248,52 @@ function updateMessage(messageid, newMessageInfo) {
 }
 
 
-function removeUser(username) {
-    delete someLocalStorage["users"][username];
+
+
+
+
+
+
+
+
+
+
+function requestExists(requestid) {
+    return (someLocalStorage["requests"][requestid] != null);
+}
+
+function addRequest(requestid, requestinfo) {
+    if (requestExists(requestid)) {
+        alert("Request with that id already exists");
+        return false;
+    }
+    someLocalStorage["requests"][requestid] = {};
+    for (var i = 0; i < requestinfoFields.length; i++) {
+        someLocalStorage["requests"][requestid][requestinfoFields[i]] = requestinfo[requestinfoFields[i]];
+    }
+    putStorage();
+    return true;
+}
+
+function removeRequest(requestid) {
+    delete someLocalStorage["requests"][requestid];
     putStorage();
 }
 
-function updateUser(username, newUserInfo) {
-    if (!userExists(username)) {
-        alert("User " + username + " does not exist");
+function updateRequest(requestid, newRequestInfo) {
+    if (!requestExists(requestid)) {
+        alert("Request " + requestid + " does not exist");
         return false;
     }
-    someLocalStorage["users"][username] = newUserInfo;
+    someLocalStorage["requests"][requestid] = newRequestInfo;
     putStorage();
 }
+
+
+
+
+
+
 
 
 function putStorage() {
