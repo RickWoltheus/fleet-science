@@ -26,9 +26,16 @@ switch (action) {
         view("dashboard/_dashboard-sailor.html");
         break;
         
+    case "all-requests-sailor":
+        view("menu/_menu-sailor.html");
+        //@@@ should eventually be _all-requests-sailor.html
+        view("functional-pages/_all-requests-localstorage-example.html");
+        break;
+	
     case "accepted-requests-sailor":
         view("menu/_menu-sailor.html");
-        view("functional-pages/_all-requests-sailor.html");
+        //@@@ should eventually be _all-requests-sailor.html
+        view("functional-pages/_all-requests-localstorage-example.html");
         break;
 
     // Academic
