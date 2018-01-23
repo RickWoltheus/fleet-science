@@ -131,7 +131,7 @@ var dataversion = "data001";
 var someLocalStorage = {};
 var userinfoFields =    ["role", "firstname", "lastname", "institute",   "boatname", "email"];
 var messageinfoFields = ["type", "from",      "to",       "description", "date",     "previous"];
-var requestinfoFields = ["username", "area",  "reqtype",  "status", "duration", "frequency", "deadline"];
+var requestinfoFields = ["username", "area",  "reqtype",  "description", "status", "duration", "frequency", "deadline"];
 
 
 function getTodayDateString() {

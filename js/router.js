@@ -52,7 +52,7 @@ switch (action) {
         // universal views
     case "all-requests":
         view("menu/_menu-sailor.html");
-        view("functional-pages/_all-requests-sailor.html");
+        view("functional-pages/_all-requests-localstorage-example.html");
         break;
 
     case "profile":
