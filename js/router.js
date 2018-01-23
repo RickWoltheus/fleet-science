@@ -81,6 +81,10 @@ switch (action) {
         view("static-pages/_about.html");
         view("menu/_footer.html");
         break;
+    case "database":
+        view("menu/_menu.html");
+        view("static-pages/_database.html");
+        break;
     default:
         view("error/_home.html");
         break;
