@@ -90,40 +90,50 @@ function onload_admin()
 	prev_onload_admin();
     }
     repopulateUsers();
+    repopulateMessages();
 }
 
 
+
+
+
 function repopulateUsers() {
+    repopulate("users","list-users", "USERS", userinfoFields);
+}
 
-    var users = getStorageObject()["users"];
+function repopulateMessages() {
+    repopulate("messages","list-messages", "MESSAGES", messageinfoFields);
+}
 
-    var userElement = document.getElementById("list-users");
-    if (userElement) {
+function repopulate(tableid, elementid, section, infofields) {
+    var table = getStorageObject()[tableid];
+    var tableElement = document.getElementById(elementid);
+    if (tableElement) {
         var text = "";
 
-        text += MaTableBegin("Accounts");
-        text += MaSectionBegin("USERS", "section-users", userinfoFields);
+        text += MaTableBegin();
+        text += MaSectionBegin(section, "section-"+tableid, infofields);
 
-	for (var user in users) {
+	for (var key in table) {
 	    // skip loop if the property is from prototype
-	    if(!users.hasOwnProperty(user)) {
+	    if(!table.hasOwnProperty(key)) {
         	continue;
 	    }
-            text += MaAdd(user, users[user], "userOperation_");
+            text += MaAdd(key, table[key], ""+tableid+"_Operation_");
 	}
 
         text += MaSectionEnd();
         text += MaTableEnd();
-
-
-	userElement.innerHTML = text; 
+	tableElement.innerHTML = text; 
     }
 }
 
 
 
 
-function userOperation_change(key, row) {
+
+
+function users_Operation_change(key, row) {
     var newUserInfo = {};
     for (var i=0;i<userinfoFields.length;i++) {
         var element = document.getElementById("cell-"+row+"-"+userinfoFields[i]);
@@ -136,10 +146,32 @@ function userOperation_change(key, row) {
     repopulateUsers();
 }
 
-function userOperation_delete(key) {
+function users_Operation_delete(key) {
     removeUser(key);
     repopulateUsers();
 }
+
+
+function messages_Operation_delete(key) {
+    removeMessage(key);
+    repopulateMessages();
+}
+
+
+function messages_Operation_change(key, row) {
+    var newMessageInfo = {};
+    for (var i=0;i<messageinfoFields.length;i++) {
+        var element = document.getElementById("cell-"+row+"-"+messageinfoFields[i]);
+	if (element) {
+	    newMessageInfo[messageinfoFields[i]] = element.innerHTML;
+	    //alert("Value for "+userinfoFields[i]+" = "+element.innerHTML);
+	}
+    }
+    updateMessage(key,newMessageInfo);
+    repopulateMessages();
+}
+
+
 
 
 function toggleVisibility(section) {
@@ -158,11 +190,10 @@ function toggleVisibility(section) {
 
 var sectionVisibility = {};
 
-function MaTableBegin(title) {
+function MaTableBegin() {
     var text="";
 
     sectionClass = "";
-    text += "<h1>"+title+"</h1>";
     text += "<div class='ma-table'>";
 
     return text;
@@ -262,6 +293,21 @@ var newNames =
   "king"
 ];
 
+var firstNames = 
+[
+  "John",
+  "Sarah",
+  "Jack",
+  "Jennifer",
+  "Frank",
+];
+
+
+function selectAdRandomFrom(list) {
+    return list[Math.floor(Math.random()*list.length)];
+}
+
+
 function addNewUser() {
     var username = null;
     for (var i=0;i<newNames.length;i++) {
@@ -271,29 +317,83 @@ function addNewUser() {
         }
     }
     if (!username) {
-	var count = 0;
-	username = "user-"+count;
-	while (userExists(username)) {
-            count ++;
-	    username = "user-"+count;
-	}
+        username=getNewUniqueId("user");
+    }
+    
+    var firstname = selectAdRandomFrom(firstNames);
+
+    var institute="";
+    var boatName="";
+    var role = "";
+    if (Math.random()>0.5)
+    {
+      role="sailor";
+      boatName = "Given Time";
+    }
+    else
+    {
+      role="academic";
+      institute = "UvA";
     }
     
     addUser(username, {
-        "firstname":"FirstName", 
-        "role": "sailor",
+        "firstname":firstname, 
+        "role": role,
         "lastname":username, 
-	"institute":"The Top University", 
-	"boatname":"The Lady's Name", 
+	"institute":institute, 
+	"boatname":boatName, 
 	"email":"contact@seacial.com"
     });
     repopulateUsers();
+}
+
+//x repopulateMessages
+//getNewUniqueId
+//xgetTodayDateString
+
+
+function getRandomUser() {
+    var result = null;
+    var users = getStorageObject()["users"];
+    for (var key in users) {
+        if (result == null)
+	{
+	  result = key;
+	}
+        if (Math.random()<0.5) {
+	    result = key;
+	}
+    }
+    return result;
+}
+
+var sampleMessages = 
+[
+  "Hey, how are you doing out there on the ocean?",
+  "We have some new data for you!",
+  "The data is amazing, TA!",
+  "We're sorry to inform you that we were not able to capture that data. We got into a storm and had to change route.",
+  "Hey, long time no hear! Was the data useful?"
+];
+
+function addNewMessage() {
+    var type = (Math.random()>0.5) ? "personal" : "administrator"; 
+    addMessage(getNewUniqueId("message"), {
+        "type":type,
+        "from":getRandomUser(), 
+        "to": getRandomUser(),
+        "description":selectAdRandomFrom(sampleMessages), 
+	"date":getTodayDateString(), 
+	"previous":""
+    });
+    repopulateMessages();
 }
 
 
 function doResetDatabase() {
     resetDatabase();
     repopulateUsers();
+    repopulateMessages();
 }
 
 </script>
@@ -304,12 +404,17 @@ function doResetDatabase() {
 <a href='javascript:doResetDatabase()' onclick='return confirm("Are you sure you want to reste the database?")'>Reset database</a>
 
 <p>
-<h1>Database</h1>
-<p>
+<h1>Accounts</h1>
+<a href='javascript:addNewUser()'>Add new user</a><br>
 <div id='list-users'></div>
-<a href='javascript:addNewUser()'>Add record</a>
 
 <p>
+
+<h1>Messages</h1>
+<a href='javascript:addNewMessage()'>Add new message</a><br>
+<div id='list-messages'></div>
+<p>
+
 
     </body>
 </html>
