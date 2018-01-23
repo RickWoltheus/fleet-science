@@ -108,6 +108,7 @@ function fillMessages(typeStr)
         text+="</tr>";
 
         var count=0;
+	var todayString=getTodayDateString();
 
 	var messages = getStorageObject()["messages"];
 	for (var key in messages) {
@@ -122,7 +123,7 @@ function fillMessages(typeStr)
 	    var role_from=getStorageObject()["users"][field_from]["role"];
 
 	    if (loggedInUsername == field_to && field_type == typeStr) {
-        	text+="<tr class='"+((count<1)?"new-message-tr":"")+"'>";
+        	text+="<tr class='"+((row["date"] == todayString)?"new-message-tr":"")+"'>";
         	text+=" <td>"+firstname_from+"<img class='symbol-in-table' src='images/symbol-"+role_from+".png' /></td>";
         	text+=" <td>"+row["description"]+"</td>";
         	text+=" <td>"+row["date"]+"</td>";

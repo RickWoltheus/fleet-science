@@ -213,7 +213,8 @@ h1 {
   float: right; }
 
 .new-message-tr {
-  background-color: #F4C477 !important; }
+  background-color: #f4b9e7 !important;
+  /* #F4C477!important; */ }
 
 /* Search bar */
 .input-group .form-control {
