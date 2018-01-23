@@ -7,7 +7,7 @@
     <div class="row col-8">
         <h1 class="text-center grey-text">
             <span>
-                <img src="images/symbol-sailor.png" height="50px"> </span> Hello
+                <img id="role-icon" src="images/symbol-sailor.png" height="50px"> </span> Hello
             <span id='loggedin-username'></span>!
         </h1>
     </div>
@@ -147,9 +147,7 @@
     </div>
 </div>
 <script>
-    setText("accepted-chip", 5);
-    setText("request-chip", 3);
-    setText("notification-chip", 1);
+
 
     var prev_onload_dashboard = window.onload;
     window.onload = onload_dashboard();
@@ -164,8 +162,21 @@
             var set_email = loggedInEmail();
             var set_institute = loggedInInstitute();
             var set_boatname = loggedInBoatName();
+            var set_role = loggedInRole();
+            function setImgSrc(id, path) {
+                document.getElementById(id).src = path; 
+            }
+
+            if(set_role != "sailor"){
+                setImgSrc("role-icon", "images/symbol-academic.png");
+            }else{
+                setImgSrc("role-icon", "images/symbol-sailor.png");
+            }
 
 
+            setText("accepted-chip", 5);
+            setText("request-chip", 3);
+            setText("notification-chip", 1);
 
             setText('loggedin-username', set_fullname);
             setText('loggedin-username-profile', set_fullname);

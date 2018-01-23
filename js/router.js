@@ -35,10 +35,12 @@ switch (action) {
         view("menu/_footer.html");
         break;
 
-    case "dashboard-sailor":
-        view("menu/_menu-logged-in.html");
-        view("dashboard/_dashboard-sailor.html");
-        //view("menu/_footer.html");
+    // dashboard is seperated in a sailor and academic version in if statement
+    case "dashboard":
+            
+            view("menu/_menu-logged-in.html");
+            view("dashboard/_dashboard-sailor.html");
+            alert(loggedInRole())
         break;
     case "about":
         view("menu/_menu.html");
@@ -67,14 +69,6 @@ switch (action) {
     case "profile":
         view("menu/_menu-logged-in.html");
         view("static-pages/_profile.html");
-        //view("menu/_footer.html");
-        break;
-
-        // academic
-
-    case "dashboard-academic":
-        view("menu/_menu-logged-in.html");
-        view("dashboard/_dashboard-academic.html");
         //view("menu/_footer.html");
         break;
 
