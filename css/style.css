@@ -1,8 +1,14 @@
+/*RICK: see the link to the googleapis in index.html, I am including 'Architects Daughter' and 'Quattrocento'
 @font-face {
-  font-family: 'stefan';
-  src: url("../fonts/ArchitectsDaughter.ttf") format("truetype"); }
+    font-family: 'stefan';
+    src: url('../fonts/ArchitectsDaughter.ttf') format('truetype');
+}
+*/
+body {
+  font-family: "Quattrocento", serif; }
+
 h1 {
-  font-family: stefan; }
+  font-family: "Architects Daughter", cursive; }
 
 .notification-chip {
   display: inline-block;
@@ -520,15 +526,18 @@ h1 {
 .no-bullets {
   list-style-type: none; }
 
+/*RICK: I included the fonts thrhough googleapis in index.html, see link there
 @font-face {
-  font-family: 'stefan';
-  src: url("../fonts/stefan.ttf") format("truetype"); }
+    font-family: 'stefan';
+    src: url('../fonts/stefan.ttf') format('truetype');
+}
+*/
 h1 {
-  font-family: stefan; }
+  font-family: "Architects Daughter", cursive; }
 
 .special-font *, .special-font {
   font-size: 20px;
-  font-family: stefan; }
+  font-family: "Architects Daughter", cursive; }
 
 .yellow {
   background-color: #f3c37b; }

@@ -2,16 +2,18 @@
     list-style-type: none;
 }
 
+/*RICK: I included the fonts thrhough googleapis in index.html, see link there
 @font-face {
     font-family: 'stefan';
     src: url('../fonts/stefan.ttf') format('truetype');
 }
+*/
 
 h1{
-    font-family: stefan ;
+    font-family: 'Architects Daughter', cursive ;
 }
 
 .special-font *, .special-font{
     font-size: 20px;
-    font-family: stefan ;
+    font-family: 'Architects Daughter', cursive ;
 }
