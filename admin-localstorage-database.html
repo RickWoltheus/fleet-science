@@ -457,7 +457,12 @@ function addNewRequest() {
         "username":getRandomUser(), 
 	"area":selectAdRandomFrom(sampleAreas),
 	"reqtype":selectAdRandomFrom(sampleRequestTypes),  
-	"status":selectAdRandomFrom(sampleStatuses)
+	"status":selectAdRandomFrom(sampleStatuses),
+        "duration":"6 months", 
+	"frequency":"2 measures per day",
+	"deadline":"21-07-2019"
+
+
     });
     repopulateRequests();
 }
