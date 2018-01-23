@@ -21,6 +21,19 @@ function view(include) {
         });
 }
 
+function viewPart(id, include) {
+    
+            $(id).append( "<div  data-include='views/"+ include +"'></div>" );
+            $(function(){
+                var includes = $('[data-include]');
+                jQuery.each(includes, function(){
+                    var file = $(this).data('include');
+                    $(this).load(file);
+        
+                });
+            });
+    }
+
 //sets text of element with id
 function setText(elementId, text) {
     var element = document.getElementById(elementId);

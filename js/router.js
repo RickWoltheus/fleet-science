@@ -17,6 +17,51 @@ document.title = "Fleet science | " + action;
 
 // the ghetto way of (m)vc
 switch (action) {
+
+
+
+    // Sailor views
+    case "dashboard-sailor":
+        view("menu/_menu-sailor.html");
+        view("dashboard/_dashboard-sailor.html");
+        break;
+        
+    case "accepted-requests-sailor":
+        view("menu/_menu-sailor.html");
+        view("functional-pages/_all-requests-sailor.html");
+        break;
+
+    // Academic
+    case "dashboard-academic":
+        view("menu/_menu-academic.html");
+        view("dashboard/_dashboard-academic.html");
+        break;
+
+    case "chatbox":
+        view("menu/_menu-sailor.html");
+        view("functional-pages/_chatbox.html");
+        view("menu/_footer.html");
+        break;
+
+    case "my-request-academic":
+        view();
+        break;
+
+
+
+
+        // universal views
+    case "all-requests":
+        view("menu/_menu-sailor.html");
+        view("functional-pages/_all-requests-sailor.html");
+        break;
+
+    case "profile":
+        view("menu/_menu-sailor.html");
+        view("static-pages/_profile.html");
+        //view("menu/_footer.html");
+        break;
+
     case "home":
         view("menu/_menu.html");
         view("static-pages/_home.html");
@@ -35,43 +80,11 @@ switch (action) {
         view("menu/_footer.html");
         break;
 
-    // dashboard is seperated in a sailor and academic version in if statement
-    case "dashboard":
-            
-            view("menu/_menu-logged-in.html");
-            view("dashboard/_dashboard-sailor.html");
-            alert(loggedInRole())
-        break;
     case "about":
         view("menu/_menu.html");
         view("static-pages/_about.html");
         view("menu/_footer.html");
         break;
-
-    case "chatbox":
-        view("menu/_menu-logged-in.html");
-        view("functional-pages/_chatbox.html");
-        view("menu/_footer.html");
-        break;
-
-    case "all-requests-sailor":
-        view("menu/_menu-logged-in.html");
-        view("functional-pages/_all-requests-sailor.html");
-        //view("menu/_footer.html");
-        break;
-
-    case "accepted-requests-sailor":
-        view("menu/_menu-logged-in.html");
-        view("functional-pages/_all-requests-sailor.html");
-        //view("menu/_footer.html");
-        break;
-
-    case "profile":
-        view("menu/_menu-logged-in.html");
-        view("static-pages/_profile.html");
-        //view("menu/_footer.html");
-        break;
-
     default:
         view("error/_home.html");
         break;
