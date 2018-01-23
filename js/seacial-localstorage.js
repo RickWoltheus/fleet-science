@@ -3,18 +3,25 @@
  */
 
 function validateLogin(username) {
-    alert("hi")
+    
     if (!userExists(username)) {
         alert("User " + username + " does not exist. Please sign up first.");
         return false;
     }
-    alert(username);
+    alert("Welcome back" + username);
     setCookie("username", username);
     return true;
 }
 
 function loggedIn() {
     return (loggedInUsername.length > 0);
+}
+
+function loggedInRole() {
+    if (loggedIn()) {
+        return someLocalStorage["users"][loggedInUsername]["role"];
+    }
+    return "(Not logged in!)";
 }
 
 function loggedInFullName() {
@@ -49,7 +56,8 @@ function loggedInInstitute() {
 }
 
 
-function signupSailor(firstname, lastname, username, boatname, email) {
+function signup(role, firstname, lastname, username, boatname, email) {
+    alert("hi")
     if (firstname.length == 0) {
         alert("Please enter first name");
         return false;
@@ -72,44 +80,11 @@ function signupSailor(firstname, lastname, username, boatname, email) {
         return false;
     }
     addUser(username, {
+        "role": role,
         "firstname": firstname,
         "lastname": lastname,
         "institute": "",
         "boatname": boatname,
-        "email": email
-    });
-    setCookie("username", username);
-    return true;
-}
-
-
-function signupScientist(firstname, lastname, username, institute, email) {
-    if (firstname.length == 0) {
-        alert("Please enter first name");
-        return false;
-    }
-    if (lastname.length == 0) {
-        alert("Please enter last name");
-        return false;
-    }
-    if (username.length == 0) {
-        alert("Please enter username");
-        return false;
-    }
-    if (institute.length == 0) {
-        alert("Please enter institute");
-        return false;
-    }
-
-    if (email.length == 0) {
-        alert("Please enter email");
-        return false;
-    }
-    addUser(username, {
-        "firstname": firstname,
-        "lastname": lastname,
-        "institute": institute,
-        "boatname": "",
         "email": email
     });
     setCookie("username", username);
@@ -155,7 +130,7 @@ function resetDatabase() {
 
 var dataversion = "data001";
 var someLocalStorage = {};
-var userinfoFields = ["firstname", "lastname", "institute", "boatname", "email"];
+var userinfoFields = ["role", "firstname", "lastname", "institute", "boatname", "email"];
 
 
 function getStorageObject() {
@@ -171,6 +146,7 @@ function createNewDatabase() {
     // Populate with some default data
     // For compatibility with the static version
     addUser("conor", {
+        "role": "sailor",
         "firstname": "Conor",
         "lastname": "la Grue",
         "institute": "",
@@ -184,8 +160,13 @@ function createNewDatabase() {
 
 
 function userExists(username) {
-    console.log(someLocalStorage);
-    alert(someLocalStorage);
+// RICK: JSON.stringify maakt van een object een human-readable string
+// RICK: Ik heb de alerts maar even uitgezet.
+// Ayal
+//    console.log(JSON.stringify(someLocalStorage));
+//    alert(JSON.stringify(someLocalStorage));
+
+
     return (someLocalStorage["users"][username] != null);
 }
 

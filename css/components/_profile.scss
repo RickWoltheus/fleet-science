@@ -1,0 +1,81 @@
+
+/* -------------- Column profile -------------- */
+
+.column-profile {
+    border: 1px solid #AFA7A3;
+    padding: 35px 45px 35px 45px;
+    height: 100%;
+}
+
+.img-profile {
+    width: 100%;
+}
+
+/* --- Modal --- */
+
+.close {
+    color: white!important;
+}
+
+.close:focus {
+    outline: none;
+}
+
+.close:hover {
+    color: white;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.button-grey, .button-upload-modal {
+    margin-top: -13px!important;
+}
+
+.button-grey {
+    background: #A9ABAC!important;
+}
+
+/* --- End modal --- */
+
+.p-profile {
+    margin-top: 20px;
+}
+
+/* -------------- Columns information -------------- */
+
+.column-personal-information,
+.column-vessel-information,
+.column-location-information {
+    background-color: #F4F4F4;
+    margin-bottom: 30px;
+}
+
+.table-profile {
+    width: 100%;
+}
+
+.table-profile tr td {
+    padding: 10px 15px 10px 15px;
+}
+
+.table-profile tr {
+    transition: .1s;
+}
+
+.table-profile tr:hover {
+    background-color: #E2E2E2;
+}
+
+.td-name {
+    font-weight: 600;
+}
+
+.td-edit {
+    text-align: right;
+}
+
+.td-edit a {
+    color: #767676!important;
+}
