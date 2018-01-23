@@ -71,6 +71,11 @@ switch (action) {
         view("forms/_login.html");
         break;
 
+    case "account-created":
+        view("menu/_menu.html");
+        view("static-pages/_account-created.html");
+        break;
+
     case "sign-up":
         view("menu/_menu.html");
         view("forms/_sign-up.html");
