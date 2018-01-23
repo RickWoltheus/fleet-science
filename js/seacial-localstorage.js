@@ -56,7 +56,7 @@ function loggedInInstitute() {
 }
 
 
-function signup(role, firstname, lastname, username, boatname, email) {
+function signupLS(role, firstname, lastname, username, boatname, email) {
     alert("hi")
     if (firstname.length == 0) {
         alert("Please enter first name");
@@ -130,8 +130,22 @@ function resetDatabase() {
 
 var dataversion = "data001";
 var someLocalStorage = {};
-var userinfoFields = ["role", "firstname", "lastname", "institute", "boatname", "email"];
+var userinfoFields =    ["role", "firstname", "lastname", "institute",   "boatname", "email"];
+var messageinfoFields = ["type", "from",      "to",       "description", "date",     "previous"];
+var requestinfoFields = ["username", "area",  "reqtype",  "status"];
 
+
+function getTodayDateString() {
+    var date = new Date();
+    return ""+date.getDate()+"-"+(date.getMonth()+1)+"-"+date.getFullYear();
+}
+
+function getNewUniqueId(typeStr) {
+    someLocalStorage["lastuid"] = someLocalStorage["lastuid"] + 1;
+    var uid = typeStr+someLocalStorage["lastuid"];
+    putStorage();
+    return uid;
+}
 
 function getStorageObject() {
     return someLocalStorage;
@@ -141,7 +155,10 @@ function createNewDatabase() {
     // Create new empty database
     someLocalStorage = {};
 
+    someLocalStorage["lastuid"]=1;
     someLocalStorage["users"] = {};
+    someLocalStorage["messages"] = {};
+    someLocalStorage["requests"] = {};
 
     // Populate with some default data
     // For compatibility with the static version
@@ -196,6 +213,87 @@ function updateUser(username, newUserInfo) {
     someLocalStorage["users"][username] = newUserInfo;
     putStorage();
 }
+
+
+
+function messageExists(messageid) {
+    return (someLocalStorage["messages"][messageid] != null);
+}
+
+function addMessage(messageid, messageinfo) {
+    if (messageExists(messageid)) {
+        alert("Message with that id already exists");
+        return false;
+    }
+    someLocalStorage["messages"][messageid] = {};
+    for (var i = 0; i < messageinfoFields.length; i++) {
+        someLocalStorage["messages"][messageid][messageinfoFields[i]] = messageinfo[messageinfoFields[i]];
+    }
+    putStorage();
+    return true;
+}
+
+function removeMessage(messageid) {
+    delete someLocalStorage["messages"][messageid];
+    putStorage();
+}
+
+function updateMessage(messageid, newMessageInfo) {
+    if (!messageExists(messageid)) {
+        alert("Message " + messageid + " does not exist");
+        return false;
+    }
+    someLocalStorage["messages"][messageid] = newMessageInfo;
+    putStorage();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function requestExists(requestid) {
+    return (someLocalStorage["requests"][requestid] != null);
+}
+
+function addRequest(requestid, requestinfo) {
+    if (requestExists(requestid)) {
+        alert("Request with that id already exists");
+        return false;
+    }
+    someLocalStorage["requests"][requestid] = {};
+    for (var i = 0; i < requestinfoFields.length; i++) {
+        someLocalStorage["requests"][requestid][requestinfoFields[i]] = requestinfo[requestinfoFields[i]];
+    }
+    putStorage();
+    return true;
+}
+
+function removeRequest(requestid) {
+    delete someLocalStorage["requests"][requestid];
+    putStorage();
+}
+
+function updateRequest(requestid, newRequestInfo) {
+    if (!requestExists(requestid)) {
+        alert("Request " + requestid + " does not exist");
+        return false;
+    }
+    someLocalStorage["requests"][requestid] = newRequestInfo;
+    putStorage();
+}
+
+
+
+
+
+
 
 
 function putStorage() {
