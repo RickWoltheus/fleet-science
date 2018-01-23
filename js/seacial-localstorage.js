@@ -8,7 +8,7 @@ function validateLogin(username) {
         alert("User " + username + " does not exist. Please sign up first.");
         return false;
     }
-    alert("Welcome back" + username);
+    alert("Welcome back " + username);
     setCookie("username", username);
     return true;
 }
@@ -57,7 +57,6 @@ function loggedInInstitute() {
 
 
 function signupLS(role, firstname, lastname, username, boatname, email) {
-    alert("hi")
     if (firstname.length == 0) {
         alert("Please enter first name");
         return false;
