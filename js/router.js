@@ -40,11 +40,6 @@ switch (action) {
         view("menu/_footer.html");
         break;
 
-    case "all-requests-sailor":
-        view("menu/_menu-sailor.html");
-        view("functional-pages/_all-requests-sailor.html");
-        break;
-
     case "chatbox-sailor":
         view("menu/_menu-sailor.html");
         view("functional-pages/_chatbox.html");
