@@ -7,13 +7,19 @@
                 <!--................. Column profile ................. -->
                     <div class="column-profile col-4">
                         <img class="img-profile" src="images/conor-sailor.png">
+
+                       <input id="fileInput" type="file" style="display:none;" accept="image/*" />
+                       <input type="button" value="Upload a new picture" class="button-profile" onclick="document.getElementById('fileInput').click();" />
+
+                        <!-- Couldnt figure ou the modal... -->
+                        <!--    
                         <button type="button" data-toggle="modal" data-target="#uploadPicture" class="button-profile">Upload a new picture</button>
                         <!-- Modal -->
-                        <div id="uploadPicture" class="modal fade" role="dialog">
-                          <div class="modal-dialog">
+                        <!--<div id="uploadPicture" class="modal fade" role="dialog">
+                          <div class="modal-dialog">-->
 
                             <!-- Modal content-->
-                            <div class="modal-content">
+                           <!-- <div class="modal-content">
                               <div class="header-column">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 <h2 class="h2-header">Choose a new profile picture</h2>
@@ -29,7 +35,7 @@
                             </div>
 
                           </div>
-                        </div>
+                        </div>-->
                         <!-- End modal -->
                         <p class="p-profile">
                             <strong>Name:</strong> Conor La Grue
