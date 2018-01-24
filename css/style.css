@@ -4,7 +4,6 @@
     src: url('../fonts/ArchitectsDaughter.ttf') format('truetype');
 }
 */
-
 body, html {
   font-family: "Quattrocento", sans-serif;
   overflow-x: hidden;
@@ -13,7 +12,6 @@ body, html {
 }
 
 /* Footer to bottom fix */
-
 #content {
   flex-grow: 1;
 }
@@ -119,11 +117,8 @@ a {
   line-height: 70px; }
 
 .nav-item:hover {
-  background-color: #46cacf;
-  /* Temporary workaround, at least it looks better */
+  background-color: white;
   height: 100%; }
-.nav-item:hover a {
-  color: #a8a8a8; }
 
 .nav-item {
   text-align: center;
