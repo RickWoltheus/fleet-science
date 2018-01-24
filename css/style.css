@@ -4,8 +4,9 @@
     src: url('../fonts/ArchitectsDaughter.ttf') format('truetype');
 }
 */
-body {
-  font-family: "Quattrocento", sans-serif; }
+body, html {
+  font-family: "Quattrocento", sans-serif;
+  overflow-x: hidden; }
 
 h1 {
   font-family: "Architects Daughter", cursive; }
@@ -138,7 +139,7 @@ h1 {
 
 .wrapper-chatbox-left {
   background-color: none;
-  margin-top: 10px; }
+  margin-top: 25px; }
 
 .wrapper-chatbox-profile {
   border: 1px solid #AFA7A3;

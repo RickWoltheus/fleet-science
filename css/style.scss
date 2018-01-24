@@ -11,8 +11,9 @@ $prim-background-btn: linear-gradient(to right, #FE947D, #FFBDAD);
 }
 */
 
-body {
+body, html {
     font-family: 'Quattrocento', sans-serif ;
+    overflow-x: hidden;
 }
 
 h1{
