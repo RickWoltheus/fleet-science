@@ -15,6 +15,7 @@
       <!-- left -->
          <div class="col-5">
              <div class="light-grey">
+
                  <div class="grey title-holder">
                      <h3 class="special-font">Send data request</h3>
                  </div>
@@ -22,132 +23,138 @@
                  <div class="row justify-content-center">
                      <div class="col-11">
 
-                       <!-- Data value -->
+                                 <!-- Data value -->
                        <div class="form-group">
-                           Short description of research project (max 250 tokens)*
-                           <input class="fleet-input" placeholder="..." required  maxlength="250">
-                       </div>
-
-                         <!-- Select request -->
-                         <div class="form-group">
-                             Select data request*
-                             <select class="fleet-input">
-                                 <option value="volvo">...</option>
-                                 <option value="saab">...</option>
-                                 <option value="opel">...</option>
-                                 <option value="audi">...</option>
-                             </select>
-                         </div>
-
-                         <!-- Data value -->
-                         <div class="form-group">
-                             Area*
-                             <input class="fleet-input" placeholder="..." required>
-                         </div>
-
-
-                         <div class="form-group row">
-                                 <div class="col-12">
-                                 Radius of area (km)*
-                                 </div>
-
-                                 <div class="col-4">
-                                         <input type="number" class="fleet-input" min="1" max="50" />
-                                 </div>
-                             </select>
-                         </div>
-
-                         <!-- Latidude -->
-                         <div class="form-group row">
-                             <div class="col-3">Latitude*:</div>
-                             <div class="col-9 ">
-                                 <input class="fleet-input" placeholder="..." required />
-                             </div>
-                         </div>
-
-                         <!-- Longitude -->
-                         <div class="form-group row">
-                             <div class="col-3">Longitude*:</div>
-                             <div class="col-9 ">
-                                 <input class="fleet-input" placeholder="..." required />
-                             </div>
-                         </div>
-
-                         <!-- date of measurement -->
-                         <div class="form-group row">
-                             <div class="col-12">
-                                     Date of <b>first</b> measurement (DD-MM-YYYY)*
-                             </div>
-
-                             <div class="col-4">
-                                     <input type="number" class="fleet-input" min="1" max="31" />
-                             </div>
-                             <div class="col-4 ">
-                                     <input type="number" class="fleet-input" min="1" max="12" />
-                             </div>
-                             <div class="col-4 ">
-                                     <input type="number" class="fleet-input" min="2018" max="2100" />
-                             </div>
-                         </div>
-
-                         <!-- time of measurement -->
-                         <div class="form-group row">
-                                 <div class="col-12">
-                                         Date of <b>last</b> measurement (DD-MM-YYYY)*
-                                 </div>
-
-                                 <div class="col-4">
-                                         <input type="number" class="fleet-input" min="1" max="31" />
-                                 </div>
-                                 <div class="col-4 ">
-                                         <input type="number" class="fleet-input" min="1" max="12" />
-                                 </div>
-                                 <div class="col-4 ">
-                                         <input type="number" class="fleet-input" min="2018" max="2100" />
-                                 </div>
-                             </div>
-
-                             <div class="form-group">
-                                 Frequency of measurement(s)*
-                                 <select class="fleet-input">
-                                     <option value="daily">daily</option>
-                                     <option value="weekly">weekly</option>
-                                     <option value="monthly">monthly</option>
-                                 </select>
-                             </div>
-
-                             <div class="form-group row">
-                                     <div class="col-12">
-                                     Number of measurements per frequency*
-                                     </div>
-
-                                     <div class="col-4">
-                                             <input type="number" class="fleet-input" min="1" max="50" />
-                                     </div>
-                                 </select>
-                             </div>
-
-                             <div class="form-group">
-                                 Additional information (optional)
-                                 <input class="fleet-input" placeholder="..." required>
-                             </div>
-                         <!-- divider -->
-                         <hr />
-
-
-                         <div class="form-group text-center">
-                                 <a href="" class="fleet-btn-round"><label>+</label></a>
-                             </div>
-
-                         <div class="form-group">
-                             <input type="submit" value="submit" class="fleet-btn-full-width">
-                         </div>
+                            Short description of research project (max 250 tokens)*
+                            <input id="desc" class="fleet-input" placeholder="..."   maxlength="250">
+                        </div>
+ 
+                          <!-- Select request -->
+                          <div class="form-group">
+                              Kind of data*
+                              <select id="kind-of-data" class="fleet-input">
+                                  <option value="volvo">...</option>
+                                  <option value="saab">...</option>
+                                  <option value="opel">...</option>
+                                  <option value="audi">...</option>
+                              </select>
+                          </div>
+ 
+                          <!-- Data value -->
+                          <div class="form-group">
+                              Area*
+                              <input id="area" class="fleet-input" placeholder="..." >
+                          </div>
+ 
+ 
+                          <div class="form-group row">
+                                  <div class="col-12">
+                                  Radius of area (km)*
+                                  </div>
+ 
+                                  <div class="col-4">
+                                          <input id="radius" type="number" class="fleet-input" min="1" max="50" />
+                                  </div>
+                              </select>
+                          </div>
+ 
+                          <!-- Latidude -->
+                          <div class="form-group row">
+                              <div class="col-3">Latitude*:</div>
+                              <div class="col-9 ">
+                                  <input id="latitude" class="fleet-input" placeholder="..."  />
+                              </div>
+                          </div>
+ 
+                          <!-- Longitude -->
+                          <div class="form-group row">
+                              <div class="col-3">Longitude*:</div>
+                              <div class="col-9 ">
+                                  <input id="longitude" class="fleet-input" placeholder="..."  />
+                              </div>
+                          </div>
+ 
+                          <!-- date of measurement -->
+                          <div class="form-group row">
+                              <div class="col-12">
+                                      Date of <b>first</b> measurement (DD-MM-YYYY)*
+                              </div>
+ 
+                              <div class="col-4">
+                                      <input id="first-day" type="number" class="fleet-input" min="1" max="31" />
+                              </div>
+                              <div class="col-4 ">
+                                      <input id="first-month" type="number" class="fleet-input" min="1" max="12" />
+                              </div>
+                              <div class="col-4 ">
+                                      <input id="first-year" type="number" class="fleet-input" min="2018" max="2100" />
+                              </div>
+                          </div>
+ 
+                          <!-- time of measurement -->
+                          <div class="form-group row">
+                                  <div class="col-12">
+                                          Date of <b>last</b> measurement (DD-MM-YYYY)*
+                                  </div>
+ 
+                                  <div class="col-4">
+                                          <input id="last-day" type="number" class="fleet-input" min="1" max="31" />
+                                  </div>
+                                  <div class="col-4 ">
+                                          <input id="last-month" type="number" class="fleet-input" min="1" max="12" />
+                                  </div>
+                                  <div class="col-4 ">
+                                          <input id="last-year" type="number" class="fleet-input" min="2018" max="2100" />
+                                  </div>
+                              </div>
+ 
+                              <div class="form-group">
+                                  Frequency of measurement(s)*
+                                  <select id="freq-of-measurements" class="fleet-input">
+                                      <option value="daily">daily</option>
+                                      <option value="weekly">weekly</option>
+                                      <option value="monthly">monthly</option>
+                                  </select>
+                              </div>
+ 
+                              <div class="form-group row">
+                                      <div class="col-12">
+                                      Number of measurements per frequency*
+                                      </div>
+ 
+                                      <div id="number-of-measurements" class="col-4">
+                                              <input type="number" class="fleet-input" min="1" max="50" />
+                                      </div>
+                                  </select>
+                              </div>
+ 
+                              <div class="form-group">
+                                  Additional information (optional)
+                                  <input id="additional-info" class="fleet-input" placeholder="..." >
+                              </div>
+                          <!-- divider -->
+                          <hr />
+ 
+ 
+                          <div class="form-group text-center">
+                                  <a href="" class="fleet-btn-round"><label>+</label></a>
+                              </div>
+ 
+                          <div class="form-group">
+                              <input type="button" onclick="submitData()" value="submit" class="fleet-btn-full-width">
+                          </div>
+ 
+                          <input type="hidden" name="page" value="dashboard-academic">
+                                </form>
+                      
+                        
                      </div>
 
                  </div>
+                 
              </div>
          </div>
-    
+
     <!-- right -->
     <div class="col-3">
         <!-- chatbox -->
@@ -180,9 +187,55 @@
     </div>
 </div>
 <script>
-    function validateNewRequest(desc, request, area, latitude, longitude) {
+        function submitData() {
+            alert("hh")
+            var description = document.getElementById("desc").value;
 
-        alert(desc + request + area + latitude + longitude)
+            var kindOfData = document.getElementById("kind-of-data").value;
+
+            var latitude  =  document.getElementById("latitude").value;
+
+            var longitude  =  document.getElementById("longitude").value;
+
+            var area = document.getElementById("area").value;
+
+            var radius = document.getElementById("radius")
+
+            var dateFirstMeasurment=document.getElementById("first-day").value + "-" + 
+                     document.getElementById("first-month").value + "-" +
+                 document.getElementById("first-year").value;
+
+            var dateLastMeasurement=document.getElementById("last-day").value + "-" + 
+            document.getElementById("last-month").value + "-" +
+        document.getElementById("last-year").value;
+
+            var freqOfMeasurments=document.getElementById("freq-of-measurements").value;
+
+            var numberOfMeasurments=document.getElementById("number-of-measurements").value;
+
+            var additionalInfo=document.getElementById("additional-info").value;
+        
+        /*
+            alert("data is to be submitted for request "+requestid+" value="+dataValue+" latitude,logitude="+latitude+","+longitude+" date="+date+" time"+dataTime);
+        */
+        
+            var data = {
+              "description":description,
+              "kind": kindOfData,
+              "latitude":latitude,
+              "longitude":longitude,
+              "area":area,
+              "radius":radius,
+              "firstMeasurment":dateFirstMeasurment,
+              "lastMeasurement":dateLastMeasurement,
+              "freqOfMeasurments":freqOfMeasurments,
+              "numberOfMeasurments":numberOfMeasurments,
+              "additionalInfo":additionalInfo
+            };
+            console.log(data);
+        }
+    function validateNewRequest(desc, request) {
+        alert(desc + request)
     }
 
     setText("accepted-chip", 5);
