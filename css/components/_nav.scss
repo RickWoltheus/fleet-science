@@ -6,9 +6,9 @@
   }
 }
 
-.nav-item:active {
-  background-color: white;
-  height: 100%;
+li.nav-item.active {
+  background-color: white!important;
+  height: 100%!important;
   a {
       color: black!important;
   }

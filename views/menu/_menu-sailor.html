@@ -10,8 +10,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
         <!-- menu items -->
-        <ul class="navbar-nav mr-auto special-font">
-            <li class="nav-item active">
+        <ul class="navbar-nav mr-auto special-font" id="nav-sailor">
+            <li class="nav-item">
                 <a class="nav-link" href="?/=dashboard-sailor">DASHBOARD</a>
             </li>
             <li class="nav-item">
@@ -48,5 +48,17 @@
         $(".menu-wrapper").hide();
         $("#toggle-profile").click(function(){
             $(".menu-wrapper").toggle();
+        });
+
+        $(document).ready(function(){
+            var current = location.pathname;
+            $('#nav-sailor li a').each(function(){
+                var $this = $(this);
+                // if the current path is like this link, make it active
+                if(window.location.href.indexOf($this.attr('href')) !== -1){
+                    console.log('itWorks');
+                    $this.parent().addClass('active')
+                }
+            })
         });
 </script>
