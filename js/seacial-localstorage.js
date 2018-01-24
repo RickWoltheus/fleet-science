@@ -107,7 +107,7 @@ function writeAcceptedDataRequestOptions()
 	    text = "You have not accepted any data request yet. Please go to the <a href='?/=all-requests-sailor'>All Requests</a> page to accept requests.";
 	}
 	else {
-            text+="<select class='fleet-input'>";
+            text+="<select class='fleet-input' id='requestid'>";
             var i;
 	    for (i=0;i<accepts.length;i++) {
                 var req=getStorageObject()["requests"][accepts[i]];
