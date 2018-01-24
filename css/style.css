@@ -11,6 +11,9 @@ body, html {
 h1 {
   font-family: "Architects Daughter", cursive; }
 
+a {
+  text-decoration: none; }
+
 .notification-chip {
   display: inline-block;
   padding-top: 2px;
@@ -86,7 +89,8 @@ h1 {
 
 .fleet-input {
   width: 100%;
-  padding: 7px; }
+  padding: 7px;
+  border: 1px solid #AFA7A3; }
 
 .fleet-input:focus {
   outline: 0 !important;

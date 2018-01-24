@@ -20,6 +20,10 @@ h1{
     font-family: 'Architects Daughter', cursive ;
 }
 
+a {
+    text-decoration: none;
+}
+
 // components
 @import "components/_chip.scss";
 @import "components/_fleet-btn.scss";
