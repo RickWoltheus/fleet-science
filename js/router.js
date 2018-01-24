@@ -25,13 +25,13 @@ switch (action) {
         view("menu/_menu-sailor.html");
         view("dashboard/_dashboard-sailor.html");
         break;
-        
+
     case "all-requests-sailor":
         view("menu/_menu-sailor.html");
         //@@@ should eventually be _all-requests-sailor.html
         view("functional-pages/_all-requests-localstorage-example.html");
         break;
-	
+
     case "accepted-requests-sailor":
         view("menu/_menu-sailor.html");
         //@@@ should eventually be _all-requests-sailor.html
@@ -42,11 +42,13 @@ switch (action) {
     case "dashboard-academic":
         view("menu/_menu-academic.html");
         view("dashboard/_dashboard-academic.html");
+        view("menu/_footer.html");
         break;
 
     case "chatbox":
         view("menu/_menu-sailor.html");
         view("functional-pages/_chatbox.html");
+        view("menu/_footer.html");
         break;
 
     case "my-request-academic":
@@ -76,16 +78,19 @@ switch (action) {
     case "login":
         view("menu/_menu.html");
         view("forms/_login.html");
+        view("menu/_footer.html");
         break;
 
     case "account-created":
         view("menu/_menu.html");
         view("static-pages/_account-created.html");
+        view("menu/_footer.html");
         break;
 
     case "sign-up":
         view("menu/_menu.html");
         view("forms/_sign-up.html");
+        view("menu/_footer.html");
         break;
 
     case "about":
@@ -96,6 +101,7 @@ switch (action) {
     case "database":
         view("menu/_menu.html");
         view("static-pages/_database.html");
+        view("menu/_footer.html");
         break;
     default:
         view("error/_home.html");

@@ -5,7 +5,7 @@
 }
 */
 body {
-  font-family: "Quattrocento", serif; }
+  font-family: "Quattrocento", sans-serif; }
 
 h1 {
   font-family: "Architects Daughter", cursive; }
@@ -23,8 +23,8 @@ h1 {
   margin-right: 10px;
   text-align: center;
   color: #42c0c4; }
-  .notification-chip p {
-    color: blue; }
+.notification-chip p {
+  color: blue; }
 
 .fleet-btn, .fleet-btn a {
   display: inline-block;
@@ -92,21 +92,21 @@ h1 {
   text-align: center;
   width: 100%;
   margin-bottom: 10px; }
-  .title-holder * {
-    line-height: 70px; }
+.title-holder * {
+  line-height: 70px; }
 
 .nav-item:hover {
   background-color: #46cacf;
   /* Temporary workaround, at least it looks better */
   height: 100%; }
-  .nav-item:hover a {
-    color: #a8a8a8; }
+.nav-item:hover a {
+  color: #a8a8a8; }
 
 .nav-item {
   text-align: center;
   width: 200px; }
-  .nav-item a {
-    font-size: 15px; }
+.nav-item a {
+  font-size: 15px; }
 
 .menu-wrapper {
   width: 100%; }
@@ -120,13 +120,13 @@ h1 {
   width: 20%;
   color: white;
   background-color: #38b0b4; }
-  .menu-profile img {
-    height: 100%;
-    padding: 15px; }
-  .menu-profile .logout {
-    text-align: center;
-    height: 25px;
-    background-color: #42c0c4; }
+.menu-profile img {
+  height: 100%;
+  padding: 15px; }
+.menu-profile .logout {
+  text-align: center;
+  height: 25px;
+  background-color: #42c0c4; }
 
 /* chatbox */
 .wrapper-chatbox {
@@ -138,10 +138,10 @@ h1 {
 
 .wrapper-chatbox-left {
   background-color: none;
-  margin-top: 20px; }
+  margin-top: 10px; }
 
 .wrapper-chatbox-profile {
-  border: 1px solid black;
+  border: 1px solid #AFA7A3;
   background-color: white;
   padding: 30px; }
 
@@ -176,7 +176,7 @@ h1 {
 
 /* Table chatbox */
 .header-table-chatbox {
-  border: 1px solid black;
+  border: 1px solid #AFA7A3;
   background-color: white;
   color: #AFA7A3;
   font-size: 25px;
@@ -191,8 +191,9 @@ h1 {
   background-color: #F4F4F4; }
 
 .table-chatbox td, .table-chatbox th {
-  border: 1px solid black;
-  padding: 8px; }
+  border: 1px solid #AFA7A3;
+  padding: 8px;
+  background-color: #ededed; }
 
 .table-chatbox tr:nth-child(even) {
   background-color: #F4F4F4; }
@@ -206,7 +207,7 @@ h1 {
   text-align: left;
   background-color: #AFA7A3;
   color: white;
-  border: 1px solid black; }
+  border: 1px solid #AFA7A3; }
 
 .symbol-in-table {
   width: 20px;
@@ -215,25 +216,6 @@ h1 {
 .new-message-tr {
   background-color: #f4b9e7 !important;
   /* #F4C477!important; */ }
-
-/* Search bar */
-.input-group .form-control {
-  border-radius: 20px;
-  border: 1px solid #AFA7A3;
-  height: 40px; }
-
-.input-group-btn > .btn, .input-group-btn > .btn:active, .input-group-btn > .btn:focus {
-  border-radius: 0px 20px 20px 0px;
-  background: linear-gradient(to right, #FE947D, #FFBDAD);
-  border-left: none;
-  border: 1px solid #F4C477;
-  height: 40px;
-  width: 75px; }
-
-.input-group-btn > .btn:hover {
-  background-color: #E6B360;
-  border: 1px solid #F4C477;
-  cursor: pointer; }
 
 /* Requests */
 .wrapper-requests {
@@ -340,44 +322,6 @@ h1 {
 .chevron-up {
   background: url(../images/chevron-up.png); }
 
-/* Buttons */
-.button-accept-requests {
-  background: linear-gradient(to right, #FE947D, #FFBDAD) !important;
-  border-radius: 50px !important;
-  width: 100%;
-  border: none !important;
-  margin-top: 10px;
-  color: white !important;
-  cursor: pointer; }
-
-.button-reject-requests {
-  background-color: #AFA7A3 !important;
-  border-radius: 50px !important;
-  width: 100%;
-  border: none !important;
-  margin-top: 10px;
-  color: white !important;
-  cursor: pointer; }
-
-/* Search bar */
-.input-group .form-control {
-  border-radius: 20px;
-  border: 1px solid #AFA7A3;
-  height: 40px; }
-
-.input-group-btn > .btn, .input-group-btn > .btn:active, .input-group-btn > .btn:focus {
-  border-radius: 0px 20px 20px 0px;
-  background: linear-gradient(to right, #FE947D, #FFBDAD);
-  border-left: none;
-  border: 1px solid #F4C477;
-  height: 40px;
-  width: 75px; }
-
-.input-group-btn > .btn:hover {
-  background-color: #E6B360;
-  border: 1px solid #F4C477;
-  cursor: pointer; }
-
 /* -------------- Column profile -------------- */
 .column-profile {
   border: 1px solid #AFA7A3;
@@ -411,9 +355,7 @@ h1 {
   margin-top: 20px; }
 
 /* -------------- Columns information -------------- */
-.column-personal-information,
-.column-vessel-information,
-.column-location-information {
+.column-personal-information, .column-vessel-information, .column-location-information {
   background-color: #F4F4F4;
   margin-bottom: 30px; }
 
@@ -523,6 +465,20 @@ h1 {
   top: -20px;
   width: 17px;
   height: 17px; }
+
+/* Search bar */
+.input-group .form-control {
+  border-radius: 20px;
+  border: 1px solid #AFA7A3;
+  height: 40px; }
+
+.input-group-btn > .btn, .input-group-btn > .btn:active, .input-group-btn > .btn:focus {
+  border-radius: 0px 20px 20px 0px;
+  background: linear-gradient(to right, #FE947D, #FFBDAD);
+  border-left: none;
+  border: linear-gradient(to right, #FE947D, #FFBDAD);
+  height: 40px;
+  width: 75px; }
 
 .no-bullets {
   list-style-type: none; }

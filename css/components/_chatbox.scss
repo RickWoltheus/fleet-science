@@ -11,11 +11,11 @@
 
 .wrapper-chatbox-left {
   background-color: none;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .wrapper-chatbox-profile {
-  border: 1px solid black;
+  border: 1px solid #AFA7A3;
   background-color: white;
   padding: 30px;
 }
@@ -58,7 +58,7 @@
 /* Table chatbox */
 
 .header-table-chatbox {
-  border: 1px solid black;
+  border: 1px solid #AFA7A3;
   background-color: white;
   color: #AFA7A3;
   font-size: 25px;
@@ -75,8 +75,9 @@
 }
 
 .table-chatbox td, .table-chatbox th {
-    border: 1px solid black;
+    border: 1px solid #AFA7A3;
     padding: 8px;
+    background-color: #ededed;
 }
 
 .table-chatbox tr:nth-child(even){
@@ -93,7 +94,7 @@
   text-align: left;
   background-color: #AFA7A3;
   color: white;
-  border: 1px solid black;
+  border: 1px solid #AFA7A3;
 }
 
 .symbol-in-table {
@@ -103,27 +104,4 @@
 
 .new-message-tr {
   background-color: #f4b9e7!important; /* #F4C477!important; */
-}
-
-/* Search bar */
-
-.input-group .form-control {
-  border-radius: 20px;
-  border: 1px solid #AFA7A3;
-  height: 40px;
-}
-
-.input-group-btn>.btn, .input-group-btn>.btn:active, .input-group-btn>.btn:focus {
-  border-radius: 0px 20px 20px 0px;
-  background: linear-gradient(to right, #FE947D, #FFBDAD);
-  border-left: none;
-  border: 1px solid #F4C477;
-  height: 40px;
-  width: 75px;
-}
-
-.input-group-btn>.btn:hover  {
-  background-color: #E6B360;
-  border: 1px solid #F4C477;
-  cursor: pointer;
 }

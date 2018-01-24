@@ -12,7 +12,7 @@ $prim-background-btn: linear-gradient(to right, #FE947D, #FFBDAD);
 */
 
 body {
-    font-family: 'Quattrocento', serif ;
+    font-family: 'Quattrocento', sans-serif ;
 }
 
 h1{
@@ -28,6 +28,7 @@ h1{
 @import "components/_requests.scss";
 @import "components/_profile.scss";
 @import "components/_variables.scss";
+@import "components/_search-bar.scss";
 
 // custom styling
 @import "styling/font.scss";

@@ -2,7 +2,7 @@
 
 .wrapper-requests {
     padding: 20px 50px;
-}    
+}
 
 .wrapper-info-requests {
   padding: 20px 30px;
@@ -126,49 +126,4 @@
 
 .chevron-up {
   background: url(../images/chevron-up.png);
-}
-
-/* Buttons */
-
-.button-accept-requests {
-  background: linear-gradient(to right, #FE947D, #FFBDAD)!important;
-  border-radius: 50px !important;
-  width: 100%;
-  border: none!important;
-  margin-top: 10px;
-  color: white!important;
-  cursor: pointer;
-}
-
-.button-reject-requests {
-  background-color: #AFA7A3 !important;
-  border-radius: 50px !important;
-  width: 100%;
-  border: none!important;
-  margin-top: 10px;
-  color: white!important;
-  cursor: pointer;
-}
-
-/* Search bar */
-
-.input-group .form-control {
-  border-radius: 20px;
-  border: 1px solid #AFA7A3;
-  height: 40px;
-}
-
-.input-group-btn>.btn, .input-group-btn>.btn:active, .input-group-btn>.btn:focus {
-  border-radius: 0px 20px 20px 0px;
-  background: linear-gradient(to right, #FE947D, #FFBDAD);
-  border-left: none;
-  border: 1px solid #F4C477;
-  height: 40px;
-  width: 75px;
-}
-
-.input-group-btn>.btn:hover  {
-  background-color: #E6B360;
-  border: 1px solid #F4C477;
-  cursor: pointer;
 }

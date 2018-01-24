@@ -1,4 +1,16 @@
-.h-chatbox {
-  background-color: black;
-  color: red;
+/* Search bar */
+
+.input-group .form-control {
+  border-radius: 20px;
+  border: 1px solid #AFA7A3;
+  height: 40px;
+}
+
+.input-group-btn>.btn, .input-group-btn>.btn:active, .input-group-btn>.btn:focus {
+  border-radius: 0px 20px 20px 0px;
+  background: linear-gradient(to right, #FE947D, #FFBDAD);
+  border-left: none;
+  border: linear-gradient(to right, #FE947D, #FFBDAD);
+  height: 40px;
+  width: 75px;
 }
