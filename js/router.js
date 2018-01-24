@@ -99,6 +99,12 @@ switch (action) {
         view("menu/_footer.html");
         break;
 
+    case "variables":
+        view("menu/_menu-sailor.html");
+        view("static-pages/_variables.html");
+        view("menu/_footer.html");
+        break;
+
     case "home":
         view("menu/_menu.html");
         view("static-pages/_home.html");
