@@ -93,11 +93,12 @@
     padding: 8px;
     border-top: 1px solid #AFA7A3;
     border-bottom: 1px solid #AFA7A3;
+    background-color: #F4F4F4;
 }
 
 .table-requests tr:nth-child(even){
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #AFA7A3;
   border-top: 1px solid #AFA7A3;
   border-bottom: 1px solid black;
 }
