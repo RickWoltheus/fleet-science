@@ -1,22 +1,22 @@
-.nav-item:hover{
-    background-color: #46cacf; /* Temporary workaround, at least it looks better */
-    height: 100%;
-    a{
-        color: $prim-grey;
-    }
+.nav-item:hover {
+  background-color: white;
+  height: 100%;
+  a {
+      color: black!important;
+  }
 }
 
-.nav-item{
-    a{
-        font-size: 15px;
-    }
-
+.nav-item {
     text-align: center;
     width: 200px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    a {
+        font-size: 15px;
+    }
 }
 .menu-wrapper{
     width: 100%;
-
 }
 
 .menu-profile{
