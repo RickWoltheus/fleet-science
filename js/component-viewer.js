@@ -10,29 +10,29 @@ function getParameterByName(name, url) {
 
 function view(include) {
 
-        $("#content").append( "<div  data-include='views/"+ include +"'></div>" );
-        $(function(){
-            var includes = $('[data-include]');
-            jQuery.each(includes, function(){
-                var file = $(this).data('include');
-                $(this).load(file);
-    
-            });
+    $("#content").append("<div  data-include='views/" + include + "'></div>");
+    $(function () {
+        var includes = $('[data-include]');
+        jQuery.each(includes, function () {
+            var file = $(this).data('include');
+            $(this).load(file);
+
         });
+    });
 }
 
 function viewPart(id, include) {
-    
-            $(id).append( "<div  data-include='views/"+ include +"'></div>" );
-            $(function(){
-                var includes = $('[data-include]');
-                jQuery.each(includes, function(){
-                    var file = $(this).data('include');
-                    $(this).load(file);
-        
-                });
-            });
-    }
+
+    $(id).append("<div  data-include='views/" + include + "'></div>");
+    $(function () {
+        var includes = $('[data-include]');
+        jQuery.each(includes, function () {
+            var file = $(this).data('include');
+            $(this).load(file);
+
+        });
+    });
+}
 
 //sets text of element with id
 function setText(elementId, text) {
@@ -42,4 +42,3 @@ function setText(elementId, text) {
         element.innerHTML = text;
     }
 };
-
