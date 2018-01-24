@@ -557,10 +557,6 @@ p {
 .input-group-btn .btn:hover {
   opacity: 0.8; }
 
-.input-group-btn .btn:focus {
-  outline: 0 !important;
-  border: 1px solid #42c0c4; }
-
 footer {
   width: 100vw;
   padding: 20px;
