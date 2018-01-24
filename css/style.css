@@ -9,7 +9,8 @@ body, html {
   overflow-x: hidden; }
 
 h1 {
-  font-family: "Architects Daughter", cursive; }
+  font-family: "Architects Daughter", cursive;
+  color: linear-gradient(to right, #FE947D, #FFBDAD) !important; }
 
 .notification-chip {
   display: inline-block;
@@ -293,17 +294,20 @@ h1 {
   border-collapse: collapse;
   width: 100%;
   background-color: #F4F4F4;
-  border: 1px solid black; }
+  border: 1px solid #AFA7A3; }
+
+.thead {
+  border-top: 1px solid #AFA7A3; }
 
 .table-requests td, #table-requests th {
   padding: 8px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black; }
+  border-top: 1px solid #AFA7A3;
+  border-bottom: 1px solid #AFA7A3; }
 
 .table-requests tr:nth-child(even) {
   background-color: white;
   border: 1px solid black;
-  border-top: 1px solid black;
+  border-top: 1px solid #AFA7A3;
   border-bottom: 1px solid black; }
 
 .table-requests th {
@@ -313,8 +317,8 @@ h1 {
   text-align: left;
   background-color: #AFA7A3;
   color: white;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black; }
+  border-top: 1px solid #AFA7A3;
+  border-bottom: 1px solid #AFA7A3; }
 
 .filter-requests {
   background-color: #AFA7A3;
