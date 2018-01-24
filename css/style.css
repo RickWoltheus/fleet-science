@@ -13,6 +13,7 @@ h1 {
 
 .notification-chip {
   display: inline-block;
+  padding-top: 2px;
   background-color: white;
   border-style: solid;
   border-width: 2px;
@@ -34,9 +35,11 @@ h1 {
   border-radius: 100px;
   background: linear-gradient(to right, #FE947D, #FFBDAD);
   border: 0;
-  padding-left: 10px;
-  padding-right: 10px;
-  text-align: center; }
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  cursor: pointer;
+  outline: 0 !important; }
 
 .fleet-btn-full-width {
   display: inline-block;
@@ -84,6 +87,10 @@ h1 {
 .fleet-input {
   width: 100%;
   padding: 7px; }
+
+.fleet-input:focus {
+  outline: 0 !important;
+  border: 1px solid #42c0c4; }
 
 .title-holder {
   vertical-align: middle;
@@ -328,7 +335,7 @@ h1 {
   padding: 0;
   margin-bottom: 20px;
   margin-left: -15px;
-  color: #88817D; }
+  color: #AFA7A3; }
 
 .h2-header {
   font-size: 25px;
@@ -338,7 +345,7 @@ h1 {
   padding: 0; }
 
 .h2-profile {
-  color: #88817D;
+  color: white;
   font-weight: 300; }
 
 p {
@@ -550,8 +557,47 @@ p {
 .input-group-btn .btn:hover {
   opacity: 0.8; }
 
-.input-group-btn .btn:focus {
-  outline: 0 !important; }
+footer {
+  width: 100vw;
+  padding: 20px;
+  margin-top: 25px;
+  color: white;
+  background-color: #42c0c4;
+  position: absolute;
+  bottom: 0; }
+
+.container-edit-password {
+  width: 400px;
+  display: flex;
+  flex-direction: column; }
+
+.h2-change-password {
+  margin-bottom: 10px; }
+
+.text-form {
+  margin-top: 15px;
+  border: 1px solid #AFA7A3;
+  padding: 10px;
+  transition: .2s; }
+
+.text-form:focus {
+  outline: none;
+  border: 1px solid #42CDC4; }
+
+.text-form::placeholder {
+  color: #AFA7A3; }
+
+.button-save:hover {
+  color: white !important;
+  text-decoration: none !important; }
+
+.button-save:hover {
+  color: white;
+  text-decoration: none; }
+
+.footie-edit-password {
+  position: absolute;
+  bottom: 0; }
 
 .no-bullets {
   list-style-type: none; }
@@ -576,7 +622,8 @@ h1 {
   background-color: #42c0c4 !important; }
 
 .light-grey {
-  background-color: #ededed !important; }
+  background-color: #ededed !important;
+  padding-bottom: 30px; }
 
 .grey {
   background-color: #a8a8a8 !important; }
