@@ -30,19 +30,14 @@ switch (action) {
     case "all-requests-sailor":
         view("menu/_menu-sailor.html");
         //@@@ should eventually be _all-requests-sailor.html
-        view("functional-pages/_all-requests-localstorage-example.html");
+        view("functional-pages/_all-requests-sailor-localstorage-example.html");
         view("menu/_footer.html");
         break;
 
     case "accepted-requests-sailor":
         view("menu/_menu-sailor.html");
-        view("functional-pages/_accepted-requests-localstorage.html");
+        view("functional-pages/_accepted-requests-sailor-localstorage-example.html");
         view("menu/_footer.html");
-        break;
-
-    case "all-requests-sailor":
-        view("menu/_menu-sailor.html");
-        view("functional-pages/_all-requests-sailor.html");
         break;
 
     case "chatbox-sailor":
@@ -66,13 +61,13 @@ switch (action) {
 
     case "my-requests-academic":
         view("menu/_menu-academic.html");
-        view("functional-pages/_my-request.html");
+        view("functional-pages/_my-requests-academic-localstorage.html");
         view("menu/_footer.html");
         break;
 
     case "all-requests-academic":
         view("menu/_menu-academic.html");
-        view("functional-pages/_all-requests-academic.html");
+        view("functional-pages/_all-requests-localstorage-academic.html");
         view("menu/_footer.html");
         break;
 
@@ -148,4 +143,15 @@ switch (action) {
     default:
         view("error/_home.html");
         break;
+    case "database-logged-in-academic":
+        view("menu/_menu-academic.html");
+        view("static-pages/_database-logged-in.html");
+        break;
+    case "database-logged-in-sailor":
+        view("menu/_menu-sailor.html");
+        view("static-pages/_database-logged-in.html");
+        break;
+    case "forgot-password":
+    view("menu/_menu.html");
+    view("static-pages/_forgot-password.html");
 }

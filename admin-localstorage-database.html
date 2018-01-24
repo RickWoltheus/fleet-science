@@ -113,7 +113,7 @@ function repopulateVariable(tableid, elementid, section, infofields) {
     if (tableElement) {
         var text = "";
         text += MaTableBegin();
-        text += MaSectionBegin(section, "section-"+tableid, infofields);
+        text += MaSectionBeginList(section, "section-"+tableid, infofields);
 
 
 	for (var key in table) {
@@ -121,7 +121,7 @@ function repopulateVariable(tableid, elementid, section, infofields) {
 	    if(!table.hasOwnProperty(key)) {
         	continue;
 	    }
-            text += MaAdd(key, table[key], ""+tableid+"_Operation_");
+            text += MaAddList(key, table[key], ""+tableid+"_Operation_");
 	}
 
 
@@ -284,6 +284,26 @@ function MaTableEnd() {
 
 var sectionRow=0;
 
+
+function MaSectionBeginList(sectionTitle, section, infoFields) {
+    sectionRow=0;
+
+    var text="";
+
+    sectionClass = section;
+    sectionVisibility[sectionClass] = "table-cell";
+    text += "  <div class='ma-tableRow'>";
+    text += "    <div class='ma-tableHead'><a href='javascript:toggleVisibility(\""+sectionClass+"\")'>"+sectionTitle+"</a></div>";
+
+    for (var i=0;i<infoFields.length;i++) {
+	text += "    <div class='ma-tableHead'>"+infoFields[i]+"</div>";
+    }
+    text += "  </div>";
+
+    return text;
+}
+
+
 function MaSectionBegin(sectionTitle, section, infoFields) {
     sectionRow=0;
 
@@ -304,10 +324,27 @@ function MaSectionBegin(sectionTitle, section, infoFields) {
     return text;
 }
 
+
+
+function MaAddList(key, info,baseModifier) {
+    sectionRow ++;
+
+    var text="";
+
+    text += "  <div class='ma-tableRow'>";
+    text += "    <div class='ma-tableCell "+sectionClass+"'>"+key+"</div>";
+
+    text += "    <div class='ma-tableCell "+sectionClass+"' id='cell-"+sectionRow+"' >"+JSON.stringify(info)+"</div>";
+
+    text += "  </div>";
+    return text;
+
+
+}
+
 function MaAdd(key, info,baseModifier)
 {
     sectionRow ++;
-
     var text="";
 
     text += "  <div class='ma-tableRow'>";
@@ -430,6 +467,49 @@ function addNewUser() {
 function getRandomUser() {
     var result = null;
     var users = getStorageObject()["users"];
+
+    var count=0;
+    for (var key in users) {
+	// skip loop if the property is from prototype
+	if(!users.hasOwnProperty(key)) {
+            continue;
+	}
+	count++;
+    }
+    var index=Math.floor(count*Math.random());
+    count=0;
+    for (var key in users) {
+	// skip loop if the property is from prototype
+	if(!users.hasOwnProperty(key)) {
+            continue;
+	}
+        if (count == index) {
+	    result = key;
+	}
+	count++;
+    }
+
+
+
+/*@@@TODO remove?
+    for (var key in users) {
+        if (result == null)
+	{
+	  result = key;
+	}
+        if (Math.random()<0.5) {
+	    result = key;
+	}
+    }
+*/
+    return result;
+}
+
+
+
+function getRandomRequest() {
+    var result = null;
+    var users = getStorageObject()["requests"];
     for (var key in users) {
         if (result == null)
 	{
@@ -441,6 +521,9 @@ function getRandomUser() {
     }
     return result;
 }
+
+
+
 
 var sampleMessages = 
 [
@@ -505,7 +588,24 @@ function addNewRequest() {
 }
 
 function addNewAccept() {
-//@@@
+    var realLoggedInUser=loggedInUsername;
+    loggedInUsername = getRandomUser();
+
+    var loop;
+    for (loop=0;loop<5;loop++) {
+	var req = getRandomRequest();
+	if (req) {
+            if (addAccept(req)) {
+	        break;
+	    }
+	}
+	else {
+	    break;
+	}
+    }
+    loggedInUsername=realLoggedInUser;
+    repopulateAccepts();
+
 }
 
 function addNewData() {

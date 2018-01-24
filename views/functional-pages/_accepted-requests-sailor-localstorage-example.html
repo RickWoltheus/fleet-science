@@ -1,7 +1,7 @@
 <div class="wrapper-requests">
   <div class="row">
     <div class="col-8 offset-2">
-      <h1 class="grey-text">All Requests</h1>
+      <h1 class="grey-text">Accepted Requests</h1>
       <br>
 
       <!-- SEARCH BAR -->
@@ -18,16 +18,16 @@
 
       <br>
       <!-- REQUEST TABLE -->
-      <table class="table-requests" id="requests-all"></table>
+      <table class="table-requests" id="requests-all" ></table>
     </div>
   </div>
 </div>
 
+  
 <script>
-writeRequestsTable();
-</script>
+  writeRequestsTable();
 
-<script>
+
   //search bar - search by username or area of request
   function searchRequest() {
     // Declare variables
@@ -38,7 +38,7 @@ writeRequestsTable();
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
-    for (i = 1; i < tr.length; i+=6) {
+    for (i = 1; i < tr.length; i+=5) {
       td = tr[i].getElementsByTagName("td")[0];   //username
       td1 = tr[i].getElementsByTagName("td")[1];   //area
       if (td) {
@@ -46,6 +46,10 @@ writeRequestsTable();
           tr[i].style.display = "";
         } else {
           tr[i].style.display = "none";
+          tr[i+1].style.display = "none";
+          tr[i+2].style.display = "none";
+          tr[i+3].style.display = "none";
+          tr[i+4].style.display = "none";
         }
       }
     }
@@ -55,7 +59,7 @@ writeRequestsTable();
   function selectType() {
     var x = document.getElementById("selectType");
     filter = x.value.toUpperCase();
-    table = document.getElementById("table");
+    table = document.getElementById("requests-all");
     tr = table.getElementsByTagName("tr");
     if (filter == "ALL") {
       for (i = 1; i < tr.length; i+=6) {
@@ -65,13 +69,18 @@ writeRequestsTable();
         }
       }
     } else {
-      for (i = 1; i < tr.length; i+=6) {
+      for (i = 1; i < tr.length; i+=5) {
         td = tr[i].getElementsByTagName("td")[2];   //type of measurament
         if (td) {
           if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
             tr[i].style.display = "";
           } else {
             tr[i].style.display = "none";
+            tr[i].style.display = "none";
+            tr[i+1].style.display = "none";
+            tr[i+2].style.display = "none";
+            tr[i+3].style.display = "none";
+            tr[i+4].style.display = "none";
           }
         }
       }
@@ -81,11 +90,11 @@ writeRequestsTable();
   function selectStatus() {
     var x = document.getElementById("selectStatus");
     filter = x.value.toUpperCase();
-    table = document.getElementById("table");
+    table = document.getElementById("requests-all");
     tr = table.getElementsByTagName("tr");
 
     if (filter == "ALL") {
-      for (i = 1; i < tr.length; i+=6) {
+      for (i = 1; i < tr.length; i+=5) {
         td = tr[i].getElementsByTagName("td")[3];
         if (td) {
           tr[i].style.display = "";
@@ -93,13 +102,17 @@ writeRequestsTable();
       }
     }
     else {
-      for (i = 1; i < tr.length; i+=6) {
+      for (i = 1; i < tr.length; i+=5) {
         td = tr[i].getElementsByTagName("td")[3];   //username
         if (td) {
           if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
             tr[i].style.display = "";
           } else {
             tr[i].style.display = "none";
+            tr[i+1].style.display = "none";
+            tr[i+2].style.display = "none";
+            tr[i+3].style.display = "none";
+            tr[i+4].style.display = "none";
           }
         }
       }
