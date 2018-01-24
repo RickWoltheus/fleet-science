@@ -24,18 +24,21 @@ switch (action) {
     case "dashboard-sailor":
         view("menu/_menu-sailor.html");
         view("dashboard/_dashboard-sailor.html");
+        view("menu/_footer.html");
         break;
-        
+
     case "all-requests-sailor":
         view("menu/_menu-sailor.html");
         //@@@ should eventually be _all-requests-sailor.html
         view("functional-pages/_all-requests-localstorage-example.html");
+        view("menu/_footer.html");
         break;
-	
+
     case "accepted-requests-sailor":
         view("menu/_menu-sailor.html");
         //@@@ should eventually be _all-requests-sailor.html
         view("functional-pages/_all-requests-localstorage-example.html");
+        view("menu/_footer.html");
         break;
 
     case "all-requests-sailor":
@@ -52,11 +55,13 @@ switch (action) {
     case "dashboard-academic":
         view("menu/_menu-academic.html");
         view("dashboard/_dashboard-academic.html");
+        view("menu/_footer.html");
         break;
 
     case "chatbox-academic":
         view("menu/_menu-academic.html");
         view("functional-pages/_chatbox.html");
+        view("menu/_footer.html");
         break;
 
     // case "chatbox":
@@ -67,11 +72,13 @@ switch (action) {
     case "my-request-academic":
         view("menu/_menu-academic.html");
         view("functional-pages/_my-request.html");
+        view("menu/_footer.html");
         break;
 
     case "all-requests-academic":
         view("menu/_menu-academic.html");
         view("functional-pages/_all-requests-academic.html");
+        view("menu/_footer.html");
         break;
 
 
@@ -84,11 +91,13 @@ switch (action) {
     case "all-requests":
         view("menu/_menu-sailor.html");
         view("functional-pages/_all-requests-localstorage-example.html");
+        view("menu/_footer.html");
         break;
 
     case "profile":
         view("menu/_menu-sailor.html");
         view("static-pages/_profile.html");
+        view("menu/_footer.html");
         break;
 
     case "home":
@@ -100,16 +109,19 @@ switch (action) {
     case "login":
         view("menu/_menu.html");
         view("forms/_login.html");
+        view("menu/_footer.html");
         break;
 
     case "account-created":
         view("menu/_menu.html");
         view("static-pages/_account-created.html");
+        view("menu/_footer.html");
         break;
 
     case "sign-up":
         view("menu/_menu.html");
         view("forms/_sign-up.html");
+        view("menu/_footer.html");
         break;
 
     case "about":
@@ -120,6 +132,7 @@ switch (action) {
     case "database":
         view("menu/_menu.html");
         view("static-pages/_database.html");
+        view("menu/_footer.html");
         break;
     default:
         view("error/_home.html");
