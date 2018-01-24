@@ -8,7 +8,7 @@ function validateLogin(username) {
         alert("User " + username + " does not exist. Please sign up first.");
         return false;
     }
-    alert("Welcome back" + username);
+    alert("Welcome back " + username);
     setCookie("username", username);
     return true;
 }
@@ -57,7 +57,6 @@ function loggedInInstitute() {
 
 
 function signupLS(role, firstname, lastname, username, boatname, email) {
-    alert("hi")
     if (firstname.length == 0) {
         alert("Please enter first name");
         return false;
@@ -132,7 +131,7 @@ var dataversion = "data001";
 var someLocalStorage = {};
 var userinfoFields =    ["role", "firstname", "lastname", "institute",   "boatname", "email"];
 var messageinfoFields = ["type", "from",      "to",       "description", "date",     "previous"];
-var requestinfoFields = ["username", "area",  "reqtype",  "status"];
+var requestinfoFields = ["username", "area",  "reqtype",  "description", "status", "duration", "frequency", "deadline"];
 
 
 function getTodayDateString() {

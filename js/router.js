@@ -26,9 +26,16 @@ switch (action) {
         view("dashboard/_dashboard-sailor.html");
         break;
         
+    case "all-requests-sailor":
+        view("menu/_menu-sailor.html");
+        //@@@ should eventually be _all-requests-sailor.html
+        view("functional-pages/_all-requests-localstorage-example.html");
+        break;
+	
     case "accepted-requests-sailor":
         view("menu/_menu-sailor.html");
-        view("functional-pages/_all-requests-sailor.html");
+        //@@@ should eventually be _all-requests-sailor.html
+        view("functional-pages/_all-requests-localstorage-example.html");
         break;
 
     // Academic
@@ -52,7 +59,7 @@ switch (action) {
         // universal views
     case "all-requests":
         view("menu/_menu-sailor.html");
-        view("functional-pages/_all-requests-sailor.html");
+        view("functional-pages/_all-requests-localstorage-example.html");
         break;
 
     case "profile":
@@ -69,6 +76,11 @@ switch (action) {
     case "login":
         view("menu/_menu.html");
         view("forms/_login.html");
+        break;
+
+    case "account-created":
+        view("menu/_menu.html");
+        view("static-pages/_account-created.html");
         break;
 
     case "sign-up":
