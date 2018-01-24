@@ -195,7 +195,7 @@ function writeRequestsTable()
 	    text+="         <div class='description-box-requests'>"+row["description"]+"</div>";
 	    text+="         <div class='row'>";
 	    text+="           <div class='col-6'>";
-	    text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Accept</button>";
+	    text+="             <button type='button' id='accept-requests"+count+"' onclick='{addAccept(\""+key+"\");writeRequestsTable();}' class='btn btn-default button-accept-requests'>Accept</button>";
 	    text+="           </div>";
 	    text+="           <div class='col-6'>";
 	    text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests'>Reject</button>";
