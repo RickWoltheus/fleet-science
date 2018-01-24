@@ -16,7 +16,7 @@ body, html {
 
 h1 {
   font-family: "Architects Daughter", cursive;
-  color: linear-gradient(to right, #FE947D, #FFBDAD) !important; }
+  color: #AFA7A3; }
 
 a {
   text-decoration: none; }
@@ -644,6 +644,33 @@ footer {
 .footie-edit-password {
   position: absolute;
   bottom: 0; }
+
+.container-sign-up {
+  margin-top: 30px; }
+
+.container-sign-up input {
+  width: 100%; }
+
+.form-group .fleet-input {
+  border: 1px solid #AFA7A3; }
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; }
+
+.cancel-button {
+  width: 100%;
+  padding: 3px 10px 0px 10px;
+  margin-right: 5px;
+  background: #A9ABAC !important; }
+
+.cancel-button:hover {
+  text-decoration: none;
+  color: white; }
+
+.sign-up-button {
+  margin-left: 5px; }
 
 .no-bullets {
   list-style-type: none; }

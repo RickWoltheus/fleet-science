@@ -25,7 +25,7 @@ body, html {
 
 h1{
     font-family: 'Architects Daughter', cursive ;
-    color: linear-gradient(to right, #FE947D, #FFBDAD)!important;
+    color: #AFA7A3;
 }
 
 a {
@@ -44,6 +44,8 @@ a {
 @import "components/_search-bar.scss";
 @import "components/_footer.scss";
 @import "components/_edit-password.scss";
+@import "components/_sign-up.scss";
+@import "components/_login.scss";
 
 // custom styling
 @import "styling/font.scss";
