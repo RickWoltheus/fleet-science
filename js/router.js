@@ -156,4 +156,7 @@ switch (action) {
         view("menu/_menu-sailor.html");
         view("static-pages/_database-logged-in.html");
         break;
+    case "forgot-password":
+    view("menu/_menu.html");
+    view("static-pages/_forgot-password.html");
 }
