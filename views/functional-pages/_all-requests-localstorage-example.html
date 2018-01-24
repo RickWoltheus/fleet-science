@@ -7,7 +7,7 @@
       <!-- SEARCH BAR -->
       <form action="/action_page.php" method="get">
         <div class="input-group">
-          <input class="form-control" id="system-search" onkeyup="searchRequest()" name="q" placeholder="Search for" required="">
+          <input class="form-control" id="system-search" onkeyup="searchRequest()" name="q" placeholder="Search for" required="" />
           <span class="input-group-btn">
             <button type="submit" class="btn btn-default" data-original-title="" title="">
               <span class="octicon octicon-search white-text"></span>
@@ -18,7 +18,7 @@
 
       <br>
       <!-- REQUEST TABLE -->
-      <table class="table-requests">
+      <table class="table-requests" id="requests-all">
         <thead>
           <th>Username</th>
           <th>Requested area</th>
@@ -63,7 +63,7 @@
           <td>
             <a href="#" class="toggler" data-request="1" onclick="chevronSwitch('chevron-switch1');">
               <i>
-                <img id="chevron-switch1" class="chevron-img" src="images/chevron-down.png" alt="chevron down">
+                <img id="chevron-switch1" class="chevron-img" src="images/chevron-down.png" alt="chevron down" />
               </i>
             </a>
           </td>
@@ -173,7 +173,7 @@
           <td>
             <a href="#" class="toggler" data-request="2" onclick="chevronSwitch('chevron-switch2');">
               <i>
-                <img id="chevron-switch2" class="chevron-img" src="images/chevron-down.png" alt="chevron down">
+                <img id="chevron-switch2" class="chevron-img" src="images/chevron-down.png" alt="chevron down" />
               </i>
             </a>
           </td>
@@ -282,7 +282,7 @@
           <td>
             <a href="#" class="toggler" data-request="3" onclick="chevronSwitch('chevron-switch3');">
               <i>
-                <img id="chevron-switch3" class="chevron-img" src="images/chevron-down.png" alt="chevron down">
+                <img id="chevron-switch3" class="chevron-img" src="images/chevron-down.png" alt="chevron down" />
               </i>
             </a>
           </td>
@@ -328,15 +328,15 @@
                     <p class="p_requests-submit">Date</p>
                   </div>
                   <div class="col-2">
-                    <input type="text" class="form-control" placeholder="dd">
+                    <input type="text" class="form-control" placeholder="dd" />
                   </div>
                   <label class="label-submit">/</label>
                   <div class="col-2">
-                    <input type="text" class="form-control" placeholder="mm">
+                    <input type="text" class="form-control" placeholder="mm" />
                   </div>
                   <label class="label-submit">/</label>
                   <div class="col-2">
-                    <input type="text" class="form-control" placeholder="yyyy">
+                    <input type="text" class="form-control" placeholder="yyyy" />
                   </div>
                 </div>
                 <div class="row">
@@ -344,11 +344,11 @@
                     <p class="p_requests-submit">Time</p>
                   </div>
                   <div class="col-2">
-                    <input type="text" class="form-control" placeholder="hh">
+                    <input type="text" class="form-control" placeholder="hh" />
                   </div>
                   <label class="label-submit">:</label>
                   <div class="col-2">
-                    <input type="text" class="form-control" placeholder="mm">
+                    <input type="text" class="form-control" placeholder="mm" />
                   </div>
                 </div>
                 <div class="row">
@@ -364,24 +364,24 @@
                   </div>
                   <div class="col-2 coordinates-padding">
                     <label class="radio-inline">
-                      <input type="radio" name="latitute">
+                      <input type="radio" name="latitute" />
                       <span class="margin-coordinator">N</span>
                     </label>
                     <label class="radio-inline">
-                      <input type="radio" name="latitute">
+                      <input type="radio" name="latitute" />
                       <span class="margin-coordinator">S</span>
                     </label>
                   </div>
                   <div class="col-2">
-                    <input type="text" class="form-control" placeholder="00">
+                    <input type="text" class="form-control" placeholder="00" />
                   </div>
                   <label class="label-submit-coordinator">&#186;</label>
                   <div class="col-2">
-                    <input type="text" class="form-control" placeholder="00">
+                    <input type="text" class="form-control" placeholder="00" />
                   </div>
                   <label class="label-submit-coordinator">'</label>
                   <div class="col-2">
-                    <input type="text" class="form-control" placeholder="ss.ssss">
+                    <input type="text" class="form-control" placeholder="ss.ssss" />
                   </div>
                   <label class="label-submit-coordinator">"</label>
                 </div>
@@ -391,24 +391,24 @@
                   </div>
                   <div class="col-2 coordinates-padding">
                     <label class="radio-inline">
-                      <input type="radio" name="longitude">
+                      <input type="radio" name="longitude" />
                       <span class="margin-coordinator">N</span>
                     </label>
                     <label class="radio-inline">
-                      <input type="radio" name="longitude">
+                      <input type="radio" name="longitude" />
                       <span class="margin-coordinator">S</span>
                     </label>
                   </div>
                   <div class="col-2">
-                    <input type="text" class="form-control" placeholder="00">
+                    <input type="text" class="form-control" placeholder="00" />
                   </div>
                   <label class="label-submit-coordinator">&#186;</label>
                   <div class="col-2">
-                    <input type="text" class="form-control" placeholder="00">
+                    <input type="text" class="form-control" placeholder="00" />
                   </div>
                   <label class="label-submit-coordinator">'</label>
                   <div class="col-2">
-                    <input type="text" class="form-control" placeholder="ss.ssss">
+                    <input type="text" class="form-control" placeholder="ss.ssss" />
                   </div>
                   <label class="label-submit-coordinator">"</label>
                 </div>
@@ -419,7 +419,7 @@
                 </div>
                 <div class="row">
                   <div class="col-2">
-                    <input type="text" class="form-control" placeholder="">
+                    <input type="text" class="form-control" placeholder="" />
                   </div>
                   <label class="label-submit">mg</label>
                 </div>
@@ -470,6 +470,189 @@
   </div>
 </div>
 <script>
+
+
+    var element = document.getElementById("requests-all");
+    if (element) {
+	var text="";
+
+	text+=" <thead>";
+	text+="   <th>Username</th>";
+	text+="   <th>Requested area</th>";
+	text+="   <th>Type of request";
+	text+="     <select id='selectType' class='filter-requests' onchange='selectType()'>";
+	text+="       <option selected='selected'>All</option>";
+	text+="       <option value='ph'>pH</option>";
+	text+="       <option value='temperature'>Temperature</option>";
+	text+="       <option value='samples'>Samples</option>";
+	text+="       <option value='photo'>Photo</option>";
+	text+="       <option value='video'>Video</option>";
+	text+="       <option value='audio'>Audio</option>";
+	text+="       <option value='so2'>SO2</option>";
+	text+="       <option value='no2'>NO2</option>";
+	text+="       <option value='pm10'>PM10</option>";
+	text+="       <option value='pm2,5'>PM2,5</option>";
+	text+="       <option value='co'>CO</option>";
+	text+="       <option value='o3'>O3</option>";
+	text+="       <option value='deg c'>Deg c</option>";
+	text+="       <option value='salinity'>Salinity psu</option>";
+	text+="       <option value='tds'>TDS</option>";
+	text+="       <option value='co2'>CO2 (aq)</option>";
+	text+="       <option value='so2'>SO2 (aq)</option>";
+	text+="     </select>";
+	text+="   </th>";
+	text+="   <th>Status";
+	text+="     <select id='selectStatus' class='filter-requests' onchange='selectStatus()'>";
+	text+="       <option selected='selected'>All</option>";
+	text+="       <option value='approved'>Approved</option>";
+	text+="       <option value='accepted'>Accepted</option>";
+	text+="       <option value='completed'>Completed</option>";
+	text+="     </select>";
+	text+="   </th>";
+	text+="   <th></th>";
+	text+=" </thead>";
+
+        var count=1;
+	var requests = getStorageObject()["requests"];
+	for (var key in requests) {
+	    if(!requests.hasOwnProperty(key)) {
+       		continue;
+	    }
+	    var row = requests[key];
+
+	    text+=" <tr>";
+	    text+="   <td>"+row["username"]+"</td>";
+	    text+="   <td>"+row["area"]+"</td>";
+	    text+="   <td>"+row["reqtype"]+"</td>";
+	    text+="   <td>"+row["status"]+"</td>";
+	    text+="   <td>";
+	    text+="     <a href='#' class='toggler' data-request='"+count+"' onclick=\"chevronSwitch('chevron-switch"+count+"');\">";
+	    text+="       <i>";
+	    text+="         <img id='chevron-switch"+count+"' class='chevron-img' src='images/chevron-down.png' alt='chevron down' />";
+	    text+="       </i>";
+	    text+="     </a>";
+	    text+="   </td>";
+	    text+=" </tr>";
+            text+=" <tr id='section-requests-info"+count+"' class='req"+count+"' style='display: none'>";
+	    text+="   <td colspan='5'>";
+	    text+="     <div class='row wrapper-info-requests'>";
+	    text+="       <div class='col-3'>";
+	    text+="         <p class='p_requests'>Duration</p>";
+	    text+="         <p>"+row["duration"]+"</p>";
+	    text+="         <p class='p_requests'>Frequency</p>";
+	    text+="         <p>"+row["frequency"]+"</p>";
+	    text+="         <p class='p_requests'>Deadline</p>";
+	    text+="         <p>"+row["deadline"]+"</p>";
+	    text+="       </div>";
+	    text+="       <div class='col-9'>";
+	    text+="         <p class='p_requests'>Description</p>";
+	    text+="         <div class='description-box-requests'>"+row["description"]+"</div>";
+	    text+="         <div class='row'>";
+	    text+="           <div class='col-6'>";
+	    text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Accept</button>";
+	    text+="           </div>";
+	    text+="           <div class='col-6'>";
+	    text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests'>Reject</button>";
+	    text+="           </div>";
+	    text+="         </div>";
+	    text+="       </div>";
+	    text+="     </div>";
+	    text+="   </td>";
+	    text+=" </tr>";
+	    text+=" <tr id='section-requests-are_you_sure"+count+"' style='display: none'>";
+	    text+="   <td colspan='5'>";
+	    text+="     <div class='row wrapper-info-requests'>";
+	    text+="       <div class='col-8 offset-2'>";
+	    text+="         <p class='p_requests-accept'>Are you sure that you want to accept this request?</p>";
+	    text+="         <div class='row'>";
+	    text+="           <div class='col-6'>";
+	    text+="             <button id='confirmation-requests"+count+"' type='button' class='btn btn-default button-accept-requests'>Yes</button>";
+	    text+="           </div>";
+	    text+="           <div class='col-6'>";
+	    text+="             <button type='button' onclick='myReload()' class='btn btn-default button-reject-requests'>No</button>";
+	    text+="           </div>";
+	    text+="         </div>";
+	    text+="       </div>";
+	    text+="     </div>";
+	    text+="   </td>";
+	    text+=" </tr>";
+	    text+=" <tr id='section-requests-confirmation"+count+"' style='display: none'>";
+	    text+="   <td colspan='5'>";
+	    text+="     <div class='row wrapper-info-requests'>";
+	    text+="       <div class='col-8 offset-2'>";
+	    text+="         <p class='p_requests-accept'>Your request is succesfully accepted. You can find your accepted request under 'accepted requests'</p>";
+	    text+="         <div class='row'>";
+	    text+="           <div class='col-12'>";
+	    text+="             <button onclick='myReload()' type='button' class='btn btn-default button-accept-requests'>OK</button>";
+	    text+="           </div>";
+	    text+="         </div>";
+	    text+="       </div>";
+	    text+="     </div>";
+	    text+="   </td>";
+	    text+=" </tr>";
+	    text+=" <tr id='section-requests-reject-warning"+count+"' style='display: none'>";
+	    text+="   <td colspan='5'>";
+	    text+="     <div class='row wrapper-info-requests'>";
+	    text+="       <div class='col-8 offset-2'>";
+	    text+="         <p class='p_requests-warning'>WARNING</p>";
+	    text+="         <p class='p_requests-accept'>Are you sure that you want to reject this request?</p>";
+	    text+="         <div class='row'>";
+	    text+="           <div class='col-6'>";
+	    text+="             <button id='confirmation-rejected-requests"+count+"' type='button' class='btn btn-default button-accept-requests'>Yes</button>";
+	    text+="           </div>";
+	    text+="           <div class='col-6'>";
+	    text+="             <button type='button' onclick='myReload()' class='btn btn-default button-reject-requests'>No</button>";
+	    text+="           </div>";
+	    text+="         </div>";
+	    text+="       </div>";
+	    text+="     </div>";
+	    text+="   </td>";
+	    text+=" </tr>";
+	    text+=" <tr id='section-requests-confirmation-rejected"+count+"' style='display: none'>";
+	    text+="   <td colspan='5'>";
+	    text+="     <div class='row wrapper-info-requests'>";
+	    text+="       <div class='col-8 offset-2'>";
+	    text+="         <p class='p_requests-accept'>The request is succesfully rejected. If you did not want to reject the request, you can still accept the";
+	    text+="           rejected request.</p>";
+	    text+="         <div class='row'>";
+	    text+="           <div class='col-12'>";
+	    text+="             <button onclick='myReload()' type='button' class='btn btn-default button-accept-requests'>OK</button>";
+	    text+="           </div>";
+	    text+="         </div>";
+	    text+="       </div>";
+	    text+="     </div>";
+	    text+="   </td>";
+	    text+=" </tr>";
+
+            count++;
+       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       element.innerHTML = text;
+    }
+
+
+
 
   //search bar - search by username or area of request
   function searchRequest() {
@@ -601,7 +784,6 @@
     acceptAnimaton('#submit-requests1','#section-requests-info3','#section-requests-submit1');
     acceptAnimaton('#submit-complete-requests1','#section-requests-submit1','#section-requests-submit-warning1');
     acceptAnimaton('#confirmation-submitted-requests1','#section-requests-submit-warning1','#section-requests-confirmation-submitted1');
-
 
 
 

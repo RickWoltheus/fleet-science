@@ -27,7 +27,7 @@
           </div>
         </form>
         <h2 class="grey-text header-table-chatbox">Administrator messages</h2>
-        <table class="table-chatbox">
+        <table class="table-chatbox" id="messages-administrator">
             <tr>
               <th width="15%">From</th>
               <th width="70%">Description</th>
@@ -51,7 +51,7 @@
             </tr>
         </table>
         <h2 class="grey-text header-table-chatbox">Personal messages</h2>
-        <table class="table-chatbox">
+        <table class="table-chatbox" id="messages-personal">
             <tr>
               <th width="15%">From</th>
               <th width="70%">Description</th>
@@ -91,4 +91,54 @@
       </div>
     </div>
   </div>
+
+<script>
+
+function fillMessages(typeStr)
+{
+
+    var element = document.getElementById("messages-"+typeStr);
+    if (element) {
+        var text="";
+
+        text+="<tr>";
+        text+="  <th width='15%'>From</th>";
+        text+="  <th width='70%'>Description</th>";
+        text+="  <th width='15%'>Date</th>";
+        text+="</tr>";
+
+        var count=0;
+	var todayString=getTodayDateString();
+
+	var messages = getStorageObject()["messages"];
+	for (var key in messages) {
+	    if(!messages.hasOwnProperty(key)) {
+       		continue;
+	    }
+	    var row = messages[key];
+	    var field_from = row["from"];
+	    var field_to   = row["to"];
+	    var field_type = row["type"];
+	    var firstname_from=getStorageObject()["users"][field_from]["firstname"];
+	    var role_from=getStorageObject()["users"][field_from]["role"];
+
+	    if (loggedInUsername == field_to && field_type == typeStr) {
+        	text+="<tr class='"+((row["date"] == todayString)?"new-message-tr":"")+"'>";
+        	text+=" <td>"+firstname_from+"<img class='symbol-in-table' src='images/symbol-"+role_from+".png' /></td>";
+        	text+=" <td>"+row["description"]+"</td>";
+        	text+=" <td>"+row["date"]+"</td>";
+        	text+="</tr>";
+		count++;
+	    }
+        }
+        element.innerHTML = text;
+    }
+}
+
+fillMessages("administrator");
+fillMessages("personal");
+
+
+</script>
+
 </div>
