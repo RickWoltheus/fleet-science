@@ -335,7 +335,7 @@ h1 {
   padding: 0;
   margin-bottom: 20px;
   margin-left: -15px;
-  color: #88817D; }
+  color: #AFA7A3; }
 
 .h2-header {
   font-size: 25px;
@@ -345,7 +345,7 @@ h1 {
   padding: 0; }
 
 .h2-profile {
-  color: #88817D;
+  color: white;
   font-weight: 300; }
 
 p {
@@ -560,6 +560,13 @@ p {
 .input-group-btn .btn:focus {
   outline: 0 !important;
   border: 1px solid #42c0c4; }
+
+footer {
+  width: 100vw;
+  padding: 20px;
+  margin-top: 25px;
+  color: white;
+  background-color: #42c0c4; }
 
 .no-bullets {
   list-style-type: none; }
