@@ -66,13 +66,13 @@ switch (action) {
 
     case "my-requests-academic":
         view("menu/_menu-academic.html");
-        view("functional-pages/_my-request.html");
+        view("functional-pages/_my-requests-academic-localstorage.html");
         view("menu/_footer.html");
         break;
 
     case "all-requests-academic":
         view("menu/_menu-academic.html");
-        view("functional-pages/_all-requests-academic.html");
+        view("functional-pages/_all-requests-localstorage-academic.html");
         view("menu/_footer.html");
         break;
 

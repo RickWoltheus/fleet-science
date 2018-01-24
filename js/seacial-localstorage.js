@@ -17,6 +17,10 @@ function loggedIn() {
     return (loggedInUsername.length > 0);
 }
 
+function currentUsername() {
+    return loggedInUsername;
+}
+
 function loggedInRole() {
     if (loggedIn()) {
         return someLocalStorage["users"][loggedInUsername]["role"];
