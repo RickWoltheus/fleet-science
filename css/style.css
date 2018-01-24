@@ -121,10 +121,10 @@ a {
 .nav-item:hover a {
   color: black !important; }
 
-.nav-item:active {
-  background-color: white;
-  height: 100%; }
-.nav-item:active a {
+li.nav-item.active {
+  background-color: white !important;
+  height: 100% !important; }
+li.nav-item.active a {
   color: black !important; }
 
 .navbar {
