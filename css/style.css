@@ -9,7 +9,8 @@ body, html {
   overflow-x: hidden; }
 
 h1 {
-  font-family: "Architects Daughter", cursive; }
+  font-family: "Architects Daughter", cursive;
+  color: linear-gradient(to right, #FE947D, #FFBDAD) !important; }
 
 a {
   text-decoration: none; }
@@ -297,17 +298,20 @@ a {
   border-collapse: collapse;
   width: 100%;
   background-color: #F4F4F4;
-  border: 1px solid black; }
+  border: 1px solid #AFA7A3; }
+
+.thead {
+  border-top: 1px solid #AFA7A3; }
 
 .table-requests td, #table-requests th {
   padding: 8px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black; }
+  border-top: 1px solid #AFA7A3;
+  border-bottom: 1px solid #AFA7A3; }
 
 .table-requests tr:nth-child(even) {
   background-color: white;
   border: 1px solid black;
-  border-top: 1px solid black;
+  border-top: 1px solid #AFA7A3;
   border-bottom: 1px solid black; }
 
 .table-requests th {
@@ -317,8 +321,8 @@ a {
   text-align: left;
   background-color: #AFA7A3;
   color: white;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black; }
+  border-top: 1px solid #AFA7A3;
+  border-bottom: 1px solid #AFA7A3; }
 
 .filter-requests {
   background-color: #AFA7A3;
@@ -566,7 +570,42 @@ footer {
   padding: 20px;
   margin-top: 25px;
   color: white;
-  background-color: #42c0c4; }
+  background-color: #42c0c4;
+  position: absolute;
+  bottom: 0; }
+
+.container-edit-password {
+  width: 400px;
+  display: flex;
+  flex-direction: column; }
+
+.h2-change-password {
+  margin-bottom: 10px; }
+
+.text-form {
+  margin-top: 15px;
+  border: 1px solid #AFA7A3;
+  padding: 10px;
+  transition: .2s; }
+
+.text-form:focus {
+  outline: none;
+  border: 1px solid #42CDC4; }
+
+.text-form::placeholder {
+  color: #AFA7A3; }
+
+.button-save:hover {
+  color: white !important;
+  text-decoration: none !important; }
+
+.button-save:hover {
+  color: white;
+  text-decoration: none; }
+
+.footie-edit-password {
+  position: absolute;
+  bottom: 0; }
 
 .no-bullets {
   list-style-type: none; }
