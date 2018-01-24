@@ -16,17 +16,17 @@
 
         <div class="light-grey">
             <div class="grey title-holder">
-                <h3 class="special-font">Submit data</h3>
+                <h3 class="special-font">Send data request</h3>
             </div>
 
             <div class="row justify-content-center">
                 <div class="col-11">
 
-                  <!-- Data value -->
-                  <div class="form-group">
-                      Short description of research project (max 100 words)
-                      <input class="fleet-input" placeholder="Title of data" required>
-                  </div>
+                    <!-- Data value -->
+                    <div class="form-group">
+                        Short description of research project (max 100 words)
+                        <input class="fleet-input" placeholder="Title of data" required>
+                    </div>
 
                     <!-- Select request -->
                     <div class="form-group">
@@ -72,65 +72,67 @@
                     <!-- date of measurement -->
                     <div class="form-group row">
                         <div class="col-12">
-                                Date of first measurement*
+                            Date of first measurement*
                         </div>
 
                         <div class="col-4">
-                                <input type="number" class="fleet-input" min="0" max="100" />
+                            <input type="number" class="fleet-input" min="0" max="100" />
                         </div>
                         <div class="col-4 ">
-                                <input type="number" class="fleet-input" min="0" max="100" />
+                            <input type="number" class="fleet-input" min="0" max="100" />
                         </div>
                         <div class="col-4 ">
-                                <input type="number" class="fleet-input" min="0" max="100" />
+                            <input type="number" class="fleet-input" min="0" max="100" />
                         </div>
                     </div>
 
                     <!-- time of measurement -->
                     <div class="form-group row">
-                            <div class="col-12">
-                                    Date of last measurement*
-                            </div>
-
-                            <div class="col-4">
-                                    <input type="time" class="fleet-input" />
-                            </div>
-                            <div class="col-4 ">
-                                    <input type="number" class="fleet-input" name="points" min="0" max="100" />
-                            </div>
-                            <div class="col-4 ">
-                                    <input type="number" class="fleet-input" min="0" max="100" />
-                            </div>
+                        <div class="col-12">
+                            Date of last measurement*
                         </div>
 
-                        <div class="form-group">
-                            Frequency of measurement(s)*
-                            <select class="fleet-input">
-                                <option value="volvo">daily</option>
-                                <option value="saab">bi-daily</option>
-                                <option value="opel">weekly</option>
-                                <option value="audi">monthly</option>
-                            </select>
+                        <div class="col-4">
+                            <input type="time" class="fleet-input" />
                         </div>
+                        <div class="col-4 ">
+                            <input type="number" class="fleet-input" name="points" min="0" max="100" />
+                        </div>
+                        <div class="col-4 ">
+                            <input type="number" class="fleet-input" min="0" max="100" />
+                        </div>
+                    </div>
 
-                        <div class="form-group">
-                            Number of samples per measurement*
-                            <select class="fleet-input">
-                                <option value="volvo">XX</option>
-                            </select>
-                        </div>
+                    <div class="form-group">
+                        Frequency of measurement(s)*
+                        <select class="fleet-input">
+                            <option value="volvo">daily</option>
+                            <option value="saab">bi-daily</option>
+                            <option value="opel">weekly</option>
+                            <option value="audi">monthly</option>
+                        </select>
+                    </div>
 
-                        <div class="form-group">
-                            Additional information (optional)
-                            <input class="fleet-input" placeholder="" required>
-                        </div>
+                    <div class="form-group">
+                        Number of samples per measurement*
+                        <select class="fleet-input">
+                            <option value="volvo">XX</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        Additional information (optional)
+                        <input class="fleet-input" placeholder="" required>
+                    </div>
                     <!-- divider -->
                     <hr />
 
 
                     <div class="form-group text-center">
-                            <a href="" class="fleet-btn-round"><label>+</label></a>
-                        </div>
+                        <a href="" class="fleet-btn-round">
+                            <label>+</label>
+                        </a>
+                    </div>
 
                     <div class="form-group">
                         <input type="submit" value="submit" class="fleet-btn-full-width">
@@ -142,33 +144,6 @@
     </div>
     <!-- right -->
     <div class="col-3">
-        <!-- Accepted requests -->
-        <div class="light-grey medium text-center">
-            <div class="grey title-holder">
-                <h3 class="special-font">Accepted Request(s)</h3>
-            </div>
-            <br>
-            <p>
-                <span id="accepted-chip" class="notification-chip">1</span>
-                <span class="h4">Accepted request(s)</span>
-            </p>
-            <a class="fleet-btn" href="?/=all-requests">View</a>
-        </div>
-        <br>
-        <!-- All requests -->
-        <div class="light-grey medium text-center">
-            <div class="grey title-holder">
-                <h3 class="special-font">New requests</h3>
-            </div>
-            <br>
-            <p>
-                <span id="request-chip" class="notification-chip ">1</span>
-                <span class="h4">New data request(s)</span>
-            </p>
-            <a class="fleet-btn" href="?/=all-requests">View</a>
-
-        </div>
-        <br>
         <!-- chatbox -->
         <div class="light-grey medium text-center">
             <div class="grey title-holder">
@@ -177,10 +152,26 @@
             <br>
             <p>
                 <span id="newmsg-chip" class="notification-chip ">1</span>
-                <span class="h4">New message(s)</span>
+                <span class="h5">New message(s)</span>
             </p>
             <a class="fleet-btn" href="?/=chatbox">View</a>
         </div>
+        <br>
+        <!-- All requests -->
+        <div class="light-grey medium text-center">
+            <div class="grey title-holder">
+                <h3 class="special-font">My requests</h3>
+            </div>
+            <br>
+            <p>
+                <span id="request-chip" class="notification-chip ">1</span>
+                <span class="h5">Status update(s) of request(s)</span>
+            </p>
+            <a class="fleet-btn" href="?/=all-requests">View</a>
+
+        </div>
+        <br>
+
     </div>
 </div>
 <script>
