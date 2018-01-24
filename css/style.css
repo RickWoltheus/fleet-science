@@ -407,11 +407,8 @@ p {
   border: none; }
 
 .p-sitemap {
-  margin: 0;
-  padding: 0;
   margin-left: 40px;
-  margin-top: -20px;
-  margin-bottom: 20px; }
+  margin-top: 20px; }
 
 .a-sitemap {
   color: #707070; }
@@ -601,14 +598,19 @@ p {
 footer {
   width: 100vw;
   padding: 20px;
-  margin-top: 25px;
+  margin-top: 50px;
   color: white;
   background-color: #42c0c4; }
 
 .container-edit-password {
   width: 400px;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  margin-top: -20px; }
+
+.container-edit-password .div-buttons {
+  display: flex;
+  justify-content: center; }
 
 .h2-change-password {
   margin-bottom: 10px; }
@@ -626,13 +628,16 @@ footer {
 .text-form::placeholder {
   color: #AFA7A3; }
 
-.button-save:hover {
+.button-cancel {
+  background: #A9ABAC !important;
+  margin-right: 5px; }
+
+.button-save {
+  margin-left: 5px; }
+
+.button-save:hover, .button-cancel:hover {
   color: white !important;
   text-decoration: none !important; }
-
-.button-save:hover {
-  color: white;
-  text-decoration: none; }
 
 .footie-edit-password {
   position: absolute;
