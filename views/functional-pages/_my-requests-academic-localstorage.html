@@ -7,7 +7,7 @@
       <!-- SEARCH BAR -->
       <form action="/action_page.php" method="get">
         <div class="input-group">
-          <input class="form-control" id="system-search" onkeyup="searchRequest()" name="q" placeholder="Search for username or area..." required="" />
+          <input class="form-control" id="system-search" onkeyup="searchRequest()" name="q" placeholder="Search for username or area..."/>
           <span class="input-group-btn">
             <button type="submit" class="btn btn-default" data-original-title="" title="">
               <span class="octicon octicon-search white-text"></span>
@@ -23,7 +23,7 @@
   </div>
 </div>
 
-  
+
 <script>
 
   //WRITE TABLE
@@ -59,6 +59,7 @@
   text+="   <th>Status";
   text+="     <select id='selectStatus' class='filter-requests' onchange='selectStatus()'>";
   text+="       <option selected='selected'>All</option>";
+  text+="       <option value='approved'>Pending approval</option>";
   text+="       <option value='approved'>Approved</option>";
   text+="       <option value='accepted'>Accepted</option>";
   text+="       <option value='completed'>Completed</option>";
@@ -138,7 +139,7 @@
   text+="         <p class='p_requests-accept'>You can not change the values after submitting the data.</p>";
   text+="         <p class='p_requests-accept'>Are you sure that the submitted values are correct?</p>";
   text+="         <div class='row'>";
-  //change this 
+  //change this
   text+="           <div class='col-6'>";
   text+="             <button id='confirmation-rejected-requests"+count+"' type='button' class='btn btn-default button-accept-requests'>Yes</button>";
   text+="           </div>";

@@ -26,88 +26,101 @@
                                  <!-- Data value -->
                        <div class="form-group">
                             Short description of research project (max 250 tokens)*
-                            <input id="desc" class="fleet-input" placeholder="..."   maxlength="250">
+                            <input id="desc" class="fleet-input" placeholder="Short description"   maxlength="250">
                         </div>
- 
+
                           <!-- Select request -->
                           <div class="form-group">
                               Kind of data*
                               <select id="kind-of-data" class="fleet-input">
-                                  <option value="volvo">...</option>
-                                  <option value="saab">...</option>
-                                  <option value="opel">...</option>
-                                  <option value="audi">...</option>
+                                <option selected="selected">...</option>
+                                <option value="ph">pH</option>
+                                <option value="temperature">Temperature</option>
+                                <option value="samples">Samples</option>
+                                <option value="photo">Photo</option>
+                                <option value="video">Video</option>
+                                <option value="audio">Audio</option>
+                                <option value="so2">SO2</option>
+                                <option value="no2">NO2</option>
+                                <option value="pm10">PM10</option>
+                                <option value="pm2,5">PM2,5</option>
+                                <option value="co">CO</option>
+                                <option value="o3">O3</option>
+                                <option value="deg c">Deg c</option>
+                                <option value="salinity">Salinity psu</option>
+                                <option value="tds">TDS</option>
+                                <option value="co2">CO2 (aq)</option>
+                                <option value="so2">SO2 (aq)</option>
                               </select>
                           </div>
- 
-                          <!-- Data value -->
+
+                          <!-- Area -->
                           <div class="form-group">
                               Area*
-                              <input id="area" class="fleet-input" placeholder="..." >
+                              <input id="area" class="fleet-input" placeholder="Area" >
                           </div>
- 
- 
-                          <div class="form-group row">
-                                  <div class="col-12">
-                                  Radius of area (km)*
-                                  </div>
- 
-                                  <div class="col-4">
-                                          <input id="radius" type="number" class="fleet-input" min="1" max="50" />
-                                  </div>
-                              </select>
-                          </div>
- 
+
                           <!-- Latidude -->
                           <div class="form-group row">
                               <div class="col-3">Latitude*:</div>
                               <div class="col-9 ">
-                                  <input id="latitude" class="fleet-input" placeholder="..."  />
+                                  <input id="latitude" class="fleet-input" placeholder="52.370216"  />
                               </div>
                           </div>
- 
+
                           <!-- Longitude -->
                           <div class="form-group row">
                               <div class="col-3">Longitude*:</div>
                               <div class="col-9 ">
-                                  <input id="longitude" class="fleet-input" placeholder="..."  />
+                                  <input id="longitude" class="fleet-input" placeholder="4.895168"  />
                               </div>
                           </div>
- 
+
+                          <div class="form-group row">
+                                  <div class="col-12">
+                                  Radius of area (km)*
+                                  </div>
+
+                                  <div class="col-4">
+                                          <input id="radius" type="number" class="fleet-input" min="1" max="50" value="5" />
+                                  </div>
+                              </select>
+                          </div>
+
                           <!-- date of measurement -->
                           <div class="form-group row">
                               <div class="col-12">
                                       Date of <b>first</b> measurement (DD-MM-YYYY)*
                               </div>
- 
+
                               <div class="col-4">
-                                      <input id="first-day" type="number" class="fleet-input" min="1" max="31" />
+                                      <input id="first-day" type="number" class="fleet-input" min="1" max="31" value="1"/>
                               </div>
                               <div class="col-4 ">
-                                      <input id="first-month" type="number" class="fleet-input" min="1" max="12" />
+                                      <input id="first-month" type="number" class="fleet-input" min="1" max="12" value="1"/>
                               </div>
                               <div class="col-4 ">
-                                      <input id="first-year" type="number" class="fleet-input" min="2018" max="2100" />
+                                      <input id="first-year" type="number" class="fleet-input" min="2018" max="2100" value="2018"/>
                               </div>
                           </div>
- 
+
                           <!-- time of measurement -->
                           <div class="form-group row">
                                   <div class="col-12">
                                           Date of <b>last</b> measurement (DD-MM-YYYY)*
                                   </div>
- 
+
                                   <div class="col-4">
-                                          <input id="last-day" type="number" class="fleet-input" min="1" max="31" />
+                                          <input id="last-day" type="number" class="fleet-input" min="1" max="31" value="1" />
                                   </div>
                                   <div class="col-4 ">
-                                          <input id="last-month" type="number" class="fleet-input" min="1" max="12" />
+                                          <input id="last-month" type="number" class="fleet-input" min="1" max="12" value="1" />
                                   </div>
                                   <div class="col-4 ">
-                                          <input id="last-year" type="number" class="fleet-input" min="2018" max="2100" />
+                                          <input id="last-year" type="number" class="fleet-input" min="2018" max="2100" value="2018"/>
                                   </div>
                               </div>
- 
+
                               <div class="form-group">
                                   Frequency of measurement(s)*
                                   <select id="freq-of-measurements" class="fleet-input">
@@ -116,42 +129,37 @@
                                       <option value="monthly">monthly</option>
                                   </select>
                               </div>
- 
+
                               <div class="form-group row">
                                       <div class="col-12">
                                       Number of measurements per frequency*
                                       </div>
- 
+
                                       <div id="number-of-measurements" class="col-4">
-                                              <input type="number" class="fleet-input" min="1" max="50" />
+                                              <input type="number" class="fleet-input" min="1" max="50" value="1"/>
                                       </div>
                                   </select>
                               </div>
- 
+
                               <div class="form-group">
                                   Additional information (optional)
-                                  <input id="additional-info" class="fleet-input" placeholder="..." >
+                                  <input id="additional-info" class="fleet-input" placeholder="Additional information" >
                               </div>
                           <!-- divider -->
                           <hr />
- 
- 
-                          <div class="form-group text-center">
-                                  <a href="" class="fleet-btn-round"><label>+</label></a>
-                              </div>
- 
+
                           <div class="form-group">
-                              <input type="button" onclick="submitData()" value="submit" class="fleet-btn-full-width">
+                              <input type="button" onclick="submitData()" value="Submit" class="fleet-btn-full-width">
                           </div>
- 
+
                           <input type="hidden" name="page" value="dashboard-academic">
                                 </form>
-                      
-                        
+
+
                      </div>
 
                  </div>
-                 
+
              </div>
          </div>
 
@@ -167,7 +175,7 @@
                 <span id="newmsg-chip" class="notification-chip ">1</span>
                 <span class="h5">New message(s)</span>
             </p>
-            <button onclick="window.location.href='?/=all-requests'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
+            <button onclick="window.location.href='?/=chatbox-academic'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
         </div>
         <br>
         <!-- All requests -->
@@ -201,11 +209,11 @@
 
             var radius = document.getElementById("radius")
 
-            var dateFirstMeasurment=document.getElementById("first-day").value + "-" + 
+            var dateFirstMeasurment=document.getElementById("first-day").value + "-" +
                      document.getElementById("first-month").value + "-" +
                  document.getElementById("first-year").value;
 
-            var dateLastMeasurement=document.getElementById("last-day").value + "-" + 
+            var dateLastMeasurement=document.getElementById("last-day").value + "-" +
             document.getElementById("last-month").value + "-" +
         document.getElementById("last-year").value;
 
@@ -214,11 +222,11 @@
             var numberOfMeasurments=document.getElementById("number-of-measurements").value;
 
             var additionalInfo=document.getElementById("additional-info").value;
-        
+
         /*
             alert("data is to be submitted for request "+requestid+" value="+dataValue+" latitude,logitude="+latitude+","+longitude+" date="+date+" time"+dataTime);
         */
-        
+
             var data = {
               "description":description,
               "kind": kindOfData,
