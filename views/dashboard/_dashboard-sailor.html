@@ -12,7 +12,7 @@
         </h1>
     </div>
     <!-- left -->
-    <div id="user-form" class="col-5">
+    <div class="col-5">
 
         <div class="light-grey">
             <div class="grey title-holder">
@@ -113,10 +113,12 @@
                 <span class="h6">New personal message(s)</span>
             </p>
             <p>
-                    <span id="accepted-chip" class="notification-chip">1</span>
-                    <span class="h6">New admin messages(s)</span>
-                </p>
-            <button class="fleet-btn" href="?/=chatbox-sailor"><a href="?/=chatbox-sailor">View</a></button>
+                <span id="accepted-chip" class="notification-chip">1</span>
+                <span class="h6">New admin messages(s)</span>
+            </p>
+            <button class="fleet-btn" href="?/=chatbox-sailor">
+                <a href="?/=chatbox-sailor">View</a>
+            </button>
         </div>
         <br>
         <!-- Accepted requests -->
@@ -129,7 +131,9 @@
                 <span id="request-chip" class="notification-chip ">1</span>
                 <span class="h6">New data request(s)</span>
             </p>
-            <button class="fleet-btn" href="?/=all-requests"><a href="?/=all-requests">View</a></button>
+            <button class="fleet-btn" href="?/=all-requests">
+                <a href="?/=all-requests">View</a>
+            </button>
         </div>
         <br>
 
@@ -159,7 +163,7 @@
                 window.location.replace("?/=dashboard-academic");
             } else if (set_role == "sailor") {
 
-            }else {
+            } else {
                 alert("not logged in!" + set_role);
                 window.location.replace("?/=home");
             }
