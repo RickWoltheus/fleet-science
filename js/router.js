@@ -72,11 +72,13 @@ switch (action) {
     case "my-request-academic":
         view("menu/_menu-academic.html");
         view("functional-pages/_my-request.html");
+        view("menu/_footer.html");
         break;
 
     case "all-requests-academic":
         view("menu/_menu-academic.html");
         view("functional-pages/_all-requests-academic.html");
+        view("menu/_footer.html");
         break;
 
 
@@ -89,6 +91,7 @@ switch (action) {
     case "all-requests":
         view("menu/_menu-sailor.html");
         view("functional-pages/_all-requests-localstorage-example.html");
+        view("menu/_footer.html");
         break;
 
     case "profile":
