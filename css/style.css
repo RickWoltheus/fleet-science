@@ -4,9 +4,19 @@
     src: url('../fonts/ArchitectsDaughter.ttf') format('truetype');
 }
 */
+
 body, html {
   font-family: "Quattrocento", sans-serif;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer to bottom fix */
+
+#content {
+  flex-grow: 1;
+}
 
 h1 {
   font-family: "Architects Daughter", cursive;
@@ -409,8 +419,8 @@ p {
   padding: 35px 45px 35px 45px;
   height: 100%; }
 
-.img-profile {
-  width: 100%; }
+.profile-img {
+  cursor: pointer; }
 
 /* --- Modal --- */
 .close {
@@ -570,9 +580,7 @@ footer {
   padding: 20px;
   margin-top: 25px;
   color: white;
-  background-color: #42c0c4;
-  position: absolute;
-  bottom: 0; }
+  background-color: #42c0c4; }
 
 .container-edit-password {
   width: 400px;
