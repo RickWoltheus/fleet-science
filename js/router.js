@@ -148,4 +148,12 @@ switch (action) {
     default:
         view("error/_home.html");
         break;
+    case "database-logged-in-academic":
+        view("menu/_menu-academic.html");
+        view("static-pages/_database-logged-in.html");
+        break;
+    case "database-logged-in-sailor":
+        view("menu/_menu-sailor.html");
+        view("static-pages/_database-logged-in.html");
+        break;
 }
