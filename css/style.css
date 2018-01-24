@@ -112,7 +112,8 @@ a {
   width: 100%;
   margin-bottom: 10px; }
 .title-holder * {
-  line-height: 70px; }
+  line-height: 70px;
+  background-color: #AFA7A3; }
 
 .nav-item:hover {
   background-color: white;
@@ -120,13 +121,23 @@ a {
 .nav-item:hover a {
   color: black !important; }
 
+.nav-item:active {
+  background-color: white;
+  height: 100%; }
+.nav-item:active a {
+  color: black !important; }
+
+.navbar {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important; }
+
 .nav-item {
   text-align: center;
   width: 200px;
-  padding-top: 15px;
-  padding-bottom: 15px; }
+  padding-top: 25px;
+  padding-bottom: 25px; }
 .nav-item a {
-  font-size: 15px; }
+  font-size: 17px; }
 
 .menu-wrapper {
   width: 100%; }
@@ -144,9 +155,12 @@ a {
   height: 100%;
   padding: 15px; }
 .menu-profile .logout {
-  text-align: center;
-  height: 25px;
+  text-align: left;
+  font-family: "Architects Daughter", cursive;
+  padding: 10px;
   background-color: #42c0c4; }
+.menu-profile .logout a {
+  color: white; }
 
 /* chatbox */
 .wrapper-chatbox {
@@ -313,11 +327,12 @@ a {
 .table-requests td, #table-requests th {
   padding: 8px;
   border-top: 1px solid #AFA7A3;
-  border-bottom: 1px solid #AFA7A3; }
+  border-bottom: 1px solid #AFA7A3;
+  background-color: #F4F4F4; }
 
 .table-requests tr:nth-child(even) {
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid #AFA7A3;
   border-top: 1px solid #AFA7A3;
   border-bottom: 1px solid black; }
 
@@ -648,7 +663,12 @@ h1 {
   color: #ededed !important; }
 
 .grey-text *, .grey-text {
-  color: #a8a8a8 !important; }
+  color: #AFA7A3 !important; }
+
+.black-font {
+  color: black !important; }
+.black-font a {
+  color: white !important; }
 
 .medium {
   height: 200px !important; }
