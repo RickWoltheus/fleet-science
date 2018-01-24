@@ -21,6 +21,10 @@ h1{
     color: linear-gradient(to right, #FE947D, #FFBDAD)!important;
 }
 
+a {
+    text-decoration: none;
+}
+
 // components
 @import "components/_chip.scss";
 @import "components/_fleet-btn.scss";
