@@ -12,139 +12,142 @@
         </h1>
     </div>
 
-    <!-- left -->
-    <form name="newRequest" action="#" class="col-5" onsubmit"return validateNewRequest(document.forms.newRequest.desc.value, document.forms.newRequest.dataRequest.value, document.forms.newRequest.area.value, document.forms.newRequest.latitude.value, document.forms.newRequest.longitude.value)">
+      <!-- left -->
+         <div class="col-5">
+             <div class="light-grey">
+                 <div class="grey title-holder">
+                     <h3 class="special-font">Send data request</h3>
+                 </div>
 
-        <div class="light-grey">
-            <div class="grey title-holder">
-                <h3 class="special-font">Send data request</h3>
-            </div>
+                 <div class="row justify-content-center">
+                     <div class="col-11">
 
-            <div class="row justify-content-center">
-                <div class="col-11">
+                       <!-- Data value -->
+                       <div class="form-group">
+                           Short description of research project (max 250 tokens)*
+                           <input class="fleet-input" placeholder="..." required  maxlength="250">
+                       </div>
 
-                    <!-- Data value -->
-                    <div class="form-group">
-                        Short description of research project (max 100 words)
-                        <input name="desc" class="fleet-input" placeholder="Title of data" >
-                    </div>
+                         <!-- Select request -->
+                         <div class="form-group">
+                             Select data request*
+                             <select class="fleet-input">
+                                 <option value="volvo">...</option>
+                                 <option value="saab">...</option>
+                                 <option value="opel">...</option>
+                                 <option value="audi">...</option>
+                             </select>
+                         </div>
 
-                    <!-- Select request -->
-                    <div class="form-group">
-                        Select data request*
-                        <select name="dataRequest" class="fleet-input">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
-                        </select>
-                    </div>
+                         <!-- Data value -->
+                         <div class="form-group">
+                             Area*
+                             <input class="fleet-input" placeholder="..." required>
+                         </div>
 
-                    <!-- Area -->
-                    <div class="form-group">
-                        Area*
-                        <input name="area" class="fleet-input" placeholder="..." >
-                    </div>
 
-                    <!--Radius of area -->
-                    <div class="form-group row">
-                        <div class="col-12">
-                            Radius of area (km)*
-                        </div>
-                        <div class="col-4">
-                            <input type="number" class="fleet-input" min="1" max="50" />
-                        </div>
-                        </select>
-                    </div>
-                    <!-- Latidude -->
-                    <div class="form-group row">
-                        <div class="col-3">Latitude*:</div>
-                        <div class="col-9 ">
-                            <input name="latitude" class="fleet-input" placeholder="Title of data"  />
-                        </div>
-                    </div>
+                         <div class="form-group row">
+                                 <div class="col-12">
+                                 Radius of area (km)*
+                                 </div>
 
-                    <!-- Longitude -->
-                    <div class="form-group row">
-                        <div class="col-3">Longitude*:</div>
-                        <div class="col-9 ">
-                            <input name="longitude" class="fleet-input" placeholder="Title of data"  />
-                        </div>
-                    </div>
+                                 <div class="col-4">
+                                         <input type="number" class="fleet-input" min="1" max="50" />
+                                 </div>
+                             </select>
+                         </div>
 
-                    <!-- date of measurement -->
-                    <div class="form-group row">
-                        <div class="col-12">
-                            Date of first measurement*
-                        </div>
+                         <!-- Latidude -->
+                         <div class="form-group row">
+                             <div class="col-3">Latitude*:</div>
+                             <div class="col-9 ">
+                                 <input class="fleet-input" placeholder="..." required />
+                             </div>
+                         </div>
 
-                        <div class="col-4">
-                            <input type="number" class="fleet-input" min="0" max="100" />
-                        </div>
-                        <div class="col-4 ">
-                            <input type="number" class="fleet-input" min="0" max="100" />
-                        </div>
-                        <div class="col-4 ">
-                            <input type="number" class="fleet-input" min="0" max="100" />
-                        </div>
-                    </div>
+                         <!-- Longitude -->
+                         <div class="form-group row">
+                             <div class="col-3">Longitude*:</div>
+                             <div class="col-9 ">
+                                 <input class="fleet-input" placeholder="..." required />
+                             </div>
+                         </div>
 
-                    <!-- time of measurement -->
-                    <div class="form-group row">
-                        <div class="col-12">
-                            Date of last measurement*
-                        </div>
+                         <!-- date of measurement -->
+                         <div class="form-group row">
+                             <div class="col-12">
+                                     Date of <b>first</b> measurement (DD-MM-YYYY)*
+                             </div>
 
-                        <div class="col-4">
-                            <input type="time" class="fleet-input" />
-                        </div>
-                        <div class="col-4 ">
-                            <input type="number" class="fleet-input" name="points" min="0" max="100" />
-                        </div>
-                        <div class="col-4 ">
-                            <input type="number" class="fleet-input" min="0" max="100" />
-                        </div>
-                    </div>
+                             <div class="col-4">
+                                     <input type="number" class="fleet-input" min="1" max="31" />
+                             </div>
+                             <div class="col-4 ">
+                                     <input type="number" class="fleet-input" min="1" max="12" />
+                             </div>
+                             <div class="col-4 ">
+                                     <input type="number" class="fleet-input" min="2018" max="2100" />
+                             </div>
+                         </div>
 
-                    <div class="form-group">
-                        Frequency of measurement(s)*
-                        <select class="fleet-input">
-                            <option value="volvo">daily</option>
-                            <option value="saab">bi-daily</option>
-                            <option value="opel">weekly</option>
-                            <option value="audi">monthly</option>
-                        </select>
-                    </div>
+                         <!-- time of measurement -->
+                         <div class="form-group row">
+                                 <div class="col-12">
+                                         Date of <b>last</b> measurement (DD-MM-YYYY)*
+                                 </div>
 
-                    <div class="form-group">
-                        Number of samples per measurement*
-                        <select class="fleet-input">
-                            <option value="volvo">XX</option>
-                        </select>
-                    </div>
+                                 <div class="col-4">
+                                         <input type="number" class="fleet-input" min="1" max="31" />
+                                 </div>
+                                 <div class="col-4 ">
+                                         <input type="number" class="fleet-input" min="1" max="12" />
+                                 </div>
+                                 <div class="col-4 ">
+                                         <input type="number" class="fleet-input" min="2018" max="2100" />
+                                 </div>
+                             </div>
 
-                    <div class="form-group">
-                        Additional information (optional)
-                        <input class="fleet-input" placeholder="" >
-                    </div>
-                    <!-- divider -->
-                    <hr />
+                             <div class="form-group">
+                                 Frequency of measurement(s)*
+                                 <select class="fleet-input">
+                                     <option value="daily">daily</option>
+                                     <option value="weekly">weekly</option>
+                                     <option value="monthly">monthly</option>
+                                 </select>
+                             </div>
 
-                    <div class="form-group text-center">
-                        <a href="" class="fleet-btn-round">
-                            <label>+</label>
-                        </a>
-                    </div>
+                             <div class="form-group row">
+                                     <div class="col-12">
+                                     Number of measurements per frequency*
+                                     </div>
 
-                    <div class="form-group">
-                        <input type="submit" value="submit" class="fleet-btn-full-width">
-                    </div>
+                                     <div class="col-4">
+                                             <input type="number" class="fleet-input" min="1" max="50" />
+                                     </div>
+                                 </select>
+                             </div>
 
-                    <input type="hidden" name="page" value="dashboard-academic">
-                </div>
-            </div>
-        </div>
-    </form>
+                             <div class="form-group">
+                                 Additional information (optional)
+                                 <input class="fleet-input" placeholder="..." required>
+                             </div>
+                         <!-- divider -->
+                         <hr />
+
+
+                         <div class="form-group text-center">
+                                 <a href="" class="fleet-btn-round"><label>+</label></a>
+                             </div>
+
+                         <div class="form-group">
+                             <input type="submit" value="submit" class="fleet-btn-full-width">
+                         </div>
+                     </div>
+
+                 </div>
+             </div>
+         </div>
+    
     <!-- right -->
     <div class="col-3">
         <!-- chatbox -->
@@ -174,18 +177,6 @@
 
         </div>
         <br>
-        <!-- chatbox -->
-        <div class="light-grey medium text-center">
-            <div class="grey title-holder">
-                <h3 class="special-font">Chatbox</h3>
-            </div>
-            <br>
-            <p>
-                <span id="newmsg-chip" class="notification-chip ">1</span>
-                <span class="h4">New message(s)</span>
-            </p>
-            <button onclick="window.location.href='?/=chatbox-academic'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
-        </div>
     </div>
 </div>
 <script>
@@ -197,7 +188,7 @@
     setText("accepted-chip", 5);
     setText("request-chip", 3);
     setText("notification-chip", 1);
-    
+
     var prev_onload_dashboard = window.onload;
     window.onload = onload_dashboard();
 
@@ -211,8 +202,6 @@
             var set_email = loggedInEmail();
             var set_institute = loggedInInstitute();
             var set_boatname = loggedInBoatName();
-
-
 
             setText('loggedin-username', set_fullname);
             setText('loggedin-username-profile', set_fullname);
