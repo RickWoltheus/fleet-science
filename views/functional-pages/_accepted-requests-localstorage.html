@@ -1,7 +1,7 @@
 <div class="wrapper-requests">
   <div class="row">
     <div class="col-8 offset-2">
-      <h1 class="grey-text">All Requests</h1>
+      <h1 class="grey-text">Accepted Requests</h1>
       <br>
 
       <!-- SEARCH BAR -->
@@ -71,9 +71,13 @@
   var requests = getStorageObject()["requests"];
   for (var key in requests) {
   if(!requests.hasOwnProperty(key)) {
-   		continue;
+        continue;
   }
   var row = requests[key];
+
+  if(row["status"].toUpperCase() != "ACCEPTED"){
+    continue;
+  }
 
   text+=" <tr>";
   text+="   <td>"+row["username"]+"</td>";
@@ -104,10 +108,10 @@
   text+="         <div class='description-box-requests'>"+row["description"]+"</div>";
   text+="         <div class='row'>";
   text+="           <div class='col-6'>";
-  text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Accept</button>";
+  text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Submit Data</button>";
   text+="           </div>";
   text+="           <div class='col-6'>";
-  text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests'>Reject</button>";
+  text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests'>Withdraw</button>";
   text+="           </div>";
   text+="         </div>";
   text+="       </div>";
@@ -118,13 +122,10 @@
   text+="   <td colspan='5'>";
   text+="     <div class='row wrapper-info-requests'>";
   text+="       <div class='col-8 offset-2'>";
-  text+="         <p class='p_requests-accept'>Are you sure that you want to accept this request?</p>";
+  text+="         <p class='p_requests-accept'>DATA FORM PLACEHOLDER</p>";
   text+="         <div class='row'>";
   text+="           <div class='col-6'>";
-  text+="             <button id='confirmation-requests"+count+"' type='button' class='btn btn-default button-accept-requests'>Yes</button>";
-  text+="           </div>";
-  text+="           <div class='col-6'>";
-  text+="             <button type='button' onclick='myReload()' class='btn btn-default button-reject-requests'>No</button>";
+  text+="             <button id='confirmation-requests"+count+"' type='button' class='btn btn-default button-accept-requests'>Submit data</button>";
   text+="           </div>";
   text+="         </div>";
   text+="       </div>";
@@ -135,11 +136,18 @@
   text+="   <td colspan='5'>";
   text+="     <div class='row wrapper-info-requests'>";
   text+="       <div class='col-8 offset-2'>";
-  text+="         <p class='p_requests-accept'>Your request is succesfully accepted. You can find your accepted request under 'accepted requests'</p>";
+  text+="         <p class='p_requests-accept'>WARNING!</p>";
+  text+="         <p class='p_requests-accept'>You can not change the values after submitting the data.</p>";
+  text+="         <p class='p_requests-accept'>Are you sure that the submitted values are correct?</p>";
   text+="         <div class='row'>";
-  text+="           <div class='col-12'>";
-  text+="             <button onclick='myReload()' type='button' class='btn btn-default button-accept-requests'>OK</button>";
+  //change this 
+  text+="           <div class='col-6'>";
+  text+="             <button id='confirmation-rejected-requests"+count+"' type='button' class='btn btn-default button-accept-requests'>Yes</button>";
   text+="           </div>";
+  text+="           <div class='col-6'>";
+  text+="             <button type='button' onclick='myReload()' class='btn btn-default button-reject-requests'>No</button>";
+  text+="           </div>";
+  //
   text+="         </div>";
   text+="       </div>";
   text+="     </div>";
@@ -149,29 +157,11 @@
   text+="   <td colspan='5'>";
   text+="     <div class='row wrapper-info-requests'>";
   text+="       <div class='col-8 offset-2'>";
-  text+="         <p class='p_requests-warning'>WARNING</p>";
-  text+="         <p class='p_requests-accept'>Are you sure that you want to reject this request?</p>";
+  text+="         <p class='p_requests-accept'>Your data was succesfully sent to the academic.</p>";
+  text+="         <p class='p_requests-accept'>Thank you!</p>";
   text+="         <div class='row'>";
   text+="           <div class='col-6'>";
-  text+="             <button id='confirmation-rejected-requests"+count+"' type='button' class='btn btn-default button-accept-requests'>Yes</button>";
-  text+="           </div>";
-  text+="           <div class='col-6'>";
-  text+="             <button type='button' onclick='myReload()' class='btn btn-default button-reject-requests'>No</button>";
-  text+="           </div>";
-  text+="         </div>";
-  text+="       </div>";
-  text+="     </div>";
-  text+="   </td>";
-  text+=" </tr>";
-  text+=" <tr id='section-requests-confirmation-rejected"+count+"' style='display: none'>";
-  text+="   <td colspan='5'>";
-  text+="     <div class='row wrapper-info-requests'>";
-  text+="       <div class='col-8 offset-2'>";
-  text+="         <p class='p_requests-accept'>The request is succesfully rejected. If you did not want to reject the request, you can still accept the";
-  text+="           rejected request.</p>";
-  text+="         <div class='row'>";
-  text+="           <div class='col-12'>";
-  text+="             <button onclick='myReload()' type='button' class='btn btn-default button-accept-requests'>OK</button>";
+  text+="             <button type='button' onclick='myReload()' class='btn btn-default button-reject-requests'>Ok</button>";
   text+="           </div>";
   text+="         </div>";
   text+="       </div>";
@@ -195,7 +185,7 @@
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
-    for (i = 1; i < tr.length; i+=6) {
+    for (i = 1; i < tr.length; i+=5) {
       td = tr[i].getElementsByTagName("td")[0];   //username
       td1 = tr[i].getElementsByTagName("td")[1];   //area
       if (td) {
@@ -222,7 +212,7 @@
         }
       }
     } else {
-      for (i = 1; i < tr.length; i+=6) {
+      for (i = 1; i < tr.length; i+=5) {
         td = tr[i].getElementsByTagName("td")[2];   //type of measurament
         if (td) {
           if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
@@ -242,7 +232,7 @@
     tr = table.getElementsByTagName("tr");
 
     if (filter == "ALL") {
-      for (i = 1; i < tr.length; i+=6) {
+      for (i = 1; i < tr.length; i+=5) {
         td = tr[i].getElementsByTagName("td")[3];
         if (td) {
           tr[i].style.display = "";
@@ -250,7 +240,7 @@
       }
     }
     else {
-      for (i = 1; i < tr.length; i+=6) {
+      for (i = 1; i < tr.length; i+=5) {
         td = tr[i].getElementsByTagName("td")[3];   //username
         if (td) {
           if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
