@@ -1,0 +1,28 @@
+.password {
+    margin-bottom: -100px!important;
+}
+
+.button-login {
+    margin-top: -100px!important;
+    cursor: pointer;
+}
+
+.button-login:focus {
+    outline: none!important;
+}
+
+.a-forgotpassword {
+    text-align: left!important;
+    color: #A9ABAC;
+    font-style: italic;
+    margin-top: 10px!important;
+}
+
+.a-forgotpassword:hover {
+    color: grey;
+}
+
+.button-signup:hover {
+    text-decoration: none;
+    color: white;
+}
