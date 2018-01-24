@@ -6,7 +6,15 @@
 */
 body, html {
   font-family: "Quattrocento", sans-serif;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer to bottom fix */
+#content {
+  flex-grow: 1;
+}
 
 h1 {
   font-family: "Architects Daughter", cursive;
@@ -109,11 +117,8 @@ a {
   line-height: 70px; }
 
 .nav-item:hover {
-  background-color: #46cacf;
-  /* Temporary workaround, at least it looks better */
+  background-color: white;
   height: 100%; }
-.nav-item:hover a {
-  color: #a8a8a8; }
 
 .nav-item {
   text-align: center;

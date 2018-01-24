@@ -1,13 +1,10 @@
-.nav-item:hover{
-    background-color: #46cacf; /* Temporary workaround, at least it looks better */
-    height: 100%;
-    a{
-        color: $prim-grey;
-    }
+.nav-item:hover {
+  background-color: white;
+  height: 100%;
 }
 
-.nav-item{
-    a{
+.nav-item {
+    a {
         font-size: 15px;
     }
 
@@ -16,7 +13,6 @@
 }
 .menu-wrapper{
     width: 100%;
-
 }
 
 .menu-profile{
