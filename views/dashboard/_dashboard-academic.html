@@ -131,13 +131,38 @@
                             Additional information (optional)
                             <input class="fleet-input" placeholder="..." required>
                         </div>
+                    </div>
+
+                    <div class="form-group">
+                        Frequency of measurement(s)*
+                        <select class="fleet-input">
+                            <option value="volvo">daily</option>
+                            <option value="saab">bi-daily</option>
+                            <option value="opel">weekly</option>
+                            <option value="audi">monthly</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        Number of samples per measurement*
+                        <select class="fleet-input">
+                            <option value="volvo">XX</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        Additional information (optional)
+                        <input class="fleet-input" placeholder="" required>
+                    </div>
                     <!-- divider -->
                     <hr />
 
 
                     <div class="form-group text-center">
-                            <a href="" class="fleet-btn-round"><label>+</label></a>
-                        </div>
+                        <a href="" class="fleet-btn-round">
+                            <label>+</label>
+                        </a>
+                    </div>
 
                     <div class="form-group">
                         <input type="submit" value="submit" class="fleet-btn-full-width">
@@ -149,30 +174,30 @@
     </div>
     <!-- right -->
     <div class="col-3">
-        <!-- Accepted requests -->
+        <!-- chatbox -->
         <div class="light-grey medium text-center">
             <div class="grey title-holder">
-                <h3 class="special-font">Accepted Request(s)</h3>
+                <h3 class="special-font">Chatbox</h3>
             </div>
             <br>
             <p>
-                <span id="accepted-chip" class="notification-chip">1</span>
-                <span class="h4">Accepted request(s)</span>
+                <span id="newmsg-chip" class="notification-chip ">1</span>
+                <span class="h5">New message(s)</span>
             </p>
-            <a class="fleet-btn" href="?/=all-requests">View</a>
+            <button class="fleet-btn" href="?/=all-requests"><a href="?/=all-requests">View</a></button>
         </div>
         <br>
         <!-- All requests -->
         <div class="light-grey medium text-center">
             <div class="grey title-holder">
-                <h3 class="special-font">New requests</h3>
+                <h3 class="special-font">My requests</h3>
             </div>
             <br>
             <p>
                 <span id="request-chip" class="notification-chip ">1</span>
-                <span class="h4">New data request(s)</span>
+                <span class="h5">Status update(s) of request(s)</span>
             </p>
-            <a class="fleet-btn" href="?/=all-requests">View</a>
+            <button class="fleet-btn" href="?/=all-requests"><a href="?/=all-requests">View</a></button>
 
         </div>
         <br>
@@ -186,7 +211,7 @@
                 <span id="newmsg-chip" class="notification-chip ">1</span>
                 <span class="h4">New message(s)</span>
             </p>
-            <a class="fleet-btn" href="?/=chatbox-academic">View</a>
+            <button class="fleet-btn" href="?/=chatbox-academic"><a href="?/=all-requests"></a>View</button>
         </div>
     </div>
 </div>
