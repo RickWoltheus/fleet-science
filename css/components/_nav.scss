@@ -1,15 +1,19 @@
 .nav-item:hover {
   background-color: white;
   height: 100%;
+  a {
+      color: black!important;
+  }
 }
 
 .nav-item {
+    text-align: center;
+    width: 200px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     a {
         font-size: 15px;
     }
-
-    text-align: center;
-    width: 200px;
 }
 .menu-wrapper{
     width: 100%;

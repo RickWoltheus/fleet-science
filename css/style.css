@@ -8,13 +8,11 @@ body, html {
   font-family: "Quattrocento", sans-serif;
   overflow-x: hidden;
   display: flex;
-  flex-direction: column;
-}
+  flex-direction: column; }
 
 /* Footer to bottom fix */
 #content {
-  flex-grow: 1;
-}
+  flex-grow: 1; }
 
 h1 {
   font-family: "Architects Daughter", cursive;
@@ -119,10 +117,14 @@ a {
 .nav-item:hover {
   background-color: white;
   height: 100%; }
+.nav-item:hover a {
+  color: black !important; }
 
 .nav-item {
   text-align: center;
-  width: 200px; }
+  width: 200px;
+  padding-top: 15px;
+  padding-bottom: 15px; }
 .nav-item a {
   font-size: 15px; }
 
