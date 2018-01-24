@@ -378,6 +378,12 @@ h1 {
   border: 1px solid #F4C477;
   cursor: pointer; }
 
+/* -------------- Profile -------------- */
+
+.container-profile {
+  display: flex;
+  justify-content: center; }
+
 /* -------------- Column profile -------------- */
 .column-profile {
   border: 1px solid #AFA7A3;

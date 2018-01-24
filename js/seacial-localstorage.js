@@ -132,6 +132,9 @@ var someLocalStorage = {};
 var userinfoFields =    ["role", "firstname", "lastname", "institute",   "boatname", "email"];
 var messageinfoFields = ["type", "from",      "to",       "description", "date",     "previous"];
 var requestinfoFields = ["username", "area",  "reqtype",  "description", "status", "duration", "frequency", "deadline"];
+var acceptsinfoFields = ["accepts"];
+var datainfoFields = ["data"];
+
 
 
 function getTodayDateString() {
@@ -158,6 +161,9 @@ function createNewDatabase() {
     someLocalStorage["users"] = {};
     someLocalStorage["messages"] = {};
     someLocalStorage["requests"] = {};
+
+    someLocalStorage["accepts"] = {};
+    someLocalStorage["data"] = {};
 
     // Populate with some default data
     // For compatibility with the static version
@@ -195,12 +201,16 @@ function addUser(username, userinfo) {
     for (var i = 0; i < userinfoFields.length; i++) {
         someLocalStorage["users"][username][userinfoFields[i]] = userinfo[userinfoFields[i]];
     }
+    someLocalStorage["accepts"][username] = [];
+    
     putStorage();
     return true;
 }
 
 function removeUser(username) {
     delete someLocalStorage["users"][username];
+    delete someLocalStorage["accepts"][username];
+
     putStorage();
 }
 
@@ -213,6 +223,9 @@ function updateUser(username, newUserInfo) {
     putStorage();
 }
 
+function addAccept(requestid) {
+    someLocalStorage["accepts"][loggedInUsername].push(requestid);
+}
 
 
 function messageExists(messageid) {
@@ -270,12 +283,15 @@ function addRequest(requestid, requestinfo) {
     for (var i = 0; i < requestinfoFields.length; i++) {
         someLocalStorage["requests"][requestid][requestinfoFields[i]] = requestinfo[requestinfoFields[i]];
     }
+    someLocalStorage["data"][requestid] = [];
+
     putStorage();
     return true;
 }
 
 function removeRequest(requestid) {
     delete someLocalStorage["requests"][requestid];
+    delete someLocalStorage["data"][requestid];
     putStorage();
 }
 
@@ -288,10 +304,9 @@ function updateRequest(requestid, newRequestInfo) {
     putStorage();
 }
 
-
-
-
-
+function addData(requestid, data) {
+    someLocalStorage["data"][requestid].push(data);
+}
 
 
 
