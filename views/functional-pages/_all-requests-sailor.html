@@ -3,11 +3,11 @@
       <div class="col-8 offset-2">
         <h1 class="grey-text">All Requests</h1>
         <br>
-  
+
         <!-- SEARCH BAR -->
         <form action="/action_page.php" method="get">
           <div class="input-group">
-            <input class="form-control" id="system-search" onkeyup="searchRequest()" name="q" placeholder="Search for" required="">
+            <input class="form-control" id="system-search" onkeyup="searchRequest()" name="q" placeholder="Search for..." required="">
             <span class="input-group-btn">
               <button type="submit" class="btn btn-default" data-original-title="" title="">
                 <span class="octicon octicon-search white-text"></span>
@@ -15,7 +15,7 @@
             </span>
           </div>
         </form>
-  
+
         <br>
         <!-- REQUEST TABLE -->
         <table class="table-requests">
@@ -54,7 +54,7 @@
             </th>
             <th></th>
           </thead>
-  
+
           <tr>
             <td>Maya190</td>
             <td>North Pacific</td>
@@ -157,7 +157,7 @@
               </div>
             </td>
           </tr>
-  
+
           <tr>
             <td>Tom Johnson</td>
             <td>Indian</td>
@@ -266,7 +266,7 @@
               </div>
             </td>
           </tr>
-  
+
           <tr>
             <td>Rachel K</td>
             <td>Atlantic</td>
@@ -463,7 +463,7 @@
     </div>
   </div>
   <script>
-  
+
     //search bar - search by username or area of request
     function searchRequest() {
       // Declare variables
@@ -472,7 +472,7 @@
       filter = input.value.toUpperCase();
       table = document.getElementById("table");
       tr = table.getElementsByTagName("tr");
-  
+
       // Loop through all table rows, and hide those who don't match the search query
       for (i = 0; i < tr.length; i++) {
         td = tr[i].getElementsByTagName("td")[0];   //username
@@ -486,7 +486,7 @@
         }
       }
     }
-  
+
     //filter by type of measurement
     function selectType() {
       var x = document.getElementById("selectType").value;
@@ -520,7 +520,7 @@
       filter = x.toUpperCase();
       table = document.getElementById("table");
       tr = table.getElementsByTagName("tr");
-  
+
       if (filter == "ALL") {
         for (i = 0; i < tr.length; i++) {
           td = tr[i].getElementsByTagName("td")[3];
@@ -542,14 +542,14 @@
         }
       }
     }
-  
+
     //Reloads page
     function myReload() {
       location.reload();
     }
-  
+
     var image_tracker = 'down';
-  
+
     function chevronSwitch(id) {
       var image = document.getElementById(id);
       if (image_tracker == 'down') {
@@ -561,20 +561,20 @@
         image_tracker = 'down';
       }
     };
-  
-  
+
+
     $(".toggler").click(function (e) {
       e.preventDefault();
       $('.req' + $(this).attr('data-request')).toggle();
     });
-  
-  
+
+
     function acceptAnimation(div,hide,show){
       $(div).on('click', function () {
         $(hide).hide();
         $(show).show();
       });};
-  
+
       // // Accepting requests flow 1
       acceptAnimation('#accept-requests1','#section-requests-info1','#section-requests-are_you_sure1');
       acceptAnimation('#confirmation-requests1','#section-requests-are_you_sure1','#section-requests-confirmation1');
@@ -594,9 +594,9 @@
       acceptAnimation('#submit-requests1','#section-requests-info3','#section-requests-submit1');
       acceptAnimation('#submit-complete-requests1','#section-requests-submit1','#section-requests-submit-warning1');
       acceptAnimation('#confirmation-submitted-requests1','#section-requests-submit-warning1','#section-requests-confirmation-submitted1');
-  
-  
-  
-  
-  
+
+
+
+
+
   </script>

@@ -6,6 +6,11 @@
   height: 40px;
 }
 
+.input-group .form-control:focus {
+  box-shadow: none;
+  border: 1px solid #42CDC4;
+}
+
 .input-group-btn .btn {
   border-radius: 0px 20px 20px 0px;
   background: linear-gradient(to right, #FE947D, #FFBDAD);
@@ -14,8 +19,13 @@
   border: linear-gradient(to right, #FE947D, #FFBDAD);
   height: 40px;
   width: 75px;
+  margin-left: -1px;
 }
 
 .input-group-btn .btn:hover {
   opacity: 0.8;
+}
+
+.input-group-btn .btn:active{
+  background: linear-gradient(to right, #FE947D, #FFBDAD)!important;
 }
