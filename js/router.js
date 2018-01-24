@@ -36,7 +36,7 @@ switch (action) {
 
     case "accepted-requests-sailor":
         view("menu/_menu-sailor.html");
-        view("functional-pages/_accepted-requests-sailor.html");
+        view("functional-pages/_accepted-requests-localstorage.html");
         view("menu/_footer.html");
         break;
 
