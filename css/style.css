@@ -88,6 +88,10 @@ h1 {
   width: 100%;
   padding: 7px; }
 
+.fleet-input:focus {
+  outline: 0 !important;
+  border: 1px solid #42c0c4; }
+
 .title-holder {
   vertical-align: middle;
   line-height: 70px;
@@ -554,7 +558,8 @@ p {
   opacity: 0.8; }
 
 .input-group-btn .btn:focus {
-  outline: 0 !important; }
+  outline: 0 !important;
+  border: 1px solid #42c0c4; }
 
 .no-bullets {
   list-style-type: none; }
