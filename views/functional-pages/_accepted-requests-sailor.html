@@ -484,7 +484,6 @@
         filter = input.value.toUpperCase();
         table = document.getElementById("table");
         tr = table.getElementsByTagName("tr");
-
         // Loop through all table rows, and hide those who don't match the search query
         for (i = 0; i < tr.length; i++) {
             td = tr[i].getElementsByTagName("td")[0]; //username
@@ -499,7 +498,6 @@
             }
         }
     }
-
     //filter by type of measurement
     function selectType() {
         var x = document.getElementById("selectType").value;
@@ -532,7 +530,6 @@
         filter = x.toUpperCase();
         table = document.getElementById("table");
         tr = table.getElementsByTagName("tr");
-
         if (filter == "ALL") {
             for (i = 0; i < tr.length; i++) {
                 td = tr[i].getElementsByTagName("td")[3];
@@ -553,14 +550,11 @@
             }
         }
     }
-
     //Reloads page
     function myReload() {
         location.reload();
     }
-
     var image_tracker = 'down';
-
     function chevronSwitch(id) {
         var image = document.getElementById(id);
         if (image_tracker == 'down') {
@@ -571,19 +565,15 @@
             image_tracker = 'down';
         }
     };
-
-
     $(".toggler").click(function (e) {
         e.preventDefault();
         $('.req' + $(this).attr('data-request')).toggle();
     });
-
     // Accepting requests flow 1
     $('#accept-requests1').on('click', function () {
         $('#section-requests-info1').hide()
         $('#section-requests-are_you_sure1').show();
     });
-
     $('#confirmation-requests1').on('click', function () {
         $('#section-requests-are_you_sure1').hide()
         $('#section-requests-confirmation1').show();
@@ -593,7 +583,6 @@
         $('#section-requests-info2').hide()
         $('#section-requests-are_you_sure2').show();
     });
-
     $('#confirmation-requests2').on('click', function () {
         $('#section-requests-are_you_sure2').hide()
         $('#section-requests-confirmation2').show();
@@ -603,45 +592,37 @@
         $('#section-requests-info3').hide()
         $('#section-requests-are_you_sure3').show();
     });
-
     $('#confirmation-requests3').on('click', function () {
         $('#section-requests-are_you_sure3').hide()
         $('#section-requests-confirmation3').show();
     });
-
     // Delete requests
     $('#delete-requests1').on('click', function () {
         $('#section-requests-info2').hide()
         $('#section-requests-delete-warning1').show();
     });
-
     $('#confirmation-deleted-requests1').on('click', function () {
         $('#section-requests-delete-warning1').hide()
         $('#section-requests-confirmation-deleted1').show();
     });
-
     // Reject requests
     $('#reject-requests1').on('click', function () {
         $('#section-requests-info1').hide()
         $('#section-requests-reject-warning1').show();
     });
-
     $('#confirmation-rejected-requests1').on('click', function () {
         $('#section-requests-reject-warning1').hide()
         $('#section-requests-confirmation-rejected1').show();
     });
-
     // Submitting accepted requests
     $('#submit-requests1').on('click', function () {
         $('#section-requests-info3').hide()
         $('#section-requests-submit1').show();
     });
-
     $('#submit-complete-requests1').on('click', function () {
         $('#section-requests-submit1').hide()
         $('#section-requests-submit-warning1').show();
     });
-
     $('#confirmation-submitted-requests1').on('click', function () {
         $('#section-requests-submit-warning1').hide()
         $('#section-requests-confirmation-submitted1').show();
