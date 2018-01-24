@@ -4,12 +4,26 @@
     src: url('../fonts/ArchitectsDaughter.ttf') format('truetype');
 }
 */
+
 body, html {
   font-family: "Quattrocento", sans-serif;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Footer to bottom fix */
+
+#content {
+  flex-grow: 1;
+}
 
 h1 {
-  font-family: "Architects Daughter", cursive; }
+  font-family: "Architects Daughter", cursive;
+  color: linear-gradient(to right, #FE947D, #FFBDAD) !important; }
+
+a {
+  text-decoration: none; }
 
 .notification-chip {
   display: inline-block;
@@ -86,7 +100,8 @@ h1 {
 
 .fleet-input {
   width: 100%;
-  padding: 7px; }
+  padding: 7px;
+  border: 1px solid #AFA7A3; }
 
 .fleet-input:focus {
   outline: 0 !important;
@@ -293,17 +308,20 @@ h1 {
   border-collapse: collapse;
   width: 100%;
   background-color: #F4F4F4;
-  border: 1px solid black; }
+  border: 1px solid #AFA7A3; }
+
+.thead {
+  border-top: 1px solid #AFA7A3; }
 
 .table-requests td, #table-requests th {
   padding: 8px;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black; }
+  border-top: 1px solid #AFA7A3;
+  border-bottom: 1px solid #AFA7A3; }
 
 .table-requests tr:nth-child(even) {
   background-color: white;
   border: 1px solid black;
-  border-top: 1px solid black;
+  border-top: 1px solid #AFA7A3;
   border-bottom: 1px solid black; }
 
 .table-requests th {
@@ -313,8 +331,8 @@ h1 {
   text-align: left;
   background-color: #AFA7A3;
   color: white;
-  border-top: 1px solid black;
-  border-bottom: 1px solid black; }
+  border-top: 1px solid #AFA7A3;
+  border-bottom: 1px solid #AFA7A3; }
 
 .filter-requests {
   background-color: #AFA7A3;
@@ -401,8 +419,8 @@ p {
   padding: 35px 45px 35px 45px;
   height: 100%; }
 
-.img-profile {
-  width: 100%; }
+.profile-img {
+  cursor: pointer; }
 
 /* --- Modal --- */
 .close {
@@ -562,9 +580,7 @@ footer {
   padding: 20px;
   margin-top: 25px;
   color: white;
-  background-color: #42c0c4;
-  position: absolute;
-  bottom: 0; }
+  background-color: #42c0c4; }
 
 .container-edit-password {
   width: 400px;
