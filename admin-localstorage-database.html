@@ -92,9 +92,45 @@ function onload_admin()
     repopulateUsers();
     repopulateMessages();
     repopulateRequests();
+    repopulateAccepts();
+    repopulateData();
 }
 
 
+function repopulateAccepts() {
+    repopulateVariable("accepts", "list-requests-accepted", "ACCEPTED", acceptsinfoFields);
+
+
+}
+
+function repopulateData() {
+    repopulateVariable("data", "list-data-posted", "DATA", datainfoFields);
+}
+
+function repopulateVariable(tableid, elementid, section, infofields) {
+    var table = getStorageObject()[tableid];
+    var tableElement = document.getElementById(elementid);
+    if (tableElement) {
+        var text = "";
+        text += MaTableBegin();
+        text += MaSectionBegin(section, "section-"+tableid, infofields);
+
+
+	for (var key in table) {
+	    // skip loop if the property is from prototype
+	    if(!table.hasOwnProperty(key)) {
+        	continue;
+	    }
+            text += MaAdd(key, table[key], ""+tableid+"_Operation_");
+	}
+
+
+
+        text += MaSectionEnd();
+        text += MaTableEnd();
+	tableElement.innerHTML = text; 
+    }
+}
 
 
 
@@ -468,6 +504,16 @@ function addNewRequest() {
     repopulateRequests();
 }
 
+function addNewAccept() {
+//@@@
+}
+
+function addNewData() {
+//@@@
+}
+
+
+
 
 
 function doResetDatabase() {
@@ -488,7 +534,6 @@ function doResetDatabase() {
 <h1>Accounts</h1>
 <a href='javascript:addNewUser()'>Add new user</a><br>
 <div id='list-users'></div>
-
 <p>
 
 <h1>Messages</h1>
@@ -500,9 +545,17 @@ function doResetDatabase() {
 <h1>Requests</h1>
 <a href='javascript:addNewRequest()'>Add new request</a><br>
 <div id='list-requests'></div>
+<p>
+
+<h1>Requests: accepted by</h1>
+<a href='javascript:addNewAccept()'>Add new accept</a><br>
+<div id='list-requests-accepted'></div>
+
+<h1>Data: posted for request</h1>
+<a href='javascript:addNewData()'>Add new data</a><br>
+<div id='list-data-posted'></div>
+
 <p style="height:1in;">
-
-
 
     </body>
 </html>
