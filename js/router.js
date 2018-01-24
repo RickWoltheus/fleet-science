@@ -38,20 +38,44 @@ switch (action) {
         view("functional-pages/_all-requests-localstorage-example.html");
         break;
 
+    case "all-requests-sailor":
+        view("menu/_menu-sailor.html");
+        view("functional-pages/_all-requests-sailor.html");
+        break;
+
+    case "chatbox-sailor":
+        view("menu/_menu-sailor.html");
+        view("functional-pages/_chatbox.html");
+        break;
+
     // Academic
     case "dashboard-academic":
         view("menu/_menu-academic.html");
         view("dashboard/_dashboard-academic.html");
         break;
 
-    case "chatbox":
-        view("menu/_menu-sailor.html");
+    case "chatbox-academic":
+        view("menu/_menu-academic.html");
         view("functional-pages/_chatbox.html");
         break;
 
+    // case "chatbox":
+    //     view("menu/_menu-academic.html");
+    //     view("functional-pages/_chatbox.html");
+    //     break;
+
     case "my-request-academic":
-        view();
+        view("menu/_menu-academic.html");
+        view("functional-pages/_my-request.html");
         break;
+
+    case "all-requests-academic":
+        view("menu/_menu-academic.html");
+        view("functional-pages/_all-requests-academic.html");
+        break;
+
+
+
 
 
 
