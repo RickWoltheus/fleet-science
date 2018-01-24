@@ -4,19 +4,9 @@
     src: url('../fonts/ArchitectsDaughter.ttf') format('truetype');
 }
 */
-
 body, html {
   font-family: "Quattrocento", sans-serif;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Footer to bottom fix */
-
-#content {
-  flex-grow: 1;
-}
+  overflow-x: hidden; }
 
 h1 {
   font-family: "Architects Daughter", cursive;
