@@ -91,20 +91,188 @@ function signupLS(role, firstname, lastname, username, boatname, email) {
 }
 
 
-/****************************************************
- *
- * End of driver
- *
- ****************************************************/
 
 
 
-/*
- * If corruption ever occurred, this function should reset the database.
- */
-function resetDatabase() {
-    //    alert('Resetting Database');
-    createNewDatabase();
+
+
+function writeRequestsTable()
+{
+    var acceptedOnly = false;
+    var element = document.getElementById("requests-all");
+    if (element == null) {
+	 element = document.getElementById("requests-accepted");
+	 if (element) {
+             acceptedOnly = true;
+	 }
+    }  
+
+    if (element) {
+	var text="";
+
+	text+=" <thead>";
+	text+="   <th>Username</th>";
+	text+="   <th>Requested area</th>";
+	text+="   <th>Type of request";
+	text+="     <select id='selectType' class='filter-requests' onchange='selectType()'>";
+	text+="       <option selected='selected'>All</option>";
+	text+="       <option value='ph'>pH</option>";
+	text+="       <option value='temperature'>Temperature</option>";
+	text+="       <option value='samples'>Samples</option>";
+	text+="       <option value='photo'>Photo</option>";
+	text+="       <option value='video'>Video</option>";
+	text+="       <option value='audio'>Audio</option>";
+	text+="       <option value='so2'>SO2</option>";
+	text+="       <option value='no2'>NO2</option>";
+	text+="       <option value='pm10'>PM10</option>";
+	text+="       <option value='pm2,5'>PM2,5</option>";
+	text+="       <option value='co'>CO</option>";
+	text+="       <option value='o3'>O3</option>";
+	text+="       <option value='deg c'>Deg c</option>";
+	text+="       <option value='salinity'>Salinity psu</option>";
+	text+="       <option value='tds'>TDS</option>";
+	text+="       <option value='co2'>CO2 (aq)</option>";
+	text+="       <option value='so2'>SO2 (aq)</option>";
+	text+="     </select>";
+	text+="   </th>";
+	text+="   <th>Status";
+	text+="     <select id='selectStatus' class='filter-requests' onchange='selectStatus()'>";
+	text+="       <option selected='selected'>All</option>";
+	text+="       <option value='approved'>Approved</option>";
+	text+="       <option value='accepted'>Accepted</option>";
+	text+="       <option value='completed'>Completed</option>";
+	text+="     </select>";
+	text+="   </th>";
+	text+="   <th></th>";
+	text+=" </thead>";
+	var count=1;
+
+        var accepts = getStorageObject()["accepts"][loggedInUsername];
+
+
+	var requests = getStorageObject()["requests"];
+	for (var key in requests) {
+	    if(!requests.hasOwnProperty(key)) {
+   			  continue;
+	    }
+	    var row = requests[key];
+
+            var requestStatus = "accepted";
+
+            if (accepts.indexOf(key) < 0) {
+                if (acceptedOnly) {
+		    continue;
+		}
+		requestStatus = "new";
+	    }
+
+	    text+=" <tr>";
+	    text+="   <td>"+row["username"]+"</td>";
+	    text+="   <td>"+row["area"]+"</td>";
+	    text+="   <td>"+row["reqtype"]+"</td>";
+	    text+="   <td>"+requestStatus+"</td>";
+	    text+="   <td>";
+	    text+="     <a href='#' class='toggler' data-request='"+count+"' onclick=\"chevronSwitch('chevron-switch"+count+"');\">";
+	    text+="       <i>";
+	    text+="         <img id='chevron-switch"+count+"' class='chevron-img' src='images/chevron-down.png' alt='chevron down' />";
+	    text+="       </i>";
+	    text+="     </a>";
+	    text+="   </td>";
+	    text+=" </tr>";
+	    text+=" <tr id='section-requests-info"+count+"' class='req"+count+"' style='display: none'>";
+	    text+="   <td colspan='5'>";
+	    text+="     <div class='row wrapper-info-requests'>";
+	    text+="       <div class='col-3'>";
+	    text+="         <p class='p_requests'>Duration</p>";
+	    text+="         <p>"+row["duration"]+"</p>";
+	    text+="         <p class='p_requests'>Frequency</p>";
+	    text+="         <p>"+row["frequency"]+"</p>";
+	    text+="         <p class='p_requests'>Deadline</p>";
+	    text+="         <p>"+row["deadline"]+"</p>";
+	    text+="       </div>";
+	    text+="       <div class='col-9'>";
+	    text+="         <p class='p_requests'>Description</p>";
+	    text+="         <div class='description-box-requests'>"+row["description"]+"</div>";
+	    text+="         <div class='row'>";
+	    text+="           <div class='col-6'>";
+	    text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Accept</button>";
+	    text+="           </div>";
+	    text+="           <div class='col-6'>";
+	    text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests'>Reject</button>";
+	    text+="           </div>";
+	    text+="         </div>";
+	    text+="       </div>";
+	    text+="     </div>";
+	    text+="   </td>";
+	    text+=" </tr>";
+	    text+=" <tr id='section-requests-are_you_sure"+count+"' style='display: none'>";
+	    text+="   <td colspan='5'>";
+	    text+="     <div class='row wrapper-info-requests'>";
+	    text+="       <div class='col-8 offset-2'>";
+	    text+="         <p class='p_requests-accept'>Are you sure that you want to accept this request?</p>";
+	    text+="         <div class='row'>";
+	    text+="           <div class='col-6'>";
+	    text+="             <button id='confirmation-requests"+count+"' type='button' class='btn btn-default button-accept-requests'>Yes</button>";
+	    text+="           </div>";
+	    text+="           <div class='col-6'>";
+	    text+="             <button type='button' onclick='myReload()' class='btn btn-default button-reject-requests'>No</button>";
+	    text+="           </div>";
+	    text+="         </div>";
+	    text+="       </div>";
+	    text+="     </div>";
+	    text+="   </td>";
+	    text+=" </tr>";
+	    text+=" <tr id='section-requests-confirmation"+count+"' style='display: none'>";
+	    text+="   <td colspan='5'>";
+	    text+="     <div class='row wrapper-info-requests'>";
+	    text+="       <div class='col-8 offset-2'>";
+	    text+="         <p class='p_requests-accept'>Your request is succesfully accepted. You can find your accepted request under 'accepted requests'</p>";
+	    text+="         <div class='row'>";
+	    text+="           <div class='col-12'>";
+	    text+="             <button onclick='myReload()' type='button' class='btn btn-default button-accept-requests'>OK</button>";
+	    text+="           </div>";
+	    text+="         </div>";
+	    text+="       </div>";
+	    text+="     </div>";
+	    text+="   </td>";
+	    text+=" </tr>";
+	    text+=" <tr id='section-requests-reject-warning"+count+"' style='display: none'>";
+	    text+="   <td colspan='5'>";
+	    text+="     <div class='row wrapper-info-requests'>";
+	    text+="       <div class='col-8 offset-2'>";
+	    text+="         <p class='p_requests-warning'>WARNING</p>";
+	    text+="         <p class='p_requests-accept'>Are you sure that you want to reject this request?</p>";
+	    text+="         <div class='row'>";
+	    text+="           <div class='col-6'>";
+	    text+="             <button id='confirmation-rejected-requests"+count+"' type='button' class='btn btn-default button-accept-requests'>Yes</button>";
+	    text+="           </div>";
+	    text+="           <div class='col-6'>";
+	    text+="             <button type='button' onclick='myReload()' class='btn btn-default button-reject-requests'>No</button>";
+	    text+="           </div>";
+	    text+="         </div>";
+	    text+="       </div>";
+	    text+="     </div>";
+	    text+="   </td>";
+	    text+=" </tr>";
+	    text+=" <tr id='section-requests-confirmation-rejected"+count+"' style='display: none'>";
+	    text+="   <td colspan='5'>";
+	    text+="     <div class='row wrapper-info-requests'>";
+	    text+="       <div class='col-8 offset-2'>";
+	    text+="         <p class='p_requests-accept'>The request is succesfully rejected. If you did not want to reject the request, you can still accept the";
+	    text+="           rejected request.</p>";
+	    text+="         <div class='row'>";
+	    text+="           <div class='col-12'>";
+	    text+="             <button onclick='myReload()' type='button' class='btn btn-default button-accept-requests'>OK</button>";
+	    text+="           </div>";
+	    text+="         </div>";
+	    text+="       </div>";
+	    text+="     </div>";
+	    text+="   </td>";
+	    text+=" </tr>";
+            count++;
+        }
+        element.innerHTML = text;
+    }
 }
 
 
@@ -121,6 +289,32 @@ function resetDatabase() {
 
 
 
+
+
+/****************************************************
+ *
+ * End of driver
+ *
+ ****************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * If corruption ever occurred, this function should reset the database.
+ */
+function resetDatabase() {
+    //    alert('Resetting Database');
+    createNewDatabase();
+}
 
 /*
  * Simulating a database by storing data into localstorage.

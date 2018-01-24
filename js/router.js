@@ -30,13 +30,13 @@ switch (action) {
     case "all-requests-sailor":
         view("menu/_menu-sailor.html");
         //@@@ should eventually be _all-requests-sailor.html
-        view("functional-pages/_all-requests-localstorage-example.html");
+        view("functional-pages/_all-requests-sailor-localstorage-example.html");
         view("menu/_footer.html");
         break;
 
     case "accepted-requests-sailor":
         view("menu/_menu-sailor.html");
-        view("functional-pages/_accepted-requests-sailor.html");
+        view("functional-pages/_accepted-requests-sailor-localstorage-example.html");
         view("menu/_footer.html");
         break;
 
