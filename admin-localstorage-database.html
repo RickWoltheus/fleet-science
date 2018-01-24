@@ -456,8 +456,14 @@ function addNewRequest() {
     addRequest(getNewUniqueId("request"), {
         "username":getRandomUser(), 
 	"area":selectAdRandomFrom(sampleAreas),
+        "description":"Just take as many samples as you can!",
 	"reqtype":selectAdRandomFrom(sampleRequestTypes),  
-	"status":selectAdRandomFrom(sampleStatuses)
+	"status":selectAdRandomFrom(sampleStatuses),
+        "duration":"6 months", 
+	"frequency":"2 measures per day",
+	"deadline":"21-07-2019"
+
+
     });
     repopulateRequests();
 }
@@ -494,7 +500,7 @@ function doResetDatabase() {
 <h1>Requests</h1>
 <a href='javascript:addNewRequest()'>Add new request</a><br>
 <div id='list-requests'></div>
-<p>
+<p style="height:1in;">
 
 
 
