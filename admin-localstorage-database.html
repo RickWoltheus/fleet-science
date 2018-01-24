@@ -590,9 +590,18 @@ function addNewRequest() {
 function addNewAccept() {
     var realLoggedInUser=loggedInUsername;
     loggedInUsername = getRandomUser();
-    var req = getRandomRequest();
-    if (req) {
-        addAccept(req);
+
+    var loop;
+    for (loop=0;loop<5;loop++) {
+	var req = getRandomRequest();
+	if (req) {
+            if (addAccept(req)) {
+	        break;
+	    }
+	}
+	else {
+	    break;
+	}
     }
     loggedInUsername=realLoggedInUser;
     repopulateAccepts();

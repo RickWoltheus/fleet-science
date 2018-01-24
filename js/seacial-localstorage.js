@@ -92,7 +92,28 @@ function signupLS(role, firstname, lastname, username, boatname, email) {
 
 
 
+function writeAcceptedDataRequestOptions()
+{
+    var element = document.getElementById("request-options");
+    if (element) {
+	var text="";
 
+        var accepts = getStorageObject()["accepts"][loggedInUsername];
+        if (accepts.length == 0) {
+	    text = "You have not accepted any data request yet. Please go to the <a href='?/=all-requests-sailor'>All Requests</a> page to accept requests.";
+	}
+	else {
+            text+="<select class='fleet-input'>";
+            var i;
+	    for (i=0;i<accepts.length;i++) {
+                var req=getStorageObject()["requests"][accepts[i]];
+                text+="    <option value='"+accepts[i]+"'>"+req["username"]+" - "+req["area"]+" - "+req["reqtype"]+"</option>";
+	    }
+            text+="</select>";
+	}
+        element.innerHTML = text;
+    }
+}
 
 
 
@@ -418,8 +439,12 @@ function updateUser(username, newUserInfo) {
 }
 
 function addAccept(requestid) {
+    if (someLocalStorage["accepts"][loggedInUsername].indexOf(requestid)>=0) {
+        return false;
+    }
     someLocalStorage["accepts"][loggedInUsername].push(requestid);
     putStorage();
+    return true;
 }
 
 
