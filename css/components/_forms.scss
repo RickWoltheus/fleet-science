@@ -1,7 +1,11 @@
 .fleet-input{
     width:100%;
     padding: 7px;
+}
 
+.fleet-input:focus {
+  outline: 0!important;
+  border: 1px solid $prim-blue;
 }
 
 .title-holder{
@@ -14,6 +18,6 @@
     width: 100%;
     margin-bottom: 10px;
     *{
-        line-height: 70px; 
+        line-height: 70px;
     }
 }

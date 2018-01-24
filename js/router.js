@@ -105,6 +105,12 @@ switch (action) {
         view("menu/_footer.html");
         break;
 
+    case "editpassword":
+        view("menu/_menu-sailor.html");
+        view("static-pages/_edit-password.html");
+        view("menu/_footer.html");
+        break;
+
     case "home":
         view("menu/_menu.html");
         view("static-pages/_home.html");
