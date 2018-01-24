@@ -225,6 +225,7 @@ function updateUser(username, newUserInfo) {
 
 function addAccept(requestid) {
     someLocalStorage["accepts"][loggedInUsername].push(requestid);
+    putStorage();
 }
 
 
@@ -306,6 +307,7 @@ function updateRequest(requestid, newRequestInfo) {
 
 function addData(requestid, data) {
     someLocalStorage["data"][requestid].push(data);
+    putStorage();
 }
 
 
