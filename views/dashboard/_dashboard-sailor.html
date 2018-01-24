@@ -12,7 +12,7 @@
         </h1>
     </div>
     <!-- left -->
-    <div class="col-5">
+    <div id="user-form" class="col-5">
 
         <div class="light-grey">
             <div class="grey title-holder">
@@ -25,12 +25,14 @@
                     <!-- Select request -->
                     <div class="form-group">
                         Select data request*
-                        <select class="fleet-input">
-                            <option value="volvo">...</option>
-                            <option value="saab">...</option>
-                            <option value="opel">...</option>
-                            <option value="audi">...</option>
-                        </select>
+			<div id="request-options">
+                            <select class="fleet-input">
+                                <option value="volvo">...</option>
+                        	<option value="saab">...</option>
+                        	<option value="opel">...</option>
+                        	<option value="audi">...</option>
+                            </select>
+			</div>
                     </div>
 
                     <!-- Data value -->
@@ -113,12 +115,10 @@
                 <span class="h6">New personal message(s)</span>
             </p>
             <p>
-
                     <span id="accepted-chip" class="notification-chip">1</span>
                     <span class="h6">New admin messages(s)</span>
                 </p>
             <button onclick="window.location.href='?/=chatbox-sailor'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
-
         </div>
         <br>
         <!-- Accepted requests -->
@@ -131,14 +131,17 @@
                 <span id="request-chip" class="notification-chip ">1</span>
                 <span class="h6">New data request(s)</span>
             </p>
-
-            <button onclick="window.location.href='?/=all-request'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
-
+            <button onclick="window.location.href='?/=all-requests-sailor'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
         </div>
         <br>
 
     </div>
 </div>
+
+<script>
+writeAcceptedDataRequestOptions();
+</script>
+
 <script>
     var prev_onload_dashboard = window.onload;
     window.onload = onload_dashboard();
@@ -163,7 +166,7 @@
                 window.location.replace("?/=dashboard-academic");
             } else if (set_role == "sailor") {
 
-            } else {
+            }else {
                 alert("not logged in!" + set_role);
                 window.location.replace("?/=home");
             }
