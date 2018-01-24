@@ -24,18 +24,21 @@ switch (action) {
     case "dashboard-sailor":
         view("menu/_menu-sailor.html");
         view("dashboard/_dashboard-sailor.html");
+        view("menu/_footer.html");
         break;
 
     case "all-requests-sailor":
         view("menu/_menu-sailor.html");
         //@@@ should eventually be _all-requests-sailor.html
         view("functional-pages/_all-requests-localstorage-example.html");
+        view("menu/_footer.html");
         break;
 
     case "accepted-requests-sailor":
         view("menu/_menu-sailor.html");
         //@@@ should eventually be _all-requests-sailor.html
         view("functional-pages/_all-requests-localstorage-example.html");
+        view("menu/_footer.html");
         break;
 
     // Academic
@@ -67,6 +70,7 @@ switch (action) {
     case "profile":
         view("menu/_menu-sailor.html");
         view("static-pages/_profile.html");
+        view("menu/_footer.html");
         break;
 
     case "home":

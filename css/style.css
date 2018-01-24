@@ -472,13 +472,20 @@ h1 {
   border: 1px solid #AFA7A3;
   height: 40px; }
 
-.input-group-btn > .btn, .input-group-btn > .btn:active, .input-group-btn > .btn:focus {
+.input-group-btn .btn {
   border-radius: 0px 20px 20px 0px;
   background: linear-gradient(to right, #FE947D, #FFBDAD);
   border-left: none;
+  border-right: none;
   border: linear-gradient(to right, #FE947D, #FFBDAD);
   height: 40px;
   width: 75px; }
+
+.input-group-btn .btn:hover {
+  opacity: 0.8; }
+
+.input-group-btn .btn:focus {
+  outline: 0 !important; }
 
 .no-bullets {
   list-style-type: none; }
