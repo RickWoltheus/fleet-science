@@ -36,12 +36,16 @@
 <script>
 $(document).ready(function(){
     var current = location.pathname;
+    var domainLenght = window.location.origin.length + window.location.pathname.length;
     $('#nav li a').each(function(){
         var $this = $(this);
         // if the current path is like this link, make it active
         if(window.location.href.indexOf($this.attr('href')) !== -1){
             console.log('itWorks');
             $this.parent().addClass('active')
+        }
+        else if($this.attr('href') === '?/=home' && location.pathname === '/fleet-science/' && window.location.href.indexOf($this.attr('href')) === -1 && window.location.href.length <= domainLenght) {
+            $this.parent().addClass('active');
         }
     })
 });
