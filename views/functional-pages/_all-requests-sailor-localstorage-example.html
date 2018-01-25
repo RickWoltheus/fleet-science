@@ -106,9 +106,24 @@ writeRequestsTable("all-sailor");
     }
   }
 
+  function changeMessage(hide,show){
+      document.getElementById(hide).style.display = "none";
+      document.getElementById(show).style.display = "";
+  }
+
   //Reloads page
   function myReload() {
     location.reload();
+  }
+
+  function confirmScreen(type) {
+    if(type == 'accept'){
+      confirm("Are you sure that you want to accept this request?");
+    }
+    if(type == 'reject'){
+      confirm("Are you sure that you want to reject this request?");
+    }
+    myReload()
   }
 
   var image_tracker = 'down';
@@ -126,18 +141,19 @@ writeRequestsTable("all-sailor");
   };
 
 
-  $(".toggler").click(function (e) {
-    e.preventDefault();
-    $('.req' + $(this).attr('data-request')).toggle();
-  });
+    $(".toggler").click(function (e) {
+      e.preventDefault();
+      $('.req' + $(this).attr('data-request')).toggle();
+    });
 
 
-  function acceptAnimation(div,hide,show){
-    $(div).on('click', function () {
-      $(hide).hide()
-      $(show).show();
+    function acceptAnimation(div,hide,show){
+      $(div).on('click', function () {
+        $(hide).hide()
+        $(show).show();
     });};
 
+    /*
     // // Accepting requests flow 1
     acceptAnimation('#accept-requests1','#section-requests-info1','#section-requests-are_you_sure1');
     acceptAnimation('#confirmation-requests1','#section-requests-are_you_sure1','#section-requests-confirmation1');
@@ -157,6 +173,7 @@ writeRequestsTable("all-sailor");
     acceptAnimation('#submit-requests1','#section-requests-info3','#section-requests-submit1');
     acceptAnimation('#submit-complete-requests1','#section-requests-submit1','#section-requests-submit-warning1');
     acceptAnimation('#confirmation-submitted-requests1','#section-requests-submit-warning1','#section-requests-confirmation-submitted1');
+    */
 
 
 
