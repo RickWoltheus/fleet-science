@@ -82,12 +82,13 @@ switch (action) {
 
 
         // universal views
-    case "all-requests":
+    /*case "all-requests":
         view("menu/_menu-sailor.html");
         view("functional-pages/_all-requests-localstorage-example.html");
         view("menu/_footer.html");
         break;
-
+    */
+   
     case "profile":
         view("menu/_menu-sailor.html");
         view("static-pages/_profile.html");
