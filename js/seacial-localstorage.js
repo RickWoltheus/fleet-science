@@ -8,7 +8,7 @@ function validateLogin(username) {
         alert("User " + username + " does not exist. Please sign up first.");
         return false;
     }
-    alert("Welcome back " + username);
+    //alert("Welcome back " + username);
     setCookie("username", username);
     return true;
 }
@@ -257,6 +257,11 @@ function writeRequestsTable(page) {
             if((row["status"] == "Accepted" && page == "all-sailor") || page == "accepted"){
                 text+="           <div class='col-6'>";
                 text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Submit Data</button>";
+                text+="           </div>";
+            }
+            if(page == "accepted"){
+                text+="           <div class='col-6'>";
+                text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests' >Withdraw</button>";
                 text+="           </div>";
             }
             if(page == "all-academic"){
