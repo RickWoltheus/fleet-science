@@ -196,14 +196,22 @@ function writeRequestsTable(page) {
             if (page=="accepted" && accepts.indexOf(key) < 0) {
     		      continue;
     		}
+            if(page == "all-academic" && (row["status"] == "Pending Approval" || row["status"] == "Not Approved")){
+                continue;
+            }
+            if(page=="my" && row["username"] != loggedInUsername){
+                continue;
+            }
 
     	    text+=" <tr>";
     	    text+="   <td>"+row["username"]+"</td>";
     	    text+="   <td>"+row["area"]+"</td>";
     	    text+="   <td>"+row["reqtype"]+"</td>";
-            if(row["status"] == "Approved" && page=="all-sailor"){
+            if(row["status"] == "Approved" && (page=="all-sailor" || page=="all-academic")){
                 text+="   <td>"+"New"+"</td>";
-            } else{
+            } else if((row["status"] == "Accepted" || row["status"] == "Rejected") && page=="all-academic"){
+                text+="   <td>"+"New"+"</td>";
+            }else{
                 text+="   <td>"+row["status"]+"</td>";
             }
     	    //text+="   <td>"+requestStatus+"</td>";
@@ -249,6 +257,20 @@ function writeRequestsTable(page) {
             if((row["status"] == "Accepted" && page == "all-sailor") || page == "accepted"){
                 text+="           <div class='col-6'>";
                 text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Submit Data</button>";
+                text+="           </div>";
+            }
+            if(page == "all-academic"){
+                text+="           <div class='col-6'>";
+                text+="             <a href='?/=chatbox-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+                text+="           </div>";
+            }
+            if(page == "my"){
+                text+="           <div class='col-6'>";
+                if(row["status"] == "Completed"){
+                    text+="             <a href='?/=database-logged-in-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Download Data</button></a>";
+                } else{
+                    text+="             <a href='?/=database-logged-in-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests' disabled>Download Data</button></a>";
+                }
                 text+="           </div>";
             }
     	    text+="         </div>";
