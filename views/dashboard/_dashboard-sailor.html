@@ -85,7 +85,7 @@
                                 <input type="time" id="fleet-data-time" class="fleet-input" />
                             </div>
                         </div>
-
+                        <p id="forgot-something" style="display: none; text-align: center;"><i>Make sure you fill in all the mandatory boxes</i></p>
                         <!-- divider -->
                         <hr />
 
@@ -157,9 +157,23 @@
 <script>
 
 function clickSubmit(){
-    document.getElementById("box-form-data").style.display = "none"; 
-    document.getElementById("box-form-confirm").style.display = ""; 
-    document.getElementById("requestid").disabled = true;
+    var requestid = document.getElementById("requestid").value;
+    var dataValue = document.getElementById("fleet-data-value").value;
+    var latitude  =  document.getElementById("fleet-data-latitude").value;
+    var longitude  =  document.getElementById("fleet-data-longitude").value;
+    var date=document.getElementById("fleet-data-day").value + "-" +
+             document.getElementById("fleet-data-month").value + "-" +
+            document.getElementById("fleet-data-year").value;
+    var dataTime=document.getElementById("fleet-data-time").value;
+
+    if(requestid && dataValue && latitude && longitude && date && dataTime){
+        document.getElementById("box-form-data").style.display = "none"; 
+        document.getElementById("forgot-something").style.display = "none"; 
+        document.getElementById("box-form-confirm").style.display = ""; 
+        document.getElementById("requestid").disabled = true;
+    } else{
+        document.getElementById("forgot-something").style.display = ""; 
+    }
 }
 
 function clickCancel(){
@@ -189,8 +203,8 @@ function submitData() {
       "date":date,
       "time":dataTime
     };
-    addData(requestid, data);
 
+    addData(requestid, data);
     location.reload();
 }
 

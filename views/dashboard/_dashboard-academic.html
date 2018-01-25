@@ -34,8 +34,8 @@
                     <!-- Select request -->
                     <div class="form-group">
                         Kind of data*
-                        <select id="kind-of-data" class="fleet-input">
-                            <option selected="selected">...</option>
+                        <select id="kind-of-data" class="fleet-input" required>
+                            <option value=""><i>Choose the kind of data you need</option>
                             <option value="ph">pH</option>
                             <option value="temperature">Temperature</option>
                             <option value="samples">Samples</option>
@@ -139,8 +139,8 @@
                             Number of measurements per frequency*
                         </div>
 
-                        <div id="number-of-measurements" class="col-4">
-                            <input type="number" class="fleet-input" min="1" max="50" value="1" />
+                        <div class="col-4">
+                            <input id="number-of-measurements" type="number" class="fleet-input" min="1" max="50" value="1" />
                         </div>
                         <!--</select>-->
                     </div>
@@ -149,6 +149,7 @@
                         Additional information (optional)
                         <input id="additional-info" class="fleet-input" placeholder="Additional information">
                     </div>
+                    <p id="forgot-something" style="display: none; text-align: center;"><i>Make sure you fill in all the mandatory boxes</i></p>
                     <!-- divider -->
                     <hr />
 
@@ -217,8 +218,42 @@
 <script>
 
     function clickSubmit(){
-        document.getElementById("box-form-request").style.display = "none"; 
-        document.getElementById("box-confirm-submit").style.display = ""; 
+        var description = document.getElementById("desc").value;
+        var kindOfData = document.getElementById("kind-of-data").value;
+        var latitude = document.getElementById("latitude").value;
+        var longitude = document.getElementById("longitude").value;
+        var area = document.getElementById("area").value;
+        var radius = document.getElementById("radius").value;
+        var dateFirstMeasurment = document.getElementById("first-day").value + "-" +
+            document.getElementById("first-month").value + "-" +
+            document.getElementById("first-year").value;
+        var dateLastMeasurement = document.getElementById("last-day").value + "-" +
+            document.getElementById("last-month").value + "-" +
+            document.getElementById("last-year").value;
+        var freqOfMeasurments = document.getElementById("freq-of-measurements").value;
+        var numberOfMeasurments = document.getElementById("number-of-measurements").value;
+        var additionalInfo = document.getElementById("additional-info").value;
+
+        console.log("descr " + description);
+        console.log("type " + kindOfData);
+        console.log("latitude " + latitude);
+        console.log("longitude " + longitude);
+        console.log("area " + area);
+        console.log("radius " + radius);
+        console.log("date 1 " + dateFirstMeasurment);
+        console.log("date 2 " + dateLastMeasurement);
+        console.log("frequency " + freqOfMeasurments);
+        console.log("number of " + numberOfMeasurments);
+
+        if(description && kindOfData && latitude && longitude && area && radius && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
+            document.getElementById("box-form-request").style.display = "none"; 
+            document.getElementById("box-confirm-submit").style.display = ""; 
+            document.getElementById("forgot-something").style.display = "none";        
+        } else{
+            document.getElementById("forgot-something").style.display = "";        
+        }
+
+
     }
 
     function clickCancel(){
@@ -246,27 +281,10 @@
         /*
             alert("data is to be submitted for request "+requestid+" value="+dataValue+" latitude,logitude="+latitude+","+longitude+" date="+date+" time"+dataTime);
         */
-        var request = {
-            "description": description,
-            "kind": kindOfData,
-            "latitude": latitude,
-            "longitude": longitude,
-            "area": area,
-            "radius": radius,
-            "firstMeasurment": dateFirstMeasurment,
-            "lastMeasurement": dateLastMeasurement,
-            "freqOfMeasurments": freqOfMeasurments,
-            "numberOfMeasurments": numberOfMeasurments,
-            "additionalInfo": additionalInfo
-        };
         //window.location = "?/=requested-academic";
         addNewRequest(area,description,kindOfData,"Pending Approval",freqOfMeasurments,dateLastMeasurement);
         location.reload();
         //console.log(addRequest);
-
-
-
-
       }
     setText("accepted-chip", 5);
     setText("request-chip", 3);
