@@ -154,4 +154,10 @@ switch (action) {
     case "forgot-password":
     view("menu/_menu.html");
     view("static-pages/_forgot-password.html");
+        break;
+
+    case "requested-academic":
+        view("menu/_menu-academic.html");
+        view("feedback/requested-academic.html")
+
 }
