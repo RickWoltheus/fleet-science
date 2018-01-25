@@ -582,7 +582,7 @@ function addNewRequest(area,description,type,status,frequency,lastMeasurement){
                     "area":area,
                     "description":description,
                     "reqtype":type,  
-                    "status":"Pending Approval",
+                    "status":"Approved",
                     "duration":"6 months", 
                     "frequency":frequency,
                     "deadline":lastMeasurement   
