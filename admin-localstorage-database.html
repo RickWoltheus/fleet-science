@@ -580,14 +580,14 @@ var sampleAreas =
 function addNewRequest() {
     var type = (Math.random()>0.5) ? "personal" : "administrator"; 
     addRequest(getNewUniqueId("request"), {
-        "username":getRandomUser(), 
-	"area":selectAdRandomFrom(sampleAreas),
-        "description":"Just take as many samples as you can!",
-	"reqtype":selectAdRandomFrom(sampleRequestTypes),  
-	"status":selectAdRandomFrom(sampleStatuses),
-        "duration":"6 months", 
-	"frequency":"2 measures per day",
-	"deadline":"21-07-2019"
+         "username":getRandomUser(), 
+	       "area":selectAdRandomFrom(sampleAreas),
+         "description":"Just take as many samples as you can!",
+	       "reqtype":selectAdRandomFrom(sampleRequestTypes),  
+	       "status":selectAdRandomFrom(sampleStatuses),
+         "duration":"6 months", 
+	       "frequency":"2 measures per day",
+	       "deadline":"21-07-2019"
 
 
     });

@@ -7,7 +7,7 @@
     <div class="row col-8">
         <h1 class="text-center grey-text">
             <span>
-                <img src="images/symbol-academic.png" height="50px"> </span> Hello
+                <img src="images/symbol-academic.png" height="50px"></img> </span> Hello
             <span id='loggedin-username'></span>!
         </h1>
     </div>
@@ -22,6 +22,8 @@
 
             <div class="row justify-content-center">
                 <div class="col-11">
+
+                <div id="box-form-request">
 
                     <!-- Data value -->
                     <div class="form-group">
@@ -46,7 +48,7 @@
                             <option value="pm2,5">PM2,5</option>
                             <option value="co">CO</option>
                             <option value="o3">O3</option>
-                            <option value="deg c">Deg c</option>
+                            <option value="deg c">Degrees ºC</option>
                             <option value="salinity">Salinity psu</option>
                             <option value="tds">TDS</option>
                             <option value="co2">CO2 (aq)</option>
@@ -84,7 +86,7 @@
                         <div class="col-4">
                             <input id="radius" type="number" class="fleet-input" min="1" max="50" value="5" />
                         </div>
-                        </select>
+                        <!--</select>-->
                     </div>
 
                     <!-- date of measurement -->
@@ -140,7 +142,7 @@
                         <div id="number-of-measurements" class="col-4">
                             <input type="number" class="fleet-input" min="1" max="50" value="1" />
                         </div>
-                        </select>
+                        <!--</select>-->
                     </div>
 
                     <div class="form-group">
@@ -151,11 +153,26 @@
                     <hr />
 
                     <div class="form-group">
-                        <input type="button" onclick="submitData()" value="Submit" class="fleet-btn-full-width">
+                        <input type="button" onclick="clickSubmit()" value="Submit" class="fleet-btn-full-width">
                     </div>
 
                     <input type="hidden" name="page" value="dashboard-academic">
-                    </form>
+                    
+                    </div>
+
+                    <div id="box-confirm-submit" style="display: none;">
+                        <br>
+                        <p style="text-align: center; font-size: 30px"><b>Warning!</b></p> 
+                        <p style="text-align: center;">You can not change your request after you submit it. 
+                        <br>
+                        Do you confirm the submission of the request?</p>
+                        <div class="form-group">
+                            <input type="submit" onclick="submitRequest()" value="Confirm" class="btn btn-default button-accept-requests">
+                        </div>
+                        <div>
+                            <input type="submit" onclick="clickCancel()" value="Cancel" class="btn btn-default button-reject-requests">
+                        </div>
+                    </div>
 
 
                 </div>
@@ -196,40 +213,40 @@
         <br>
     </div>
 </div>
+
 <script>
-    function submitData() {
+
+    function clickSubmit(){
+        document.getElementById("box-form-request").style.display = "none"; 
+        document.getElementById("box-confirm-submit").style.display = ""; 
+    }
+
+    function clickCancel(){
+        document.getElementById("box-form-request").style.display = ""; 
+        document.getElementById("box-confirm-submit").style.display = "none"; 
+    }
+
+    function submitRequest() {
         // alert("hh")
         var description = document.getElementById("desc").value;
-
         var kindOfData = document.getElementById("kind-of-data").value;
-
         var latitude = document.getElementById("latitude").value;
-
         var longitude = document.getElementById("longitude").value;
-
         var area = document.getElementById("area").value;
-
         var radius = document.getElementById("radius").value;
-
         var dateFirstMeasurment = document.getElementById("first-day").value + "-" +
             document.getElementById("first-month").value + "-" +
             document.getElementById("first-year").value;
-
         var dateLastMeasurement = document.getElementById("last-day").value + "-" +
             document.getElementById("last-month").value + "-" +
             document.getElementById("last-year").value;
-
         var freqOfMeasurments = document.getElementById("freq-of-measurements").value;
-
         var numberOfMeasurments = document.getElementById("number-of-measurements").value;
-
         var additionalInfo = document.getElementById("additional-info").value;
-
         /*
             alert("data is to be submitted for request "+requestid+" value="+dataValue+" latitude,logitude="+latitude+","+longitude+" date="+date+" time"+dataTime);
         */
-
-        var data = {
+        var request = {
             "description": description,
             "kind": kindOfData,
             "latitude": latitude,
@@ -242,11 +259,14 @@
             "numberOfMeasurments": numberOfMeasurments,
             "additionalInfo": additionalInfo
         };
-        window.location = "?/=requested-academic";
-        addData(description, data);
+        //window.location = "?/=requested-academic";
+        addNewRequest(area,description,kindOfData,"Pending Approval",freqOfMeasurments,dateLastMeasurement);
+        location.reload();
+        //console.log(addRequest);
 
 
-        console.log(data);
+
+
       }
     setText("accepted-chip", 5);
     setText("request-chip", 3);
