@@ -452,9 +452,9 @@ function addNewUser() {
         "firstname":firstname, 
         "role": role,
         "lastname":username, 
-	"institute":institute, 
-	"boatname":boatName, 
-	"email":"contact@seacial.com"
+	      "institute":institute, 
+	      "boatname":boatName, 
+	      "email":"contact@seacial.com"
     });
     repopulateUsers();
 }
@@ -551,23 +551,29 @@ function addNewMessage() {
 
 var sampleStatuses = 
 [
-  "New",
+  "Pending Approval",
+  "Approved",
+  "Rejected",
   "Accepted",
-  "Rejected"
+  "Completed"
 ];
 
 var sampleRequestTypes = 
 [
   "pH of the ocean water",
   "Salinity of the ocean water",
-  "3 in the air"
+  "O3 in the air",
+  "Temperature of the ocean water",
+  "SO2 in the ocean water"
 ];
 
 var sampleAreas = 
 [
   "North Pacific",
   "Indian",
-  "Atlantic"
+  "South Atlantic",
+  "South Pacific",
+  "Mediterranean Sea"
 ];
 
 function addNewRequest() {

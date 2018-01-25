@@ -121,7 +121,7 @@ function writeAcceptedDataRequestOptions()
 
 
 
-function writeRequestsTable()
+function writeRequestsTable(page)
 {
     var acceptedOnly = false;
     var element = document.getElementById("requests-all");
@@ -162,10 +162,17 @@ function writeRequestsTable()
 	text+="   </th>";
 	text+="   <th>Status";
 	text+="     <select id='selectStatus' class='filter-requests' onchange='selectStatus()'>";
-	text+="       <option selected='selected'>All</option>";
-	text+="       <option value='approved'>Approved</option>";
-	text+="       <option value='accepted'>Accepted</option>";
-	text+="       <option value='completed'>Completed</option>";
+    if(page == "all-sailor"){
+        text+="       <option selected='selected'>All</option>";
+        text+="       <option value='completed'>New</option>";        
+        text+="       <option value='accepted'>Accepted</option>";
+        text+="       <option value='approved'>Rejected</option>";
+    } else{
+    	text+="       <option selected='selected'>All</option>";
+    	text+="       <option value='approved'>Approved</option>";
+    	text+="       <option value='accepted'>Accepted</option>";
+    	text+="       <option value='completed'>Completed</option>";
+    }
 	text+="     </select>";
 	text+="   </th>";
 	text+="   <th></th>";
@@ -176,26 +183,34 @@ function writeRequestsTable()
 
 
 	var requests = getStorageObject()["requests"];
-	for (var key in requests) {
+	   for (var key in requests) {
 	    if(!requests.hasOwnProperty(key)) {
    			  continue;
 	    }
 	    var row = requests[key];
 
-            var requestStatus = "accepted";
+        if((row["status"] == "Pending Approval" || row["status"] == "Completed") && page=="all-sailor" ){
+            continue;
+        }
+        //var requestStatus = "accepted";
 
-            if (accepts.indexOf(key) < 0) {
-                if (acceptedOnly) {
-		    continue;
+        if (accepts.indexOf(key) < 0) {
+            if (acceptedOnly) {
+		        continue;
 		}
-		requestStatus = "new";
+		//requestStatus = "new";
 	    }
 
 	    text+=" <tr>";
 	    text+="   <td>"+row["username"]+"</td>";
 	    text+="   <td>"+row["area"]+"</td>";
 	    text+="   <td>"+row["reqtype"]+"</td>";
-	    text+="   <td>"+requestStatus+"</td>";
+        if(row["status"] == "Approved" && page=="all-sailor"){
+            text+="   <td>"+"New"+"</td>";
+        } else{
+            text+="   <td>"+row["status"]+"</td>";
+        }
+	    //text+="   <td>"+requestStatus+"</td>";
 	    text+="   <td>";
 	    text+="     <a href='#' class='toggler' data-request='"+count+"' onclick=\"chevronSwitch('chevron-switch"+count+"');\">";
 	    text+="       <i>";
@@ -219,12 +234,26 @@ function writeRequestsTable()
 	    text+="         <p class='p_requests'>Description</p>";
 	    text+="         <div class='description-box-requests'>"+row["description"]+"</div>";
 	    text+="         <div class='row'>";
-	    text+="           <div class='col-6'>";
-	    text+="             <button type='button' id='accept-requests"+count+"' onclick='{addAccept(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Accept</button>";
-	    text+="           </div>";
-	    text+="           <div class='col-6'>";
-	    text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests'>Reject</button>";
-	    text+="           </div>";
+        if((row["status"] == "Approved" || row["status"] == "Rejected") && page == "all-sailor"){
+    	    text+="           <div class='col-6'>";
+    	    text+="             <button type='button' id='accept-requests"+count+"' onclick='{addAccept(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Accept</button>";
+    	    text+="           </div>";
+        }
+        if(row["status"] == "Approved" && page == "all-sailor"){
+    	    text+="           <div class='col-6'>";
+    	    text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests'>Reject</button>";
+    	    text+="           </div>";
+        }
+        if(row["status"] == "Rejected" && page == "all-sailor"){
+            text+="           <div class='col-6'>";
+            text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests' disabled>Reject</button>";
+            text+="           </div>";
+        }
+        if(row["status"] == "Accepted" && page == "all-sailor"){ //TODO
+            text+="           <div class='col-6'>";
+            text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Submit Data</button>";
+            text+="           </div>";
+        }
 	    text+="         </div>";
 	    text+="       </div>";
 	    text+="     </div>";
@@ -447,6 +476,7 @@ function addAccept(requestid) {
         return false;
     }
     someLocalStorage["accepts"][loggedInUsername].push(requestid);
+    someLocalStorage["requests"][requestid]["status"] = "Accepted"
     putStorage();
     return true;
 }
