@@ -577,7 +577,18 @@ function addData(requestid, data) {
     someLocalStorage["data"][requestid].push(data);
     putStorage();
 }
-
+function addNewRequest(area,description,type,status,frequency,lastMeasurement){
+    var reqInfo = { "username":loggedInUsername, 
+                    "area":area,
+                    "description":description,
+                    "reqtype":type,  
+                    "status":"Pending Approval",
+                    "duration":"6 months", 
+                    "frequency":frequency,
+                    "deadline":lastMeasurement   
+                  }  
+        addRequest(getNewUniqueId("request"), reqInfo);
+}
 
 
 function putStorage() {
