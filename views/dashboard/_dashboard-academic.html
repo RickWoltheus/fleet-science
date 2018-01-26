@@ -28,14 +28,14 @@
                     <!-- Data value -->
                     <div class="form-group">
                         Short description of research project*
-                        <input id="desc" class="fleet-input" placeholder="Short description (max 250 characters)" maxlength="250">
+                        <input id="desc" class="fleet-input" required placeholder="Short description (max 250 characters)" maxlength="250">
                     </div>
 
                     <!-- Select request -->
                     <div class="form-group">
                         Kind of data*
                         <select id="kind-of-data" class="fleet-input" required>
-                            <option value=""><i>Choose the kind of data you need</option>
+                            <option value=""><i>-- Choose the kind of data you need --</option>
                             <option value="ph">pH</option>
                             <option value="temperature">Temperature</option>
                             <option value="samples">Samples</option>
@@ -59,14 +59,14 @@
                     <!-- Area -->
                     <div class="form-group">
                         Area*
-                        <input id="area" class="fleet-input" placeholder="Area">
+                        <input id="area" class="fleet-input" required placeholder="Area">
                     </div>
 
                     <!-- Latidude -->
                     <div class="form-group row">
                         <div class="col-3">Latitude*:</div>
                         <div class="col-9 ">
-                            <input id="latitude" class="fleet-input" placeholder="e.g. 52.370216" />
+                            <input id="latitude" class="fleet-input" required placeholder="e.g. 52.370216" />
                         </div>
                     </div>
 
@@ -74,7 +74,7 @@
                     <div class="form-group row">
                         <div class="col-3">Longitude*:</div>
                         <div class="col-9 ">
-                            <input id="longitude" class="fleet-input" placeholder="e.g. 4.895168" />
+                            <input id="longitude" class="fleet-input" required placeholder="e.g. 4.895168" />
                         </div>
                     </div>
 
@@ -84,7 +84,7 @@
                         </div>
 
                         <div class="col-4">
-                            <input id="radius" type="number" class="fleet-input" min="1" max="50" placeholder="km" />
+                            <input id="radius" type="number" class="fleet-input" min="1" max="50" placeholder="km" required />
                         </div>
                         <!--</select>-->
                     </div>
@@ -97,13 +97,13 @@
                         </div>
 
                         <div class="col-4">
-                            <input id="first-day" type="number" class="fleet-input" min="1" max="31" placeholder="DD"  />
+                            <input id="first-day" type="number" class="fleet-input" min="1" max="31" placeholder="DD" required />
                         </div>
                         <div class="col-4 ">
-                            <input id="first-month" type="number" class="fleet-input" min="1" max="12" placeholder="MM" />
+                            <input id="first-month" type="number" class="fleet-input" min="1" max="12" placeholder="MM" required />
                         </div>
                         <div class="col-4 ">
-                            <input id="first-year" type="number" class="fleet-input" min="2018" max="2100" placeholder="YYYY" />
+                            <input id="first-year" type="number" class="fleet-input" min="2018" max="2100" placeholder="YYYY" required />
                         </div>
                     </div>
 
@@ -115,20 +115,20 @@
                         </div>
 
                         <div class="col-4">
-                            <input id="last-day" type="number" class="fleet-input" min="1" max="31" placeholder="DD" />
+                            <input id="last-day" type="number" class="fleet-input" min="1" max="31" placeholder="DD" required />
                         </div>
                         <div class="col-4 ">
-                            <input id="last-month" type="number" class="fleet-input" min="1" max="12" placeholder="MM" />
+                            <input id="last-month" type="number" class="fleet-input" min="1" max="12" placeholder="MM" required/>
                         </div>
                         <div class="col-4 ">
-                            <input id="last-year" type="number" class="fleet-input" min="2018" max="2100" placeholder="YYYY" />
+                            <input id="last-year" type="number" class="fleet-input" min="2018" max="2100" placeholder="YYYY" required />
                         </div>
                     </div>
 
                     <div class="form-group">
                         Frequency of measurement(s)*
                         <select id="freq-of-measurements" class="fleet-input">
-                            <option value="">Choose Frequency</option>
+                            <option value="">-- Choose Frequency --</option>
                             <option value="daily">daily</option>
                             <option value="weekly">weekly</option>
                             <option value="monthly">monthly</option>
@@ -141,7 +141,7 @@
                         </div>
 
                         <div class="col-4">
-                            <input id="number-of-measurements" type="number" class="fleet-input" min="1" max="50" placeholder="1...50" />
+                            <input id="number-of-measurements" type="number" class="fleet-input" min="1" max="50" placeholder="1...50" required />
                         </div>
                         <!--</select>-->
                     </div>
@@ -150,7 +150,7 @@
                         Additional information (optional)
                         <input id="additional-info" class="fleet-input" placeholder="Additional information">
                     </div>
-                    <p id="forgot-something" style="display: none; text-align: center;"><i>All boxes with a * are mandatory</i></p>
+                    <p id="forgot-something" style="display: none; text-align: center;"><i>All boxes with a <b>*</b> are mandatory</i></p>
                     <!-- divider -->
                     <hr />
 

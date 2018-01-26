@@ -72,7 +72,24 @@ function loggedInInstitute() {
 }
 
 
-function signupLS(role, firstname, lastname, username, boatname, institute, email) {
+function signupLS(role, firstname, lastname, username, boatname, institute, email,email1, pass, pass1) {
+
+    if (userExists(username)) {
+        document.getElementById("username-exists").style.display = "";
+    } else{
+        document.getElementById("username-exists").style.display = "none";
+    }
+
+    document.getElementById("wrong-email").style.display  ="none";
+    document.getElementById("wrong-pass").style.display  ="none";
+    if(email != email1){
+        document.getElementById("wrong-email").style.display  ="";
+        return false;
+    }
+    if(pass != pass1){
+        document.getElementById("wrong-pass").style.display  ="";
+        return false;
+    }
     if (firstname.length == 0) {
         alert("Please enter first name");
         return false;
@@ -166,36 +183,17 @@ function writeRequestsTable(page) {
     	var text="";
 
     	text+=" <thead>";
-    	text+="   <th>Username</th>";
+    	text+="   <th>Academic</th>";
     	text+="   <th>Requested area</th>";
     	text+="   <th>Type of request";
-    	text+="     <select id='selectType' class='filter-requests' onchange='selectType()'>";
-    	text+="       <option selected='selected'>All</option>";
-    	text+="       <option value='ph'>pH</option>";
-    	text+="       <option value='temperature'>Temperature</option>";
-    	text+="       <option value='samples'>Samples</option>";
-    	text+="       <option value='photo'>Photo</option>";
-    	text+="       <option value='video'>Video</option>";
-    	text+="       <option value='audio'>Audio</option>";
-    	text+="       <option value='so2'>SO2</option>";
-    	text+="       <option value='no2'>NO2</option>";
-    	text+="       <option value='pm10'>PM10</option>";
-    	text+="       <option value='pm2,5'>PM2,5</option>";
-    	text+="       <option value='co'>CO</option>";
-    	text+="       <option value='o3'>O3</option>";
-    	text+="       <option value='deg c'>Deg c</option>";
-    	text+="       <option value='salinity'>Salinity psu</option>";
-    	text+="       <option value='tds'>TDS</option>";
-    	text+="       <option value='co2'>CO2 (aq)</option>";
-    	text+="       <option value='so2'>SO2 (aq)</option>";
-    	text+="     </select>";
     	text+="   </th>";
     	text+="   <th>Status";
-    	text+="     <select id='selectStatus' class='filter-requests' onchange='selectStatus()'>";
+    	/*text+="     <select id='selectStatus' class='filter-requests' onchange='selectStatus()'>";
         if(page == "all-sailor"){
             text+="       <option selected='selected'>All</option>";
             text+="       <option value='completed'>New</option>";        
             text+="       <option value='accepted'>Accepted</option>";
+            text+="       <option value='approved'>Completed</option>";
             text+="       <option value='approved'>Rejected</option>";
         } else{
         	text+="       <option selected='selected'>All</option>";
@@ -204,6 +202,7 @@ function writeRequestsTable(page) {
         	text+="       <option value='completed'>Completed</option>";
         }
     	text+="     </select>";
+        */
     	text+="   </th>";
     	text+="   <th></th>";
     	text+=" </thead>";
@@ -219,7 +218,7 @@ function writeRequestsTable(page) {
     	    }
     	    var row = requests[key];
 
-            if((row["status"] == "Pending Approval" || row["status"] == "Completed" || row["status"] == "Not Approved") && page=="all-sailor" ){
+            if((row["status"] == "Pending Approval" || row["status"] == "Not Approved") && (page=="all-sailor" || page == "all-academic")){
                 continue;
             }
             //var requestStatus = "accepted";
@@ -227,24 +226,32 @@ function writeRequestsTable(page) {
             if (page=="accepted" && accepts.indexOf(key) < 0) {
     		      continue;
     		}
-            if(page == "all-academic" && (row["status"] == "Pending Approval" || row["status"] == "Not Approved")){
-                continue;
-            }
-            if(page=="my" && row["username"] != loggedInUsername){
+            if(page=="my" && (row["username"] != loggedInUsername || row["status"] == "Not Approved")){
                 continue;
             }
 
     	    text+=" <tr>";
-    	    text+="   <td>"+row["username"]+"</td>";
+    	    //text+="   <td>"+row["username"]+"</td>";
+            text+="   <td>"+ someLocalStorage["users"][row["username"]]["firstname"] + " " +
+            someLocalStorage["users"][row["username"]]["lastname"]+"</td>";
     	    text+="   <td>"+row["area"]+"</td>";
     	    text+="   <td>"+row["reqtype"]+"</td>";
             if(row["status"] == "Approved" && (page=="all-sailor" || page=="all-academic")){
                 text+="   <td>"+"New"+"</td>";
             } else if((row["status"] == "Accepted" || row["status"] == "Rejected") && page=="all-academic"){
                 text+="   <td>"+"New"+"</td>";
-            }else{
+            } else if( row["status"] == "Accepted" && accepts.indexOf(key) < 0){
+               text+="   <td>"+"New"+"</td>";
+            } else{
                 text+="   <td>"+row["status"]+"</td>";
             }
+
+
+
+
+
+
+
     	    //text+="   <td>"+requestStatus+"</td>";
     	    text+="   <td>";
     	    text+="     <a href='#' class='toggler' data-request='"+count+"' onclick=\"chevronSwitch('chevron-switch"+count+"');\">";
@@ -285,20 +292,31 @@ function writeRequestsTable(page) {
                 text+="           </div>";
             }
             //TODO
-            if((row["status"] == "Accepted" && page == "all-sailor") || page == "accepted"){
+            if( row["status"] == "Accepted" && accepts.indexOf(key) >= 0 && page=="all-sailor"){
                 text+="           <div class='col-6'>";
                 text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Submit Data</button>";
                 text+="           </div>";
-            }
-            if(page == "accepted"){
                 text+="           <div class='col-6'>";
                 text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests' >Withdraw</button>";
+                text+="           </div>";
+            }
+            if(row["status"] == "Accepted" && accepts.indexOf(key) < 0 && page=="all-sailor"){
+                text+="           <div class='col-6'>";
+                text+="             <button type='button' id='accept-requests"+count+"' onclick='{addAccept(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Accept</button>";
+                text+="           </div>";
+                text+="           <div class='col-6'>";
+                text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
             }
             if(page == "all-academic"){
                 text+="           <div class='col-6'>";
                 text+="             <a href='?/=chatbox-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
                 text+="           </div>";
+                if(row["status"] == "Completed"){
+                    text+="           <div class='col-6'>";
+                    text+="             <a href='?/=database-logged-in-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Download Data</button></a>";
+                    text+="           </div>";
+                }
             }
             if(page == "my"){
                 text+="           <div class='col-6'>";
@@ -474,6 +492,14 @@ function createNewDatabase() {
         "boatname": "Given Time",
         "email": "conorlagrue@gmail.com"
     });
+    addUser("sarah", {
+        "role": "academic",
+        "firstname": "Sarah",
+        "lastname": "la Grue",
+        "institute": "UvA",
+        "boatname": "",
+        "email": "sarahlagrue@gmail.com"
+    });
 
     // Put in storage
     putStorage();
@@ -619,7 +645,7 @@ function addNewRequest(area,description,type,status,frequency,lastMeasurement){
                     "area":area,
                     "description":description,
                     "reqtype":type,  
-                    "status":"Approved",
+                    "status":status,
                     "duration":"6 months", 
                     "frequency":frequency,
                     "deadline":lastMeasurement   

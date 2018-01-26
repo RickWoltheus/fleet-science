@@ -67,13 +67,13 @@
                             </div>
 
                             <div class="col-4">
-                                <input type="number" class="fleet-input" id="fleet-data-day" min="1" max="31" />
+                                <input type="number" class="fleet-input" id="fleet-data-day" min="1" max="31" required />
                             </div>
                             <div class="col-4 ">
-                                <input type="number" class="fleet-input" id="fleet-data-month" min="1" max="12" />
+                                <input type="number" class="fleet-input" id="fleet-data-month" min="1" max="12" required/>
                             </div>
                             <div class="col-4 ">
-                                <input type="number" class="fleet-input" id="fleet-data-year" min="2018" max="2100" />
+                                <input type="number" class="fleet-input" id="fleet-data-year" min="2018" max="2100" required />
                             </div>
                         </div>
 
@@ -84,7 +84,7 @@
                             </div>
 
                             <div class="col-4">
-                                <input type="time" id="fleet-data-time" class="fleet-input" />
+                                <input type="time" id="fleet-data-time" class="fleet-input" required />
                             </div>
                         </div>
                         <p id="forgot-something" style="display: none; text-align: center;"><i>All boxes with a * are mandatory</i></p>
@@ -98,22 +98,23 @@
                         <div class="form-group">
                             <input type="submit" onclick="clickSubmit()" value="Submit" class="fleet-btn-full-width">
                         </div>
+                        <p id="link-to-App1" style="text-align: center;"><i>Download the app <a href="index.html?/=download-app">here!</a></i></p>
                     </div>
 
                     </div>
 
                     <div id="no-accepted-request">
-                        <p>Welcome to Fleet science.</p>
-                        <p>There are a few steps that you can take to start using this platform</p>
-                        <p> - Complete your profile information</p>
-                        <p> - Go to New Requests and accept requests based on what you can do</p>
-                        <p> - when you have accepted a request you can come to the dashboard to submit the data</p>
+                        <h1>Welcome to Fleet science!</h1>
+                        <p>We would like to help you get started:
+                        <p>1. Go to your profile to complete the required information.
+                        <p>2. Go to the requests to search for a request that you can fulfill and accept this request.</p>
+                        <p>3. Go gather the requested data and submit it through the dashboard or through the requests page.</p>
                     </div>
 
                     <div id="box-form-confirm" style="display: none">
                         <br>
-                        <p style="text-align: center; font-size: 30px"><b>Warning!</b></p> 
-                        <p style="text-align: center;">You can not change the data after you upload it. 
+                        <p style="text-align: center; font-size: 30px"><b>Warning!</b></p>
+                        <p style="text-align: center;">You can not change the data after you upload it.
                         <br>
                         Do you confirm the entered values are correct?</p>
                         <div class="form-group">
@@ -126,8 +127,8 @@
 
 
                     <div id="box-form-thank" style="display: none">
-                        <br> 
-                        <p style="text-align: center;">Your data is successfully uploaded to the database. 
+                        <br>
+                        <p style="text-align: center;">Your data is successfully uploaded to the database.
                         <br></p>
                         <div class="form-group">
                             <input type="submit" onclick="submitData()" value="Ok" class="btn btn-default button-accept-requests">
@@ -187,26 +188,26 @@ function clickSubmit(){
     var dataTime=document.getElementById("fleet-data-time").value;
 
     if(requestid && dataValue && latitude && longitude && date && dataTime){
-        document.getElementById("box-form-data").style.display = "none"; 
-        document.getElementById("forgot-something").style.display = "none"; 
-        document.getElementById("box-form-confirm").style.display = ""; 
+        document.getElementById("box-form-data").style.display = "none";
+        document.getElementById("forgot-something").style.display = "none";
+        document.getElementById("box-form-confirm").style.display = "";
         document.getElementById("requestid").disabled = true;
     } else{
-        document.getElementById("forgot-something").style.display = ""; 
+        document.getElementById("forgot-something").style.display = "";
     }
 }
 
 function clickConfirm(){
-    document.getElementById("box-form-data").style.display = "none"; 
-    document.getElementById("box-form-thank").style.display = ""; 
-    document.getElementById("box-form-confirm").style.display = "none"; 
+    document.getElementById("box-form-data").style.display = "none";
+    document.getElementById("box-form-thank").style.display = "";
+    document.getElementById("box-form-confirm").style.display = "none";
     document.getElementById("requestid").disabled = true;
 }
 
 function clickCancel(){
-    document.getElementById("box-form-data").style.display = ""; 
-    document.getElementById("box-form-confirm").style.display = "none"; 
-    document.getElementById("box-form-thank").style.display = "none"; 
+    document.getElementById("box-form-data").style.display = "";
+    document.getElementById("box-form-confirm").style.display = "none";
+    document.getElementById("box-form-thank").style.display = "none";
     document.getElementById("requestid").disabled = false;
 }
 
