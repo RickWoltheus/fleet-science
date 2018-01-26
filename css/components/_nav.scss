@@ -50,11 +50,14 @@ li.nav-item.active {
         padding: 10px 10px 10px 20px;
         background-color: darken($color: $prim-blue , $amount: 0);
         transition: .1s;
+<<<<<<< HEAD
         cursor: pointer;
         a {
           color: white;
           cursor: pointer;
         }
+=======
+>>>>>>> a450511487e23354463963b9f3deeccf1f19450d
     }
     .name {
         color: #196762!important;
