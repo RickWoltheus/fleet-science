@@ -102,6 +102,12 @@ switch (action) {
         view("menu/_footer.html");
         break;
 
+    case "profile-academic":
+        view("menu/_menu-academic.html");
+        view("static-pages/_profile-academic.html");
+        view("menu/_footer.html");
+        break;
+
     case "variables":
         view("menu/_menu-sailor.html");
         view("static-pages/_variables.html");
