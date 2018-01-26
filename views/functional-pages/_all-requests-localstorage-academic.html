@@ -7,7 +7,7 @@
       <!-- SEARCH BAR -->
       <form action="/action_page.php" method="get">
         <div class="input-group">
-          <input class="form-control" id="system-search" onkeyup="searchRequest()" name="q" placeholder="Search for username or area..." />
+          <input class="form-control" id="system-search" onkeyup="searchRequest()" name="q" placeholder="Search for username, area, type of request or status..."" />
           <span class="input-group-btn">
             <button type="submit" class="btn btn-default" data-original-title="" title="">
               <span class="octicon octicon-search white-text"></span>
@@ -41,8 +41,10 @@ writeRequestsTable("all-academic");
     for (i = 1; i < tr.length; i+=6) {
       td = tr[i].getElementsByTagName("td")[0];   //username
       td1 = tr[i].getElementsByTagName("td")[1];   //area
+      td2 = tr[i].getElementsByTagName("td")[2];   //type
+      td3 = tr[i].getElementsByTagName("td")[3];   //status
       if (td) {
-        if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || td1.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || td1.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1 || td3.innerHTML.toUpperCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
         } else {
           tr[i].style.display = "none";
@@ -51,7 +53,7 @@ writeRequestsTable("all-academic");
     }
   }
 
-  //filter by type of measurement
+ /* //filter by type of measurement
   function selectType() {
     var x = document.getElementById("selectType");
     filter = x.value.toUpperCase();
@@ -104,7 +106,7 @@ writeRequestsTable("all-academic");
         }
       }
     }
-  }
+  }*/
 
   //Reloads page
   function myReload() {
