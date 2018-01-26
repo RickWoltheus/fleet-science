@@ -166,7 +166,7 @@ function writeRequestsTable(page) {
     	var text="";
 
     	text+=" <thead>";
-    	text+="   <th>Username</th>";
+    	text+="   <th>Academic</th>";
     	text+="   <th>Requested area</th>";
     	text+="   <th>Type of request";
     	text+="   </th>";
@@ -214,7 +214,9 @@ function writeRequestsTable(page) {
             }
 
     	    text+=" <tr>";
-    	    text+="   <td>"+row["username"]+"</td>";
+    	    //text+="   <td>"+row["username"]+"</td>";
+            text+="   <td>"+ someLocalStorage["users"][row["username"]]["firstname"] + " " +
+            someLocalStorage["users"][row["username"]]["lastname"]+"</td>";
     	    text+="   <td>"+row["area"]+"</td>";
     	    text+="   <td>"+row["reqtype"]+"</td>";
             if(row["status"] == "Approved" && (page=="all-sailor" || page=="all-academic")){
@@ -226,6 +228,13 @@ function writeRequestsTable(page) {
             } else{
                 text+="   <td>"+row["status"]+"</td>";
             }
+
+
+
+
+
+
+
     	    //text+="   <td>"+requestStatus+"</td>";
     	    text+="   <td>";
     	    text+="     <a href='#' class='toggler' data-request='"+count+"' onclick=\"chevronSwitch('chevron-switch"+count+"');\">";
@@ -465,6 +474,14 @@ function createNewDatabase() {
         "institute": "",
         "boatname": "Given Time",
         "email": "conorlagrue@gmail.com"
+    });
+    addUser("sarah", {
+        "role": "academic",
+        "firstname": "Sarah",
+        "lastname": "la Grue",
+        "institute": "UvA",
+        "boatname": "",
+        "email": "sarahlagrue@gmail.com"
     });
 
     // Put in storage
