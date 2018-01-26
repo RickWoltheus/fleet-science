@@ -22,7 +22,12 @@
     color: grey;
 }
 
+.button-signup {
+    transition: .1s;
+}
+
 .button-signup:hover {
     text-decoration: none;
     color: white;
+    opacity: 0.8;
 }
