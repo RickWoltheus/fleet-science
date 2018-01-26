@@ -475,6 +475,14 @@ function createNewDatabase() {
         "boatname": "Given Time",
         "email": "conorlagrue@gmail.com"
     });
+    addUser("sarah", {
+        "role": "academic",
+        "firstname": "Sarah",
+        "lastname": "la Grue",
+        "institute": "UvA",
+        "boatname": "",
+        "email": "sarahlagrue@gmail.com"
+    });
 
     // Put in storage
     putStorage();
