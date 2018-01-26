@@ -49,7 +49,11 @@ a {
   padding-right: 20px;
   text-align: center;
   cursor: pointer;
-  outline: 0 !important; }
+  outline: 0 !important;
+  transition: 1s all ease-in-out; }
+
+.btn {
+  cursor: pointer; }
 
 .fleet-btn-full-width {
   display: inline-block;
@@ -61,7 +65,8 @@ a {
   padding-left: 5px;
   padding-right: 5px;
   text-align: center;
-  width: 100%; }
+  width: 100%;
+  cursor: pointer; }
 
 .fleet-btn-round {
   display: inline-block;
@@ -131,7 +136,8 @@ li.nav-item.active a {
 
 .navbar {
   padding-top: 0 !important;
-  padding-bottom: 0 !important; }
+  padding-bottom: 0 !important;
+  height: 75px; }
 
 .nav-item {
   text-align: center;
@@ -597,10 +603,13 @@ p {
 
 footer {
   width: 100vw;
-  padding: 20px;
   margin-top: 50px;
+  padding-left: 20px;
   color: white;
-  background-color: #42c0c4; }
+  background-color: #42c0c4;
+  height: 75px;
+  display: flex;
+  align-items: center; }
 
 .container-edit-password {
   width: 400px;
