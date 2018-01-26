@@ -453,6 +453,9 @@ p {
   cursor: pointer;
   text-align: center; }
 
+.button-profile:hover {
+  opacity: 0.8; }
+
 .button-profile:focus {
   outline: none;
   border: none; }
@@ -741,9 +744,13 @@ footer {
 .a-forgotpassword:hover {
   color: grey; }
 
+.button-signup {
+  transition: .1s; }
+
 .button-signup:hover {
   text-decoration: none;
-  color: white; }
+  color: white;
+  opacity: 0.8; }
 
 /*
 .container-qr-code h1,
