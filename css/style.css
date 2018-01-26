@@ -151,9 +151,13 @@ li.nav-item.active a {
   padding-bottom: 0 !important;
   height: 75px; }
 
+.nav-link {
+  padding: 26px;
+  margin-left: 20px;
+  margin-right: 20px; }
+
 .nav-item {
-  text-align: center;
-  padding: 18px 20px; }
+  text-align: center; }
 .nav-item a {
   font-size: 16px; }
 
