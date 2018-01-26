@@ -43,6 +43,7 @@ switch (action) {
     case "chatbox-sailor":
         view("menu/_menu-sailor.html");
         view("functional-pages/_chatbox.html");
+        view("menu/_footer.html");
         break;
 
     // Academic
@@ -88,7 +89,7 @@ switch (action) {
         view("menu/_footer.html");
         break;
     */
-   
+
     case "profile":
         view("menu/_menu-sailor.html");
         view("static-pages/_profile.html");
