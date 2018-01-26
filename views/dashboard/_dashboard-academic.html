@@ -7,7 +7,7 @@
     <div class="row col-8">
         <h1 class="text-center grey-text">
             <span>
-                <img src="images/symbol-academic.png" height="50px"> </span> Hello
+                <img src="images/symbol-academic.png" height="50px"></img> </span> Hello
             <span id='loggedin-username'></span>!
         </h1>
     </div>
@@ -23,17 +23,19 @@
             <div class="row justify-content-center">
                 <div class="col-11">
 
+                <div id="box-form-request">
+
                     <!-- Data value -->
                     <div class="form-group">
-                        Short description of research project (max 250 tokens)*
-                        <input id="desc" class="fleet-input" placeholder="Short description" maxlength="250">
+                        Short description of research project*
+                        <input id="desc" class="fleet-input" placeholder="Short description (max 250 characters)" maxlength="250">
                     </div>
 
                     <!-- Select request -->
                     <div class="form-group">
                         Kind of data*
-                        <select id="kind-of-data" class="fleet-input">
-                            <option selected="selected">...</option>
+                        <select id="kind-of-data" class="fleet-input" required>
+                            <option value=""><i>Choose the kind of data you need</option>
                             <option value="ph">pH</option>
                             <option value="temperature">Temperature</option>
                             <option value="samples">Samples</option>
@@ -46,7 +48,7 @@
                             <option value="pm2,5">PM2,5</option>
                             <option value="co">CO</option>
                             <option value="o3">O3</option>
-                            <option value="deg c">Deg c</option>
+                            <option value="deg c">Degrees ºC</option>
                             <option value="salinity">Salinity psu</option>
                             <option value="tds">TDS</option>
                             <option value="co2">CO2 (aq)</option>
@@ -64,7 +66,7 @@
                     <div class="form-group row">
                         <div class="col-3">Latitude*:</div>
                         <div class="col-9 ">
-                            <input id="latitude" class="fleet-input" placeholder="52.370216" />
+                            <input id="latitude" class="fleet-input" placeholder="e.g. 52.370216" />
                         </div>
                     </div>
 
@@ -72,36 +74,36 @@
                     <div class="form-group row">
                         <div class="col-3">Longitude*:</div>
                         <div class="col-9 ">
-                            <input id="longitude" class="fleet-input" placeholder="4.895168" />
+                            <input id="longitude" class="fleet-input" placeholder="e.g. 4.895168" />
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-12">
-                            Radius of area (km)*
+                            Radius of area*
                         </div>
 
                         <div class="col-4">
-                            <input id="radius" type="number" class="fleet-input" min="1" max="50" value="5" />
+                            <input id="radius" type="number" class="fleet-input" min="1" max="50" placeholder="km" />
                         </div>
-                        </select>
+                        <!--</select>-->
                     </div>
 
                     <!-- date of measurement -->
                     <div class="form-group row">
                         <div class="col-12">
                             Date of
-                            <b>first</b> measurement (DD-MM-YYYY)*
+                            <b>first</b> measurement*
                         </div>
 
                         <div class="col-4">
-                            <input id="first-day" type="number" class="fleet-input" min="1" max="31" value="1" />
+                            <input id="first-day" type="number" class="fleet-input" min="1" max="31" placeholder="DD"  />
                         </div>
                         <div class="col-4 ">
-                            <input id="first-month" type="number" class="fleet-input" min="1" max="12" value="1" />
+                            <input id="first-month" type="number" class="fleet-input" min="1" max="12" placeholder="MM" />
                         </div>
                         <div class="col-4 ">
-                            <input id="first-year" type="number" class="fleet-input" min="2018" max="2100" value="2018" />
+                            <input id="first-year" type="number" class="fleet-input" min="2018" max="2100" placeholder="YYYY" />
                         </div>
                     </div>
 
@@ -109,23 +111,24 @@
                     <div class="form-group row">
                         <div class="col-12">
                             Date of
-                            <b>last</b> measurement (DD-MM-YYYY)*
+                            <b>last</b> measurement*
                         </div>
 
                         <div class="col-4">
-                            <input id="last-day" type="number" class="fleet-input" min="1" max="31" value="1" />
+                            <input id="last-day" type="number" class="fleet-input" min="1" max="31" placeholder="DD" />
                         </div>
                         <div class="col-4 ">
-                            <input id="last-month" type="number" class="fleet-input" min="1" max="12" value="1" />
+                            <input id="last-month" type="number" class="fleet-input" min="1" max="12" placeholder="MM" />
                         </div>
                         <div class="col-4 ">
-                            <input id="last-year" type="number" class="fleet-input" min="2018" max="2100" value="2018" />
+                            <input id="last-year" type="number" class="fleet-input" min="2018" max="2100" placeholder="YYYY" />
                         </div>
                     </div>
 
                     <div class="form-group">
                         Frequency of measurement(s)*
                         <select id="freq-of-measurements" class="fleet-input">
+                            <option value="">Choose Frequency</option>
                             <option value="daily">daily</option>
                             <option value="weekly">weekly</option>
                             <option value="monthly">monthly</option>
@@ -137,25 +140,41 @@
                             Number of measurements per frequency*
                         </div>
 
-                        <div id="number-of-measurements" class="col-4">
-                            <input type="number" class="fleet-input" min="1" max="50" value="1" />
+                        <div class="col-4">
+                            <input id="number-of-measurements" type="number" class="fleet-input" min="1" max="50" placeholder="1...50" />
                         </div>
-                        </select>
+                        <!--</select>-->
                     </div>
 
                     <div class="form-group">
                         Additional information (optional)
                         <input id="additional-info" class="fleet-input" placeholder="Additional information">
                     </div>
+                    <p id="forgot-something" style="display: none; text-align: center;"><i>Make sure you fill in all the mandatory boxes</i></p>
                     <!-- divider -->
                     <hr />
 
                     <div class="form-group">
-                        <input type="button" onclick="submitData()" value="Submit" class="fleet-btn-full-width">
+                        <input type="button" onclick="clickSubmit()" value="Submit" class="fleet-btn-full-width">
                     </div>
 
                     <input type="hidden" name="page" value="dashboard-academic">
-                    </form>
+                    
+                    </div>
+
+                    <div id="box-confirm-submit" style="display: none;">
+                        <br>
+                        <p style="text-align: center; font-size: 30px"><b>Warning!</b></p> 
+                        <p style="text-align: center;">You can not change your request after you submit it. 
+                        <br>
+                        Do you confirm the submission of the request?</p>
+                        <div class="form-group">
+                            <input type="submit" onclick="submitRequest()" value="Confirm" class="btn btn-default button-accept-requests">
+                        </div>
+                        <div>
+                            <input type="submit" onclick="clickCancel()" value="Cancel" class="btn btn-default button-reject-requests">
+                        </div>
+                    </div>
 
 
                 </div>
@@ -196,57 +215,77 @@
         <br>
     </div>
 </div>
+
 <script>
-    function submitData() {
-        // alert("hh")
+
+    function clickSubmit(){
         var description = document.getElementById("desc").value;
-
         var kindOfData = document.getElementById("kind-of-data").value;
-
         var latitude = document.getElementById("latitude").value;
-
         var longitude = document.getElementById("longitude").value;
-
         var area = document.getElementById("area").value;
-
         var radius = document.getElementById("radius").value;
-
         var dateFirstMeasurment = document.getElementById("first-day").value + "-" +
             document.getElementById("first-month").value + "-" +
             document.getElementById("first-year").value;
-
         var dateLastMeasurement = document.getElementById("last-day").value + "-" +
             document.getElementById("last-month").value + "-" +
             document.getElementById("last-year").value;
-
         var freqOfMeasurments = document.getElementById("freq-of-measurements").value;
-
         var numberOfMeasurments = document.getElementById("number-of-measurements").value;
-
         var additionalInfo = document.getElementById("additional-info").value;
 
+        console.log("descr " + description);
+        console.log("type " + kindOfData);
+        console.log("latitude " + latitude);
+        console.log("longitude " + longitude);
+        console.log("area " + area);
+        console.log("radius " + radius);
+        console.log("date 1 " + dateFirstMeasurment);
+        console.log("date 2 " + dateLastMeasurement);
+        console.log("frequency " + freqOfMeasurments);
+        console.log("number of " + numberOfMeasurments);
+
+        if(description && kindOfData && latitude && longitude && area && radius && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
+            document.getElementById("box-form-request").style.display = "none"; 
+            document.getElementById("box-confirm-submit").style.display = ""; 
+            document.getElementById("forgot-something").style.display = "none";        
+        } else{
+            document.getElementById("forgot-something").style.display = "";        
+        }
+
+
+    }
+
+    function clickCancel(){
+        document.getElementById("box-form-request").style.display = ""; 
+        document.getElementById("box-confirm-submit").style.display = "none"; 
+    }
+
+    function submitRequest() {
+        // alert("hh")
+        var description = document.getElementById("desc").value;
+        var kindOfData = document.getElementById("kind-of-data").value;
+        var latitude = document.getElementById("latitude").value;
+        var longitude = document.getElementById("longitude").value;
+        var area = document.getElementById("area").value;
+        var radius = document.getElementById("radius").value;
+        var dateFirstMeasurment = document.getElementById("first-day").value + "-" +
+            document.getElementById("first-month").value + "-" +
+            document.getElementById("first-year").value;
+        var dateLastMeasurement = document.getElementById("last-day").value + "-" +
+            document.getElementById("last-month").value + "-" +
+            document.getElementById("last-year").value;
+        var freqOfMeasurments = document.getElementById("freq-of-measurements").value;
+        var numberOfMeasurments = document.getElementById("number-of-measurements").value;
+        var additionalInfo = document.getElementById("additional-info").value;
         /*
             alert("data is to be submitted for request "+requestid+" value="+dataValue+" latitude,logitude="+latitude+","+longitude+" date="+date+" time"+dataTime);
         */
-
-        var data = {
-            "description": description,
-            "kind": kindOfData,
-            "latitude": latitude,
-            "longitude": longitude,
-            "area": area,
-            "radius": radius,
-            "firstMeasurment": dateFirstMeasurment,
-            "lastMeasurement": dateLastMeasurement,
-            "freqOfMeasurments": freqOfMeasurments,
-            "numberOfMeasurments": numberOfMeasurments,
-            "additionalInfo": additionalInfo
-        };
-        window.location = "?/=requested-academic";
-        addData(description, data);
-
-
-        console.log(data);
+        //window.location = "?/=requested-academic";
+        addNewRequest(area,description,kindOfData,"Pending Approval",freqOfMeasurments,dateLastMeasurement);
+        location.reload();
+        //console.log(addRequest);
       }
     setText("accepted-chip", 5);
     setText("request-chip", 3);
