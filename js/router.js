@@ -31,13 +31,11 @@ switch (action) {
         view("menu/_menu-sailor.html");
         //@@@ should eventually be _all-requests-sailor.html
         view("functional-pages/_all-requests-sailor-localstorage-example.html");
-        view("menu/_footer.html");
         break;
 
     case "accepted-requests-sailor":
         view("menu/_menu-sailor.html");
         view("functional-pages/_accepted-requests-sailor-localstorage-example.html");
-        view("menu/_footer.html");
         break;
 
     case "chatbox-sailor":
@@ -63,19 +61,16 @@ switch (action) {
     case "my-requests-academic":
         view("menu/_menu-academic.html");
         view("functional-pages/_my-requests-academic-localstorage.html");
-        view("menu/_footer.html");
         break;
 
     case "all-requests-academic":
         view("menu/_menu-academic.html");
         view("functional-pages/_all-requests-localstorage-academic.html");
-        view("menu/_footer.html");
         break;
 
     case "accepted-requests-academic":
         view("menu/_menu-academic.html");
         view("functional-pages/_accepted-requests-academic.html");
-        view("menu/_footer.html");
         break;
 
     case "download-app":
@@ -152,7 +147,6 @@ switch (action) {
     case "database":
         view("menu/_menu.html");
         view("static-pages/_database.html");
-        view("menu/_footer.html");
         break;
     default:
         view("error/_home.html");
