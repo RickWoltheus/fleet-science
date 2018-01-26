@@ -35,7 +35,7 @@
                     <div class="form-group">
                         Type of data*
                         <select id="kind-of-data" class="fleet-input" required>
-                            <option value=""><i>-- Choose the kind of data you need --</option>
+                            <option value=""><i>-- Select the type of data that you need --</option>
                             <option value="ph">pH</option>
                             <option value="temperature">Temperature</option>
                             <option value="samples">Samples</option>
@@ -58,7 +58,7 @@
 
                     <!-- Area -->
                     <div class="form-group">
-                        Area*
+                        Area to do measurements*
                         <input id="area" class="fleet-input" required placeholder="Area">
                     </div>
 
@@ -160,13 +160,13 @@
                     </div>
 
                     <input type="hidden" name="page" value="dashboard-academic">
-                    
+
                     </div>
 
                     <div id="box-confirm-submit" style="display: none;">
                         <br>
-                        <p style="text-align: center; font-size: 30px"><b>Warning!</b></p> 
-                        <p style="text-align: center;">You can not change your request after you submit it. 
+                        <p style="text-align: center; font-size: 30px"><b>Warning!</b></p>
+                        <p style="text-align: center;">You can not change your request after you submit it.
                         <br>
                         Do you confirm the submission of the request?</p>
                         <div class="form-group">
@@ -250,21 +250,21 @@
         if((typeof latitude != 'number' && !isFinite(latitude)) || (typeof latitude != 'number' && !isFinite(longitude))){
             document.getElementById("forgot-something1").style.display = "";
         } else if(description && kindOfData && latitude && longitude && area && radius && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
-            document.getElementById("box-form-request").style.display = "none"; 
-            document.getElementById("box-confirm-submit").style.display = ""; 
+            document.getElementById("box-form-request").style.display = "none";
+            document.getElementById("box-confirm-submit").style.display = "";
             document.getElementById("forgot-something1").style.display = "none";
-            document.getElementById("forgot-something").style.display = "none";        
+            document.getElementById("forgot-something").style.display = "none";
         } else{
-            document.getElementById("forgot-something").style.display = "";   
-            document.getElementById("forgot-something1").style.display = "none";     
+            document.getElementById("forgot-something").style.display = "";
+            document.getElementById("forgot-something1").style.display = "none";
         }
 
 
     }
 
     function clickCancel(){
-        document.getElementById("box-form-request").style.display = ""; 
-        document.getElementById("box-confirm-submit").style.display = "none"; 
+        document.getElementById("box-form-request").style.display = "";
+        document.getElementById("box-confirm-submit").style.display = "none";
     }
 
     function submitRequest() {
