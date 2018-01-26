@@ -24,7 +24,6 @@ switch (action) {
     case "dashboard-sailor":
         view("menu/_menu-sailor.html");
         view("dashboard/_dashboard-sailor.html");
-        view("menu/_footer.html");
         break;
 
     case "all-requests-sailor":
@@ -41,20 +40,17 @@ switch (action) {
     case "chatbox-sailor":
         view("menu/_menu-sailor.html");
         view("functional-pages/_chatbox.html");
-        view("menu/_footer.html");
         break;
 
     // Academic
     case "dashboard-academic":
         view("menu/_menu-academic.html");
         view("dashboard/_dashboard-academic.html");
-        view("menu/_footer.html");
         break;
 
     case "chatbox-academic":
         view("menu/_menu-academic.html");
         view("functional-pages/_chatbox.html");
-        view("menu/_footer.html");
         break;
 
 
@@ -76,7 +72,6 @@ switch (action) {
     case "download-app":
         view("menu/_menu-sailor.html");
         view("feedback/_download-app.html");
-        view("menu/_footer.html");
         break;
 
 
@@ -106,13 +101,11 @@ switch (action) {
     case "variables":
         view("menu/_menu-sailor.html");
         view("static-pages/_variables.html");
-        view("menu/_footer.html");
         break;
 
     case "editpassword":
         view("menu/_menu-sailor.html");
         view("static-pages/_edit-password.html");
-        view("menu/_footer.html");
         break;
 
     case "home":
@@ -124,19 +117,16 @@ switch (action) {
     case "login":
         view("menu/_menu.html");
         view("forms/_login.html");
-        view("menu/_footer.html");
         break;
 
     case "account-created":
         view("menu/_menu.html");
         view("static-pages/_account-created.html");
-        view("menu/_footer.html");
         break;
 
     case "sign-up":
         view("menu/_menu.html");
         view("forms/_sign-up.html");
-        view("menu/_footer.html");
         break;
 
     case "about":
