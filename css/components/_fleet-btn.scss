@@ -10,7 +10,14 @@
     text-align: center;
     cursor: pointer;
     outline: 0!important;
+    transition: 1s all ease-in-out;
+
 }
+
+.btn{
+    cursor: pointer;
+}
+
 .fleet-btn-full-width{
     display: inline-block;
     color: white;
@@ -21,7 +28,8 @@
     padding-left: 5px;
     padding-right: 5px;
     text-align: center;
-    width: 100%
+    width: 100%;
+    cursor: pointer;
 }
 
 .fleet-btn-round{
@@ -37,6 +45,7 @@
     text-align: center;
     cursor: pointer;
     outline: 0!important;
+    
 }
 
 /* Buttons */
