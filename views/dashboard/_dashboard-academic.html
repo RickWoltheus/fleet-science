@@ -249,10 +249,10 @@
 
         if((typeof latitude != 'number' && !isFinite(latitude)) || (typeof latitude != 'number' && !isFinite(longitude))){
             document.getElementById("forgot-something1").style.display = "";
-        }  else if(description && kindOfData && latitude && longitude && area && radius && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
+        } else if(description && kindOfData && latitude && longitude && area && radius && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
             document.getElementById("box-form-request").style.display = "none"; 
-            document.getElementById("forgot-something1").style.display = "none";
             document.getElementById("box-confirm-submit").style.display = ""; 
+            document.getElementById("forgot-something1").style.display = "none";
             document.getElementById("forgot-something").style.display = "none";        
         } else{
             document.getElementById("forgot-something").style.display = "";   
