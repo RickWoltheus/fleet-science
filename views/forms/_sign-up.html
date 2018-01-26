@@ -3,7 +3,7 @@
     <div class="container-sign-up row justify-content-center">
         <div class="col-3">
             <h1 class="uk-text-center">Sign-up</h1>
-            <form name="signup" method="post" class="" action="index.html?/=account-created" onsubmit="return signupLS(document.forms.signup.role.value, document.forms.signup.uname.value, document.forms.signup.lastname.value, document.forms.signup.username.value, document.forms.signup.boat.value, document.forms.signup.institute.value, document.forms.signup.email.value)">
+            <form name="signup" method="post" class="" action="index.html?/=account-created" onsubmit="return signupLS(document.forms.signup.role.value, document.forms.signup.uname.value, document.forms.signup.lastname.value, document.forms.signup.username.value, document.forms.signup.boat.value, document.forms.signup.institute.value, document.forms.signup.email.value, document.forms.signup.email1.value, document.forms.signup.pass.value, document.forms.signup.pass1.value)">
                 <div class="form-group uk-grid-small uk-child-width-auto uk-grid checkBox1 ">
                     <label>
                         <input class="" type="radio" name="role" value="academic" id="is-academic" onclick="changeForm()" checked /> Academic</label>
@@ -45,18 +45,18 @@
                 </div>
 
                 <div class="form-group">
-                    Repeat Email*
-                    <input class="fleet-input" type="text" placeholder="Repeat Email" required/>
+                    Repeat Email*   <span id="wrong-email" style="display: none;"> - Different email</span>
+                    <input class="fleet-input" type="text" name="email1" placeholder="Repeat Email" required/>
                 </div>
 
                 <div class="form-group">
                     Password*
-                    <input class="fleet-input" type="password" placeholder="Password" required />
+                    <input class="fleet-input" type="password" name="pass" placeholder="Password" required />
                 </div>
 
                 <div class="form-group">
-                    Repeat Password*
-                    <input class="fleet-input" type="password" placeholder="Repeat Password" required />
+                    Repeat Password*  <span id="wrong-pass" style="display: none;"> - Different password</span>
+                    <input class="fleet-input" type="password" name="pass1" placeholder="Repeat Password" required />
                 </div>
                 <div class="form-group button-group">
                     <a class="fleet-btn cancel-button" href="index.html?/=home">Cancel</a>

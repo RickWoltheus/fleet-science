@@ -72,7 +72,24 @@ function loggedInInstitute() {
 }
 
 
-function signupLS(role, firstname, lastname, username, boatname, institute, email) {
+function signupLS(role, firstname, lastname, username, boatname, institute, email,email1, pass, pass1) {
+
+    if (userExists(username)) {
+        document.getElementById("username-exists").style.display = "";
+    } else{
+        document.getElementById("username-exists").style.display = "none";
+    }
+
+    document.getElementById("wrong-email").style.display  ="none";
+    document.getElementById("wrong-pass").style.display  ="none";
+    if(email != email1){
+        document.getElementById("wrong-email").style.display  ="";
+        return false;
+    }
+    if(pass != pass1){
+        document.getElementById("wrong-pass").style.display  ="";
+        return false;
+    }
     if (firstname.length == 0) {
         alert("Please enter first name");
         return false;
@@ -513,6 +530,20 @@ function addUser(username, userinfo) {
     someLocalStorage["accepts"][username] = [];
     setCookie("username", username);
     putStorage();
+
+    if(username != "conor" && username != "sarah"){
+        var messageinfo = {
+            "type":"administrator",
+            "from": username, 
+            "to": "conor",
+            "description": username + " wants to be accepted into the platform", 
+            "date":getTodayDateString(), 
+            "previous":""
+        }
+
+        addMessage(getNewUniqueId("message"), messageinfo);
+    }
+
     return true;
 }
 
