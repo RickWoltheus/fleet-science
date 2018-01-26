@@ -156,6 +156,7 @@ function writeAcceptedDataRequestOptions()
             document.getElementById("there-are-requests").style.display = "";
             document.getElementById("no-accepted-request").style.display = "none";
             text+="<select class='fleet-input' id='requestid'>";
+            text+="<option value=''><i>-- Choose the data request you want to answer --</option>";
             var i;
 	    for (i=0;i<accepts.length;i++) {
                 var req=getStorageObject()["requests"][accepts[i]];
