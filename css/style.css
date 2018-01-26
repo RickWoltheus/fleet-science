@@ -6,16 +6,7 @@
 */
 body, html {
   font-family: "Quattrocento sans", sans-serif !important;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column; }
-
-h1 {
-  margin-top: 0 !important; }
-
-/* Footer to bottom fix */
-#content {
-  flex-grow: 1; }
+  overflow-x: hidden; }
 
 h1 {
   font-family: "Architects Daughter", cursive;
@@ -23,6 +14,18 @@ h1 {
 
 a {
   text-decoration: none; }
+
+/* Images */
+.conor-sarah-image {
+  width: 100%; }
+
+.social-media-images {
+  width: 50px;
+  margin-right: 10px;
+  border-radius: 10px; }
+
+.social-media-images:hover {
+  opacity: 0.8; }
 
 #landingImage {
   width: 100%;
@@ -61,11 +64,14 @@ a {
   padding-right: 20px;
   text-align: center;
   cursor: pointer;
-  outline: 0 !important;
-  transition: 1s all ease-in-out; }
+  outline: 0 !important; }
 
-.btn {
-  cursor: pointer; }
+button {
+  cursor: pointer;
+  transition: 0.1s !important; }
+
+button:hover {
+  opacity: 0.8 !important; }
 
 .fleet-btn-full-width {
   display: inline-block;
@@ -630,6 +636,7 @@ p {
 .input-group-btn .btn {
   border-radius: 0px 20px 20px 0px;
   background: linear-gradient(to right, #FE947D, #FFBDAD) !important;
+  opacity: 1 !important;
   border-left: none;
   border-right: none;
   border: linear-gradient(to right, #FE947D, #FFBDAD);
@@ -638,7 +645,7 @@ p {
   margin-left: -1px; }
 
 .input-group-btn .btn:hover {
-  opacity: 0.8; }
+  opacity: 0.8 !important; }
 
 footer {
   width: 100vw;

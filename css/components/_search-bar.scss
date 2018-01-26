@@ -14,6 +14,7 @@
 .input-group-btn .btn {
   border-radius: 0px 20px 20px 0px;
   background: linear-gradient(to right, #FE947D, #FFBDAD)!important;
+  opacity: 1!important;
   border-left: none;
   border-right: none;
   border: linear-gradient(to right, #FE947D, #FFBDAD);
@@ -23,7 +24,7 @@
 }
 
 .input-group-btn .btn:hover {
-  opacity: 0.8;
+  opacity: 0.8!important;
 }
 
 .input-group-btn .btn:active{

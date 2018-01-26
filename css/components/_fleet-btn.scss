@@ -10,15 +10,18 @@
     text-align: center;
     cursor: pointer;
     outline: 0!important;
-    transition: 1s all ease-in-out;
-
 }
 
-.btn{
+button {
     cursor: pointer;
+    transition: .1s!important;
 }
 
-.fleet-btn-full-width{
+button:hover {
+    opacity: 0.8!important;
+}
+
+.fleet-btn-full-width {
     display: inline-block;
     color: white;
     line-height: 35px;
@@ -45,7 +48,7 @@
     text-align: center;
     cursor: pointer;
     outline: 0!important;
-    
+
 }
 
 /* Buttons */
