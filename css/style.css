@@ -9,13 +9,9 @@ body, html {
   overflow-x: hidden; }
 
 /* Footer to bottom fix */
-.footerBottom {
+#content {
   display: flex;
   flex-direction: column; }
-
-#content {
-  flex-grow: 1;
-}
 
 h1 {
   font-family: "Architects Daughter", cursive;
