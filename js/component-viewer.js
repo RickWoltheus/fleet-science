@@ -37,7 +37,7 @@ function viewPart(id, include) {
 //sets text of element with id
 function setText(elementId, text) {
     var element = document.getElementById(elementId);
-
+console.log("setText: "+elementId+" "+text);
     if (element) {
         element.innerHTML = text;
     }

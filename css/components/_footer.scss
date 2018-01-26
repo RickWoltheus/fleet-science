@@ -1,8 +1,10 @@
 footer {
     width: 100vw;
-    padding: 20px;
     margin-top: 50px;
+    padding-left: 20px;
     color: white;
     background-color: $prim-blue;
-
+    height: 75px;
+    display: flex;
+    align-items: center;
 }

@@ -9,7 +9,12 @@ function validateLogin(username) {
     if (!userExists(username)) {
         //alert("User " + username + " does not exist. Please sign up first.");
         if(count_login_clicks == 1 || tried_usernames.indexOf(username) < 0){
-            document.getElementById("not-user").innerHTML += "<b>Username " + username +" does not exist. Please sign up first.</b><br>";
+            if(!username){
+                document.getElementById("not-user").innerHTML += "<b>Fill in with your username and password.</b><br>";
+            }            
+            else{
+                document.getElementById("not-user").innerHTML += "<b>Username " + username +" does not exist. Please sign up first.</b><br>";
+            }
             document.getElementById("to-go").style.display = "none";
             tried_usernames.push(username);
         }
@@ -126,9 +131,13 @@ function writeAcceptedDataRequestOptions()
 
         var accepts = getStorageObject()["accepts"][loggedInUsername];
         if (accepts.length == 0) {
-	    text = "You have not accepted any data request yet. Please go to the <a href='?/=all-requests-sailor'>All Requests</a> page to accept requests.";
+	       text = "You have not accepted any data request yet. Please go to the <a href='?/=all-requests-sailor'>All Requests</a> page to accept requests.";
+            document.getElementById("there-are-requests").style.display = "none";
+            document.getElementById("no-accepted-request").style.display = "";
 	}
 	else {
+            document.getElementById("there-are-requests").style.display = "";
+            document.getElementById("no-accepted-request").style.display = "none";
             text+="<select class='fleet-input' id='requestid'>";
             var i;
 	    for (i=0;i<accepts.length;i++) {
