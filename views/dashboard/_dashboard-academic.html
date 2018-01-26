@@ -33,7 +33,7 @@
 
                     <!-- Select request -->
                     <div class="form-group">
-                        Kind of data*
+                        Type of data*
                         <select id="kind-of-data" class="fleet-input" required>
                             <option value=""><i>-- Choose the kind of data you need --</option>
                             <option value="ph">pH</option>
@@ -151,6 +151,7 @@
                         <input id="additional-info" class="fleet-input" placeholder="Additional information">
                     </div>
                     <p id="forgot-something" style="display: none; text-align: center;"><i>All boxes with a <b>*</b> are mandatory</i></p>
+                    <p id="forgot-something1" style="display: none; text-align: center;"><i>Make sure you submit valid latitude and longitude values.</i></p>
                     <!-- divider -->
                     <hr />
 
@@ -246,12 +247,16 @@
         console.log("frequency " + freqOfMeasurments);
         console.log("number of " + numberOfMeasurments);
 
-        if(description && kindOfData && latitude && longitude && area && radius && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
+        if((typeof latitude != 'number' && !isFinite(latitude)) || (typeof latitude != 'number' && !isFinite(longitude))){
+            document.getElementById("forgot-something1").style.display = "";
+        }  else if(description && kindOfData && latitude && longitude && area && radius && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
             document.getElementById("box-form-request").style.display = "none"; 
+            document.getElementById("forgot-something1").style.display = "none";
             document.getElementById("box-confirm-submit").style.display = ""; 
             document.getElementById("forgot-something").style.display = "none";        
         } else{
-            document.getElementById("forgot-something").style.display = "";        
+            document.getElementById("forgot-something").style.display = "";   
+            document.getElementById("forgot-something1").style.display = "none";     
         }
 
 
