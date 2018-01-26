@@ -78,6 +78,12 @@ switch (action) {
         view("menu/_footer.html");
         break;
 
+    case "download-app":
+        view("menu/_menu-sailor.html");
+        view("feedback/_download-app.html");
+        view("menu/_footer.html");
+        break;
+
 
 
 
