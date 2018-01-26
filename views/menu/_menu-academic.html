@@ -37,11 +37,16 @@
     </nav>
     <div class="menu-wrapper">
         <div class="menu-profile">
-            <img src="images/sarah-academic.png">
-            <label class="special-font white-text profile-menu"> <span id='loggedin-username-profile'></span> | Academic<br><a href="?/=profile-academic">View profile</a></label>
-            <div class="logout" onclick="window.location='?/=home';">
-               Logout
-            </div>
+            <img src="images/sarah-academic.png"/>
+            <label class="name special-font profile-menu">
+                <span id='loggedin-username-profile'></span> | Academic<br>
+                <a class="a-view-profile" href="?/=profile">View profile</a>
+            </label>
+            <a class="a-logout" href="?/=home">
+                <div class="logout">
+                    Logout
+                </div>
+            </a>
         </div>
     </div>
     <script>
