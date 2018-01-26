@@ -10,6 +10,9 @@ body, html {
   display: flex;
   flex-direction: column; }
 
+h1 {
+  margin-top: 0 !important; }
+
 /* Footer to bottom fix */
 #content {
   flex-grow: 1; }
@@ -20,6 +23,15 @@ h1 {
 
 a {
   text-decoration: none; }
+
+#landingImage {
+  width: 100%;
+  height: 250px;
+  background-image: url(../images/landing-image.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
 
 .notification-chip {
   display: inline-block;
@@ -141,9 +153,9 @@ li.nav-item.active a {
 
 .nav-item {
   text-align: center;
-  padding: 15px 20px; }
+  padding: 18px 20px; }
 .nav-item a {
-  font-size: 20px; }
+  font-size: 16px; }
 
 .menu-wrapper {
   width: 100%; }
@@ -727,6 +739,21 @@ footer {
 .button-signup:hover {
   text-decoration: none;
   color: white; }
+
+/*
+.container-qr-code h1,
+.container-qr-code p  {
+    text-align: center;
+}
+*/
+.container-qr-code-content {
+  display: block;
+  margin: 0 auto; }
+
+.container-qr-code-content img, .container-qr-code-content h1, .container-qr-code-content p {
+  display: block;
+  margin: 0 auto;
+  text-align: center; }
 
 .no-bullets {
   list-style-type: none; }
