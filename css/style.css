@@ -135,11 +135,9 @@ li.nav-item.active a {
 
 .nav-item {
   text-align: center;
-  width: 200px;
-  padding-top: 25px;
-  padding-bottom: 25px; }
+  padding: 15px 20px; }
 .nav-item a {
-  font-size: 17px; }
+  font-size: 20px; }
 
 .menu-wrapper {
   width: 100%; }
