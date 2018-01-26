@@ -14,13 +14,17 @@ $prim-background-btn: linear-gradient(to right, #FE947D, #FFBDAD);
 body, html {
   font-family: 'Quattrocento sans', sans-serif!important;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
+h1 {
+  margin-top: 0!important;
+}
 /* Footer to bottom fix */
 
 #content {
-  display: flex;
-  flex-direction: column;
+  flex-grow: 1;
 }
 
 h1{
