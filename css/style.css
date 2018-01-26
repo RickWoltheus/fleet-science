@@ -728,6 +728,21 @@ footer {
   text-decoration: none;
   color: white; }
 
+/*
+.container-qr-code h1,
+.container-qr-code p  {
+    text-align: center;
+}
+*/
+.container-qr-code-content {
+  display: block;
+  margin: 0 auto; }
+
+.container-qr-code-content img, .container-qr-code-content h1, .container-qr-code-content p {
+  display: block;
+  margin: 0 auto;
+  text-align: center; }
+
 .no-bullets {
   list-style-type: none; }
 
