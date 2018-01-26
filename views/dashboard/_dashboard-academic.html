@@ -30,6 +30,32 @@
                       <p>3. Go to my requests to check the status of your request. Once the request is completed you can download the data.</p>
                   </div>
 
+                <div id="box-confirm-submit" style="display: none;">
+                    <br>
+                    <p style="text-align: center; font-size: 30px"><b>Warning!</b></p>
+                    <p style="text-align: center;">You can not change your request after you submit it.
+                    <br>
+                    Do you confirm the submission of the request?</p>
+                    <div class="form-group">
+                        <input type="submit" onclick="clickConfirm()" value="Confirm" class="btn btn-default button-accept-requests">
+                    </div>
+                    <div>
+                        <input type="submit" onclick="clickCancel()" value="Cancel" class="btn btn-default button-reject-requests">
+                    </div>
+                    <br><br>
+                </div>
+
+                <div id="box-form-thank" style="display: none">
+                        <br>
+                        <p style="text-align: center;">Your data request was succesfully sent to the lead boats for approval.
+                        <br> You can find the status of your data request under <a href="?/=my-requests-academic">my requests</a>.
+                        </p>
+                        <div class="form-group">
+                            <input type="submit" onclick="submitRequest()" value="Ok" class="btn btn-default button-accept-requests">
+                        </div>
+                    </div>
+
+
                 <div id="box-form-request">
 
                     <!-- Data value -->
@@ -43,23 +69,25 @@
                         Type of data*
                         <select id="kind-of-data" class="fleet-input" required>
                             <option value=""><i>-- Select the type of data that you need --</option>
-                            <option value="ph">pH</option>
-                            <option value="temperature">Temperature</option>
+                            <option value="ph">Acidity (pH)</option>
+                            <option value="temperature">Temperature (degree celcius)</option>
                             <option value="samples">Samples</option>
                             <option value="photo">Photo</option>
                             <option value="video">Video</option>
                             <option value="audio">Audio</option>
-                            <option value="so2">SO2</option>
-                            <option value="no2">NO2</option>
+                            <option value="samples">Samples</option>
+                            <option value="ph">Acidity (pH)</option>
+                            <option value="deg c">Temperature (ºC)</option>
+                            <option value="so2">SO2 (ppm)</option>
+                            <option value="no2">NO2 (ppb)</option>
+                            <option value="co">CO (ppm)</option>
+                            <option value="o3">O3 (ppm)</option>
+                            <option value="salinity">Salinity (PSU) </option>
+                            <option value="tds">TDS (mg/L)</option>
+                            <option value="co2">CO2 - aq (ppm)</option>
+                            <option value="so2">SO2 - aq (ppm)</option>
                             <option value="pm10">PM10</option>
                             <option value="pm2,5">PM2,5</option>
-                            <option value="co">CO</option>
-                            <option value="o3">O3</option>
-                            <option value="deg c">Degrees ºC</option>
-                            <option value="salinity">Salinity psu</option>
-                            <option value="tds">TDS</option>
-                            <option value="co2">CO2 (aq)</option>
-                            <option value="so2">SO2 (aq)</option>
                         </select>
                     </div>
 
@@ -159,6 +187,7 @@
                     </div>
                     <p id="forgot-something" style="display: none; text-align: center;"><i>All boxes with a <b>*</b> are mandatory</i></p>
                     <p id="forgot-something1" style="display: none; text-align: center;"><i>Make sure you submit valid latitude and longitude values.</i></p>
+                    <p id="forgot-something2" style="display: none; text-align: center;"><i>Make sure you submit valid dates. Last measurement must be after first measurement.</i></p>
                     <!-- divider -->
                     <hr />
 
@@ -256,21 +285,42 @@
 
         if((typeof latitude != 'number' && !isFinite(latitude)) || (typeof latitude != 'number' && !isFinite(longitude))){
             document.getElementById("forgot-something1").style.display = "";
-        } else if(description && kindOfData && latitude && longitude && area && radius && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
-            document.getElementById("box-form-request").style.display = "none";
+        }
+        /*if(!checkDates(getElementById("first-day"),getElementById("first-month"),getElementById("first-year"),getElementById("last-day"),getElementById("last-month"),getElementById("last-year"))){
+                document.getElementById("forgot-something2").style.display = "";
+        }*/
+        else if(description && kindOfData && latitude && longitude && area && radius && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
             document.getElementById("box-confirm-submit").style.display = "";
             document.getElementById("forgot-something1").style.display = "none";
+            document.getElementById("forgot-something2").style.display = "none";
             document.getElementById("forgot-something").style.display = "none";
         } else{
             document.getElementById("forgot-something").style.display = "";
             document.getElementById("forgot-something1").style.display = "none";
+            document.getElementById("forgot-something2").style.display = "none";
         }
-
-
     }
+
+    /*TODO - WHY NOT WORKING?
+    function checkDates(day,month,year,day1,month1,year1){
+        if( year1<year || (year1==year && month1<month) || (year==year1 && month==month1 && day1<day)){
+            return false;
+        }
+        else if((month==2 && day>29) || (month1==2 && day1>29) || (month==4 && day>30) || (month1==4 && day1>30) || (month==6 && day>30) ||
+                (month1==6 && day1>30) || (month== && day>30) || (month1==9 && day1>30) || (month==11 && day>30) || (month1==11 && day1>30)){
+            return false;
+        }
+        return true;
+    }*/
 
     function clickCancel(){
         document.getElementById("box-form-request").style.display = "";
+        document.getElementById("box-confirm-submit").style.display = "none";
+    }
+
+    function clickConfirm(){
+        document.getElementById("box-form-request").style.display = "none";
+        document.getElementById("box-form-thank").style.display = "";
         document.getElementById("box-confirm-submit").style.display = "none";
     }
 

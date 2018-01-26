@@ -22,10 +22,25 @@
             <div class="row justify-content-center">
                 <div class="col-11">
 
+                <div id="box-form-confirm" style="display: none">
+                        <br>
+                        <p style="text-align: center; font-size: 30px"><b>Warning!</b></p>
+                        <p style="text-align: center;">You can not change the data after you upload it.
+                        <br>
+                        Do you confirm the entered values are correct?</p>
+                        <div class="form-group">
+                            <input type="submit" onclick="clickConfirm()" value="Confirm" class="btn btn-default button-accept-requests">
+                        </div>
+                        <div>
+                            <input type="submit" onclick="clickCancel()" value="Cancel" class="btn btn-default button-reject-requests">
+                        </div>
+                        <br><br>
+                    </div>
+
                     <div id="there-are-requests" style="display: none">
 
                     <!-- Select request -->
-                    <div class="form-group">
+                    <div class="form-group" id="select-data-request-box">
                         Select data request*
             			<div id="request-options">
                                         <select class="fleet-input" id="requestid">
@@ -36,6 +51,7 @@
                                         </select>
             			</div>
                     </div>
+
 
                     <div id="box-form-data">
                         <!-- Data value -->
@@ -89,6 +105,7 @@
                         </div>
                         <p id="forgot-something" style="display: none; text-align: center;"><i>All boxes with a * are mandatory</i></p>
                         <p id="forgot-something1" style="display: none; text-align: center;"><i>Make sure you submit valid latitude and longitude values.</i></p>
+                        <p id="forgot-something2" style="display: none; text-align: center;"><i>Make sure you submit a valid date.</i></p>
 
 
                         <!-- add and submit -->
@@ -110,21 +127,6 @@
                         <p>2. Go to the requests to search for a request that you can fulfill and accept this request.</p>
                         <p>3. Go gather the requested data and submit it through the dashboard or through the requests page.</p>
                     </div>
-
-                    <div id="box-form-confirm" style="display: none">
-                        <br>
-                        <p style="text-align: center; font-size: 30px"><b>Warning!</b></p>
-                        <p style="text-align: center;">You can not change the data after you upload it.
-                        <br>
-                        Do you confirm the entered values are correct?</p>
-                        <div class="form-group">
-                            <input type="submit" onclick="clickConfirm()" value="Confirm" class="btn btn-default button-accept-requests">
-                        </div>
-                        <div>
-                            <input type="submit" onclick="clickCancel()" value="Cancel" class="btn btn-default button-reject-requests">
-                        </div>
-                    </div>
-
 
                     <div id="box-form-thank" style="display: none">
                         <br>
@@ -176,7 +178,13 @@
 </div>
 
 <script>
-
+    /*function checkDates(day,month,year){ WHYYYYYYYYYYYY
+        else if((month==2 && day>29) || (month==4 && day>30) || (month==6 && day>30) || 
+                 (month== && day>30) || (month==11 && day>30)){
+            return false;
+        }
+        return true;
+    }*/
 function clickSubmit(){
     var requestid = document.getElementById("requestid").value;
     var dataValue = document.getElementById("fleet-data-value").value;
@@ -187,10 +195,13 @@ function clickSubmit(){
             document.getElementById("fleet-data-year").value;
     var dataTime=document.getElementById("fleet-data-time").value;
 
+    /*if(!checkDates(getElementById("fleet-data-day"),getElementById("fleet-data-month"),getElementById("fleet-data-year"))){
+                document.getElementById("forgot-something2").style.display = "";  
+        }*/
     if((typeof latitude != 'number' && !isFinite(latitude)) || (typeof latitude != 'number' && !isFinite(longitude))){
             document.getElementById("forgot-something1").style.display = "";
     } else if(requestid && dataValue && latitude && longitude && date && dataTime){
-        document.getElementById("box-form-data").style.display = "none";
+        //document.getElementById("box-form-data").style.display = "none";
         document.getElementById("forgot-something").style.display = "none";
         document.getElementById("forgot-something1").style.display = "none";
         document.getElementById("box-form-confirm").style.display = "";
@@ -205,6 +216,7 @@ function clickConfirm(){
     document.getElementById("box-form-data").style.display = "none";
     document.getElementById("box-form-thank").style.display = "";
     document.getElementById("box-form-confirm").style.display = "none";
+    document.getElementById("select-data-request-box").style.display = "none";
     document.getElementById("requestid").disabled = true;
 }
 
