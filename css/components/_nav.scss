@@ -49,15 +49,12 @@ li.nav-item.active {
         font-family: 'Architects Daughter', cursive ;
         padding: 10px 10px 10px 20px;
         background-color: darken($color: $prim-blue , $amount: 0);
-<<<<<<< HEAD
         transition: .1s;
-=======
         cursor: pointer;
         a {
           color: white;
           cursor: pointer;
         }
->>>>>>> 2adbca5a0c5923d0aef74c13e159b2278773ba54
     }
     .name {
         color: #196762!important;
