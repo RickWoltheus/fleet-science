@@ -530,6 +530,20 @@ function addUser(username, userinfo) {
     someLocalStorage["accepts"][username] = [];
     setCookie("username", username);
     putStorage();
+
+    if(username != "conor" && username != "sarah"){
+        var messageinfo = {
+            "type":"administrator",
+            "from": username, 
+            "to": "conor",
+            "description": username + " wants to be accepted into the platform", 
+            "date":getTodayDateString(), 
+            "previous":""
+        }
+
+        addMessage(getNewUniqueId("message"), messageinfo);
+    }
+
     return true;
 }
 
