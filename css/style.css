@@ -164,9 +164,11 @@ li.nav-item.active a {
   text-align: left;
   font-family: "Architects Daughter", cursive;
   padding: 10px;
-  background-color: #42c0c4; }
+  background-color: #42c0c4;
+  cursor: pointer; }
 .menu-profile .logout a {
-  color: white; }
+  color: white;
+  cursor: pointer; }
 
 /* chatbox */
 .wrapper-chatbox {
