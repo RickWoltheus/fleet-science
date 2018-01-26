@@ -6,13 +6,16 @@
 */
 body, html {
   font-family: "Quattrocento sans", sans-serif !important;
-  overflow-x: hidden;
+  overflow-x: hidden; }
+
+/* Footer to bottom fix */
+.footerBottom {
   display: flex;
   flex-direction: column; }
 
-/* Footer to bottom fix */
 #content {
-  flex-grow: 1; }
+  flex-grow: 1;
+}
 
 h1 {
   font-family: "Architects Daughter", cursive;
