@@ -13,7 +13,7 @@
 
 .input-group-btn .btn {
   border-radius: 0px 20px 20px 0px;
-  background: linear-gradient(to right, #FE947D, #FFBDAD);
+  background: linear-gradient(to right, #FE947D, #FFBDAD)!important;
   border-left: none;
   border-right: none;
   border: linear-gradient(to right, #FE947D, #FFBDAD);
@@ -27,5 +27,5 @@
 }
 
 .input-group-btn .btn:active{
-  background: linear-gradient(to right, #FE947D, #FFBDAD)!important;
+
 }
