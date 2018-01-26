@@ -2,10 +2,17 @@
  * In this "static" version, only "conor" can log in.
  */
 
+var count_login_clicks = 0;
+var tried_usernames = [];
 function validateLogin(username) {
-    
+    count_login_clicks++;
     if (!userExists(username)) {
-        alert("User " + username + " does not exist. Please sign up first.");
+        //alert("User " + username + " does not exist. Please sign up first.");
+        if(count_login_clicks == 1 || tried_usernames.indexOf(username) < 0){
+            document.getElementById("not-user").innerHTML += "<b>Username " + username +" does not exist. Please sign up first.</b><br>";
+            document.getElementById("to-go").style.display = "none";
+            tried_usernames.push(username);
+        }
         return false;
     }
     //alert("Welcome back " + username);
@@ -60,7 +67,7 @@ function loggedInInstitute() {
 }
 
 
-function signupLS(role, firstname, lastname, username, boatname, email) {
+function signupLS(role, firstname, lastname, username, boatname, institute, email) {
     if (firstname.length == 0) {
         alert("Please enter first name");
         return false;
@@ -73,8 +80,12 @@ function signupLS(role, firstname, lastname, username, boatname, email) {
         alert("Please enter username");
         return false;
     }
-    if (boatname.length == 0) {
+    if (boatname.length == 0 && role=="sailor") {
         alert("Please enter boat name");
+        return false;
+    }
+    if (institute.length == 0 && role=="academic") {
+        alert("Please enter institute name");
         return false;
     }
 
@@ -82,16 +93,27 @@ function signupLS(role, firstname, lastname, username, boatname, email) {
         alert("Please enter email");
         return false;
     }
-    addUser(username, {
-        "role": role,
-        "firstname": firstname,
-        "lastname": lastname,
-        "institute": "",
-        "boatname": boatname,
-        "email": email
-    });
-    setCookie("username", username);
+    if(role=="academic"){
+        return addUser(username, {
+            "role": role,
+            "firstname": firstname,
+            "lastname": lastname,
+            "institute": "",
+            "boatname": boatname,
+            "email": email
+        });
+    }else{
+        return addUser(username, {
+            "role": role,
+            "firstname": firstname,
+            "lastname": lastname,
+            "institute": institute,
+            "boatname": "",
+            "email": email
+        });
+    }
     return true;
+    //setCookie("username", username);
 }
 
 
@@ -462,7 +484,8 @@ function userExists(username) {
 
 function addUser(username, userinfo) {
     if (userExists(username)) {
-        alert("User with that name already exists");
+        document.getElementById("username-exists").style.display = "";
+        //alert("   User with that name already exists");
         return false;
     }
     someLocalStorage["users"][username] = {};
@@ -470,7 +493,7 @@ function addUser(username, userinfo) {
         someLocalStorage["users"][username][userinfoFields[i]] = userinfo[userinfoFields[i]];
     }
     someLocalStorage["accepts"][username] = [];
-    
+    setCookie("username", username);
     putStorage();
     return true;
 }
