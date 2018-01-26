@@ -168,7 +168,16 @@ function writeAcceptedDataRequestOptions()
     }
 }
 
-
+function shouldWriteAcademicWelkome(){
+        var requests = getStorageObject()["requests"];
+        for (var key in requests) {
+            var row = requests[key];
+            if(row["username"] == currentUsername()){
+                document.getElementById("no-my-request").style.display ="none";
+                return;
+            }
+        }
+}
 
 function writeRequestsTable(page) {
     //var acceptedOnly = false;
