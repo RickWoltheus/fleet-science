@@ -130,8 +130,7 @@
                     <div id="box-form-thank" style="display: none">
                         <br> 
                         <p style="text-align: center;">Your data is successfully uploaded to the database. 
-                        <br>
-                        You can find the status of your upload data under "accepted requests"</p>
+                        <br></p>
                         <div class="form-group">
                             <input type="submit" onclick="submitData()" value="Ok" class="btn btn-default button-accept-requests">
                         </div>
@@ -203,7 +202,7 @@ function clickConfirm(){
     document.getElementById("box-form-data").style.display = "none"; 
     document.getElementById("box-form-thank").style.display = ""; 
     document.getElementById("box-form-confirm").style.display = "none"; 
-    document.getElementById("requestid").disabled = false;
+    document.getElementById("requestid").disabled = true;
 }
 
 function clickCancel(){

@@ -9,7 +9,12 @@ function validateLogin(username) {
     if (!userExists(username)) {
         //alert("User " + username + " does not exist. Please sign up first.");
         if(count_login_clicks == 1 || tried_usernames.indexOf(username) < 0){
-            document.getElementById("not-user").innerHTML += "<b>Username " + username +" does not exist. Please sign up first.</b><br>";
+            if(!username){
+                document.getElementById("not-user").innerHTML += "<b>Fill in with your username and password.</b><br>";
+            }            
+            else{
+                document.getElementById("not-user").innerHTML += "<b>Username " + username +" does not exist. Please sign up first.</b><br>";
+            }
             document.getElementById("to-go").style.display = "none";
             tried_usernames.push(username);
         }
