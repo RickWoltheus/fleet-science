@@ -89,13 +89,11 @@ switch (action) {
     case "profile":
         view("menu/_menu-sailor.html");
         view("static-pages/_profile.html");
-        view("menu/_footer.html");
         break;
 
     case "profile-academic":
         view("menu/_menu-academic.html");
         view("static-pages/_profile-academic.html");
-        view("menu/_footer.html");
         break;
 
     case "variables":
