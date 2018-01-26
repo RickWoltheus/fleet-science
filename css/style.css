@@ -21,6 +21,15 @@ h1 {
 a {
   text-decoration: none; }
 
+#landingImage {
+  width: 100%;
+  height: 250px;
+  background-image: url(../images/landing-image.jpg);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
 .notification-chip {
   display: inline-block;
   padding-top: 2px;
