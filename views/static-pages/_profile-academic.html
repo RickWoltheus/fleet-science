@@ -38,11 +38,11 @@
                         </div>-->
                         <!-- End modal -->
                         <p class="p-profile">
-                            <strong>Name:</strong> Sarah La Grue
+                            <strong>Name:</strong> <span id='loggedin-username1'></span>
                             <br>
                             <strong>Status:</strong> Academic
                             <br>
-                            <strong>Institute:</strong> UvA
+                            <strong>Institute:</strong> <span id='loggedin-institute'></span>
                         </p>
                     </div>
                 <!--................. End column profile ................. -->
@@ -50,38 +50,39 @@
                 <!--................. Column personal information ................. -->
                     <div class="column-all col-8">
                         <div class="column-personal-information">
-                            <div class="header-column">
-                                <h2 class="h2-header">Personal information</h2>
-                            </div>
                             <table class="table-profile">
+                                <tr class="header-column" style="height: 55px;" id="table-no-hover">
+                                    <th colspan="2"><h2 style="padding-left: 10px;" class="h2-header">Personal information</h2></th>
+                                    <th></th>
+                                </tr>
                                 <tr>
                                     <td class="td-name">Name:</td>
-                                    <td>Sarah La Grue</td>
+                                    <td><span id='loggedin-username2'></span></td>
                                     <td class="td-edit"><a href="#">edit</a></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Email:</td>
-                                    <td>sarahlagrue@gmail.com</td>
+                                    <td><span id='loggedin-email'></span></td>
                                     <td class="td-edit"><a href="#">edit</a></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Password:</td>
                                     <td>**********</td>
-                                    <td class="td-edit"><a href="?/=editpassword"><strong>edit</a></td></strong>
+                                    <td class="td-edit"><a href="?/=editpassword">edit</a></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Institute:</td>
-                                    <td>UvA</td>
+                                    <td><span id='loggedin-institute1'></span></td>
                                     <td class="td-edit"><a href="#">edit</a></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Country:</td>
-                                    <td>United Kingdom</td>
+                                    <td>England</td>
                                     <td class="td-edit"><a href="#">edit</a></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Research Area:</td>
-                                    <td>UvA</td>
+                                    <td>Fish populations</td>
                                     <td class="td-edit"><a href="#">edit</a></td>
                                 </tr>
                                 <tr>
@@ -95,10 +96,11 @@
 
                     <!--................. Column My interests ................. -->
                         <div class="column-vessel-information">
-                            <div class="header-column">
-                                <h2 class="h2-header">My interests</h2>
-                            </div>
                             <table class="table-profile">
+                                <tr class="header-column" style="height: 55px;" id="table-no-hover">
+                                    <th colspan="2"><h2 style="padding-left: 10px;" class="h2-header">My interests</h2></th>
+                                    <th></th>
+                                </tr>
                                 <tr>
                                     <td class="td-name">Collecting data on:</td>
                                     <td>Amount of Abyssobrotula galatheae in the Indian Ocean</td>
@@ -130,4 +132,26 @@
                 </div>
             </div>
         </div>
+
+
+<script>
+
+window.onload = onload_page();
+function onload_page() {
+    if (loggedIn()) {
+        var set_fullname = loggedInFullName();
+        var set_email = loggedInEmail();
+        var set_institute = loggedInInstitute();
+
+        setText('loggedin-username1', set_fullname);
+        setText('loggedin-username2', set_fullname);
+        setText('loggedin-email', set_email);
+        setText('loggedin-institute', set_institute);
+        setText('loggedin-institute1', set_institute);
+    }
+}
+
+</script>
     </div>
+
+

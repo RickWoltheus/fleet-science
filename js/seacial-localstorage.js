@@ -510,7 +510,7 @@ function createNewDatabase() {
         "role": "academic",
         "firstname": "Sarah",
         "lastname": "la Grue",
-        "institute": "UvA",
+        "institute": "Cambridge University",
         "boatname": "",
         "email": "sarahlagrue@gmail.com"
     });

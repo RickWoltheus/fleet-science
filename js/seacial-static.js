@@ -1,4 +1,4 @@
-
+//----------------------------NOT-USED----------------------------
 
 /* validateLogin is called in login.html and simply sees if the user is allowed to log in.
  * In this "static" version, only "conor" can log in.

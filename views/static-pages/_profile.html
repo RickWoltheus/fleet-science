@@ -38,11 +38,11 @@
                         </div>-->
                         <!-- End modal -->
                         <p class="p-profile">
-                            <strong>Name:</strong> Conor La Grue
+                            <strong>Name:</strong> <span id='loggedin-username1'></span>
                             <br>
                             <strong>Status:</strong> Lead Boat
                             <br>
-                            <strong>Vessel name:</strong> Given Time
+                            <strong>Vessel name:</strong> <span id='loggedin-boat'></span>
                         </p>
                     </div>
                 <!--................. End column profile ................. -->
@@ -50,84 +50,92 @@
                 <!--................. Column personal information ................. -->
                     <div class="column-all col-8">
                         <div class="column-personal-information">
-                            <div class="header-column">
+                            <!--<div class="header-column">
                                 <h2 class="h2-header">Personal information</h2>
-                            </div>
+                            </div>-->
                             <table class="table-profile">
+                                <tr class="header-column" style="height: 55px;" id="table-no-hover">
+                                    <th colspan="2"><h2 style="padding-left: 10px;" class="h2-header">Personal information</h2></th>
+                                    <th></th>
+                                </tr>
                                 <tr>
                                     <td class="td-name">Name:</td>
-                                    <td>Conor La Grue</td>
+                                    <td><span id='loggedin-username2'></span></td>
                                     <td class="td-edit"><a href="#">edit</a></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Email:</td>
-                                    <td>conorlagrue@gmail.com</td>
+                                    <td><span id='loggedin-email'></span></td>
                                     <td class="td-edit"><a href="#">edit</a></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Password:</td>
                                     <td>**********</td>
-                                    <td class="td-edit"><a href="?/=editpassword"><strong>edit</a></td></strong>
+                                    <td class="td-edit"><a href="?/=editpassword">edit</a></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Country:</td>
-                                    <td>United Kingdom</td>
+                                    <td>England</td>
                                     <td class="td-edit"><a href="#">edit</a></td>
                                 </tr>
                             </table>
                         </div>
-                    <!--................. End column personal information ................. -->
+                <!--................. End column personal information ................. -->
 
                     <!--................. Column vessel information ................. -->
                         <div class="column-vessel-information">
-                            <div class="header-column">
+                            <!--<div class="header-column">
                                 <h2 class="h2-header">Vessel information</h2>
-                            </div>
+                            </div>-->
                             <table class="table-profile">
+                                <tr class="header-column" style="height: 55px;" id="table-no-hover">
+                                    <th colspan="2"><h2 style="padding-left: 10px;" class="h2-header">Vessel information</h2></th>
+                                    <th class="td-edit"><span style="padding-right: 15px;"><a href="#">edit</a></span></th>
+                                </tr>
                                 <tr>
                                     <td class="td-name">Vessel name:</td>
-                                    <td>Given time</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td><span id='loggedin-boat1'></span></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Vessel registration number:</td>
                                     <td>SSR 928688</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Country of registration:</td>
                                     <td>United Kingdom</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Name of skipper:</td>
                                     <td>Conor La Grue</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Vessel type:</td>
                                     <td>Ocean going Sailing yeacht - sloop</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Vessel length:</td>
                                     <td>13 Meters</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Vessel draft:</td>
                                     <td>2 Meters</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Equipment on board:</td>
                                     <td>Compressor and plenty of kit with experienced divers aboard.</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Variables:</td>
                                     <td>pH, temperature, videos, photos</td>
-                                    <td class="td-edit"><a href="?/=variables"><strong>edit</strong></a></td>
+                                    <td class="td-edit"><a href="?/=variables">edit</a></td>
                                 </tr>
                             </table>
                         </div>
@@ -135,39 +143,43 @@
 
                     <!--................. Column location information ................. -->
                         <div class="column-location-information">
-                            <div class="header-column">
+                            <!--<div class="header-column">
                                 <h2 class="h2-header">Location information</h2>
-                            </div>
+                            </div>-->
                             <table class="table-profile">
+                                <tr class="header-column" style="height: 55px;" id="table-no-hover">
+                                    <th colspan="2"><h2 style="padding-left: 10px;" class="h2-header">Location information</h2></th>
+                                    <th class="td-edit"><span style="padding-right: 15px;"><a href="#">edit</a></span></th>
+                                </tr>
                                 <tr>
                                     <td class="td-name">Current Location:</td>
                                     <td>Indian ocean</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Last updated position:</td>
                                     <td>12.1642° S, 96.8710°</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Upcoming ocean passages and rough dates:</td>
                                     <td>Cocos Keeling to Madagascar via Chagos around the end of November weather dependant</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Space to host a researcher:</td>
                                     <td>Yes, I’m willing in principle to host a researcher or two</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Number of Cabins:</td>
                                     <td>2 Singles</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                                 <tr>
                                     <td class="td-name">Closest port to collect equipment or researchers:</td>
                                     <td>Main island of Cocos Keeling for the next 8 weeks approx</td>
-                                    <td class="td-edit"><a href="#">edit</a></td>
+                                    <td></td>
                                 </tr>
                             </table>
                         </div>
@@ -176,4 +188,20 @@
                 </div>
             </div>
         </div>
-    </div>
+
+<script>
+window.onload = onload_page();
+function onload_page() {
+    if (loggedIn()) {
+        var set_fullname = loggedInFullName();
+        var set_email = loggedInEmail();
+        var set_boat = loggedInBoatName();
+
+        setText('loggedin-username1', set_fullname);
+        setText('loggedin-username2', set_fullname);
+        setText('loggedin-email', set_email);
+        setText('loggedin-boat', set_boat);
+        setText('loggedin-boat1', set_boat);
+    }
+}
+</script>

@@ -531,6 +531,10 @@ p {
 .table-profile tr:hover {
   background-color: #E2E2E2; }
 
+#table-no-hover:hover{
+  background-color: #AFA7A3;
+}
+
 .td-name {
   font-weight: 600; }
 
