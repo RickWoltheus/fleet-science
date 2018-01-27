@@ -1,7 +1,3 @@
-/* validateLogin is called in login.html and simply sees if the user is allowed to log in.
- * In this "static" version, only "conor" can log in.
- */
-
 var count_login_clicks = 0;
 var tried_usernames = [];
 function validateLogin(username) {
@@ -179,6 +175,21 @@ function shouldWriteAcademicWelkome(){
         }
 }
 
+var image_tracker = [];
+
+function chevronSwitch1(id) {
+    var image = document.getElementById(id);
+    var index = parseInt(id.substr(14));
+    if (image_tracker[index] == 'd') {
+      image.src = 'images/chevron-up.png';
+      image_tracker[index] = 'u';
+    }
+    else {
+      image.src = 'images/chevron-down.png';
+      image_tracker[index] = 'd';
+    }
+}
+
 function writeRequestsTable(page) {
     //var acceptedOnly = false;
     var element = document.getElementById("requests-all");
@@ -216,13 +227,16 @@ function writeRequestsTable(page) {
     	text+="   </th>";
     	text+="   <th></th>";
     	text+=" </thead>";
-    	var count=1;
+    	var count=0;
 
         var accepts = getStorageObject()["accepts"][loggedInUsername];
 
 
     	var requests = getStorageObject()["requests"];
         for (var key in requests) {
+
+            image_tracker[count] = 'd';
+
     	    if(!requests.hasOwnProperty(key)) {
        			  continue;
     	    }
@@ -240,31 +254,28 @@ function writeRequestsTable(page) {
                 continue;
             }
 
+
     	    text+=" <tr>";
     	    //text+="   <td>"+row["username"]+"</td>";
-            text+="   <td>"+ someLocalStorage["users"][row["username"]]["firstname"] + " " +
-            someLocalStorage["users"][row["username"]]["lastname"]+"</td>";
-    	    text+="   <td>"+row["area"]+"</td>";
-    	    text+="   <td>"+row["reqtype"]+"</td>";
+            text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+ someLocalStorage["users"][row["username"]]["firstname"] + " " + someLocalStorage["users"][row["username"]]["lastname"]+"</a></td>";
+
+    	    text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+row["area"]+"</a></td>";
+
+    	    text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+row["reqtype"]+"</a></td>";
+
             if(row["status"] == "Approved" && (page=="all-sailor" || page=="all-academic")){
-                text+="   <td>"+"New"+"</td>";
+                text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
             } else if((row["status"] == "Accepted" || row["status"] == "Rejected") && page=="all-academic"){
-                text+="   <td>"+"New"+"</td>";
+                text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
             } else if( row["status"] == "Accepted" && accepts.indexOf(key) < 0){
-               text+="   <td>"+"New"+"</td>";
+               text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
             } else{
-                text+="   <td>"+row["status"]+"</td>";
+                text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+row["status"]+"</a></td>";
             }
-
-
-
-
-
-
 
     	    //text+="   <td>"+requestStatus+"</td>";
     	    text+="   <td>";
-    	    text+="     <a href='#' class='toggler' data-request='"+count+"' onclick=\"chevronSwitch('chevron-switch"+count+"');\">";
+    	    text+="     <a href='#' class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">";
     	    text+="       <i>";
     	    text+="         <img id='chevron-switch"+count+"' class='chevron-img' src='images/chevron-down.png' alt='chevron down' />";
     	    text+="       </i>";
@@ -411,13 +422,6 @@ function writeRequestsTable(page) {
         element.innerHTML = text;
     }
 }
-
-
-
-
-
-
-
 
 
 

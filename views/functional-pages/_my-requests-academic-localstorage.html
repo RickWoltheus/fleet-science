@@ -129,7 +129,7 @@ writeRequestsTable("my");
     myReload()
   }*/
 
-  var image_tracker = 'down';
+  /*var image_tracker = 'down';
 
   function chevronSwitch(id) {
     var image = document.getElementById(id);
@@ -141,10 +141,14 @@ writeRequestsTable("my");
       image.src = 'images/chevron-down.png';
       image_tracker = 'down';
     }
-  };
+  };*/
 
 
     $(".toggler").click(function (e) {
+      e.preventDefault();
+      $('.req' + $(this).attr('data-request')).toggle();
+    });
+    $("tr").click(function (e) {
       e.preventDefault();
       $('.req' + $(this).attr('data-request')).toggle();
     });
