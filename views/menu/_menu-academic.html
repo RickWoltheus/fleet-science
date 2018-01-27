@@ -39,7 +39,7 @@
         <div class="menu-profile">
             <img src="images/sarah-academic.png"/>
             <label class="name special-font profile-menu">
-                <span id='loggedin-username-profile'></span> | Academic<br>
+                <span id='loggedin-username'></span> | Academic<br>
                 <a class="a-view-profile" href="?/=profile-academic">View profile</a>
             </label>
             <a class="a-logout" href="?/=home">
@@ -66,4 +66,11 @@
                     }
                 })
             });
+    window.onload = onload_page();
+    function onload_page() {
+        if (loggedIn()) {
+            var set_fullname = loggedInFullName();
+            setText('loggedin-username', set_fullname);
+        }
+    }
     </script>

@@ -5,14 +5,12 @@
         <h1 class="grey-text h-chatbox">Chatbox</h1>
         <div class="wrapper-chatbox-profile">
           <div class="amount-circle">1</div>
-          <p class="p-circle"> new administator message(s)</p>
-          <div class="amount-circle">1</div>
           <p class="p-circle"> new personal message(s)</p>
-          <img class="profile-picture-chatbox" src="images/conor-sailor.png" alt="">
+          <img class="profile-picture-chatbox" src="images/sarah-academic.png" alt="">
           <p><span class="p-bold-chatbox">Name:</span><span id='loggedin-username'></span></p>
           <p><span class="p-bold-chatbox">Email:</span><span id='loggedin-email'></span></p>
-          <p><span class="p-bold-chatbox">Status:</span>Lead Boat</p>
-          <p><span class="p-bold-chatbox">Boat:</span><span id='loggedin-boat'></span></p>
+          <p><span class="p-bold-chatbox">Status:</span>Academic</p>
+          <p><span class="p-bold-chatbox">Institute:</span><span id='loggedin-institute'></span></p>
         </div>
       </div>
     </div>
@@ -27,10 +25,7 @@
           </div>
         </form>
 
-        <h2 class="grey-text header-table-chatbox">Administrator messages</h2>
-        <table class="table-chatbox" id="messages-administrator">
-        </table>
-       
+
         <h2 class="grey-text header-table-chatbox">Personal messages <button class="fleet-btn" style="margin-left: 68%; color:white !important;">+</button></h2>
         <table class="table-chatbox" id="messages-personal">
         </table>
@@ -47,19 +42,6 @@ function searchMessage()  {
   var input, filter, table, table1, tr, tr1, td, i;
   input = document.getElementById("system-search-senter");
   filter = input.value.toUpperCase();
-
-  table = document.getElementById("messages-administrator");
-  tr = table.getElementsByTagName("tr");
-  for (i = 1; i < tr.length; i+=6) {
-    td = tr[i].getElementsByTagName("td")[0];   //username
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1 ) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  } 
   table = document.getElementById("messages-personal");
   tr = table.getElementsByTagName("tr");
   for (i = 1; i < tr.length; i+=6) {
@@ -115,21 +97,22 @@ function fillMessages(typeStr)
     }
 }
 
-fillMessages("administrator");
 fillMessages("personal");
 
 window.onload = onload_page();
 function onload_page() {
     if (loggedIn()) {
+
         var set_fullname = loggedInFullName();
         var set_email = loggedInEmail();
-        var set_boat = loggedInBoatName();
+        var set_institute = loggedInInstitute();
 
         setText('loggedin-username', set_fullname);
         setText('loggedin-email', set_email);
-        setText('loggedin-boat', set_boat);
+        setText('loggedin-institute', set_institute);
     }
 }
+
 </script>
 
 </div>

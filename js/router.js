@@ -50,7 +50,7 @@ switch (action) {
 
     case "chatbox-academic":
         view("menu/_menu-academic.html");
-        view("functional-pages/_chatbox.html");
+        view("functional-pages/_chatbox-academic.html");
         break;
 
 

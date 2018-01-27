@@ -38,7 +38,7 @@
     <div class="menu-profile">
         <img src="images/conor-sailor.png"/>
         <label class="name special-font profile-menu">
-            <span id='loggedin-username-profile'></span> | Sailor<br>
+            <span id='loggedin-username'></span> | Sailor<br>
             <a class="a-view-profile" href="?/=profile">View profile</a>
         </label>
         <a class="a-logout" href="?/=home">
@@ -66,4 +66,13 @@
                 }
             })
         });
+
+
+window.onload = onload_page();
+function onload_page() {
+    if (loggedIn()) {
+        var set_fullname = loggedInFullName();
+        setText('loggedin-username', set_fullname);
+    }
+}
 </script>
