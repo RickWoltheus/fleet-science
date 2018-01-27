@@ -4,12 +4,12 @@
       <div class="wrapper-chatbox-left">
         <h1 class="grey-text h-chatbox">Chatbox</h1>
         <div class="wrapper-chatbox-profile">
-          <div class="amount-circle">1</div>
-          <p class="p-circle"> new administator message(s)</p>
-          <div class="amount-circle">1</div>
-          <p class="p-circle"> new personal message(s)</p>
+          <div class="amount-circle"><span id="loggedin-num-messages-a" style="padding-top: 2px;"></span></div>
+          <p class="p-circle"> new administator message<span id="loggedin-num-messages-add-a"></span></p>
+          <div class="amount-circle"><span id="loggedin-num-messages-p" style="padding-top: 2px;"></span></div>
+          <p class="p-circle"> new personal message<span id="loggedin-num-messages-add-p"></span></p>
           <img class="profile-picture-chatbox" src="images/conor-sailor.png" alt="">
-          <p><span class="p-bold-chatbox">Name:</span><span id='loggedin-username'></span></p>
+          <p><span class="p-bold-chatbox">Name:</span><span id='loggedin-username1'></span></p>
           <p><span class="p-bold-chatbox">Email:</span><span id='loggedin-email'></span></p>
           <p><span class="p-bold-chatbox">Status:</span>Lead Boat</p>
           <p><span class="p-bold-chatbox">Boat:</span><span id='loggedin-boat'></span></p>
@@ -124,12 +124,25 @@ function onload_page() {
         var set_fullname = loggedInFullName();
         var set_email = loggedInEmail();
         var set_boat = loggedInBoatName();
+        var num_messages_p = numberMessages();
+        var num_messages_a = numberMessagesAdmin();
+        var num_messages_additional_p = "";
+        var num_messages_additional_a = "";
 
-        setText('loggedin-username', set_fullname);
+        setText('loggedin-username1', set_fullname);
         setText('loggedin-email', set_email);
         setText('loggedin-boat', set_boat);
+        setText('loggedin-num-messages-p', num_messages_p);
+        setText('loggedin-num-messages-a', num_messages_a);
+        if(numberMessages() == 0 || numberMessages()>1){
+          setText('loggedin-num-messages-add-p', "s");
+        }
+        if(numberMessagesAdmin() == 0 || numberMessagesAdmin()>1){
+          setText('loggedin-num-messages-add-a', "s");
+        }
     }
 }
+
 </script>
 
 </div>

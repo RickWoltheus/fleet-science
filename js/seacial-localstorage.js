@@ -619,6 +619,26 @@ function updateMessage(messageid, newMessageInfo) {
     putStorage();
 }
 
+function numberMessages(){
+    var count = 0;
+    for (var id in someLocalStorage["messages"]){
+        console.log(someLocalStorage["messages"][id]["to"]);
+        if (someLocalStorage["messages"][id]["to"] == loggedInUsername && someLocalStorage["messages"][id]["type"] == "personal"){
+            count ++;
+        }
+    }
+    return count;
+}
+
+function numberMessagesAdmin(){
+    var count = 0;
+    for (var id in someLocalStorage["messages"]){
+        if (someLocalStorage["messages"][id]["to"] == loggedInUsername && someLocalStorage["messages"][id]["type"] == "administrator"){
+            count ++;
+        }
+    }
+    return count;
+}
 
 
 

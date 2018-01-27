@@ -7,8 +7,7 @@
     <div class="row col-8">
         <h1 class="text-center grey-text">
             <span>
-                <img id="role-icon" src="images/symbol-sailor.png" height="50px"></img> Hello
-            <span id='loggedin-username'></span>!
+                <img id="role-icon" src="images/symbol-sailor.png" height="50px"></img> Hello <span id='loggedin-username1'></span>!
         </h1>
     </div>
     <!-- left -->
@@ -150,14 +149,20 @@
             </div>
             <br>
             <p>
-                <span id="newmsg-chip" class="notification-chip ">1</span>
-                <span class="h6">New personal message(s)</span>
+                <!--<span id="newmsg-chip" class="notification-chip "><span id="loggedin-num-messages-a"></span></span>
+                <span class="h6">New admin message<span id="loggedin-num-messages-add-a"></span></span>-->
+                <div class="amount-circle" style="margin-left: 50px"><span id="loggedin-num-messages-a" style="padding-top: 2px;"></span></div>
+                <p class="p-circle" style="float: left;"> new administator message<span id="loggedin-num-messages-add-a"></span></p>
             </p>
             <p>
-                    <span id="accepted-chip" class="notification-chip">1</span>
-                    <span class="h6">New admin messages(s)</span>
-                </p>
+                    <!--<span id="accepted-chip" class="notification-chip"><span id="loggedin-num-messages-p"></span></span>
+                    <span class="h6">New personal messages<span id="loggedin-num-messages-add-a"></span></span>-->
+                <div class="amount-circle" style="margin-left: 50px; margin-bottom: 20px;"><span id="loggedin-num-messages-p" style="padding-top: 2px;"></span></div>
+                <p class="p-circle" style="float: left;"> new personal message<span id="loggedin-num-messages-add-p"></span></p>
+            </p>
+            <div style="clear: both; margin-bottom: -5px">
             <button onclick="window.location.href='?/=chatbox-sailor'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
+            </div>
         </div>
         <br>
         <!-- Accepted requests -->
@@ -178,6 +183,27 @@
 </div>
 
 <script>
+
+window.onload = onload_page();
+function onload_page() {
+    if (loggedIn()) {
+        var num_messages_p = numberMessages();
+        var num_messages_a = numberMessagesAdmin();
+        var num_messages_additional_p = "";
+        var num_messages_additional_a = "";
+        var set_fullname = loggedInFullName();
+        
+        setText('loggedin-username1', set_fullname);
+        setText('loggedin-num-messages-p', num_messages_p);
+        setText('loggedin-num-messages-a', num_messages_a);
+        if(numberMessages() == 0 || numberMessages()>1){
+          setText('loggedin-num-messages-add-p', "s");
+        }
+        if(numberMessagesAdmin() == 0 || numberMessagesAdmin()>1){
+          setText('loggedin-num-messages-add-a', "s");
+        }
+    }
+}
     /*function checkDates(day,month,year){ WHYYYYYYYYYYYY
         else if((month==2 && day>29) || (month==4 && day>30) || (month==6 && day>30) || 
                  (month== && day>30) || (month==11 && day>30)){

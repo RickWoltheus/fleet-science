@@ -7,8 +7,7 @@
     <div class="row col-8">
         <h1 class="text-center grey-text">
             <span>
-                <img src="images/symbol-academic.png" height="50px"></img> </span> Hello
-            <span id='loggedin-username'></span>!
+                <img src="images/symbol-academic.png" height="50px"></img> </span> Hello <span id='loggedin-username1'></span>!
         </h1>
     </div>
 
@@ -231,10 +230,14 @@
             </div>
             <br>
             <p>
-                <span id="newmsg-chip" class="notification-chip ">1</span>
-                <span class="h5">New message(s)</span>
+                <!--<span id="newmsg-chip" class="notification-chip ">1</span>
+                <span class="h5">New message(s)</span>-->
+                <div class="amount-circle" style="margin-left: 50px; margin-bottom: 20px;"><span id="loggedin-num-messages" style="padding-top: 2px;"></span></div>
+                <p class="p-circle" style="float: left;"> new personal message<span id="loggedin-num-messages-add"></span></p>
             </p>
-            <button onclick="window.location.href='?/=chatbox-academic'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
+             <div style="clear: both;">
+            <button onclick="window.location.href='?/=chatbox-academic'" class="fleet-btn" href="?/=chatbox-academic">View</button>
+            </div>
         </div>
         <br>
         <!-- All requests -->
@@ -258,6 +261,20 @@
 
 shouldWriteAcademicWelkome();
 
+window.onload = onload_page();
+function onload_page() {
+    if (loggedIn()) {
+        var num_messages = numberMessages();
+        var num_messages_additional = "";
+        var set_fullname = loggedInFullName();
+        
+        setText('loggedin-username1', set_fullname);
+        setText('loggedin-num-messages', num_messages);
+        if(numberMessages() == 0 || numberMessages()>1){
+          setText('loggedin-num-messages-add', "s");
+        }
+    }
+}
     function clickSubmit(){
         var description = document.getElementById("desc").value;
         var kindOfData = document.getElementById("kind-of-data").value;

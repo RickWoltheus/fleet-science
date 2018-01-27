@@ -4,10 +4,10 @@
       <div class="wrapper-chatbox-left">
         <h1 class="grey-text h-chatbox">Chatbox</h1>
         <div class="wrapper-chatbox-profile">
-          <div class="amount-circle">1</div>
-          <p class="p-circle"> new personal message(s)</p>
+          <div class="amount-circle"><span id="loggedin-num-messages" style="padding-top: 2px;"></span></div>
+          <p class="p-circle"> new personal message<span id="loggedin-num-messages-add"></span></p>
           <img class="profile-picture-chatbox" src="images/sarah-academic.png" alt="">
-          <p><span class="p-bold-chatbox">Name:</span><span id='loggedin-username'></span></p>
+          <p><span class="p-bold-chatbox">Name:</span><span id='loggedin-username1'></span></p>
           <p><span class="p-bold-chatbox">Email:</span><span id='loggedin-email'></span></p>
           <p><span class="p-bold-chatbox">Status:</span>Academic</p>
           <p><span class="p-bold-chatbox">Institute:</span><span id='loggedin-institute'></span></p>
@@ -106,10 +106,16 @@ function onload_page() {
         var set_fullname = loggedInFullName();
         var set_email = loggedInEmail();
         var set_institute = loggedInInstitute();
+        var num_messages = numberMessages();
+        var num_messages_additional = "";
 
-        setText('loggedin-username', set_fullname);
+        setText('loggedin-username1', set_fullname);
         setText('loggedin-email', set_email);
         setText('loggedin-institute', set_institute);
+        setText('loggedin-num-messages', num_messages);
+        if(numberMessages() == 0 || numberMessages()>1){
+          setText('loggedin-num-messages-add', "s");
+        }
     }
 }
 
