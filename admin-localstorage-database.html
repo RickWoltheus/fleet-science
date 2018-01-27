@@ -412,6 +412,16 @@ var firstNames =
   "Jack",
   "Jennifer",
   "Frank",
+  "Jodie",
+  "Will",
+  "Jessica",
+  "Olivia",
+  "Brad",
+  "Dan",
+  "Emma",
+  "Meryl",
+  "Oprah",
+  "Ellen"
 ];
 
 
@@ -531,16 +541,37 @@ var sampleMessages =
   "We have some new data for you!",
   "The data is amazing, TA!",
   "We're sorry to inform you that we were not able to capture that data. We got into a storm and had to change route.",
-  "Hey, long time no hear! Was the data useful?"
+  "Hey, long time no hear! Was the data useful?",
+  "Hello, I'm contacting you to know more about your project",
+  "Hey, what have you been doing lately?",
+  "Hi, thank you for collaborating. Hope you managed to get the pictures you wanted."
+];
+var sampleMessagesAdmin = 
+[
+  "User wants to submit a request.",
+  "User wants to be accepted into the platform",
+  "User wants to be accepted into the platform",
+  "User submitted data.",
 ];
 
 function addNewMessage() {
     var type = (Math.random()>0.5) ? "personal" : "administrator"; 
+    var desc = "";
+    if (type == "personal"){
+      desc = selectAdRandomFrom(sampleMessages);
+    } else{
+      desc = selectAdRandomFrom(sampleMessagesAdmin);
+    }
+    var from = getRandomUser();
+    var to = from;
+    while (from == to){
+      to = getRandomUser();
+    }
     addMessage(getNewUniqueId("message"), {
         "type":type,
-        "from":getRandomUser(), 
-        "to": getRandomUser(),
-        "description":selectAdRandomFrom(sampleMessages), 
+        "from":from, 
+        "to": to,
+        "description":desc, 
 	"date":getTodayDateString(), 
 	"previous":""
     });
