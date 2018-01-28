@@ -20,7 +20,7 @@
       <div class="wrapper-chatbox-right">
         <form action="#" method="get">
           <div class="input-group">
-            <input class="form-control" id="system-search-senter" onkeyup="searchMessage()" name="q" placeholder="Search for names...">
+            <input class="form-control" id="system-search-senter" onkeyup="searchMessage()" name="q" placeholder="Search for names or keywords...">
             <span class="input-group-btn">
               <button type="submit" class="btn btn-default" data-original-title="" title="" disabled><span class="octicon octicon-search white-text"></span></button>
             </span>
@@ -50,10 +50,11 @@ function searchMessage()  {
 
   table = document.getElementById("messages-administrator");
   tr = table.getElementsByTagName("tr");
-  for (i = 1; i < tr.length; i+=6) {
+  for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];   //username
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1 ) {
+    td1 = tr[i].getElementsByTagName("td")[1];   //description
+    if (td && td1) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || td1.innerHTML.toUpperCase().indexOf(filter) > -1 ) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
@@ -62,10 +63,11 @@ function searchMessage()  {
   } 
   table = document.getElementById("messages-personal");
   tr = table.getElementsByTagName("tr");
-  for (i = 1; i < tr.length; i+=6) {
+  for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];   //username
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1 ) {
+    td1 = tr[i].getElementsByTagName("td")[1];   //description
+    if (td && td1) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || td1.innerHTML.toUpperCase().indexOf(filter) > -1 ) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";

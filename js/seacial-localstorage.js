@@ -204,11 +204,10 @@ function writeRequestsTable(page) {
     	var text="";
 
     	text+=" <thead>";
-    	text+="   <th>Academic</th>";
-    	text+="   <th>Requested area</th>";
-    	text+="   <th>Type of request";
-    	text+="   </th>";
-    	text+="   <th>Status";
+    	text+="   <th  width='18%'>Academic</th>";
+    	text+="   <th  width='47%'>Requested area</th>";
+    	text+="   <th width='15%'>Type of request</th>";
+    	text+="   <th width='15%'>Status";
     	/*text+="     <select id='selectStatus' class='filter-requests' onchange='selectStatus()'>";
         if(page == "all-sailor"){
             text+="       <option selected='selected'>All</option>";
@@ -225,7 +224,7 @@ function writeRequestsTable(page) {
     	text+="     </select>";
         */
     	text+="   </th>";
-    	text+="   <th></th>";
+    	text+="   <th width='5%'></th>";
     	text+=" </thead>";
     	var count=0;
 

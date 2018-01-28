@@ -664,6 +664,15 @@ var sampleNumber =
 "1",
 "2"
 ]
+var sampleAditional = 
+[
+"",
+"Thank you for your time.",
+"Please follow the instructions.",
+"I'm available for questions",
+"I'm happy to help along the process, just contact me",
+""
+]
 var sampleDescriptions=
 [
 "Looking for vessels travelling along the coast of Chile (South Pacific Ocean). As a research group from the University of Melbourne we are researching the differences in ocean temperature in the South Pacific near the Australian coast and the coast of Chile. We need one measurement a day for a period of 3 months, preferably starting in January 2019. It would also be great if there is a vessel with cabins available so that we can perform the measurements ourselves. ",
@@ -690,7 +699,7 @@ function addNewRequest() {
 	       "status":selectAdRandomFrom(sampleStatuses),
 	       "frequency":sampleFrequencies[request_number],
          "number": sampleNumber[request_number], 
-	       "aditional": ""
+	       "aditional": selectAdRandomFrom(sampleAditional)
     });
     repopulateRequests();
 }

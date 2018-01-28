@@ -18,7 +18,7 @@
       <div class="wrapper-chatbox-right">
         <form action="#" method="get">
           <div class="input-group">
-            <input class="form-control" id="system-search-senter" onkeyup="searchMessage()" name="q" placeholder="Search for names...">
+            <input class="form-control" id="system-search-senter" onkeyup="searchMessage()" name="q" placeholder="Search for names or keywords...">
             <span class="input-group-btn">
               <button type="submit" class="btn btn-default" data-original-title="" title="" disabled><span class="octicon octicon-search white-text"></span></button>
             </span>
@@ -44,10 +44,11 @@ function searchMessage()  {
   filter = input.value.toUpperCase();
   table = document.getElementById("messages-personal");
   tr = table.getElementsByTagName("tr");
-  for (i = 1; i < tr.length; i+=6) {
+  for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];   //username
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1 ) {
+    td1 = tr[i].getElementsByTagName("td")[1];   //description
+    if (td && td1) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || td1.innerHTML.toUpperCase().indexOf(filter) > -1 ) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
@@ -56,9 +57,7 @@ function searchMessage()  {
   } 
 }
 
-function fillMessages(typeStr)
-{
-
+function fillMessages(typeStr) {
     var element = document.getElementById("messages-"+typeStr);
     if (element) {
         var text="";
@@ -70,30 +69,30 @@ function fillMessages(typeStr)
         text+="</tr>";
 
         var count=0;
-	var todayString=getTodayDateString();
+      	var todayString=getTodayDateString();
 
-	var messages = getStorageObject()["messages"];
-	for (var key in messages) {
-	    if(!messages.hasOwnProperty(key)) {
-       		continue;
-	    }
-	    var row = messages[key];
-	    var field_from = row["from"];
-	    var field_to   = row["to"];
-	    var field_type = row["type"];
-	    var entire_name = getStorageObject()["users"][field_from]["firstname"] + " " + someLocalStorage["users"][field_from]["lastname"];;
-	    var role_from = getStorageObject()["users"][field_from]["role"];
+      	var messages = getStorageObject()["messages"];
+      	for (var key in messages) {
+      	    if(!messages.hasOwnProperty(key)) {
+             		continue;
+      	    }
+      	    var row = messages[key];
+      	    var field_from = row["from"];
+      	    var field_to   = row["to"];
+      	    var field_type = row["type"];
+      	    var entire_name = getStorageObject()["users"][field_from]["firstname"] + " " + someLocalStorage["users"][field_from]["lastname"];;
+      	    var role_from = getStorageObject()["users"][field_from]["role"];
 
-	    if (loggedInUsername == field_to && field_type == typeStr) {
-        	text+="<tr class='"+((row["date"] == todayString)?"new-message-tr":"")+"'>";
-        	text+=" <td>"+entire_name + "<img class='symbol-in-table' src='images/symbol-"+role_from+".png' /></td>";
-        	text+=" <td>"+row["description"]+"</td>";
-        	text+=" <td>"+row["date"]+"</td>";
-        	text+="</tr>";
-		count++;
-	    }
-        }
-        element.innerHTML = text;
+      	    if (loggedInUsername == field_to && field_type == typeStr) {
+              	text+="<tr class='"+((row["date"] == todayString)?"new-message-tr":"")+"'>";
+              	text+=" <td>"+entire_name + "<img class='symbol-in-table' src='images/symbol-"+role_from+".png' /></td>";
+              	text+=" <td>"+row["description"]+"</td>";
+              	text+=" <td>"+row["date"]+"</td>";
+              	text+="</tr>";
+      		      count++;
+      	    }
+          }
+          element.innerHTML = text;
     }
 }
 

@@ -6,7 +6,14 @@
 */
 body, html {
   font-family: "Quattrocento sans", sans-serif !important;
-  overflow-x: hidden; }
+  overflow-x: hidden; 
+}
+
+/*hide scrollbar*/
+body{
+  margin-right: -17px !important;
+  overflow-y: scroll;
+}
 
 h1 {
   font-family: "Architects Daughter", cursive;
