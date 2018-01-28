@@ -230,6 +230,7 @@ function writeRequestsTable(page) {
     	var count=0;
 
         var accepts = getStorageObject()["accepts"][loggedInUsername];
+        var rejects = getStorageObject()["rejects"][loggedInUsername];
 
 
     	var requests = getStorageObject()["requests"];
@@ -269,6 +270,8 @@ function writeRequestsTable(page) {
                 text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
             } else if( row["status"] == "Accepted" && accepts.indexOf(key) < 0){
                text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
+            } else if( row["status"] == "Rejected" && rejects.indexOf(key) < 0){
+               text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
             } else{
                 text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+row["status"]+"</a></td>";
             }
@@ -302,12 +305,12 @@ function writeRequestsTable(page) {
                 text+="             <button type='button' id='accept-requests"+count+"' onclick='{addAccept(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Accept</button>";
                 text+="           </div>";
             }
-            if(row["status"] == "Approved" && page == "all-sailor"){
+            if((row["status"] == "Approved" || (row["status"] == "Rejected" && accepts.indexOf(key) < 0))&& page == "all-sailor"){
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests' >Reject</button>";
+                text+="             <button type='button' id='reject-requests"+count+"' onclick='{addReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
             }
-            if(row["status"] == "Rejected" && page == "all-sailor"){
+            if(row["status"] == "Rejected" && page == "all-sailor" && accepts.indexOf(key) >= 0){
                 text+="           <div class='col-6'>";
                 text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests' disabled>Reject</button>";
                 text+="           </div>";
@@ -326,7 +329,7 @@ function writeRequestsTable(page) {
                 text+="             <button type='button' id='accept-requests"+count+"' onclick='{addAccept(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Accept</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests' >Reject</button>";
+                text+="             <button type='button' id='reject-requests"+count+"' onclick='{addReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
             }
             if(page == "all-academic"){
@@ -462,8 +465,10 @@ var dataversion = "data001";
 var someLocalStorage = {};
 var userinfoFields =    ["role", "firstname", "lastname", "institute",   "boatname", "email"];
 var messageinfoFields = ["type", "from",      "to",       "description", "date",     "previous"];
-var requestinfoFields = ["username", "area",  "reqtype",  "description", "status", "duration", "frequency", "deadline"];
+var requestinfoFields1 = ["username", "area",  "reqtype",  "description", "status", "duration", "frequency", "deadline"];
+var requestinfoFields = ["username", "reqtype", "area", "latitude", "longitude", "radius", "first", "last",  "description", "status", "frequency", "number", "aditional"];
 var acceptsinfoFields = ["accepts"];
+var rejectsinfoFields = ["rejects"];
 var datainfoFields = ["data"];
 
 
@@ -494,6 +499,7 @@ function createNewDatabase() {
     someLocalStorage["requests"] = {};
 
     someLocalStorage["accepts"] = {};
+    someLocalStorage["rejects"] = {};
     someLocalStorage["data"] = {};
 
     // Populate with some default data
@@ -542,6 +548,7 @@ function addUser(username, userinfo) {
         someLocalStorage["users"][username][userinfoFields[i]] = userinfo[userinfoFields[i]];
     }
     someLocalStorage["accepts"][username] = [];
+    someLocalStorage["rejects"][username] = [];
     setCookie("username", username);
     putStorage();
 
@@ -564,6 +571,7 @@ function addUser(username, userinfo) {
 function removeUser(username) {
     delete someLocalStorage["users"][username];
     delete someLocalStorage["accepts"][username];
+    delete someLocalStorage["rejects"][username];
 
     putStorage();
 }
@@ -583,6 +591,14 @@ function addAccept(requestid) {
     }
     someLocalStorage["accepts"][loggedInUsername].push(requestid);
     someLocalStorage["requests"][requestid]["status"] = "Accepted"
+    putStorage();
+    return true;
+}
+function addReject(requestid) {
+    if (someLocalStorage["rejects"][loggedInUsername].indexOf(requestid)>=0) {
+        return false;
+    }
+    someLocalStorage["rejects"][loggedInUsername].push(requestid);
     putStorage();
     return true;
 }
@@ -644,12 +660,6 @@ function numberMessagesAdmin(){
 
 
 
-
-
-
-
-
-
 function requestExists(requestid) {
     return (someLocalStorage["requests"][requestid] != null);
 }
@@ -683,21 +693,38 @@ function updateRequest(requestid, newRequestInfo) {
     someLocalStorage["requests"][requestid] = newRequestInfo;
     putStorage();
 }
+function updateRequestSatus(requestid) {
+    if(someLocalStorage["requests"][requestid]["status"] == "Pending Approval"){
+        someLocalStorage["requests"][requestid]["status"] = "Approved";
+    } else if(someLocalStorage["requests"][requestid]["status"] == "Approved"){
+        someLocalStorage["requests"][requestid]["status"] = "Accepted";
+        someLocalStorage["accepts"][someLocalStorage["requests"][requestid]["username"]].push(requestid);
+    } else if(someLocalStorage["requests"][requestid]["status"] == "Accepted"){
+        someLocalStorage["requests"][requestid]["status"] = "Completed";
+    }
+    putStorage();
+}
 
 function addData(requestid, data) {
     someLocalStorage["data"][requestid].push(data);
     putStorage();
 }
-function addNewRequest(area,description,type,status,frequency,lastMeasurement){
+function addNewRequest(type,area,latitude,longitude,radius,first,last,description,status,frequency,number,aditional){
     var reqInfo = { "username":loggedInUsername, 
-                    "area":area,
-                    "description":description,
                     "reqtype":type,  
+                    "area":area,
+                    "latitude":latitude,
+                    "longitude":longitude,
+                    "radius":radius,
+                    "first":first,
+                    "last":last,
+                    "description":description,
                     "status":status,
-                    "duration":"6 months", 
                     "frequency":frequency,
-                    "deadline":lastMeasurement   
+                    "number":number,
+                    "aditional":aditional   
                   }  
+
         addRequest(getNewUniqueId("request"), reqInfo);
 }
 

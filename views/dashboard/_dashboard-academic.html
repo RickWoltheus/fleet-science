@@ -364,7 +364,8 @@ function onload_page() {
             alert("data is to be submitted for request "+requestid+" value="+dataValue+" latitude,logitude="+latitude+","+longitude+" date="+date+" time"+dataTime);
         */
         //window.location = "?/=requested-academic";
-        addNewRequest(area,description,kindOfData,"Pending Approval",freqOfMeasurments,dateLastMeasurement);
+        addNewRequest(kindOfData,area,latitude,longitude,radius,dateFirstMeasurment,dateLastMeasurement,description,"Pending Approval",freqOfMeasurments,numberOfMeasurments,additionalInfo);
+
         location.reload();
         //console.log(addRequest);
       }
