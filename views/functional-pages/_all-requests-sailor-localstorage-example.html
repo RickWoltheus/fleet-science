@@ -38,7 +38,7 @@ writeRequestsTable("all-sailor");
     tr = table.getElementsByTagName("tr");
 
     // Loop through all table rows, and hide those who don't match the search query
-    for (i = 1; i < tr.length; i+=6) {
+    for (i = 1; i < tr.length; i+=2) {
       td = tr[i].getElementsByTagName("td")[0];   //username
       td1 = tr[i].getElementsByTagName("td")[1];   //area
       td2 = tr[i].getElementsByTagName("td")[2];   //type
@@ -49,10 +49,10 @@ writeRequestsTable("all-sailor");
         } else {
           tr[i].style.display = "none";
           tr[i+1].style.display = "none";
-          tr[i+2].style.display = "none";
-          tr[i+3].style.display = "none";
-          tr[i+4].style.display = "none";
-          tr[i+5].style.display = "none";          
+          //tr[i+2].style.display = "none";
+          //tr[i+3].style.display = "none";
+          //tr[i+4].style.display = "none";
+          //tr[i+5].style.display = "none";          
         }
       }
     }

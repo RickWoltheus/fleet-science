@@ -246,10 +246,13 @@
             </div>
             <br>
             <p>
-                <span id="request-chip" class="notification-chip ">1</span>
-                <span class="h5">Status update(s) of request(s)</span>
+                <div class="amount-circle" style="margin-left: 50px; margin-bottom: 20px;"><span style="padding-top: 3px" id="loggedin-num-new-requests"></span></div>
+                <p class="p-circle" style="float: left;">  Status update<span id="loggedin-num-requests-add"></span> of request</p>
             </p>
-            <button onclick="window.location.href='?/=my-requests-academic'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
+            <div style="clear: both; margin-bottom: -5px">
+                <button onclick="window.location.href='?/=all-requests-sailor'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
+            </div>
+            </p>
 
         </div>
         <br>
@@ -265,11 +268,18 @@ function onload_page() {
         var num_messages = numberMessages();
         var num_messages_additional = "";
         var set_fullname = loggedInFullName();
+
+        var set_new_requests = numberMyNewRequests();
+        var num_new_requests_additional = "";
         
         setText('loggedin-username1', set_fullname);
         setText('loggedin-num-messages', num_messages);
+        setText('loggedin-num-new-requests', set_new_requests);
         if(numberMessages() == 0 || numberMessages()>1){
           setText('loggedin-num-messages-add', "s");
+        }
+        if(numberMyNewRequests() == 0 || numberMyNewRequests()>1){
+            setText('loggedin-num-requests-add', "s");   
         }
     }
 }

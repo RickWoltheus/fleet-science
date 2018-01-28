@@ -152,13 +152,13 @@
                 <!--<span id="newmsg-chip" class="notification-chip "><span id="loggedin-num-messages-a"></span></span>
                 <span class="h6">New admin message<span id="loggedin-num-messages-add-a"></span></span>-->
                 <div class="amount-circle" style="margin-left: 50px"><span id="loggedin-num-messages-a" style="padding-top: 2px;"></span></div>
-                <p class="p-circle" style="float: left;"> new administator message<span id="loggedin-num-messages-add-a"></span></p>
+                <p class="p-circle" style="float: left;"> New administator message<span id="loggedin-num-messages-add-a"></span></p>
             </p>
             <p>
                     <!--<span id="accepted-chip" class="notification-chip"><span id="loggedin-num-messages-p"></span></span>
                     <span class="h6">New personal messages<span id="loggedin-num-messages-add-a"></span></span>-->
                 <div class="amount-circle" style="margin-left: 50px; margin-bottom: 20px;"><span id="loggedin-num-messages-p" style="padding-top: 2px;"></span></div>
-                <p class="p-circle" style="float: left;"> new personal message<span id="loggedin-num-messages-add-p"></span></p>
+                <p class="p-circle" style="float: left;"> New personal message<span id="loggedin-num-messages-add-p"></span></p>
             </p>
             <div style="clear: both; margin-bottom: -5px">
             <button onclick="window.location.href='?/=chatbox-sailor'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
@@ -168,14 +168,16 @@
         <!-- Accepted requests -->
         <div class="light-grey text-center">
             <div class="grey title-holder">
-                <h3 class="special-font">All Request(s)</h3>
+                <h3 class="special-font">All Requests</h3>
             </div>
             <br>
             <p>
-                <span id="request-chip" class="notification-chip ">1</span>
-                <span class="h6">New data request(s)</span>
+                <div class="amount-circle" style="margin-left: 50px; margin-bottom: 20px;"><span style="padding-top: 3px" id="loggedin-num-new-requests"></span></div>
+                <p class="p-circle" style="float: left;">  New data request<span id="loggedin-num-requests-add"></span></p>
             </p>
-            <button onclick="window.location.href='?/=all-requests-sailor'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
+            <div style="clear: both; margin-bottom: -5px">
+                <button onclick="window.location.href='?/=all-requests-sailor'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
+            </div>
         </div>
         <br>
 
@@ -192,15 +194,21 @@ function onload_page() {
         var num_messages_additional_p = "";
         var num_messages_additional_a = "";
         var set_fullname = loggedInFullName();
+        var set_new_requests = numberNewRequests();
+        var num_new_requests_additional = "";
         
         setText('loggedin-username1', set_fullname);
         setText('loggedin-num-messages-p', num_messages_p);
         setText('loggedin-num-messages-a', num_messages_a);
+        setText('loggedin-num-new-requests', set_new_requests);
         if(numberMessages() == 0 || numberMessages()>1){
           setText('loggedin-num-messages-add-p', "s");
         }
         if(numberMessagesAdmin() == 0 || numberMessagesAdmin()>1){
           setText('loggedin-num-messages-add-a', "s");
+        }
+        if(numberNewRequests() == 0 || numberNewRequests()>1){
+            setText('loggedin-num-requests-add', "s");   
         }
     }
 }
@@ -311,8 +319,8 @@ writeAcceptedDataRequestOptions();
                 window.location.replace("?/=home");
             }
 
-            setText("accepted-chip", 5);
-            setText("request-chip", 3);
+            //setText("accepted-chip", 5);
+            //setText("request-chip", 3);
             setText("notification-chip", 1);
 
             setText('loggedin-username', set_fullname);
