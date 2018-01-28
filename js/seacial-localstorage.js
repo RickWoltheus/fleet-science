@@ -288,17 +288,19 @@ function writeRequestsTable(page) {
     	    text+=" <tr id='section-requests-info"+count+"' class='req"+count+"' style='display: none'>";
     	    text+="   <td colspan='5'>";
     	    text+="     <div class='row wrapper-info-requests'>";
-    	    text+="       <div class='col-3'>";
-    	    text+="         <p class='p_requests'>Duration</p>";
-    	    text+="         <p>"+row["duration"]+"</p>";
-    	    text+="         <p class='p_requests'>Frequency</p>";
-    	    text+="         <p>"+row["frequency"]+"</p>";
-    	    text+="         <p class='p_requests'>Deadline</p>";
-    	    text+="         <p>"+row["deadline"]+"</p>";
+    	    text+="       <div class='col-4'>";
+    	    text+="         <p class='p_requests'>Quantity</p>";
+    	    text+="         <p>Number of measures "+row["frequency"]+": "+row["number"]+"</p>";
+    	    text+="         <p class='p_requests'>Area of measurements</p>";
+    	    text+="         <p>Latitude: "+row["latitude"]+ "</p><p>Long: "+row["longitude"]+"</p><p>Radius: "+row["radius"]+" km</p>";
+    	    text+="         <p class='p_requests'>First measurement</p>";
+    	    text+="         <p>"+row["first"]+"</p>";
+            text+="         <p class='p_requests'>Last measurement</p>";
+            text+="         <p>"+row["last"]+"</p>";
     	    text+="       </div>";
-    	    text+="       <div class='col-9'>";
+    	    text+="       <div class='col-8'>";
     	    text+="         <p class='p_requests'>Description</p>";
-    	    text+="         <div class='description-box-requests'>"+row["description"]+"</div>";
+    	    text+="         <div class='description-box-requests'>"+row["description"] + "<hr>" + row["aditional"] +"</div>";
     	    text+="         <div class='row'>";
             if((row["status"] == "Approved" || row["status"] == "Rejected") && page == "all-sailor"){
                 text+="           <div class='col-6'>";

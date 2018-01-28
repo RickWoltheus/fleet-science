@@ -30,32 +30,6 @@
                       <hr>
                   </div>
 
-                <div id="box-confirm-submit" style="display: none;">
-                    <br>
-                    <p style="text-align: center; font-size: 30px"><b>Warning!</b></p>
-                    <p style="text-align: center;">You can not change your request after you submit it.
-                    <br>
-                    Do you confirm the submission of the request?</p>
-                    <div class="form-group">
-                        <input type="submit" onclick="clickConfirm()" value="Confirm" class="btn btn-default button-accept-requests">
-                    </div>
-                    <div>
-                        <input type="submit" onclick="clickCancel()" value="Cancel" class="btn btn-default button-reject-requests">
-                    </div>
-                    <br><br>
-                </div>
-
-                <div id="box-form-thank" style="display: none">
-                        <br>
-                        <p style="text-align: center;">Your data request was succesfully sent to the lead boats for approval.
-                        <br> You can find the status of your data request under <a href="?/=my-requests-academic">my requests</a>.
-                        </p>
-                        <div class="form-group">
-                            <input type="submit" onclick="submitRequest()" value="Ok" class="btn btn-default button-accept-requests">
-                        </div>
-                    </div>
-
-
                 <div id="box-form-request">
 
                     <!-- Data value -->
@@ -75,9 +49,7 @@
                             <option value="audio">Audio</option>
                             <option value="samples">Samples</option>
                             <option value="ph">Acidity (pH)</option>
-                            <option value="temperature">Temperature (degree celcius)</option>
-                            <option value="ph">Acidity (pH)</option>
-                            <option value="deg c">Temperature (ºC)</option>
+                            <option value="temperature">Temperature (ºC)</option>
                             <option value="so2">SO2 (ppm)</option>
                             <option value="no2">NO2 (ppb)</option>
                             <option value="co">CO (ppm)</option>
@@ -93,7 +65,7 @@
 
                     <!-- Area -->
                     <div class="form-group">
-                        Area to do measurements*
+                        <b>Area to do the measurements*</b>
                         <input id="area" class="fleet-input" required placeholder="Area">
                     </div>
 
@@ -164,19 +136,20 @@
                         Frequency of measurement(s)*
                         <select id="freq-of-measurements" class="fleet-input">
                             <option value="">-- Choose Frequency --</option>
-                            <option value="daily">daily</option>
-                            <option value="weekly">weekly</option>
-                            <option value="monthly">monthly</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="freely">Freely</option>
                         </select>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-12">
-                            Number of measurements per frequency*
+                            Number of measurements per frequency* 
                         </div>
 
                         <div class="col-4">
-                            <input id="number-of-measurements" type="number" class="fleet-input" min="1" max="50" placeholder="1...50" required />
+                            <input id="number-of-measurements" style="width: 250px;" type="number" class="fleet-input" min="0" max="50" placeholder="e.g. 2 (measures monthly)" required /> <i style="color: gray;">(0 if undefined)</i>
                         </div>
                         <!--</select>-->
                     </div>
@@ -192,12 +165,38 @@
                     <hr />
 
                     <div class="form-group">
-                        <input type="button" onclick="clickSubmit()" value="Submit" class="fleet-btn-full-width">
+                        <input type="button" id="button-submit-request" onclick="clickSubmit()" value="Submit" class="fleet-btn-full-width">
                     </div>
 
+
+                    <div id="box-confirm-submit" style="display: none;">
+                        <br>
+                        <p style="text-align: center; font-size: 30px"><b>Warning!</b></p>
+                        <p style="text-align: center;">You can not change your request after you submit it.
+                        <br>
+                        Do you confirm the submission of the request?</p>
+                        <div class="form-group">
+                            <input type="submit" onclick="clickConfirm()" value="Confirm" class="btn btn-default button-accept-requests">
+                        </div>
+                        <div>
+                            <input type="submit" onclick="clickCancel()" value="Cancel" class="btn btn-default button-reject-requests">
+                        </div>
+                        <br><br>
+                    </div>
                     <input type="hidden" name="page" value="dashboard-academic">
 
                     </div>
+
+                    <div id="box-form-thank" style="display: none">
+                        <br>
+                        <p style="text-align: center;">Your data request was succesfully sent to the lead boats for approval.
+                        <br> You can find the status of your data request under <a href="?/=my-requests-academic">my requests</a>.
+                        </p>
+                        <div class="form-group">
+                            <input type="submit" onclick="submitRequest()" value="Ok" class="btn btn-default button-accept-requests">
+                        </div>
+                    </div>
+
 
                     <div id="box-confirm-submit" style="display: none;">
                         <br>
@@ -275,6 +274,9 @@ function onload_page() {
     }
 }
     function clickSubmit(){
+        document.getElementById("forgot-something1").style.display = "none";
+        document.getElementById("forgot-something2").style.display = "none";
+        document.getElementById("forgot-something").style.display = "none";
         var description = document.getElementById("desc").value;
         var kindOfData = document.getElementById("kind-of-data").value;
         var latitude = document.getElementById("latitude").value;
@@ -288,8 +290,8 @@ function onload_page() {
             document.getElementById("last-month").value + "-" +
             document.getElementById("last-year").value;
         var freqOfMeasurments = document.getElementById("freq-of-measurements").value;
-        var numberOfMeasurments = document.getElementById("number-of-measurements").value;
         var additionalInfo = document.getElementById("additional-info").value;
+        var numberOfMeasurments = document.getElementById("number-of-measurements").value;
 
         console.log("descr " + description);
         console.log("type " + kindOfData);
@@ -304,19 +306,18 @@ function onload_page() {
 
         if((typeof latitude != 'number' && !isFinite(latitude)) || (typeof latitude != 'number' && !isFinite(longitude))){
             document.getElementById("forgot-something1").style.display = "";
+        } if(latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180){
+            document.getElementById("forgot-something1").style.display = "";
         }
         /*if(!checkDates(getElementById("first-day"),getElementById("first-month"),getElementById("first-year"),getElementById("last-day"),getElementById("last-month"),getElementById("last-year"))){
                 document.getElementById("forgot-something2").style.display = "";
         }*/
         else if(description && kindOfData && latitude && longitude && area && radius && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
             document.getElementById("box-confirm-submit").style.display = "";
-            document.getElementById("forgot-something1").style.display = "none";
-            document.getElementById("forgot-something2").style.display = "none";
-            document.getElementById("forgot-something").style.display = "none";
+            document.getElementById("button-submit-request").disabled = true;
+            document.getElementById("button-submit-request").style.display = "none";
         } else{
             document.getElementById("forgot-something").style.display = "";
-            document.getElementById("forgot-something1").style.display = "none";
-            document.getElementById("forgot-something2").style.display = "none";
         }
     }
 
@@ -335,6 +336,8 @@ function onload_page() {
     function clickCancel(){
         document.getElementById("box-form-request").style.display = "";
         document.getElementById("box-confirm-submit").style.display = "none";
+        document.getElementById("button-submit-request").disabled = false;
+        document.getElementById("button-submit-request").style.display = "";
     }
 
     function clickConfirm(){
@@ -358,7 +361,11 @@ function onload_page() {
             document.getElementById("last-month").value + "-" +
             document.getElementById("last-year").value;
         var freqOfMeasurments = document.getElementById("freq-of-measurements").value;
-        var numberOfMeasurments = document.getElementById("number-of-measurements").value;
+        if(document.getElementById("number-of-measurements").value>0){
+            var numberOfMeasurments = document.getElementById("number-of-measurements").value;
+        } else{
+            var numberOfMeasurments = "free";
+        }
         var additionalInfo = document.getElementById("additional-info").value;
         /*
             alert("data is to be submitted for request "+requestid+" value="+dataValue+" latitude,logitude="+latitude+","+longitude+" date="+date+" time"+dataTime);

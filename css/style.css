@@ -347,11 +347,13 @@ li.nav-item.active a {
   width: 14% !important; }
 
 .description-box-requests {
-  height: 135px;
+  height: 200px;
   width: 100%;
   border: 1px solid #ccc;
   overflow: auto;
-  padding: 5px 10px; }
+  padding: 5px 10px; 
+  margin-bottom: 20px;
+}
 
 .form-submit-left {
   text-align: left !important; }
