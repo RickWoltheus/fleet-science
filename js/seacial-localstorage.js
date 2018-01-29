@@ -156,7 +156,9 @@ function writeAcceptedDataRequestOptions()
             var i;
 	    for (i=0;i<accepts.length;i++) {
                 var req=getStorageObject()["requests"][accepts[i]];
-                text+="    <option value='"+accepts[i]+"'>"+"Academic: "+req["username"]+" | Area: "+req["area"]+" | Type of data: "+req["reqtype"]+"</option>";
+                if(req[status] != "Completed"){
+                    text+="    <option value='"+accepts[i]+"'>"+"Academic: "+req["username"]+" | Area: "+req["area"]+" | Type of data: "+req["reqtype"]+"</option>";
+                }
 	    }
             text+="</select>";
 	}
@@ -308,16 +310,16 @@ function writeRequestsTable(page) {
     	    text+="         <div class='row'>";
             if((row["status"] == "Approved" || row["status"] == "Rejected") && page == "all-sailor" && (page=="all-sailor" && rejects.indexOf(key) < 0)){
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Accept</button>";
+                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");}' class='btn btn-default button-accept-requests'>Accept</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
+                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
             }
 
             if (page=="all-sailor" && rejects.indexOf(key) > -1){
                 text+="           <div class='col-12'>";
-                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Accept</button>";
+                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");}' class='btn btn-default button-accept-requests'>Accept</button>";
                 text+="           </div>";
             }
             //Reject button disabled when request already rejected by this user
@@ -329,30 +331,30 @@ function writeRequestsTable(page) {
 
             if( row["status"] == "Accepted" && accepts.indexOf(key)>-1 && page=="all-sailor" && answered.indexOf(key)>-1){
                 text+="           <div class='col-4'>";
-                text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Submit Data</button>";
+                text+="             <button type='button' class='btn btn-default button-accept-requests'>Submit Data</button>";
                 text+="           </div>";
                 text+="           <div class='col-4'>";
-                text+="             <button type='button' id='accept-requests"+count+"'  onclick='{requestPageClickComplete(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Complete</button>";
+                text+="             <button type='button' onclick='{requestPageClickComplete(\""+key+"\");}' class='btn btn-default button-accept-requests'>Complete</button>";
                 text+="           </div>";
                 text+="           <div class='col-4'>";
-                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
+                text+="             <button type='button' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
             }
             else if( row["status"] == "Accepted" && accepts.indexOf(key)>-1 && page=="all-sailor" && answered.indexOf(key)<0){
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Submit Data</button>";
+                text+="             <button type='button' class='btn btn-default button-accept-requests'>Submit Data</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
+                text+="             <button type='button' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
             }
 
             else if(row["status"] == "Accepted" && accepts.indexOf(key)<0 && page=="all-sailor"){
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Accept</button>";
+                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");}' class='btn btn-default button-accept-requests'>Accept</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
+                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
             }
             if(page == "all-academic" && row["status"] == "Completed"){
@@ -393,12 +395,14 @@ function requestPageClickAccept(requestid){
     var response = confirm("Are you sure you want to accept this request?");
     if (response) {
         addAccept(requestid);
+        myReload();
     }
 }
 function requestPageClickReject(requestid){
     var response = confirm("Are you sure you want to reject this request?");
     if (response) {
         addReject(requestid);
+        myReload();
     }
 }
 
@@ -406,6 +410,7 @@ function requestPageClickComplete(requestid){
     var response = confirm("Are you sure you have completed this request?");
     if (response) {
         addComplete(requestid);
+        myReload();
     }
 }
 
