@@ -41,14 +41,7 @@
                     <!-- Select request -->
                     <div class="form-group" id="select-data-request-box">
                         Select data request*
-            			<div id="request-options">
-                                        <select class="fleet-input" id="requestid">
-                                            <option value="volvo">...</option>
-                                    	<option value="saab">...</option>
-                                    	<option value="opel">...</option>
-                                    	<option value="audi">...</option>
-                                        </select>
-            			</div>
+            			<div id="request-options"></div>
                     </div>
 
 
@@ -112,7 +105,7 @@
 
                         </div>
                         <div class="form-group">
-                            <input type="submit" onclick="clickSubmit()" value="Submit" class="fleet-btn-full-width">
+                            <input type="submit" onclick="clickSubmit1()" value="Submit" class="fleet-btn-full-width">
                         </div>
                         <p id="link-to-App1" style="text-align: center;"><i>Want do submit data with your mobile phone? Click <a href="index.html?/=download-app" style="color: #AFA7A3"><b>here</b></a> to download the app!</i></p>
                     </div>
@@ -244,6 +237,32 @@ function clickSubmit(){
         document.getElementById("forgot-something").style.display = "";
         document.getElementById("forgot-something1").style.display = "none";
     }
+}
+
+function clickSubmit1(){
+    var requestid = document.getElementById("requestid").value;
+    var dataValue = document.getElementById("fleet-data-value").value;
+    var latitude  =  document.getElementById("fleet-data-latitude").value;
+    var longitude  =  document.getElementById("fleet-data-longitude").value;
+    var date=document.getElementById("fleet-data-day").value + "-" +
+             document.getElementById("fleet-data-month").value + "-" +
+            document.getElementById("fleet-data-year").value;
+    var dataTime=document.getElementById("fleet-data-time").value;
+
+    if((typeof latitude != 'number' && !isFinite(latitude)) || (typeof latitude != 'number' && !isFinite(longitude))){
+            document.getElementById("forgot-something1").style.display = "";
+    } else if(latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180){
+            document.getElementById("forgot-something1").style.display = "";
+    } else if(requestid && dataValue && latitude && longitude && date && dataTime){
+        var response = confirm("\t\t\t\tWarning!\n\nYou can not change the data after you upload it. \nDo you confirm the entered values are correct?");
+        if (response) {
+            alert("Your data is successfully uploaded to the database.")
+            submitData();
+        }
+    } else{
+        document.getElementById("forgot-something").style.display = "";
+        document.getElementById("forgot-something1").style.display = "none";
+    }  
 }
 
 function clickConfirm(){
