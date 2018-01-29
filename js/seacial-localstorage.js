@@ -234,7 +234,7 @@ function writeRequestsTable(page) {
 
     	var requests = getStorageObject()["requests"];
         for (var key in requests) {
-            
+
 
             image_tracker[count] = 'd';
 
@@ -242,7 +242,6 @@ function writeRequestsTable(page) {
                   continue;
             }
             var row = requests[key];
-            console.log(key +"  " +row["status"]);
 
             if((row["status"] == "Pending Approval" || row["status"] == "Not Approved") && (page=="all-sailor" || page == "all-academic")){
                 continue;}
@@ -290,13 +289,13 @@ function writeRequestsTable(page) {
     	    text+="         <p>Number of measures "+row["frequency"]+": "+row["number"]+"</p>";
     	    text+="         <p class='p_requests'>Area of measurements</p>";
             if(row["latitude"]){
-    	       text+="         <p>Latitude: "+row["latitude"]+ "</p>"; 
+    	       text+="         <p>Latitude: "+row["latitude"]+ "</p>";
             }
             if(row["longitude"]){
-               text+="         <p>Longitude: "+row["longitude"]+"</p>"; 
+               text+="         <p>Longitude: "+row["longitude"]+"</p>";
             }
             if(row["radius"]){
-               text+="          <p>Radius: "+row["radius"]+" km</p>"; 
+               text+="          <p>Radius: "+row["radius"]+" km</p>";
             }
     	    text+="         <p class='p_requests'>First measurement</p>";
     	    text+="         <p>"+row["first"]+"</p>";
@@ -313,7 +312,7 @@ function writeRequestsTable(page) {
                 text+="           </div>";
                 text+="           <div class='col-6'>";
                 text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
-                text+="           </div>"; 
+                text+="           </div>";
             }
 
             if (page=="all-sailor" && rejects.indexOf(key) > -1){
@@ -338,14 +337,14 @@ function writeRequestsTable(page) {
                 text+="           <div class='col-4'>";
                 text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
-            } 
+            }
             else if( row["status"] == "Accepted" && accepts.indexOf(key)>-1 && page=="all-sailor" && answered.indexOf(key)<0){
                 text+="           <div class='col-6'>";
                 text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Submit Data</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
                 text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
-                text+="           </div>";                
+                text+="           </div>";
             }
 
             else if(row["status"] == "Accepted" && accepts.indexOf(key)<0 && page=="all-sailor"){
@@ -366,7 +365,7 @@ function writeRequestsTable(page) {
             } else if(page == "all-academic" && row["status"] != "Completed"){
                 text+="           <div class='col-12'>";
                 text+="             <a href='?/=chatbox-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
-                text+="           </div>";                
+                text+="           </div>";
             }
             if(page == "my"){
                 if(row["status"] == "Completed"){
@@ -511,13 +510,6 @@ function createNewDatabase() {
 
 
 function userExists(username) {
-// RICK: JSON.stringify maakt van een object een human-readable string
-// RICK: Ik heb de alerts maar even uitgezet.
-// Ayal
-//    console.log(JSON.stringify(someLocalStorage));
-//    alert(JSON.stringify(someLocalStorage));
-
-
     return (someLocalStorage["users"][username] != null);
 }
 
@@ -583,7 +575,7 @@ function addAccept(requestid) {
         someLocalStorage["rejects"][loggedInUsername].splice(index, 1);
     }
     //delete someLocalStorage["rejects"][loggedInUsername][requestid];
-    
+
     someLocalStorage["requests"][requestid]["status"] = "Accepted"
     putStorage();
     return true;
@@ -600,7 +592,7 @@ function addReject(requestid) {
         someLocalStorage["accepts"][loggedInUsername].splice(index, 1);
     }
     //delete someLocalStorage["accepts"][loggedInUsername][requestid];
-    
+
     for (var key in someLocalStorage["accepts"]) {
         var array = someLocalStorage["accepts"][key]
         if (array.indexOf(requestid) > -1){
@@ -608,10 +600,9 @@ function addReject(requestid) {
             return true;
         }
     }
-    
     someLocalStorage["requests"][requestid]["status"] = "Rejected";
     putStorage();
-    return true;          
+    return true;
 }
 
 
@@ -622,7 +613,7 @@ function addComplete(requestid){
   var index = someLocalStorage["accepts"][loggedInUsername].indexOf(requestid);
     if(index != -1){
         someLocalStorage["accepts"][loggedInUsername].splice(index, 1);
-    }  
+    }
     someLocalStorage["requests"][requestid]["status"] = "Completed";
     putStorage();
     return true;
@@ -663,7 +654,6 @@ function updateMessage(messageid, newMessageInfo) {
 function numberMessages(){
     var count = 0;
     for (var id in someLocalStorage["messages"]){
-        console.log(someLocalStorage["messages"][id]["to"]);
         if (someLocalStorage["messages"][id]["to"] == loggedInUsername && someLocalStorage["messages"][id]["type"] == "personal"){
             count ++;
         }
