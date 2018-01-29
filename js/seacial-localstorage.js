@@ -156,7 +156,7 @@ function writeAcceptedDataRequestOptions()
             var i;
 	    for (i=0;i<accepts.length;i++) {
                 var req=getStorageObject()["requests"][accepts[i]];
-                text+="    <option value='"+accepts[i]+"'>"+req["username"]+" - "+req["area"]+" - "+req["reqtype"]+"</option>";
+                text+="    <option value='"+accepts[i]+"'>"+"Academic: "+req["username"]+" | Area: "+req["area"]+" | Type of data: "+req["reqtype"]+"</option>";
 	    }
             text+="</select>";
 	}
