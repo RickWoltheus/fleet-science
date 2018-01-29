@@ -337,13 +337,13 @@ function writeRequestsTable(page) {
 
             if( row["status"] == "Accepted" && accepts.indexOf(key)>-1 && page=="all-sailor" && answered.indexOf(key)>-1){
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' class='btn btn-default button-accept-requests'>Submit Data</button>";
+                text+="              <button type='button' onclick='redirecToDashboard();' class='btn btn-default button-accept-requests'>Submit Data</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
                 text+="             <a href='?/=chatbox-academic'><button type='button' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' onclick='{requestPageClickComplete(\""+key+"\");}' class='btn btn-default button-accept-requests'>Complete</button>";
+                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickComplete(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Complete</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
                 text+="             <button type='button' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
@@ -351,7 +351,7 @@ function writeRequestsTable(page) {
             }
             else if( row["status"] == "Accepted" && accepts.indexOf(key)>-1 && page=="all-sailor" && answered.indexOf(key)<0){
                 text+="           <div class='col-4'>";
-                text+="             <button type='button' class='btn btn-default button-accept-requests'>Submit Data</button>";
+                text+="             <button type='button' onclick='redirecToDashboard();' class='btn btn-default button-accept-requests'>Submit Data</button></a>";
                 text+="           </div>";
                 text+="           <div class='col-4'>";
                 text+="             <a href='?/=chatbox-academic'><button type='button' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
@@ -364,7 +364,7 @@ function writeRequestsTable(page) {
                 text+="             <a href='?/=chatbox-academic'><button type='button' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
                 text+="           </div>";
             }
-            else if(row["status"] == "Accepted" && accepts.indexOf(key)<0 && page=="all-sailor"){
+            /*else if(row["status"] == "Accepted" && accepts.indexOf(key)<0 && page=="all-sailor"){
                 text+="           <div class='col-4'>";
                 text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");}' class='btn btn-default button-accept-requests'>Accept</button>";
                 text+="           </div>";
@@ -374,17 +374,17 @@ function writeRequestsTable(page) {
                 text+="           <div class='col-4'>";
                 text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
-            }
+            }*/
             if(page == "all-academic" && row["status"] == "Completed"){
                 text+="           <div class='col-6'>";
-                text+="             <a href='?/=chatbox-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+                text+="             <button type='button' onclick='redirectToChatboxAcademic();' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
                 text+="             <a href='?/=database-logged-in-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Download Data</button></a>";
                 text+="           </div>";
             } else if(page == "all-academic" && row["status"] != "Completed"){
                 text+="           <div class='col-12'>";
-                text+="             <a href='?/=chatbox-academic'><button type='button' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+                text+="             <button type='button' onclick='redirectToChatboxAcademic();' class='btn btn-default button-accept-requests'>Contact Academic</button>";
                 text+="           </div>";
             }
             if(page == "my"){
@@ -433,9 +433,13 @@ function requestPageClickComplete(requestid){
 }
 
 
+function redirecToDashboard(){
+  window.location.href = '?/=dashboard-sailor';
+}
 
-
-
+function redirectToChatboxAcademic(){
+    window.location.href = '?/=chatbox-academic';
+}
 
 
 
@@ -721,9 +725,6 @@ function numberMyNewRequests(){
     }
     return count;
 }
-
-
-
 
 function requestExists(requestid) {
     return (someLocalStorage["requests"][requestid] != null);
