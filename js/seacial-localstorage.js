@@ -382,6 +382,7 @@ function writeRequestsTable(page) {
     	    text+="     </div>";
     	    text+="   </td>";
     	    text+=" </tr>";
+
             count++;
         }
         element.innerHTML = text;
