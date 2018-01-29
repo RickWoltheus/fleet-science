@@ -307,7 +307,9 @@ function writeRequestsTable(page) {
                 text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests' disabled>Reject</button>";
                 text+="           </div>";
             }*/
-            //TODO
+
+
+
             if( row["status"] == "Accepted" && accepts.indexOf(key)>-1 && page=="all-sailor"){
                 text+="           <div class='col-6'>";
                 text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Submit Data</button>";
