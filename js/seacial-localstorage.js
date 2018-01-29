@@ -380,7 +380,7 @@ function writeRequestsTable(page) {
                 text+="             <button type='button' onclick='redirectToChatboxAcademic();' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
-                text+="             <a href='?/=database-logged-in-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Download Data</button></a>";
+                text+="             <button type='button' onclick='downloadDataButton();' class='btn btn-default button-accept-requests'>Download Data</button>";
                 text+="           </div>";
             } else if(page == "all-academic" && row["status"] != "Completed"){
                 text+="           <div class='col-12'>";
@@ -390,7 +390,7 @@ function writeRequestsTable(page) {
             if(page == "my"){
                 if(row["status"] == "Completed"){
                     text+="           <div class='col-12'>";
-                    text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Download Data</button>";
+                    text+="             <button type='button' onclick='downloadDataButton();' class='btn btn-default button-accept-requests'>Download Data</button>";
                     //text+="                 <input id='fileInput' type='file' style='display:none;' accept='image/*' />";
                     //text+="                 <input type='button' value='Download Data' onclick='document.getElementById('fileInput').click();' class='btn btn-default button-accept-requests' />";
                     text+="           </div>";
@@ -439,6 +439,10 @@ function redirecToDashboard(){
 
 function redirectToChatboxAcademic(){
     window.location.href = '?/=chatbox-academic';
+}
+
+function downloadDataButton(){
+    alert("The data was saved in your computer.");
 }
 
 
