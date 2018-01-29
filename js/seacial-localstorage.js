@@ -231,16 +231,21 @@ function writeRequestsTable(page) {
         var accepts = getStorageObject()["accepts"][loggedInUsername];
         var rejects = getStorageObject()["rejects"][loggedInUsername];
 
+        console.log("REJECTS: " + rejects);
+        console.log("ACCEPTS: " + accepts);
+
 
     	var requests = getStorageObject()["requests"];
         for (var key in requests) {
+            
 
             image_tracker[count] = 'd';
 
-    	    if(!requests.hasOwnProperty(key)) {
-       			  continue;
-    	    }
-    	    var row = requests[key];
+            if(!requests.hasOwnProperty(key)) {
+                  continue;
+            }
+            var row = requests[key];
+            console.log(key +"  " +row["status"]);
 
             if((row["status"] == "Pending Approval" || row["status"] == "Not Approved") && (page=="all-sailor" || page == "all-academic")){
                 continue;}
@@ -259,6 +264,8 @@ function writeRequestsTable(page) {
 
             if(row["status"] == "Approved" && (page=="all-sailor" || page=="all-academic")){
                 text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
+            } else if (page=="all-sailor" && rejects.indexOf(key) > -1 && row["status"]=="Approved"){
+                text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"Rejected"+"</a></td>";
             } else if(row["status"] == "Rejected" && page=="all-academic"){
                 text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
             } else if( row["status"] == "Accepted" && accepts.indexOf(key) < 0){
@@ -595,7 +602,14 @@ function addAccept(requestid) {
         return false;
     }
     someLocalStorage["accepts"][loggedInUsername].push(requestid);
-    delete someLocalStorage["rejects"][loggedInUsername][requestid];
+
+    //remove from list of rejects
+    var index = someLocalStorage["rejects"][loggedInUsername].indexOf(requestid);
+    if(index != -1){
+        someLocalStorage["rejects"][loggedInUsername].splice(index, 1);
+    }
+    //delete someLocalStorage["rejects"][loggedInUsername][requestid];
+    
     someLocalStorage["requests"][requestid]["status"] = "Accepted"
     putStorage();
     return true;
@@ -605,7 +619,15 @@ function addReject(requestid) {
         return false;
     }
     someLocalStorage["rejects"][loggedInUsername].push(requestid);
-    delete someLocalStorage["accepts"][loggedInUsername][requestid];
+
+    //remove from list of accepts
+    var index = someLocalStorage["accepts"][loggedInUsername].indexOf(requestid);
+    if(index != -1){
+        someLocalStorage["accepts"][loggedInUsername].splice(index, 1);
+    }
+    //delete someLocalStorage["accepts"][loggedInUsername][requestid];
+    
+    someLocalStorage["requests"][requestid]["status"] = "Approved"
     putStorage();
     return true;
 }
