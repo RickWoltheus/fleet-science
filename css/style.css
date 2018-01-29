@@ -838,4 +838,14 @@ h1 {
   margin-left: auto;
   margin-right: auto; }
 
+  #interactivemap {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../images/interactive-map.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; }
+
+
 /*# sourceMappingURL=style.css.map */
