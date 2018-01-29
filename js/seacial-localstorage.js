@@ -313,7 +313,7 @@ function writeRequestsTable(page) {
                 text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");}' class='btn btn-default button-accept-requests'>Accept</button>";
                 text+="           </div>";
                 text+="           <div class='col-4'>";
-                text+="             <a href='?/=chatbox-academic'><button type='button' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+                text+="             <button type='button' onclick='redirectToChatboxSailor();' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
                 text+="           </div>";
                 text+="           <div class='col-4'>";
                 text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
@@ -325,7 +325,7 @@ function writeRequestsTable(page) {
                 text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");}' class='btn btn-default button-accept-requests'>Accept</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
-                text+="             <a href='?/=chatbox-academic'><button type='button' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+                text+="             <button type='button' onclick='redirectToChatboxSailor();' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
                 text+="           </div>";
             }
             //Reject button disabled when request already rejected by this user
@@ -340,7 +340,7 @@ function writeRequestsTable(page) {
                 text+="              <button type='button' onclick='redirecToDashboard();' class='btn btn-default button-accept-requests'>Submit Data</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
-                text+="             <a href='?/=chatbox-academic'><button type='button' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+                text+="             <button type='button' onclick='redirectToChatboxSailor();' class='btn btn-default button-accept-requests'>Contact Academic</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
                 text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickComplete(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Complete</button>";
@@ -354,14 +354,14 @@ function writeRequestsTable(page) {
                 text+="             <button type='button' onclick='redirecToDashboard();' class='btn btn-default button-accept-requests'>Submit Data</button></a>";
                 text+="           </div>";
                 text+="           <div class='col-4'>";
-                text+="             <a href='?/=chatbox-academic'><button type='button' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+                text+="             <button type='button' onclick='redirectToChatboxSailor();' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
                 text+="           </div>";
                 text+="           <div class='col-4'>";
                 text+="             <button type='button' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
             } else if(row["status"] == "Completed" && page=="all-sailor"){
                 text+="           <div class='col-12'>";
-                text+="             <a href='?/=chatbox-academic'><button type='button' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+                text+="             <button type='button' onclick='redirectToChatboxSailor();' class='btn btn-default button-accept-requests'>Contact Academic</button>";
                 text+="           </div>";
             }
             /*else if(row["status"] == "Accepted" && accepts.indexOf(key)<0 && page=="all-sailor"){
@@ -441,7 +441,9 @@ function redirectToChatboxAcademic(){
     window.location.href = '?/=chatbox-academic';
 }
 
-
+function redirectToChatboxSailor(){
+    window.location.href = '?/=chatbox-sailor';
+}
 
 
 /****************************************************
