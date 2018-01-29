@@ -43,22 +43,24 @@
                         Type of data*
                         <select id="kind-of-data" class="fleet-input" required>
                             <option value=""><i>-- Select the type of data that you need --</option>
-                            <option value="ph">Acidity (pH)</option>
-                            <option value="audio">Audio</option>
-                            <option value="co">CO (ppm)</option>
-                            <option value="co2">CO2 - water (ppm)</option>
-                            <option value="no2">NO2 (ppb)</option>
-                            <option value="o3">O3 (ppm)</option>
-                            <option value="photo">Photo</option>
-                            <option value="pm10">PM10</option>
-                            <option value="pm2,5">PM2,5</option>
-                            <option value="salinity">Salinity (PSU) </option>
-                            <option value="samples">Samples</option>
-                            <option value="so2">SO2 (ppm)</option>
-                            <option value="so2">SO2 - water (ppm)</option>
-                            <option value="tds">TDS (mg/L)</option>
-                            <option value="temperature">Temperature (ºC)</option>
-                            <option value="video">Video</option>
+                              <option value="co">Air: CO (ppm)</option>
+                              <option value="no2">Air: NO2 (ppb)</option>
+                              <option value="o3">Air: O3 (ppm)</option>
+                              <option value="pm10">Air: PM10</option>
+                              <option value="pm2,5">Air: PM2,5</option>
+
+                              <option value="ph">Water: Acidity (pH)</option>
+                              <option value="co2">Water: CO2 (ppm)</option>
+                              <option value="so2">Water: SO2 (ppm)</option>
+                              <option value="so2">Water: SO2 - water (ppm)</option>
+                              <option value="tds">Water: TDS (mg/L)</option>
+                              <option value="temperature">Water: Temperature (ºC)</option>
+                              <option value="salinity">Water: Salinity (PSU) </option>
+
+                              <option value="audio">Audio</option>
+                              <option value="photo">Photo</option>
+                              <option value="samples">Samples</option>
+                              <option value="video">Video</option>
                         </select>
                     </div>
 
@@ -134,7 +136,7 @@
                             <input id="last-year" type="number" class="fleet-input" min="2018" max="2100" placeholder="YYYY" required />
                         </div>
                     </div>
-
+                    <br>
                     <div class="form-group">
                         Frequency of measurement(s)*
                         <select id="freq-of-measurements" class="fleet-input">
@@ -336,8 +338,8 @@ function onload_page() {
             document.getElementById("last-year").value;
         var freqOfMeasurments = document.getElementById("freq-of-measurements").value;
         var additionalInfo = document.getElementById("additional-info").value;
-        var numberOfMeasurments = document.getElementById("number-of-measurements").value;      
-        
+        var numberOfMeasurments = document.getElementById("number-of-measurements").value;
+
         if((typeof latitude != 'number' && !isFinite(latitude)) || (typeof latitude != 'number' && !isFinite(longitude))){
             document.getElementById("forgot-something1").style.display = "";
         } else if(latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180){
@@ -351,7 +353,7 @@ function onload_page() {
             }
         } else{
             document.getElementById("forgot-something").style.display = "";
-        }  
+        }
     }
 
     /*TODO - WHY NOT WORKING?
