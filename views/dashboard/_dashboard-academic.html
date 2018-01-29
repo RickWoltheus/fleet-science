@@ -22,7 +22,7 @@
             <div class="row justify-content-center">
                 <div class="col-11">
                   <div id="no-my-request">
-                      <h1>Welcome to Fleet science!</h1>
+                      <h1>Welcome to Fleet Science!</h1>
                       <p>We would like to help you get started:
                       <p>1. Go to your profile to complete the required information.
                       <p>2. Send a data request to sailors by using the form below to receive the data you'll need for your research.</p>
@@ -145,7 +145,7 @@
 
                     <div class="form-group row">
                         <div class="col-12">
-                            Number of measurements per frequency* 
+                            Number of measurements per frequency*
                         </div>
 
                         <div class="col-4">
@@ -271,7 +271,7 @@ function onload_page() {
 
         var set_new_requests = numberMyNewRequests();
         var num_new_requests_additional = "";
-        
+
         setText('loggedin-username1', set_fullname);
         setText('loggedin-num-messages', num_messages);
         setText('loggedin-num-new-requests', set_new_requests);
@@ -279,7 +279,7 @@ function onload_page() {
           setText('loggedin-num-messages-add', "s");
         }
         if(numberMyNewRequests() == 0 || numberMyNewRequests()>1){
-            setText('loggedin-num-requests-add', "s");   
+            setText('loggedin-num-requests-add', "s");
         }
     }
 }

@@ -7,7 +7,7 @@ function validateLogin(username) {
         if(count_login_clicks == 1 || tried_usernames.indexOf(username) < 0){
             if(!username){
                 document.getElementById("not-user").innerHTML += "<b>Fill in with your username and password.</b><br>";
-            }            
+            }
             else{
                 document.getElementById("not-user").innerHTML += "<b>Username " + username +" does not exist. Please sign up first.</b><br>";
             }
@@ -211,7 +211,7 @@ function writeRequestsTable(page) {
     	/*text+="     <select id='selectStatus' class='filter-requests' onchange='selectStatus()'>";
         if(page == "all-sailor"){
             text+="       <option selected='selected'>All</option>";
-            text+="       <option value='completed'>New</option>";        
+            text+="       <option value='completed'>New</option>";
             text+="       <option value='accepted'>Accepted</option>";
             text+="       <option value='approved'>Completed</option>";
             text+="       <option value='approved'>Rejected</option>";
@@ -246,7 +246,7 @@ function writeRequestsTable(page) {
                 continue;}
 
             if(page=="my" && (row["username"] != loggedInUsername || row["status"] == "Not Approved")){ continue; }
-            
+
             //if (page=="accepted" && accepts.indexOf(key) < 0) { continue; }
 
     	    text+=" <tr>";
@@ -313,7 +313,7 @@ function writeRequestsTable(page) {
                 text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Submit Data</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Withdraw</button>";
+                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
             }
             if(row["status"] == "Accepted" && accepts.indexOf(key)<0 && page=="all-sailor"){
@@ -560,10 +560,10 @@ function addUser(username, userinfo) {
     if(username != "conor" && username != "sarah"){
         var messageinfo = {
             "type":"administrator",
-            "from": username, 
+            "from": username,
             "to": "conor",
-            "description": username + " wants to be accepted into the platform", 
-            "date":getTodayDateString(), 
+            "description": username + " wants to be accepted into the platform",
+            "date":getTodayDateString(),
             "previous":""
         }
 
@@ -744,8 +744,8 @@ function addData(requestid, data) {
     putStorage();
 }
 function addNewRequest(type,area,latitude,longitude,radius,first,last,description,status,frequency,number,aditional){
-    var reqInfo = { "username":loggedInUsername, 
-                    "reqtype":type,  
+    var reqInfo = { "username":loggedInUsername,
+                    "reqtype":type,
                     "area":area,
                     "latitude":latitude,
                     "longitude":longitude,
@@ -756,8 +756,8 @@ function addNewRequest(type,area,latitude,longitude,radius,first,last,descriptio
                     "status":status,
                     "frequency":frequency,
                     "number":number,
-                    "aditional":aditional   
-                  }  
+                    "aditional":aditional
+                  }
 
         addRequest(getNewUniqueId("request"), reqInfo);
 }
