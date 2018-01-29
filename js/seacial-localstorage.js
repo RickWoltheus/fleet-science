@@ -116,8 +116,8 @@ function signupLS(role, firstname, lastname, username, boatname, institute, emai
             "role": role,
             "firstname": firstname,
             "lastname": lastname,
-            "institute": "",
-            "boatname": boatname,
+            "institute": institute,
+            "boatname": "",
             "email": email
         });
     }else{
@@ -125,8 +125,8 @@ function signupLS(role, firstname, lastname, username, boatname, institute, emai
             "role": role,
             "firstname": firstname,
             "lastname": lastname,
-            "institute": institute,
-            "boatname": "",
+            "institute": "",
+            "boatname": boatname,
             "email": email
         });
     }
