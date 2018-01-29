@@ -43,35 +43,36 @@
                         Type of data*
                         <select id="kind-of-data" class="fleet-input" required>
                             <option value=""><i>-- Select the type of data that you need --</option>
-                            <option value="samples">Samples</option>
-                            <option value="photo">Photo</option>
-                            <option value="video">Video</option>
-                            <option value="audio">Audio</option>
-                            <option value="samples">Samples</option>
                             <option value="ph">Acidity (pH)</option>
-                            <option value="temperature">Temperature (ºC)</option>
-                            <option value="so2">SO2 (ppm)</option>
-                            <option value="no2">NO2 (ppb)</option>
+                            <option value="audio">Audio</option>
                             <option value="co">CO (ppm)</option>
+                            <option value="co2">CO2 - water (ppm)</option>
+                            <option value="no2">NO2 (ppb)</option>
                             <option value="o3">O3 (ppm)</option>
-                            <option value="salinity">Salinity (PSU) </option>
-                            <option value="tds">TDS (mg/L)</option>
-                            <option value="co2">CO2 - aq (ppm)</option>
-                            <option value="so2">SO2 - aq (ppm)</option>
+                            <option value="photo">Photo</option>
                             <option value="pm10">PM10</option>
                             <option value="pm2,5">PM2,5</option>
+                            <option value="salinity">Salinity (PSU) </option>
+                            <option value="samples">Samples</option>
+                            <option value="so2">SO2 (ppm)</option>
+                            <option value="so2">SO2 - water (ppm)</option>
+                            <option value="tds">TDS (mg/L)</option>
+                            <option value="temperature">Temperature (ºC)</option>
+                            <option value="video">Video</option>
                         </select>
                     </div>
 
+                    <br>
+
                     <!-- Area -->
                     <div class="form-group">
-                        <b>Area to do the measurements*</b>
+                        Area to do the measurements*
                         <input id="area" class="fleet-input" required placeholder="Area">
                     </div>
 
                     <!-- Latidude -->
                     <div class="form-group row">
-                        <div class="col-3">Latitude*:</div>
+                        <div class="col-3">Latitude:</div>
                         <div class="col-9 ">
                             <input id="latitude" class="fleet-input" required placeholder="e.g. 52.370216" />
                         </div>
@@ -79,7 +80,7 @@
 
                     <!-- Longitude -->
                     <div class="form-group row">
-                        <div class="col-3">Longitude*:</div>
+                        <div class="col-3">Longitude:</div>
                         <div class="col-9 ">
                             <input id="longitude" class="fleet-input" required placeholder="e.g. 4.895168" />
                         </div>
@@ -87,7 +88,7 @@
 
                     <div class="form-group row">
                         <div class="col-12">
-                            Radius of area*
+                            Radius of area
                         </div>
 
                         <div class="col-4">
@@ -95,6 +96,8 @@
                         </div>
                         <!--</select>-->
                     </div>
+
+                    <br>
 
                     <!-- date of measurement -->
                     <div class="form-group row">
@@ -153,7 +156,7 @@
                         </div>
                         <!--</select>-->
                     </div>
-
+                    <br>
                     <div class="form-group">
                         Additional information (optional)
                         <input id="additional-info" class="fleet-input" placeholder="Additional information">
@@ -165,7 +168,7 @@
                     <hr />
 
                     <div class="form-group">
-                        <input type="button" id="button-submit-request" onclick="clickSubmit()" value="Submit" class="fleet-btn-full-width">
+                        <input type="button" id="button-submit-request" onclick="clickSubmit1()" value="Submit" class="fleet-btn-full-width">
                     </div>
 
 
@@ -196,22 +199,6 @@
                             <input type="submit" onclick="submitRequest()" value="Ok" class="btn btn-default button-accept-requests">
                         </div>
                     </div>
-
-
-                    <div id="box-confirm-submit" style="display: none;">
-                        <br>
-                        <p style="text-align: center; font-size: 30px"><b>Warning!</b></p>
-                        <p style="text-align: center;">You can not change your request after you submit it.
-                        <br>
-                        Do you confirm the submission of the request?</p>
-                        <div class="form-group">
-                            <input type="submit" onclick="submitRequest()" value="Confirm" class="btn btn-default button-accept-requests">
-                        </div>
-                        <div>
-                            <input type="submit" onclick="clickCancel()" value="Cancel" class="btn btn-default button-reject-requests">
-                        </div>
-                    </div>
-
 
                 </div>
 
@@ -329,6 +316,42 @@ function onload_page() {
         } else{
             document.getElementById("forgot-something").style.display = "";
         }
+    }
+
+    function clickSubmit1(){
+        document.getElementById("forgot-something1").style.display = "none";
+        document.getElementById("forgot-something2").style.display = "none";
+        document.getElementById("forgot-something").style.display = "none";
+        var description = document.getElementById("desc").value;
+        var kindOfData = document.getElementById("kind-of-data").value;
+        var latitude = document.getElementById("latitude").value;
+        var longitude = document.getElementById("longitude").value;
+        var area = document.getElementById("area").value;
+        var radius = document.getElementById("radius").value;
+        var dateFirstMeasurment = document.getElementById("first-day").value + "-" +
+            document.getElementById("first-month").value + "-" +
+            document.getElementById("first-year").value;
+        var dateLastMeasurement = document.getElementById("last-day").value + "-" +
+            document.getElementById("last-month").value + "-" +
+            document.getElementById("last-year").value;
+        var freqOfMeasurments = document.getElementById("freq-of-measurements").value;
+        var additionalInfo = document.getElementById("additional-info").value;
+        var numberOfMeasurments = document.getElementById("number-of-measurements").value;      
+        
+        if((typeof latitude != 'number' && !isFinite(latitude)) || (typeof latitude != 'number' && !isFinite(longitude))){
+            document.getElementById("forgot-something1").style.display = "";
+        } else if(latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180){
+            document.getElementById("forgot-something1").style.display = "";
+        }
+        else if(description && kindOfData && area && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
+            var response = confirm("\t\t\t\tWarning!\n\nYou can not change your request after you submit it.\nDo you confirm the submission of the request?");
+            if (response) {
+                alert("Your data request was succesfully sent to the lead boats for approval.\nYou can find the status of your data request under 'My Requests'.")
+                submitRequest();
+            }
+        } else{
+            document.getElementById("forgot-something").style.display = "";
+        }  
     }
 
     /*TODO - WHY NOT WORKING?
