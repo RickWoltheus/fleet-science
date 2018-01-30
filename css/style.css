@@ -6,14 +6,7 @@
 */
 body, html {
   font-family: "Quattrocento sans", sans-serif !important;
-  overflow-x: hidden;
-}
-
-/*hide scrollbar*/
-body{
-  margin-right: -17px !important;
-  overflow-y: scroll;
-}
+  overflow-x: hidden; }
 
 h1 {
   font-family: "Architects Daughter", cursive;
@@ -32,8 +25,7 @@ a {
   border-radius: 10px; }
 
 .social-media-images:hover {
-  opacity: 0.8;
-}
+  opacity: 0.8; }
 
 #landingImage {
   width: 100%;
@@ -92,7 +84,11 @@ button:hover {
   padding-right: 5px;
   text-align: center;
   width: 100%;
-  cursor: pointer; }
+  cursor: pointer;
+  transition: 0.1s; }
+
+.fleet-btn-full-width:hover {
+  opacity: 0.8 !important; }
 
 .fleet-btn-round {
   display: inline-block;
@@ -184,7 +180,7 @@ li.nav-item.active a {
   height: 100px;
   display: block;
   right: 2%;
-  width: 350px;
+  width: 325px;
   color: white;
   background-color: #38b0b4; }
 .menu-profile img {
@@ -269,8 +265,8 @@ li.nav-item.active a {
 
 .p-circle {
   padding-top: 1px;
-  font-size: 18px; 
-  margin-left: 30%; 
+  font-size: 18px;
+  margin-left: 30%;
   text-align: left;}
 
 /* Table chatbox */
@@ -358,13 +354,11 @@ li.nav-item.active a {
   width: 14% !important; }
 
 .description-box-requests {
-  height: 200px;
+  height: 135px;
   width: 100%;
   border: 1px solid #ccc;
   overflow: auto;
-  padding: 5px 10px;
-  margin-bottom: 20px;
-}
+  padding: 5px 10px; }
 
 .form-submit-left {
   text-align: left !important; }
@@ -543,10 +537,6 @@ p {
 
 .table-profile tr:hover {
   background-color: #E2E2E2; }
-
-#table-no-hover:hover{
-  background-color: #AFA7A3;
-}
 
 .td-name {
   font-weight: 600; }
@@ -831,7 +821,7 @@ h1 {
   color: white !important; }
 
 .medium {
-  height: 225px !important; }
+  height: 200px !important; }
 
 .border-radius {
   border-radius: 40px; }

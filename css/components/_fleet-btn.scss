@@ -33,6 +33,11 @@ button:hover {
     text-align: center;
     width: 100%;
     cursor: pointer;
+    transition: 0.1s;
+}
+
+.fleet-btn-full-width:hover {
+  opacity: 0.8!important;
 }
 
 .fleet-btn-round{
