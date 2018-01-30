@@ -346,7 +346,7 @@ function onload_page() {
         else if(description && kindOfData && area && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
             var response = confirm("\t\t\t\tWarning!\n\nYou can not change your request after you submit it.\nDo you confirm the submission of the request?");
             if (response) {
-                alert("Your data request was succesfully sent to the lead boats for approval.\nYou can find the status of your data request under 'My Requests'.")
+                alert("\tYour data request was succesfully sent to the lead boats for approval.\n\n\tYou can find the status of your data request under 'My Requests'.\n\n")
                 submitRequest();
             }
         } else{
