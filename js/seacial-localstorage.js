@@ -156,7 +156,9 @@ function writeAcceptedDataRequestOptions()
             var i;
 	    for (i=0;i<accepts.length;i++) {
                 var req=getStorageObject()["requests"][accepts[i]];
-                text+="    <option value='"+accepts[i]+"'>"+req["username"]+" - "+req["area"]+" - "+req["reqtype"]+"</option>";
+                if(req[status] != "Completed"){
+                    text+="    <option value='"+accepts[i]+"'>"+"Academic: "+req["username"]+" | Area: "+req["area"]+" | Type of data: "+req["reqtype"]+"</option>";
+                }
 	    }
             text+="</select>";
 	}
@@ -229,18 +231,19 @@ function writeRequestsTable(page) {
     	var count=0;
 
         var accepts = getStorageObject()["accepts"][loggedInUsername];
+        var answered = getStorageObject()["answered"][loggedInUsername];
         var rejects = getStorageObject()["rejects"][loggedInUsername];
-
 
     	var requests = getStorageObject()["requests"];
         for (var key in requests) {
 
+
             image_tracker[count] = 'd';
 
-    	    if(!requests.hasOwnProperty(key)) {
-       			  continue;
-    	    }
-    	    var row = requests[key];
+            if(!requests.hasOwnProperty(key)) {
+                  continue;
+            }
+            var row = requests[key];
 
             if((row["status"] == "Pending Approval" || row["status"] == "Not Approved") && (page=="all-sailor" || page == "all-academic")){
                 continue;}
@@ -257,14 +260,20 @@ function writeRequestsTable(page) {
 
     	    text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+row["reqtype"]+"</a></td>";
 
-            if(row["status"] == "Approved" && (page=="all-sailor" || page=="all-academic")){
-                text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
+            if (page=="all-sailor" && rejects.indexOf(key) > -1){
+                text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"Rejected"+"</a></td>";
+            } else if(row["status"] == "Accepted" && page=="my"){
+                text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"Accepted"+"</a></td>";
+            } else if(row["status"] == "Rejected" && page=="my"){
+                text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"Approved"+"</a></td>";
             } else if(row["status"] == "Rejected" && page=="all-academic"){
                 text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
             } else if( row["status"] == "Accepted" && accepts.indexOf(key) < 0){
                text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
             } else if( row["status"] == "Rejected" && rejects.indexOf(key) < 0){
                text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
+            } else if(row["status"] == "Approved" && (page=="all-sailor" || page=="all-academic")){
+                text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+"New"+"</a></td>";
             } else{
                 text+="   <td><a class='toggler' data-request='"+count+"' onclick=\"chevronSwitch1('chevron-switch"+count+"');\">"+row["status"]+"</a></td>";
             }
@@ -281,7 +290,15 @@ function writeRequestsTable(page) {
     	    text+="         <p class='p_requests'>Quantity</p>";
     	    text+="         <p>Number of measures "+row["frequency"]+": "+row["number"]+"</p>";
     	    text+="         <p class='p_requests'>Area of measurements</p>";
-    	    text+="         <p>Latitude: "+row["latitude"]+ "</p><p>Long: "+row["longitude"]+"</p><p>Radius: "+row["radius"]+" km</p>";
+            if(row["latitude"]){
+    	       text+="         <p>Latitude: "+row["latitude"]+ "</p>";
+            }
+            if(row["longitude"]){
+               text+="         <p>Longitude: "+row["longitude"]+"</p>";
+            }
+            if(row["radius"]){
+               text+="          <p>Radius: "+row["radius"]+" km</p>";
+            }
     	    text+="         <p class='p_requests'>First measurement</p>";
     	    text+="         <p>"+row["first"]+"</p>";
             text+="         <p class='p_requests'>Last measurement</p>";
@@ -291,14 +308,24 @@ function writeRequestsTable(page) {
     	    text+="         <p class='p_requests'>Description</p>";
     	    text+="         <div class='description-box-requests'>"+row["description"] + "<hr>" + row["aditional"] +"</div>";
     	    text+="         <div class='row'>";
-            if((row["status"] == "Approved" || row["status"] == "Rejected") && page == "all-sailor"){
-                text+="           <div class='col-6'>";
-                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Accept</button>";
+            if((row["status"] == "Approved" || row["status"] == "Rejected") && page == "all-sailor" && rejects.indexOf(key) < 0){
+                text+="           <div class='col-4'>";
+                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");}' class='btn btn-default button-accept-requests'>Accept</button>";
+                text+="           </div>";
+                text+="           <div class='col-4'>";
+                text+="             <button type='button' onclick='redirectToChatboxSailor();' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+                text+="           </div>";
+                text+="           <div class='col-4'>";
+                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
             }
-            if((row["status"] == "Approved" || (row["status"] == "Rejected" && accepts.indexOf(key) < 0)) && page == "all-sailor"){
+
+            if (page=="all-sailor" && rejects.indexOf(key) > -1){
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
+                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");}' class='btn btn-default button-accept-requests'>Accept</button>";
+                text+="           </div>";
+                text+="           <div class='col-6'>";
+                text+="             <button type='button' onclick='redirectToChatboxSailor();' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
                 text+="           </div>";
             }
             //Reject button disabled when request already rejected by this user
@@ -307,112 +334,74 @@ function writeRequestsTable(page) {
                 text+="             <button type='button' id='reject-requests"+count+"' class='btn btn-default button-reject-requests' disabled>Reject</button>";
                 text+="           </div>";
             }*/
-            //TODO
-            if( row["status"] == "Accepted" && accepts.indexOf(key)>-1 && page=="all-sailor"){
+
+            if( row["status"] == "Accepted" && accepts.indexOf(key)>-1 && page=="all-sailor" && answered.indexOf(key)>-1){
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Submit Data</button>";
+                text+="              <button type='button' onclick='redirecToDashboard();' class='btn btn-default button-accept-requests'>Submit Data</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
-                text+="           </div>";
-            }
-            if(row["status"] == "Accepted" && accepts.indexOf(key)<0 && page=="all-sailor"){
-                text+="           <div class='col-6'>";
-                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Accept</button>";
+                text+="             <button type='button' onclick='redirectToChatboxSailor();' class='btn btn-default button-accept-requests'>Contact Academic</button>";
                 text+="           </div>";
                 text+="           <div class='col-6'>";
-                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");myReload();}' class='btn btn-default button-reject-requests' >Reject</button>";
+                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickComplete(\""+key+"\");myReload();}' class='btn btn-default button-accept-requests'>Complete</button>";
+                text+="           </div>";
+                text+="           <div class='col-6'>";
+                text+="             <button type='button' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
                 text+="           </div>";
             }
-            if(page == "all-academic"){
-                text+="           <div class='col-6'>";
-                text+="             <a href='?/=chatbox-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+            else if( row["status"] == "Accepted" && accepts.indexOf(key)>-1 && page=="all-sailor" && answered.indexOf(key)<0){
+                text+="           <div class='col-4'>";
+                text+="             <button type='button' onclick='redirecToDashboard();' class='btn btn-default button-accept-requests'>Submit Data</button></a>";
                 text+="           </div>";
+                text+="           <div class='col-4'>";
+                text+="             <button type='button' onclick='redirectToChatboxSailor();' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+                text+="           </div>";
+                text+="           <div class='col-4'>";
+                text+="             <button type='button' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
+                text+="           </div>";
+            } else if(row["status"] == "Completed" && page=="all-sailor"){
+                text+="           <div class='col-12'>";
+                text+="             <button type='button' onclick='redirectToChatboxSailor();' class='btn btn-default button-accept-requests'>Contact Academic</button>";
+                text+="           </div>";
+            }
+            /*else if(row["status"] == "Accepted" && accepts.indexOf(key)<0 && page=="all-sailor"){
+                text+="           <div class='col-4'>";
+                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");}' class='btn btn-default button-accept-requests'>Accept</button>";
+                text+="           </div>";
+                text+="           <div class='col-4'>";
+                text+="             <a href='?/=chatbox-academic'><button type='button' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+                text+="           </div>";
+                text+="           <div class='col-4'>";
+                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
+                text+="           </div>";
+            }*/
+            if(page == "all-academic" && row["status"] == "Completed"){
+                text+="           <div class='col-6'>";
+                text+="             <button type='button' onclick='redirectToChatboxAcademic();' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
+                text+="           </div>";
+                text+="           <div class='col-6'>";
+                text+="             <button type='button' onclick='downloadDataButton();' class='btn btn-default button-accept-requests'>Download Data</button>";
+                text+="           </div>";
+            } else if(page == "all-academic" && row["status"] != "Completed"){
+                text+="           <div class='col-12'>";
+                text+="             <button type='button' onclick='redirectToChatboxAcademic();' class='btn btn-default button-accept-requests'>Contact Academic</button>";
+                text+="           </div>";
+            }
+            if(page == "my"){
                 if(row["status"] == "Completed"){
-                    text+="           <div class='col-6'>";
-                    text+="             <a href='?/=database-logged-in-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Download Data</button></a>";
+                    text+="           <div class='col-12'>";
+                    text+="             <button type='button' onclick='downloadDataButton();' class='btn btn-default button-accept-requests'>Download Data</button>";
+                    //text+="                 <input id='fileInput' type='file' style='display:none;' accept='image/*' />";
+                    //text+="                 <input type='button' value='Download Data' onclick='document.getElementById('fileInput').click();' class='btn btn-default button-accept-requests' />";
                     text+="           </div>";
                 }
             }
-            if(page == "my"){
-                text+="           <div class='col-6'>";
-                if(row["status"] == "Completed"){
-                    text+="             <a href='?/=database-logged-in-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests'>Download Data</button></a>";
-                } else{
-                    text+="             <a href='?/=database-logged-in-academic'><button type='button' id='accept-requests"+count+"' class='btn btn-default button-accept-requests' disabled>Download Data</button></a>";
-                }
-                text+="           </div>";
-            }
     	    text+="         </div>";
     	    text+="       </div>";
     	    text+="     </div>";
     	    text+="   </td>";
     	    text+=" </tr>";
-    	    /*text+=" <tr id='section-requests-are_you_sure"+count+"' style='display: none'>";
-    	    text+="   <td colspan='5'>";
-    	    text+="     <div class='row wrapper-info-requests'>";
-    	    text+="       <div class='col-8 offset-2'>";
-    	    text+="         <p class='p_requests-accept'>Are you sure that you want to accept this request?</p>";
-    	    text+="         <div class='row'>";
-    	    text+="           <div class='col-6'>";
-    	    text+="             <button id='confirmation-requests"+count+"' type='button' class='btn btn-default button-accept-requests'>Yes</button>";
-    	    text+="           </div>";
-    	    text+="           <div class='col-6'>";
-    	    text+="             <button type='button' onclick='myReload()' class='btn btn-default button-reject-requests'>No</button>";
-    	    text+="           </div>";
-    	    text+="         </div>";
-    	    text+="       </div>";
-    	    text+="     </div>";
-    	    text+="   </td>";
-    	    text+=" </tr>";
-    	    text+=" <tr id='section-requests-confirmation"+count+"' style='display: none'>";
-    	    text+="   <td colspan='5'>";
-    	    text+="     <div class='row wrapper-info-requests'>";
-    	    text+="       <div class='col-8 offset-2'>";
-    	    text+="         <p class='p_requests-accept'>Your request is succesfully accepted. You can find your accepted request under 'accepted requests'</p>";
-    	    text+="         <div class='row'>";
-    	    text+="           <div class='col-12'>";
-    	    text+="             <button onclick='myReload()' type='button' class='btn btn-default button-accept-requests'>OK</button>";
-    	    text+="           </div>";
-    	    text+="         </div>";
-    	    text+="       </div>";
-    	    text+="     </div>";
-    	    text+="   </td>";
-    	    text+=" </tr>";
-    	    text+=" <tr id='section-requests-reject-warning"+count+"' style='display: none'>";
-    	    text+="   <td colspan='5'>";
-    	    text+="     <div class='row wrapper-info-requests'>";
-    	    text+="       <div class='col-8 offset-2'>";
-    	    text+="         <p class='p_requests-warning'>WARNING</p>";
-    	    text+="         <p class='p_requests-accept'>Are you sure that you want to reject this request?</p>";
-    	    text+="         <div class='row'>";
-    	    text+="           <div class='col-6'>";
-    	    text+="             <button id='confirmation-rejected-requests"+count+"' type='button' class='btn btn-default button-accept-requests'>Yes</button>";
-    	    text+="           </div>";
-    	    text+="           <div class='col-6'>";
-    	    text+="             <button type='button' onclick='myReload()' class='btn btn-default button-reject-requests'>No</button>";
-    	    text+="           </div>";
-    	    text+="         </div>";
-    	    text+="       </div>";
-    	    text+="     </div>";
-    	    text+="   </td>";
-    	    text+=" </tr>";
-    	    text+=" <tr id='section-requests-confirmation-rejected"+count+"' style='display: none'>";
-    	    text+="   <td colspan='5'>";
-    	    text+="     <div class='row wrapper-info-requests'>";
-    	    text+="       <div class='col-8 offset-2'>";
-    	    text+="         <p class='p_requests-accept'>The request is succesfully rejected. If you did not want to reject the request, you can still accept the";
-    	    text+="           rejected request.</p>";
-    	    text+="         <div class='row'>";
-    	    text+="           <div class='col-12'>";
-    	    text+="             <button onclick='myReload()' type='button' class='btn btn-default button-accept-requests'>OK</button>";
-    	    text+="           </div>";
-    	    text+="         </div>";
-    	    text+="       </div>";
-    	    text+="     </div>";
-    	    text+="   </td>";
-    	    text+=" </tr>";
-            */
+
             count++;
         }
         element.innerHTML = text;
@@ -424,21 +413,40 @@ function requestPageClickAccept(requestid){
     var response = confirm("Are you sure you want to accept this request?");
     if (response) {
         addAccept(requestid);
+        myReload();
     }
 }
 function requestPageClickReject(requestid){
     var response = confirm("Are you sure you want to reject this request?");
     if (response) {
         addReject(requestid);
+        myReload();
+    }
+}
+
+function requestPageClickComplete(requestid){
+    var response = confirm("Are you sure you have completed this request?");
+    if (response) {
+        addComplete(requestid);
+        myReload();
     }
 }
 
 
+function redirecToDashboard(){
+  window.location.href = '?/=dashboard-sailor';
+}
 
+function redirectToChatboxAcademic(){
+    window.location.href = '?/=chatbox-academic';
+}
 
-
-
-
+function downloadDataButton(){
+    alert("The data was saved in your computer.");
+}
+function redirectToChatboxSailor(){
+    window.location.href = '?/=chatbox-sailor';
+}
 
 
 /****************************************************
@@ -473,6 +481,7 @@ var messageinfoFields = ["type", "from",      "to",       "description", "date",
 var requestinfoFields1 = ["username", "area",  "reqtype",  "description", "status", "duration", "frequency", "deadline"];
 var requestinfoFields = ["username", "reqtype", "area", "latitude", "longitude", "radius", "first", "last",  "description", "status", "frequency", "number", "aditional"];
 var acceptsinfoFields = ["accepts"];
+var answeredinfoFields = ["answered"];
 var rejectsinfoFields = ["rejects"];
 var datainfoFields = ["data"];
 
@@ -504,6 +513,7 @@ function createNewDatabase() {
     someLocalStorage["requests"] = {};
 
     someLocalStorage["accepts"] = {};
+    someLocalStorage["answered"] = {};
     someLocalStorage["rejects"] = {};
     someLocalStorage["data"] = {};
 
@@ -532,13 +542,6 @@ function createNewDatabase() {
 
 
 function userExists(username) {
-// RICK: JSON.stringify maakt van een object een human-readable string
-// RICK: Ik heb de alerts maar even uitgezet.
-// Ayal
-//    console.log(JSON.stringify(someLocalStorage));
-//    alert(JSON.stringify(someLocalStorage));
-
-
     return (someLocalStorage["users"][username] != null);
 }
 
@@ -554,6 +557,7 @@ function addUser(username, userinfo) {
     }
     someLocalStorage["accepts"][username] = [];
     someLocalStorage["rejects"][username] = [];
+    someLocalStorage["answered"][username] = [];
     setCookie("username", username);
     putStorage();
 
@@ -577,6 +581,7 @@ function removeUser(username) {
     delete someLocalStorage["users"][username];
     delete someLocalStorage["accepts"][username];
     delete someLocalStorage["rejects"][username];
+    delete someLocalStorage["answered"][username];
 
     putStorage();
 }
@@ -595,7 +600,14 @@ function addAccept(requestid) {
         return false;
     }
     someLocalStorage["accepts"][loggedInUsername].push(requestid);
-    delete someLocalStorage["rejects"][loggedInUsername][requestid];
+
+    //remove from list of rejects
+    var index = someLocalStorage["rejects"][loggedInUsername].indexOf(requestid);
+    if(index != -1){
+        someLocalStorage["rejects"][loggedInUsername].splice(index, 1);
+    }
+    //delete someLocalStorage["rejects"][loggedInUsername][requestid];
+
     someLocalStorage["requests"][requestid]["status"] = "Accepted"
     putStorage();
     return true;
@@ -605,7 +617,36 @@ function addReject(requestid) {
         return false;
     }
     someLocalStorage["rejects"][loggedInUsername].push(requestid);
-    delete someLocalStorage["accepts"][loggedInUsername][requestid];
+
+    //remove from list of accepts
+    var index = someLocalStorage["accepts"][loggedInUsername].indexOf(requestid);
+    if(index != -1){
+        someLocalStorage["accepts"][loggedInUsername].splice(index, 1);
+    }
+    //delete someLocalStorage["accepts"][loggedInUsername][requestid];
+
+    for (var key in someLocalStorage["accepts"]) {
+        var array = someLocalStorage["accepts"][key]
+        if (array.indexOf(requestid) > -1){
+            putStorage();
+            return true;
+        }
+    }
+    someLocalStorage["requests"][requestid]["status"] = "Rejected";
+    putStorage();
+    return true;
+}
+
+
+
+
+
+function addComplete(requestid){
+  var index = someLocalStorage["accepts"][loggedInUsername].indexOf(requestid);
+    if(index != -1){
+        someLocalStorage["accepts"][loggedInUsername].splice(index, 1);
+    }
+    someLocalStorage["requests"][requestid]["status"] = "Completed";
     putStorage();
     return true;
 }
@@ -645,7 +686,6 @@ function updateMessage(messageid, newMessageInfo) {
 function numberMessages(){
     var count = 0;
     for (var id in someLocalStorage["messages"]){
-        console.log(someLocalStorage["messages"][id]["to"]);
         if (someLocalStorage["messages"][id]["to"] == loggedInUsername && someLocalStorage["messages"][id]["type"] == "personal"){
             count ++;
         }
@@ -690,9 +730,6 @@ function numberMyNewRequests(){
     }
     return count;
 }
-
-
-
 
 function requestExists(requestid) {
     return (someLocalStorage["requests"][requestid] != null);
@@ -741,6 +778,7 @@ function updateRequestSatus(requestid) {
 
 function addData(requestid, data) {
     someLocalStorage["data"][requestid].push(data);
+    someLocalStorage["answered"][loggedInUsername].push(requestid);
     putStorage();
 }
 function addNewRequest(type,area,latitude,longitude,radius,first,last,description,status,frequency,number,aditional){

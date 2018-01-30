@@ -29,7 +29,7 @@ a {
 
 #landingImage {
   width: 100%;
-  height: 250px;
+  height: auto;
   background-image: url(../images/landing-image.jpg);
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -256,15 +256,17 @@ li.nav-item.active a {
   color: #42CDC4;
   width: 30px;
   height: 30px;
-  display: flex;
+  /*display: flex;*/
   justify-content: center;
   align-items: center;
   float: left;
-  margin-right: 10px; }
+  margin-left: 20%; }
 
 .p-circle {
   padding-top: 1px;
-  font-size: 18px; }
+  font-size: 18px;
+  margin-left: 30%;
+  text-align: left;}
 
 /* Table chatbox */
 .header-table-chatbox {
@@ -827,5 +829,15 @@ h1 {
   width: 50%;
   margin-left: auto;
   margin-right: auto; }
+
+  #interactivemap {
+    width: 100%;
+    height: 100vh;
+    background-image: url(../images/interactive-map.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; }
+
 
 /*# sourceMappingURL=style.css.map */

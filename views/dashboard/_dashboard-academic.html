@@ -43,35 +43,38 @@
                         Type of data*
                         <select id="kind-of-data" class="fleet-input" required>
                             <option value=""><i>-- Select the type of data that you need --</option>
-                            <option value="samples">Samples</option>
-                            <option value="photo">Photo</option>
-                            <option value="video">Video</option>
-                            <option value="audio">Audio</option>
-                            <option value="samples">Samples</option>
-                            <option value="ph">Acidity (pH)</option>
-                            <option value="temperature">Temperature (ºC)</option>
-                            <option value="so2">SO2 (ppm)</option>
-                            <option value="no2">NO2 (ppb)</option>
-                            <option value="co">CO (ppm)</option>
-                            <option value="o3">O3 (ppm)</option>
-                            <option value="salinity">Salinity (PSU) </option>
-                            <option value="tds">TDS (mg/L)</option>
-                            <option value="co2">CO2 - aq (ppm)</option>
-                            <option value="so2">SO2 - aq (ppm)</option>
-                            <option value="pm10">PM10</option>
-                            <option value="pm2,5">PM2,5</option>
+                              <option value="co">Air: CO (ppm)</option>
+                              <option value="no2">Air: NO2 (ppb)</option>
+                              <option value="o3">Air: O3 (ppm)</option>
+                              <option value="pm10">Air: PM10</option>
+                              <option value="pm2,5">Air: PM2,5</option>
+
+                              <option value="ph">Water: Acidity (pH)</option>
+                              <option value="co2">Water: CO2 (ppm)</option>
+                              <option value="so2">Water: SO2 (ppm)</option>
+                              <option value="so2">Water: SO2 - water (ppm)</option>
+                              <option value="tds">Water: TDS (mg/L)</option>
+                              <option value="temperature">Water: Temperature (ºC)</option>
+                              <option value="salinity">Water: Salinity (PSU) </option>
+
+                              <option value="audio">Audio</option>
+                              <option value="photo">Photo</option>
+                              <option value="samples">Samples</option>
+                              <option value="video">Video</option>
                         </select>
                     </div>
 
+                    <br>
+
                     <!-- Area -->
                     <div class="form-group">
-                        <b>Area to do the measurements*</b>
+                        Area to do the measurements*
                         <input id="area" class="fleet-input" required placeholder="Area">
                     </div>
 
                     <!-- Latidude -->
                     <div class="form-group row">
-                        <div class="col-3">Latitude*:</div>
+                        <div class="col-3">Latitude:</div>
                         <div class="col-9 ">
                             <input id="latitude" class="fleet-input" required placeholder="e.g. 52.370216" />
                         </div>
@@ -79,7 +82,7 @@
 
                     <!-- Longitude -->
                     <div class="form-group row">
-                        <div class="col-3">Longitude*:</div>
+                        <div class="col-3">Longitude:</div>
                         <div class="col-9 ">
                             <input id="longitude" class="fleet-input" required placeholder="e.g. 4.895168" />
                         </div>
@@ -87,14 +90,16 @@
 
                     <div class="form-group row">
                         <div class="col-12">
-                            Radius of area*
+                            Radius of area
                         </div>
 
                         <div class="col-4">
-                            <input id="radius" type="number" class="fleet-input" min="1" max="50" placeholder="km" required />
+                            <input id="radius" type="number" class="fleet-input" min="1" max="10000" placeholder="km" required />
                         </div>
                         <!--</select>-->
                     </div>
+
+                    <br>
 
                     <!-- date of measurement -->
                     <div class="form-group row">
@@ -131,7 +136,7 @@
                             <input id="last-year" type="number" class="fleet-input" min="2018" max="2100" placeholder="YYYY" required />
                         </div>
                     </div>
-
+                    <br>
                     <div class="form-group">
                         Frequency of measurement(s)*
                         <select id="freq-of-measurements" class="fleet-input">
@@ -153,7 +158,7 @@
                         </div>
                         <!--</select>-->
                     </div>
-
+                    <br>
                     <div class="form-group">
                         Additional information (optional)
                         <input id="additional-info" class="fleet-input" placeholder="Additional information">
@@ -165,7 +170,7 @@
                     <hr />
 
                     <div class="form-group">
-                        <input type="button" id="button-submit-request" onclick="clickSubmit()" value="Submit" class="fleet-btn-full-width">
+                        <input type="button" id="button-submit-request" onclick="clickSubmit1()" value="Submit" class="fleet-btn-full-width">
                     </div>
 
 
@@ -197,22 +202,6 @@
                         </div>
                     </div>
 
-
-                    <div id="box-confirm-submit" style="display: none;">
-                        <br>
-                        <p style="text-align: center; font-size: 30px"><b>Warning!</b></p>
-                        <p style="text-align: center;">You can not change your request after you submit it.
-                        <br>
-                        Do you confirm the submission of the request?</p>
-                        <div class="form-group">
-                            <input type="submit" onclick="submitRequest()" value="Confirm" class="btn btn-default button-accept-requests">
-                        </div>
-                        <div>
-                            <input type="submit" onclick="clickCancel()" value="Cancel" class="btn btn-default button-reject-requests">
-                        </div>
-                    </div>
-
-
                 </div>
 
             </div>
@@ -228,13 +217,11 @@
                 <h3 class="special-font">Chatbox</h3>
             </div>
             <br>
-            <p>
-                <!--<span id="newmsg-chip" class="notification-chip ">1</span>
-                <span class="h5">New message(s)</span>-->
-                <div class="amount-circle" style="margin-left: 50px; margin-bottom: 20px;"><span id="loggedin-num-messages" style="padding-top: 2px;"></span></div>
-                <p class="p-circle" style="float: left;"> new personal message<span id="loggedin-num-messages-add"></span></p>
+            <p style="display: inline;">
+                <div class="amount-circle"><span id="loggedin-num-messages"></span></div>
+                <p class="p-circle">new personal message<span id="loggedin-num-messages-add"></span></p>
             </p>
-             <div style="clear: both;">
+             <div style="margin-top: 5%;">
             <button onclick="window.location.href='?/=chatbox-academic'" class="fleet-btn" href="?/=chatbox-academic">View</button>
             </div>
         </div>
@@ -245,11 +232,11 @@
                 <h3 class="special-font">My requests</h3>
             </div>
             <br>
-            <p>
-                <div class="amount-circle" style="margin-left: 50px; margin-bottom: 20px;"><span style="padding-top: 3px" id="loggedin-num-new-requests"></span></div>
-                <p class="p-circle" style="float: left;">  Status update<span id="loggedin-num-requests-add"></span> of request</p>
+            <p style="display: inline;">
+                <div class="amount-circle"><span id="loggedin-num-new-requests"></span></div>
+                <p class="p-circle">  status update<span id="loggedin-num-requests-add"></span> of request</p>
             </p>
-            <div style="clear: both; margin-bottom: -5px">
+            <div style="margin-top: 5%;">
                 <button onclick="window.location.href='?/=all-requests-sailor'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
             </div>
             </p>
@@ -260,7 +247,7 @@
 </div>
 
 <script>
-shouldWriteAcademicWelkome();
+window.onload = shouldWriteAcademicWelkome();
 
 window.onload = onload_page();
 function onload_page() {
@@ -326,6 +313,42 @@ function onload_page() {
             document.getElementById("box-confirm-submit").style.display = "";
             document.getElementById("button-submit-request").disabled = true;
             document.getElementById("button-submit-request").style.display = "none";
+        } else{
+            document.getElementById("forgot-something").style.display = "";
+        }
+    }
+
+    function clickSubmit1(){
+        document.getElementById("forgot-something1").style.display = "none";
+        document.getElementById("forgot-something2").style.display = "none";
+        document.getElementById("forgot-something").style.display = "none";
+        var description = document.getElementById("desc").value;
+        var kindOfData = document.getElementById("kind-of-data").value;
+        var latitude = document.getElementById("latitude").value;
+        var longitude = document.getElementById("longitude").value;
+        var area = document.getElementById("area").value;
+        var radius = document.getElementById("radius").value;
+        var dateFirstMeasurment = document.getElementById("first-day").value + "-" +
+            document.getElementById("first-month").value + "-" +
+            document.getElementById("first-year").value;
+        var dateLastMeasurement = document.getElementById("last-day").value + "-" +
+            document.getElementById("last-month").value + "-" +
+            document.getElementById("last-year").value;
+        var freqOfMeasurments = document.getElementById("freq-of-measurements").value;
+        var additionalInfo = document.getElementById("additional-info").value;
+        var numberOfMeasurments = document.getElementById("number-of-measurements").value;
+
+        if((typeof latitude != 'number' && !isFinite(latitude)) || (typeof latitude != 'number' && !isFinite(longitude))){
+            document.getElementById("forgot-something1").style.display = "";
+        } else if(latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180){
+            document.getElementById("forgot-something1").style.display = "";
+        }
+        else if(description && kindOfData && area && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
+            var response = confirm("\t\t\t\tWarning!\n\nYou can not change your request after you submit it.\nDo you confirm the submission of the request?");
+            if (response) {
+                alert("Your data request was succesfully sent to the lead boats for approval.\nYou can find the status of your data request under 'My Requests'.")
+                submitRequest();
+            }
         } else{
             document.getElementById("forgot-something").style.display = "";
         }
