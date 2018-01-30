@@ -50,8 +50,12 @@
                         <div class="form-group">
                             Measurement*
                             <input class="fleet-input" id="fleet-data-value" placeholder="-" required>
+                            <br><p>
+                            Attach a file, when applicable:<br>
+                            <input type="file" name="datafile" size="40">
+                            </p>
                         </div>
-
+                        <br>
                         <!-- Latidude -->
                         <div class="form-group row">
                             <div class="col-3">Latitude*:</div>
@@ -142,18 +146,14 @@
             </div>
             <br>
             <p>
-                <!--<span id="newmsg-chip" class="notification-chip "><span id="loggedin-num-messages-a"></span></span>
-                <span class="h6">New admin message<span id="loggedin-num-messages-add-a"></span></span>-->
-                <div class="amount-circle" style="margin-left: 50px"><span id="loggedin-num-messages-a" style="padding-top: 2px;"></span></div>
-                <p class="p-circle" style="float: left;"> New administator message<span id="loggedin-num-messages-add-a"></span></p>
+                <div class="amount-circle"><span id="loggedin-num-messages-a"></span></div>
+                <p class="p-circle"> New administator message<span id="loggedin-num-messages-add-a"></span></p>
             </p>
             <p>
-                    <!--<span id="accepted-chip" class="notification-chip"><span id="loggedin-num-messages-p"></span></span>
-                    <span class="h6">New personal messages<span id="loggedin-num-messages-add-a"></span></span>-->
-                <div class="amount-circle" style="margin-left: 50px; margin-bottom: 20px;"><span id="loggedin-num-messages-p" style="padding-top: 2px;"></span></div>
-                <p class="p-circle" style="float: left;"> New personal message<span id="loggedin-num-messages-add-p"></span></p>
+                <div class="amount-circle"><span id="loggedin-num-messages-p"></span></div>
+                <p class="p-circle"> New personal message<span id="loggedin-num-messages-add-p"></span></p>
             </p>
-            <div style="clear: both; margin-bottom: -5px">
+            <div>
             <button onclick="window.location.href='?/=chatbox-sailor'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
             </div>
         </div>
@@ -164,11 +164,11 @@
                 <h3 class="special-font">All Requests</h3>
             </div>
             <br>
-            <p>
-                <div class="amount-circle" style="margin-left: 50px; margin-bottom: 20px;"><span style="padding-top: 3px" id="loggedin-num-new-requests"></span></div>
-                <p class="p-circle" style="float: left;">  New data request<span id="loggedin-num-requests-add"></span></p>
-            </p>
-            <div style="clear: both; margin-bottom: -5px">
+            <div>
+                <div class="amount-circle""><span id="loggedin-num-new-requests"></span></div>
+                <p class="p-circle">  New data request<span id="loggedin-num-requests-add"></span></p>
+            </div>
+            <div>
                 <button onclick="window.location.href='?/=all-requests-sailor'" class="fleet-btn" href="?/=chatbox-sailor">View</button>
             </div>
         </div>
