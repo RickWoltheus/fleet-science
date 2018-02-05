@@ -596,9 +596,9 @@ var sampleRequestTypes =
   "Temperature (ºC)",
   "SO2 (ppm)",
   "Photo",
-  "Samples",
-  "Samples",
-  "Samples"
+  "Photo",
+  "Video",
+  "Acidity (pH)"
 ];
 
 var sampleAreas = 
@@ -624,7 +624,7 @@ var sampleLast =
 "1-04-2019",
 "21-7-2019",
 "2-5-2020",
-"1-3-2021",
+"",
 "1-7-2018",
 "1-1-2010"
 ]
@@ -633,7 +633,7 @@ var sampleLatLong =
 "55.982345",
 "-79.123246",
 "-12.549232",
-"33.213412",
+"",
 "89.898472",
 "-85.231095"
 ]
@@ -642,7 +642,7 @@ var sampleRadius =
 "130",
 "25",
 "2",
-"45",
+"",
 "30",
 "10"
 ]
@@ -678,9 +678,9 @@ var sampleDescriptions=
 "Looking for vessels travelling along the coast of Chile (South Pacific Ocean). As a research group from the University of Melbourne we are researching the differences in ocean temperature in the South Pacific near the Australian coast and the coast of Chile. We need one measurement a day for a period of 3 months, preferably starting in January 2019. It would also be great if there is a vessel with cabins available so that we can perform the measurements ourselves. ",
 "We are a research group from the University of Amsterdam researching effects of global warming on SO2 levels in the ocean. Our current project focuses on SO2 levels in the South Atlantic Ocean near the coast of Brazil and Argentina. We are looking for vessels around the area that are able to perform a simple SO2 measurement twice a day, one in the morning and one in the evening. It is also possible that multiple vessels around the area collect the data, we need as much as possible. Research is preferably for a duration of six months and we need the data by 21-7-2019.",
 "We are a research group from Cambridge University looking into the deterioration of coral reefs in the Mediterranean Sea. Currently, we are looking for video material of the reefs in its current state. We are looking for vessels that have GoPro’s or other underwater video recorders. We would like to have as many material as possible from different coral reefs, it does not matter how many times a day. More important is to see as many coral reefs as possible around the Mediterranean Sea. Research is preferably for a duration of six months and we need the data by 2-5-2020. ",
-"For this project we are looking for vessels that want to ongoingly contribute to our project on algae bloom around the world. We would like to ask all vessels to take samples of algae blooms, this can be all around be world so no strict location! This project is ongoing and therefore does not have a strict duration. Project ends preferably on 1-3-2021. We are a research group from University of Brighton (UK).",
-"I’m a researcher from the Stanford University marine science department. Currently we are looking into the estrogenic compounds in seawater. We are interested in the seawater in the area of the Bermuda Triangle in the North Atlantic Ocean. For this we are looking for sailors who can take samples of the sea for us. We need 50 different samples that must be collected within half a year. The last sample should be on July 1, 2018. It is important that dedicated samples are taken.",
-"Currently, we are researching various beaches along the coast of Chile, South America, for a PhD study at Oxford University. I am interested in different samples from the surface of these beaches to examine them under a microscope. For this I need 100 different samples from different points along the coast of Chile. The results are desirable for a maximum of one year, in January 2019. Please deposit the sand samples in airtight bags."
+"For this project we are looking for vessels that want to ongoingly contribute to our project on algae bloom around the world. We would like to ask all vessels to take pictures of algae blooms, this can be all around be world so no strict location! This project is ongoing and therefore does not have a strict duration. Project ends preferably on 1-3-2021. We are a research group from University of Brighton (UK).",
+"I’m a researcher from the Stanford University marine science department. Currently we are looking into the estrogenic compounds in seawater. We are interested in the seawater in the area of the Bermuda Triangle in the North Atlantic Ocean. For this we are looking for sailors who can take videos of the sea for us. We need 50 different videos that must be collected within half a year. The last video should be on July 1, 2018.",
+"Currently, we are researching various beaches along the coast of Chile, South America, for a PhD study at Oxford University. I am interested in different measures of acidity from the surface of these beaches to study. For this I need 100 different measurements from different points along the coast of Chile. The results are desirable for a maximum of one year, in January 2019."
 ]
 
 function addNewRequest() {
@@ -690,9 +690,9 @@ function addNewRequest() {
          "username":getRandomUser(), 
 	       "reqtype":sampleRequestTypes[request_number],  
          "area":sampleAreas[request_number],
-         "latitude": selectAdRandomFrom(sampleLatLong),
-         "longitude": selectAdRandomFrom(sampleLatLong),
-         "radius": selectAdRandomFrom(sampleRadius),
+         "latitude": sampleLatLong[request_number],
+         "longitude": sampleLatLong[request_number],
+         "radius": sampleRadius[request_number],
          "first": sampleFirst[request_number],
          "last": sampleLast[request_number],
          "description":sampleDescriptions[request_number], 

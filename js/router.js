@@ -28,7 +28,6 @@ switch (action) {
 
     case "all-requests-sailor":
         view("menu/_menu-sailor.html");
-        //@@@ should eventually be _all-requests-sailor.html
         view("functional-pages/_all-requests-sailor-localstorage-example.html");
         break;
 
@@ -73,18 +72,6 @@ switch (action) {
         view("menu/_menu-sailor.html");
         view("feedback/_download-app.html");
         break;
-
-
-
-
-
-        // universal views
-    /*case "all-requests":
-        view("menu/_menu-sailor.html");
-        view("functional-pages/_all-requests-localstorage-example.html");
-        view("menu/_footer.html");
-        break;
-    */
 
     case "profile":
         view("menu/_menu-sailor.html");

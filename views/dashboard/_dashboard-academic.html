@@ -59,7 +59,6 @@
 
                               <option value="audio">Audio</option>
                               <option value="photo">Photo</option>
-                              <option value="samples">Samples</option>
                               <option value="video">Video</option>
                         </select>
                     </div>
@@ -73,18 +72,18 @@
                     </div>
 
                     <!-- Latidude -->
-                    <div class="form-group row">
+                    <div class="form-group row"  style="display: inline-block;"> 
                         <div class="col-3">Latitude:</div>
-                        <div class="col-9 ">
-                            <input id="latitude" class="fleet-input" required placeholder="e.g. 52.370216" />
+                        <div class="col-9">
+                            <input class="fleet-input"  style="width: 260px;" id="latitude" placeholder="e.g. 52.370216" required />
                         </div>
                     </div>
 
                     <!-- Longitude -->
-                    <div class="form-group row">
+                    <div class="form-group row" style="display: inline-block; float: right;">
                         <div class="col-3">Longitude:</div>
                         <div class="col-9 ">
-                            <input id="longitude" class="fleet-input" required placeholder="e.g. 4.895168" />
+                            <input class="fleet-input"  style="width: 260px;" id="longitude" placeholder="e.g. 4.895168" required />
                         </div>
                     </div>
 
@@ -270,54 +269,7 @@ function onload_page() {
         }
     }
 }
-    function clickSubmit(){
-        document.getElementById("forgot-something1").style.display = "none";
-        document.getElementById("forgot-something2").style.display = "none";
-        document.getElementById("forgot-something").style.display = "none";
-        var description = document.getElementById("desc").value;
-        var kindOfData = document.getElementById("kind-of-data").value;
-        var latitude = document.getElementById("latitude").value;
-        var longitude = document.getElementById("longitude").value;
-        var area = document.getElementById("area").value;
-        var radius = document.getElementById("radius").value;
-        var dateFirstMeasurment = document.getElementById("first-day").value + "-" +
-            document.getElementById("first-month").value + "-" +
-            document.getElementById("first-year").value;
-        var dateLastMeasurement = document.getElementById("last-day").value + "-" +
-            document.getElementById("last-month").value + "-" +
-            document.getElementById("last-year").value;
-        var freqOfMeasurments = document.getElementById("freq-of-measurements").value;
-        var additionalInfo = document.getElementById("additional-info").value;
-        var numberOfMeasurments = document.getElementById("number-of-measurements").value;
-
-        console.log("descr " + description);
-        console.log("type " + kindOfData);
-        console.log("latitude " + latitude);
-        console.log("longitude " + longitude);
-        console.log("area " + area);
-        console.log("radius " + radius);
-        console.log("date 1 " + dateFirstMeasurment);
-        console.log("date 2 " + dateLastMeasurement);
-        console.log("frequency " + freqOfMeasurments);
-        console.log("number of " + numberOfMeasurments);
-
-        if((typeof latitude != 'number' && !isFinite(latitude)) || (typeof latitude != 'number' && !isFinite(longitude))){
-            document.getElementById("forgot-something1").style.display = "";
-        } if(latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180){
-            document.getElementById("forgot-something1").style.display = "";
-        }
-        /*if(!checkDates(getElementById("first-day"),getElementById("first-month"),getElementById("first-year"),getElementById("last-day"),getElementById("last-month"),getElementById("last-year"))){
-                document.getElementById("forgot-something2").style.display = "";
-        }*/
-        else if(description && kindOfData && latitude && longitude && area && radius && dateFirstMeasurment && dateLastMeasurement && freqOfMeasurments && numberOfMeasurments){
-            document.getElementById("box-confirm-submit").style.display = "";
-            document.getElementById("button-submit-request").disabled = true;
-            document.getElementById("button-submit-request").style.display = "none";
-        } else{
-            document.getElementById("forgot-something").style.display = "";
-        }
-    }
-
+    
     function clickSubmit1(){
         document.getElementById("forgot-something1").style.display = "none";
         document.getElementById("forgot-something2").style.display = "none";
@@ -354,18 +306,6 @@ function onload_page() {
         }
     }
 
-    /*TODO - WHY NOT WORKING?
-    function checkDates(day,month,year,day1,month1,year1){
-        if( year1<year || (year1==year && month1<month) || (year==year1 && month==month1 && day1<day)){
-            return false;
-        }
-        else if((month==2 && day>29) || (month1==2 && day1>29) || (month==4 && day>30) || (month1==4 && day1>30) || (month==6 && day>30) ||
-                (month1==6 && day1>30) || (month== && day>30) || (month1==9 && day1>30) || (month==11 && day>30) || (month1==11 && day1>30)){
-            return false;
-        }
-        return true;
-    }*/
-
     function clickCancel(){
         document.getElementById("box-form-request").style.display = "";
         document.getElementById("box-confirm-submit").style.display = "none";
@@ -400,9 +340,7 @@ function onload_page() {
             var numberOfMeasurments = "free";
         }
         var additionalInfo = document.getElementById("additional-info").value;
-        /*
-            alert("data is to be submitted for request "+requestid+" value="+dataValue+" latitude,logitude="+latitude+","+longitude+" date="+date+" time"+dataTime);
-        */
+        
         //window.location = "?/=requested-academic";
         addNewRequest(kindOfData,area,latitude,longitude,radius,dateFirstMeasurment,dateLastMeasurement,description,"Pending Approval",freqOfMeasurments,numberOfMeasurments,additionalInfo);
 

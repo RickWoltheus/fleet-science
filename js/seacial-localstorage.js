@@ -210,21 +210,6 @@ function writeRequestsTable(page) {
     	text+="   <th  width='47%'>Requested area</th>";
     	text+="   <th width='15%'>Type of request</th>";
     	text+="   <th width='15%'>Status";
-    	/*text+="     <select id='selectStatus' class='filter-requests' onchange='selectStatus()'>";
-        if(page == "all-sailor"){
-            text+="       <option selected='selected'>All</option>";
-            text+="       <option value='completed'>New</option>";
-            text+="       <option value='accepted'>Accepted</option>";
-            text+="       <option value='approved'>Completed</option>";
-            text+="       <option value='approved'>Rejected</option>";
-        } else{
-        	text+="       <option selected='selected'>All</option>";
-        	text+="       <option value='approved'>Approved</option>";
-        	text+="       <option value='accepted'>Accepted</option>";
-        	text+="       <option value='completed'>Completed</option>";
-        }
-    	text+="     </select>";
-        */
     	text+="   </th>";
     	text+="   <th width='5%'></th>";
     	text+=" </thead>";
@@ -287,9 +272,13 @@ function writeRequestsTable(page) {
     	    text+="   <td colspan='5'>";
     	    text+="     <div class='row wrapper-info-requests'>";
     	    text+="       <div class='col-4'>";
-    	    text+="         <p class='p_requests'>Quantity</p>";
+            if(row["frequency"] || row["number"]){
+    	       text+="         <p class='p_requests'>Quantity</p>";
+            }
     	    text+="         <p>Number of measures "+row["frequency"]+": "+row["number"]+"</p>";
-    	    text+="         <p class='p_requests'>Area of measurements</p>";
+    	    if(row["latitude"] || row["longitude"] || row["radius"]){
+                text+="         <p class='p_requests'>Area of measurements</p>";
+            }
             if(row["latitude"]){
     	       text+="         <p>Latitude: "+row["latitude"]+ "</p>";
             }
@@ -299,9 +288,13 @@ function writeRequestsTable(page) {
             if(row["radius"]){
                text+="          <p>Radius: "+row["radius"]+" km</p>";
             }
-    	    text+="         <p class='p_requests'>First measurement</p>";
+            if(row["first"]){
+    	       text+="         <p class='p_requests'>First measurement</p>";
+            }
     	    text+="         <p>"+row["first"]+"</p>";
-            text+="         <p class='p_requests'>Last measurement</p>";
+            if(row["last"]){
+               text+="         <p class='p_requests'>Last measurement</p>";
+            }
             text+="         <p>"+row["last"]+"</p>";
     	    text+="       </div>";
     	    text+="       <div class='col-8'>";
@@ -364,17 +357,6 @@ function writeRequestsTable(page) {
                 text+="             <button type='button' onclick='redirectToChatboxSailor();' class='btn btn-default button-accept-requests'>Contact Academic</button>";
                 text+="           </div>";
             }
-            /*else if(row["status"] == "Accepted" && accepts.indexOf(key)<0 && page=="all-sailor"){
-                text+="           <div class='col-4'>";
-                text+="             <button type='button' id='accept-requests"+count+"' onclick='{requestPageClickAccept(\""+key+"\");}' class='btn btn-default button-accept-requests'>Accept</button>";
-                text+="           </div>";
-                text+="           <div class='col-4'>";
-                text+="             <a href='?/=chatbox-academic'><button type='button' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
-                text+="           </div>";
-                text+="           <div class='col-4'>";
-                text+="             <button type='button' id='reject-requests"+count+"' onclick='{requestPageClickReject(\""+key+"\");}' class='btn btn-default button-reject-requests' >Reject</button>";
-                text+="           </div>";
-            }*/
             if(page == "all-academic" && row["status"] == "Completed"){
                 text+="           <div class='col-6'>";
                 text+="             <button type='button' onclick='redirectToChatboxAcademic();' class='btn btn-default button-accept-requests'>Contact Academic</button></a>";
@@ -454,11 +436,6 @@ function redirectToChatboxSailor(){
  * End of driver
  *
  ****************************************************/
-
-
-
-
-
 
 
 /*
