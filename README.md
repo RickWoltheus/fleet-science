@@ -1,9 +1,19 @@
-##Open website
+# Open the platform
 
-To run the system open the file 
-  *index.html*
-with the browser firefox
+To access the platform, open the file 
+###  *index.html*
+with the browser **firefox**
+
+# Manage Localstorage
 
 Open the file 
-  *admin-localstorage-database.html*
-to manage the localstorage. In here there is a possibility to create new random user, messages or requests to fill in the platform.
+###  *admin-localstorage-database.html*
+with the browser **firefox**.
+In here,to fill in the platform, there is a possibility to create:
+ - new users
+ - new messages
+ - new requests
+
+
+When a new request is created using the platform it will appear in the localstorage database in the the **Requests** table.
+To perform the funtion of a lead boat (*accept the request*) click in *update* in the **Edit** column in the table.
