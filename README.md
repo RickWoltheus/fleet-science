@@ -3,6 +3,14 @@ Proposing a Platform that Connects Academics and Sailors for Marine Research
 
 *Marine research - team 2*
 
+   
+## Getting started
+
+
+### Open the platform
+
+To access the platform, open the file *index.html* with the browser **firefox**
+
 
 ### Intial State
 
@@ -10,13 +18,6 @@ Initially there are two existent accounts:
    - Academic: Sarah la Grue (Username: sarah)
    - Sailor: Conor la Grue. (Username: conor)
    
-   
-## Getting started
-
-### Open the platform
-
-To access the platform, open the file *index.html* with the browser **firefox**
-
 
 ### Manage Localstorage
 
