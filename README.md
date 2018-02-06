@@ -4,24 +4,23 @@ Proposing a Platform that Connects Academics and Sailors for Marine Research
 *Marine research - team 2*
 
 
+### Intial State
+
+Initially there are two existent accounts:
+   - Academic: Sarah la Grue (Username: sarah)
+   - Sailor: Conor la Grue. (Username: conor)
+   
+   
 ## Getting started
 
 ### Open the platform
 
-To access the platform, open the file 
-   
-   *index.html*
-
-with the browser **firefox**
+To access the platform, open the file *index.html* with the browser **firefox**
 
 
 ### Manage Localstorage
 
-Open the file 
-   
-   *admin-localstorage-database.html*
-
-with the browser **firefox**.
+Open the file *admin-localstorage-database.html* with the browser **firefox**.
 
 In here, to fill in the platform, there is a possibility to create:
  - new users
@@ -31,4 +30,4 @@ In here, to fill in the platform, there is a possibility to create:
 
 When a new user signs up their account information will appear in the localstorage database in the **Accounts** table.
 
-When a new request is submited by an academic using the platform it will appear in the the **Requests** table. - To perform the function of a lead boat (*accept the request*) click in *update* in the **Edit** column in the table.
+When a new request is submited by an academic using the platform it will appear in the the **Requests** table. - To perform the function of a lead boat (accept the request) click in *update* in the **Edit** column in the table.
